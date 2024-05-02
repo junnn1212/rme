@@ -349,7 +349,7 @@ window.Quarto = {
   <li><a href="#the-score-function" id="toc-the-score-function" class="nav-link" data-scroll-target="#the-score-function"><span class="header-section-number">C.1.6</span> The score function</a></li>
   <li><a href="#asymptotic-distribution-of-the-maximum-likelihood-estimate" id="toc-asymptotic-distribution-of-the-maximum-likelihood-estimate" class="nav-link" data-scroll-target="#asymptotic-distribution-of-the-maximum-likelihood-estimate"><span class="header-section-number">C.1.7</span> Asymptotic distribution of the maximum likelihood estimate</a></li>
   <li><a href="#the-fisher-expected-information-matrix" id="toc-the-fisher-expected-information-matrix" class="nav-link" data-scroll-target="#the-fisher-expected-information-matrix"><span class="header-section-number">C.1.8</span> The (Fisher) (expected) information matrix</a></li>
-  <li><a href="#gradient-ascent" id="toc-gradient-ascent" class="nav-link" data-scroll-target="#gradient-ascent"><span class="header-section-number">C.1.9</span> Gradient ascent</a></li>
+  <li><a href="#sec-newton-raphson" id="toc-sec-newton-raphson" class="nav-link" data-scroll-target="#sec-newton-raphson"><span class="header-section-number">C.1.9</span> Gradient ascent</a></li>
   </ul>
 </li>
   <li>
@@ -385,7 +385,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-22: 22:42:01 (PM)</p>
+      <p class="date">Last modified: 2024-05-01: 11:40:30 (AM)</p>
     </div>
   </div>
   
@@ -394,7 +394,12 @@ window.Quarto = {
   
 
 
-</header><p>These notes are derived primarily from <span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> (mostly chapters 1-5).</p>
+</header><!-- Here are some R settings I use in this document: --><style>
+.quarto-figure-center > figure {
+text-align: center;
+}
+</style>
+<p>These notes are derived primarily from <span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> (mostly chapters 1-5).</p>
 <p>Some material was also taken from <span class="citation" data-cites="mclachlan2007algorithm">McLachlan and Krishnan (<a href="references.html#ref-mclachlan2007algorithm" role="doc-biblioref">2007</a>)</span> and <span class="citation" data-cites="CaseBerg01">Casella and Berger (<a href="references.html#ref-CaseBerg01" role="doc-biblioref">2002</a>)</span>.</p>
 <section id="overview-of-maximum-likelihood-estimation" class="level2" data-number="C.1"><h2 data-number="C.1" class="anchored" data-anchor-id="overview-of-maximum-likelihood-estimation">
 <span class="header-section-number">C.1</span> Overview of maximum likelihood estimation</h2>
@@ -628,7 +633,7 @@ Key point
 </div>
 </div>
 <p>We can estimate <span class="math inline">\(\mathcal{I}^{- 1}(\theta)\)</span> by working out <span class="math inline">\(\mathbb{E}\left[-\ell''\right]\)</span> or <span class="math inline">\(\mathbb{E}\left[\ell'{\ell'}^{\top}\right]\)</span> and plugging in <span class="math inline">\(\hat\theta_{\text{ML}}\)</span>, but sometimes we instead use <span class="math inline">\(I(\hat\theta_{\text{ML}},\tilde{x})\)</span> for convenience; there are some cases where it’s provably better according to some criteria (<span class="citation" data-cites="efron1978assessing">Efron and Hinkley (<a href="references.html#ref-efron1978assessing" role="doc-biblioref">1978</a>)</span>).</p>
-</section><section id="gradient-ascent" class="level3" data-number="C.1.9"><h3 data-number="C.1.9" class="anchored" data-anchor-id="gradient-ascent">
+</section><section id="sec-newton-raphson" class="level3" data-number="C.1.9"><h3 data-number="C.1.9" class="anchored" data-anchor-id="sec-newton-raphson">
 <span class="header-section-number">C.1.9</span> Gradient ascent</h3>
 <p>Note that later, when we are trying to find MLEs for likelihoods that we can’t easily differentiate, we will “hill-climb” using the Newton-Raphson algorithm:</p>
 <p><span class="math display">\[
@@ -1132,7 +1137,7 @@ n\lambda &amp;= \sum_{i = 1}^nx_i\\
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mle</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><span class="math display">\[\hat{\lambda}_{\text{ML}} = \bar x = 5.53846154\]</span></p>
+<p><span class="math display">\[\hat{\lambda}_{\text{ML}} = \bar x = 5.5385\]</span></p>
 </div>
 </div>
 <div id="exr-graph-mle" class="theorem exercise">
@@ -2268,7 +2273,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-340"><a href="#cb12-340" aria-hidden="true" tabindex="-1"></a>$\oinf(\hthml,\vx)$ for convenience; there are</span>
 <span id="cb12-341"><a href="#cb12-341" aria-hidden="true" tabindex="-1"></a>some cases where it’s provably better according to some criteria (@efron1978assessing).</span>
 <span id="cb12-342"><a href="#cb12-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-343"><a href="#cb12-343" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gradient ascent</span></span>
+<span id="cb12-343"><a href="#cb12-343" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gradient ascent {#sec-newton-raphson}</span></span>
 <span id="cb12-344"><a href="#cb12-344" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-345"><a href="#cb12-345" aria-hidden="true" tabindex="-1"></a>Note that later, when we are trying to find MLEs for likelihoods that we</span>
 <span id="cb12-346"><a href="#cb12-346" aria-hidden="true" tabindex="-1"></a>can’t easily differentiate, we will "hill-climb" using the</span>

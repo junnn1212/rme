@@ -861,7 +861,7 @@ Figure&nbsp;2.2: Parallel-slopes model of birthweight
 \begin{aligned}
 E[Y|A = 0, A = 36]
 &amp;= \beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36 \\
-&amp;=  2578.8739
+&amp;=  2578.873934
 \end{aligned}
 \]</span></p>
 </div>
@@ -892,7 +892,7 @@ E[Y|A = 0, A = 36]
 \begin{aligned}
 E[Y|A = 1, A = 36]
 &amp;= \beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 \\
-&amp;=  2741.9132
+&amp;=  2741.91323693
 \end{aligned}
 \]</span></p>
 </div>
@@ -912,9 +912,9 @@ E[Y|A = 1, A = 36]
 \begin{aligned}
 &amp; E[Y|M = 1, A = 36] - E[Y|M = 0, A = 36]\\
 &amp;=
-2741.9132 - 2578.8739\\
+2741.91323693 - 2578.873934\\
 &amp;=
-163.0393
+163.03930293
 \end{aligned}
 \]</span></p>
 <p>Shortcut:</p>
@@ -924,7 +924,7 @@ E[Y|A = 1, A = 36]
 &amp;= (\beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36) -
 (\beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36) \\
 &amp;= \beta_M \\
-&amp;=  163.0393
+&amp;=  163.03930293
 \end{aligned}
 \]</span></p>
 </div>
@@ -1063,7 +1063,7 @@ Note
 <p><span class="math display">\[
 E[Y|A = 0, X_2 = 36] =
 \beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36 + \beta_{AM} \cdot (0 * 36)
-=  2552.7333
+=  2552.73333333
 \]</span></p>
 </div>
 <hr>
@@ -1085,7 +1085,7 @@ E[Y|A = 0, X_2 = 36] =
 \begin{aligned}
 E[Y|A = 0, X_2 = 36]
 &amp;= \beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 + \beta_{AM} \cdot 1 \cdot 36\\
-&amp;= 2762.7069
+&amp;= 2762.70689655
 \end{aligned}
 \]</span></p>
 </div>
@@ -1101,7 +1101,7 @@ E[Y|A = 0, X_2 = 36]
 &amp;= (\beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 + \beta_{AM} \cdot 1 \cdot 36)\\
 &amp;\ \ \ \ \  -(\beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36 + \beta_{AM} \cdot 0 \cdot 36) \\
 &amp;= \beta_{S} + \beta_{AM}\cdot 36\\
-&amp;=  209.9736
+&amp;=  209.97356322
 \end{aligned}
 \]</span></p>
 </div>
@@ -1616,7 +1616,7 @@ too many <span class="rlang"><b>R</b></span> (and S) outputs to be easily change
 <p>Research question: is there really an interaction between sex and age?</p>
 <p><span class="math inline">\(H_0: \beta_{AM} = 0\)</span></p>
 <p><span class="math inline">\(H_A: \beta_{AM} \neq 0\)</span></p>
-<p><span class="math inline">\(P(|\hat\beta_{AM}| &gt; |-18.4172| \mid H_0)\)</span> = ?</p>
+<p><span class="math inline">\(P(|\hat\beta_{AM}| &gt; |-18.41724138| \mid H_0)\)</span> = ?</p>
 </section><section id="wald-tests-and-cis" class="level3 smaller" data-number="2.4.2"><h3 class="smaller anchored" data-number="2.4.2" data-anchor-id="wald-tests-and-cis">
 <span class="header-section-number">2.4.2</span> Wald tests and CIs</h3>
 <p>R can give you Wald tests for single coefficients and corresponding CIs:</p>
@@ -1740,17 +1740,17 @@ too many <span class="rlang"><b>R</b></span> (and S) outputs to be easily change
 \begin{aligned}
 &amp;P\left(
 | \hat \beta_{AM}  | &gt;
-| -18.4172| \middle| H_0
+| -18.41724138| \middle| H_0
 \right)
 \\
 &amp;= \Pr \left(
 \left| \frac{\hat\beta_{AM}}{\hat{SE}(\hat\beta_{AM})} \right| &gt;
-\left| \frac{-18.4172}{41.7558} \right| \middle| H_0
+\left| \frac{-18.41724138}{41.75581745} \right| \middle| H_0
 \right)\\
 &amp;= \Pr \left(
-\left| T_{20} \right|  &gt;  0.4411 | H_0
+\left| T_{20} \right|  &gt;  0.44107007 | H_0
 \right)\\
-&amp;= 0.6639
+&amp;= 0.66389342
 \end{aligned}
 \]</span></p>
 <div class="notes">
@@ -2343,12 +2343,12 @@ Table&nbsp;2.9: Saturated model for the <code>birthweight</code> data
 </table>
 </div>
 </div>
-<p>The likelihood ratio statistic for this test is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell) = 10.3554\]</span> where:</p>
+<p>The likelihood ratio statistic for this test is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell) = 10.35537421\]</span> where:</p>
 <ul>
 <li>
-<span class="math inline">\(\ell_{\text{max}}\)</span> is the log-likelihood of the full model: -151.4016</li>
+<span class="math inline">\(\ell_{\text{max}}\)</span> is the log-likelihood of the full model: -151.40160056</li>
 <li>
-<span class="math inline">\(\ell\)</span> is the log-likelihood of our comparison model (two slopes, two intercepts): -156.5793</li>
+<span class="math inline">\(\ell\)</span> is the log-likelihood of our comparison model (two slopes, two intercepts): -156.57928767</li>
 </ul>
 <p>This statistic is called the <strong>deviance</strong> or <strong>residual deviance</strong> for our two-slopes and two-intercepts model; it tells us how much the likelihood of that model deviates from the likelihood of the maximal model.</p>
 <p>The corresponding p-value tells us whether there we have enough evidence to detect that our two-slopes, two-intercepts model is a worse fit for the data than the maximal model; in other words, it tells us if there’s evidence that we missed any important patterns. (Remember, a nonsignificant p-value could mean that we didn’t miss anything and a more complicated model is unnecessary, or it could mean we just don’t have enough data to tell the difference between these models.)</p>
@@ -2427,12 +2427,12 @@ Table&nbsp;2.9: Saturated model for the <code>birthweight</code> data
 </table>
 </div>
 </div>
-<p>The likelihood ratio statistic for the test comparing the null model to the maximal model is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell_{0}) = 35.1067\]</span> where:</p>
+<p>The likelihood ratio statistic for the test comparing the null model to the maximal model is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell_{0}) = 35.10673188\]</span> where:</p>
 <ul>
 <li>
-<span class="math inline">\(\ell_{\text{0}}\)</span> is the log-likelihood of the null model: -168.955</li>
+<span class="math inline">\(\ell_{\text{0}}\)</span> is the log-likelihood of the null model: -168.9549665</li>
 <li>
-<span class="math inline">\(\ell_{\text{full}}\)</span> is the log-likelihood of the maximal model: -151.4016</li>
+<span class="math inline">\(\ell_{\text{full}}\)</span> is the log-likelihood of the maximal model: -151.40160056</li>
 </ul>
 <p>In R, this test is:</p>
 <div class="cell">

@@ -395,7 +395,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-19: 11:39:28 (AM)</p>
+      <p class="date">Last modified: 2024-05-01: 11:59:35 (AM)</p>
     </div>
   </div>
   
@@ -405,6 +405,11 @@ window.Quarto = {
 
 
 </header><hr>
+<!-- Here are some R settings I use in this document: --><style>
+.quarto-figure-center > figure {
+text-align: center;
+}
+</style>
 <section id="acknowledgements" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
 <p>This content is adapted from:</p>
 <ul>
@@ -579,16 +584,16 @@ Tip
 <span class="header-section-number">4.2.1</span> Confidence intervals for regression coefficients and rate ratios</h3>
 <p>As usual:</p>
 <p><span class="math display">\[
-\beta \in \left[\hat\beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot \hat{\text{se}}\left(\hat\beta\right)\right]
+\beta \in \left[\hat \beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot \hat{\text{se}}\left(\hat \beta\right)\right]
 \]</span></p>
 <p>Rate ratios: exponentiate CI endpoints</p>
 <p><span class="math display">\[
-\text{exp}\left\{\beta\right\} \in \left[\text{exp}\left\{\hat\beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot \hat{\text{se}}\left(\hat\beta\right)\right\} \right]
+\text{exp}\left\{\beta\right\} \in \left[\text{exp}\left\{\hat \beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot \hat{\text{se}}\left(\hat \beta\right)\right\} \right]
 \]</span></p>
 </section><section id="hypothesis-tests-for-regression-coefficients" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="hypothesis-tests-for-regression-coefficients">
 <span class="header-section-number">4.2.2</span> Hypothesis tests for regression coefficients</h3>
 <p><span class="math display">\[
-t = \frac{\hat \beta - \beta_0}{\hat{\text{se}}\left(\hat\beta\right)}
+t = \frac{\hat \beta - \beta_0}{\hat{\text{se}}\left(\hat \beta\right)}
 \]</span></p>
 <p>Compare <span class="math inline">\(t\)</span> or <span class="math inline">\(|t|\)</span> to the tails of the standard Gaussian distribution, according to the null hypothesis.</p>
 </section><section id="comparing-nested-models" class="level3" data-number="4.2.3"><h3 data-number="4.2.3" class="anchored" data-anchor-id="comparing-nested-models">
@@ -665,17 +670,23 @@ P(Y=y,Z=z|...)
 &amp;= P(Y=y|Z=z,...)P(Z=z|...)
 \end{aligned}
 \]</span></p>
-<section id="exercise" class="level4"><h4 class="anchored" data-anchor-id="exercise">Exercise</h4>
-<p>Expand <span class="math inline">\(P(Y=0|X=x,T=t)\)</span>, <span class="math inline">\(P(Y=1|X=x,T=t)\)</span> and <span class="math inline">\(P(Y=y|X=x,T=t)\)</span> into expressions involving <span class="math inline">\(P(Z=1|X=x,T=t)\)</span> and <span class="math inline">\(P(Y=y|Z=0,X=x,T=t)\)</span>.</p>
-</section><section id="exercise-1" class="level4"><h4 class="anchored" data-anchor-id="exercise-1">Exercise</h4>
-<p>Derive the expected value and variance of <span class="math inline">\(Y\)</span>, conditional on <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>, as functions of <span class="math inline">\(P(Z=1|X=x,T=t)\)</span> and <span class="math inline">\(\mathbb E[Y|Z=0,X=x,T=t]\)</span>.</p>
-</section></section></section><section id="over-dispersion" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="over-dispersion">
+<hr>
+<div id="exr-zinf-pmf" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> Expand <span class="math inline">\(P(Y=0|X=x,T=t)\)</span>, <span class="math inline">\(P(Y=1|X=x,T=t)\)</span> and <span class="math inline">\(P(Y=y|X=x,T=t)\)</span> into expressions involving <span class="math inline">\(P(Z=1|X=x,T=t)\)</span> and <span class="math inline">\(P(Y=y|Z=0,X=x,T=t)\)</span>.</p>
+</div>
+<hr>
+<div id="exr-zinf-moments" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Derive the expected value and variance of <span class="math inline">\(Y\)</span>, conditional on <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>, as functions of <span class="math inline">\(P(Z=1|X=x,T=t)\)</span> and <span class="math inline">\(\mathbb E[Y|Z=0,X=x,T=t]\)</span>.</p>
+</div>
+</section></section><section id="over-dispersion" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="over-dispersion">
 <span class="header-section-number">4.6</span> Over-dispersion</h2>
 <section id="negative-binomial-models" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="negative-binomial-models">
 <span class="header-section-number">4.6.1</span> Negative binomial models</h3>
+<div class="notes">
 <p>The Poisson distribution model <strong>forces</strong> the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).</p>
 <p>When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.</p>
 <p>Most notably, the negative binomial model:</p>
+</div>
 <p><span class="math display">\[P(Y=y) = \frac{\mu^y}{y!} \cdot \frac{\Gamma(\rho + y)}{\Gamma(\rho) \cdot (\rho + \mu)^y} \cdot \left(1+\frac{\mu}{\rho}\right)^{-\rho}\]</span></p>
 <p>where <span class="math inline">\(\rho\)</span> is an overdispersion parameter and <span class="math inline">\(\Gamma(x) = (x-1)!\)</span> for integers <span class="math inline">\(x\)</span>.</p>
 <p>You don’t need to memorize or understand this expression, but as <span class="math inline">\(\rho \rightarrow \infty\)</span>, the second term converges to 1 and the third term converges to <span class="math inline">\(\text{exp}\left\{-\mu\right\}\)</span>, which brings us back to the Poisson distribution.</p>
@@ -1593,39 +1604,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
 <span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exercise</span></span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>Expand $P(Y=0|X=x,T=t)$, $P(Y=1|X=x,T=t)$ and $P(Y=y|X=x,T=t)$ into expressions involving $P(Z=1|X=x,T=t)$ and $P(Y=y|Z=0,X=x,T=t)$.</span>
-<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Exercise</span></span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>::: {#exr-zinf-pmf}</span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a>Expand $P(Y=0|X=x,T=t)$, $P(Y=1|X=x,T=t)$ and $P(Y=y|X=x,T=t)$ into expressions involving $P(Z=1|X=x,T=t)$ and $P(Y=y|Z=0,X=x,T=t)$.</span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\mathbb E<span class="co">[</span><span class="ot">Y|Z=0,X=x,T=t</span><span class="co">]</span>$.</span>
+<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a><span class="fu">## Over-dispersion</span></span>
+<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a>::: {#exr-zinf-moments}</span>
 <span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative binomial models</span></span>
-<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a>The Poisson distribution model **forces** the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).</span>
-<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a>When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.</span>
-<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a>Most notably, the negative binomial model:</span>
-<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a>$$P(Y=y) = \frac{\mu^y}{y!} \cdot \frac{\Gamma(\rho + y)}{\Gamma(\rho) \cdot (\rho + \mu)^y} \cdot \left(1+\frac{\mu}{\rho}\right)^{-\rho}$$</span>
-<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a>where $\rho$ is an overdispersion parameter and $\Gamma(x) = (x-1)!$ for integers $x$.</span>
-<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a>You don't need to memorize or understand this expression, but as $\rho \rightarrow \infty$, the second term converges to 1 and the third term converges to $\exp{-\mu}$, which brings us back to the Poisson distribution.</span>
-<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a>For this distribution, $\mathbb E<span class="co">[</span><span class="ot">Y</span><span class="co">]</span> = \mu$ and $\text{Var}(Y) = \mu + \frac{\mu^2}{\rho} &gt; \mu$.</span>
-<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $P(Y=y|Z=0,X=x,T=t)$.</span>
-<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quasipoisson</span></span>
-<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a>An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\text{Var}(Y) = \mu\theta$, and estimates $\theta$ accordingly.</span>
-<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a>See <span class="in">`?quasipoisson`</span> in R for more.</span>
+<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a>Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\mathbb E<span class="co">[</span><span class="ot">Y|Z=0,X=x,T=t</span><span class="co">]</span>$.</span>
+<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a><span class="fu">## Over-dispersion</span></span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative binomial models</span></span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a>The Poisson distribution model **forces** the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).</span>
+<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a>When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.</span>
+<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a>Most notably, the negative binomial model:</span>
+<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a>$$P(Y=y) = \frac{\mu^y}{y!} \cdot \frac{\Gamma(\rho + y)}{\Gamma(\rho) \cdot (\rho + \mu)^y} \cdot \left(1+\frac{\mu}{\rho}\right)^{-\rho}$$</span>
+<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a>where $\rho$ is an overdispersion parameter and $\Gamma(x) = (x-1)!$ for integers $x$.</span>
+<span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a>You don't need to memorize or understand this expression, but as $\rho \rightarrow \infty$, the second term converges to 1 and the third term converges to $\exp{-\mu}$, which brings us back to the Poisson distribution.</span>
+<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a>For this distribution, $\mathbb E<span class="co">[</span><span class="ot">Y</span><span class="co">]</span> = \mu$ and $\text{Var}(Y) = \mu + \frac{\mu^2}{\rho} &gt; \mu$.</span>
+<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a>We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $P(Y=y|Z=0,X=x,T=t)$.</span>
+<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quasipoisson</span></span>
+<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a>An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\text{Var}(Y) = \mu\theta$, and estimates $\theta$ accordingly.</span>
+<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a>See <span class="in">`?quasipoisson`</span> in R for more.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
