@@ -355,7 +355,7 @@ window.Quarto = {
   <li><a href="#the-score-function" id="toc-the-score-function" class="nav-link" data-scroll-target="#the-score-function"><span class="header-section-number">C.1.6</span> The score function</a></li>
   <li><a href="#asymptotic-distribution-of-the-maximum-likelihood-estimate" id="toc-asymptotic-distribution-of-the-maximum-likelihood-estimate" class="nav-link" data-scroll-target="#asymptotic-distribution-of-the-maximum-likelihood-estimate"><span class="header-section-number">C.1.7</span> Asymptotic distribution of the maximum likelihood estimate</a></li>
   <li><a href="#the-fisher-expected-information-matrix" id="toc-the-fisher-expected-information-matrix" class="nav-link" data-scroll-target="#the-fisher-expected-information-matrix"><span class="header-section-number">C.1.8</span> The (Fisher) (expected) information matrix</a></li>
-  <li><a href="#sec-newton-raphson" id="toc-sec-newton-raphson" class="nav-link" data-scroll-target="#sec-newton-raphson"><span class="header-section-number">C.1.9</span> Gradient ascent</a></li>
+  <li><a href="#sec-newton-raphson" id="toc-sec-newton-raphson" class="nav-link" data-scroll-target="#sec-newton-raphson"><span class="header-section-number">C.1.9</span> Iterative maximization</a></li>
   <li><a href="#quantifying-uncertainty-of-mles" id="toc-quantifying-uncertainty-of-mles" class="nav-link" data-scroll-target="#quantifying-uncertainty-of-mles"><span class="header-section-number">C.1.10</span> Quantifying (un)certainty of MLEs</a></li>
   </ul>
 </li>
@@ -392,7 +392,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-02: 17:29:11 (PM)</p>
+      <p class="date">Last modified: 2024-05-02: 17:33:58 (PM)</p>
     </div>
   </div>
   
@@ -641,7 +641,7 @@ Key point
 </div>
 <p>We can estimate <span class="math inline">\(\mathcal{I}^{- 1}(\theta)\)</span> by working out <span class="math inline">\(\mathbb{E}\left[-\ell''\right]\)</span> or <span class="math inline">\(\mathbb{E}\left[\ell'{\ell'}^{\top}\right]\)</span> and plugging in <span class="math inline">\(\hat\theta_{\text{ML}}\)</span>, but sometimes we instead use <span class="math inline">\(I(\hat\theta_{\text{ML}},\tilde{x})\)</span> for convenience; there are some cases where it’s provably better according to some criteria (<span class="citation" data-cites="efron1978assessing">Efron and Hinkley (<a href="references.html#ref-efron1978assessing" role="doc-biblioref">1978</a>)</span>).</p>
 </section><section id="sec-newton-raphson" class="level3" data-number="C.1.9"><h3 data-number="C.1.9" class="anchored" data-anchor-id="sec-newton-raphson">
-<span class="header-section-number">C.1.9</span> Gradient ascent</h3>
+<span class="header-section-number">C.1.9</span> Iterative maximization</h3>
 <p>Note that later, when we are trying to find MLEs for likelihoods which we can’t easily differentiate, we will “hill-climb” using the Newton-Raphson algorithm:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -683,7 +683,7 @@ Key point
 <p><span class="math display">\[\mathfrak{I \stackrel{\text{def}}{=}I(}\theta) \stackrel{\text{def}}{=}{Cov}\left( \ell'|\theta \right) = E[ \ell'{\ell'}^{\top} ] - E[ \ell' ]\ E[ \ell' ]^{\top}\]</span></p>
 <p><span class="math display">\[\left\{ \mathfrak{I}_{jk} \stackrel{\text{def}}{=}{Cov}\left( {\ell'}_{j},{\ell'}_{k} \right) = E[ \ell_{j}'\ell_{k}' ] - E[ {\ell'}_{j} ] E[ {\ell'}_{k} ] \right\}\]</span></p>
 <p><span class="math inline">\(I_{e}(\theta,y)\)</span> is sometimes computationally easier to compute for Newton-Raphson-type maximization algorithms.</p>
-<p>c.f. <a href="https://web.stanford.edu/class/archive/cs/cs109/cs109.1192/lectures/22%20-%20GradientAscent.pdf" class="uri">https://web.stanford.edu/class/archive/cs/cs109/cs109.1192/lectures/22%20-%20GradientAscent.pdf</a></p>
+<p>c.f. <a href="https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization" class="uri">https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization</a></p>
 </section><section id="quantifying-uncertainty-of-mles" class="level3" data-number="C.1.10"><h3 data-number="C.1.10" class="anchored" data-anchor-id="quantifying-uncertainty-of-mles">
 <span class="header-section-number">C.1.10</span> Quantifying (un)certainty of MLEs</h3>
 <section id="confidence-intervals-for-mles" class="level4"><h4 class="anchored" data-anchor-id="confidence-intervals-for-mles">Confidence intervals for MLEs</h4>
@@ -2557,7 +2557,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a>$\oinf(\hthml,\vx)$ for convenience; there are</span>
 <span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a>some cases where it’s provably better according to some criteria (@efron1978assessing).</span>
 <span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gradient ascent {#sec-newton-raphson}</span></span>
+<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### Iterative maximization {#sec-newton-raphson}</span></span>
 <span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>Note that later, </span>
 <span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a>when we are trying to find MLEs for likelihoods which we can’t easily differentiate, </span>
@@ -2629,7 +2629,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a>$I_{e}(\theta,y)$ is sometimes computationally easier to compute for</span>
 <span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a>Newton-Raphson-type maximization algorithms.</span>
 <span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>c.f. <span class="ot">&lt;https://web.stanford.edu/class/archive/cs/cs109/cs109.1192/lectures/22%20-%20GradientAscent.pdf&gt;</span></span>
+<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>c.f. <span class="ot">&lt;https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization&gt;</span></span>
 <span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantifying (un)certainty of MLEs</span></span>
 <span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a></span>
