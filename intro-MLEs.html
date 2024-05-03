@@ -356,6 +356,7 @@ window.Quarto = {
   <li><a href="#asymptotic-distribution-of-the-maximum-likelihood-estimate" id="toc-asymptotic-distribution-of-the-maximum-likelihood-estimate" class="nav-link" data-scroll-target="#asymptotic-distribution-of-the-maximum-likelihood-estimate"><span class="header-section-number">C.1.7</span> Asymptotic distribution of the maximum likelihood estimate</a></li>
   <li><a href="#the-fisher-expected-information-matrix" id="toc-the-fisher-expected-information-matrix" class="nav-link" data-scroll-target="#the-fisher-expected-information-matrix"><span class="header-section-number">C.1.8</span> The (Fisher) (expected) information matrix</a></li>
   <li><a href="#sec-newton-raphson" id="toc-sec-newton-raphson" class="nav-link" data-scroll-target="#sec-newton-raphson"><span class="header-section-number">C.1.9</span> Gradient ascent</a></li>
+  <li><a href="#quantifying-uncertainty-of-mles" id="toc-quantifying-uncertainty-of-mles" class="nav-link" data-scroll-target="#quantifying-uncertainty-of-mles"><span class="header-section-number">C.1.10</span> Quantifying (un)certainty of MLEs</a></li>
   </ul>
 </li>
   <li>
@@ -391,7 +392,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-02: 17:00:39 (PM)</p>
+      <p class="date">Last modified: 2024-05-02: 17:29:11 (PM)</p>
     </div>
   </div>
   
@@ -657,19 +658,19 @@ Key point
 </div>
 <p><span class="math display">\[
 \begin{aligned}
-\ell'(\lambda)
-&amp;\approx \ell'^*(\lambda)
-\\ &amp;\stackrel{\text{def}}{=}\ell'({\widehat{\lambda}}^*) - \ell''({\widehat{\lambda}}^*)(\lambda - {\widehat{\lambda}}^*)
+\ell'(\theta)
+&amp;\approx \ell'^*(\theta)
+\\ &amp;\stackrel{\text{def}}{=}\ell'({\widehat{\theta}}^*) + \ell''({\widehat{\theta}}^*)(\theta- {\widehat{\theta}}^*)
 \end{aligned}
 \]</span></p>
 <hr>
 <div class="notes">
-<p>The approximate score function, <span class="math inline">\(\ell'^*(\lambda)\)</span>, is a linear function of <span class="math inline">\(\lambda\)</span>, so it is easy to solve the corresponding approximate score equation, <span class="math inline">\(\ell'^*(\lambda) = 0\)</span>, for <span class="math inline">\(\lambda\)</span>:</p>
+<p>The approximate score function, <span class="math inline">\(\ell'^*(\theta)\)</span>, is a linear function of <span class="math inline">\(\theta\)</span>, so it is easy to solve the corresponding approximate score equation, <span class="math inline">\(\ell'^*(\theta) = 0\)</span>, for <span class="math inline">\(\theta\)</span>:</p>
 </div>
 <p><span class="math display">\[
 \begin{aligned}
-\lambda
-&amp;= {\widehat{\lambda}}^*- \ell'({\widehat{\lambda}}^*) \cdot\left(\ell''({\widehat{\lambda}}^*)\right)^{-1}
+\theta
+&amp;= {\widehat{\theta}}^* - \ell'({\widehat{\theta}}^*) \cdot\left(\ell''({\widehat{\theta}}^*)\right)^{-1}
 \end{aligned}
 \]</span></p>
 <hr>
@@ -682,6 +683,9 @@ Key point
 <p><span class="math display">\[\mathfrak{I \stackrel{\text{def}}{=}I(}\theta) \stackrel{\text{def}}{=}{Cov}\left( \ell'|\theta \right) = E[ \ell'{\ell'}^{\top} ] - E[ \ell' ]\ E[ \ell' ]^{\top}\]</span></p>
 <p><span class="math display">\[\left\{ \mathfrak{I}_{jk} \stackrel{\text{def}}{=}{Cov}\left( {\ell'}_{j},{\ell'}_{k} \right) = E[ \ell_{j}'\ell_{k}' ] - E[ {\ell'}_{j} ] E[ {\ell'}_{k} ] \right\}\]</span></p>
 <p><span class="math inline">\(I_{e}(\theta,y)\)</span> is sometimes computationally easier to compute for Newton-Raphson-type maximization algorithms.</p>
+<p>c.f. <a href="https://web.stanford.edu/class/archive/cs/cs109/cs109.1192/lectures/22%20-%20GradientAscent.pdf" class="uri">https://web.stanford.edu/class/archive/cs/cs109/cs109.1192/lectures/22%20-%20GradientAscent.pdf</a></p>
+</section><section id="quantifying-uncertainty-of-mles" class="level3" data-number="C.1.10"><h3 data-number="C.1.10" class="anchored" data-anchor-id="quantifying-uncertainty-of-mles">
+<span class="header-section-number">C.1.10</span> Quantifying (un)certainty of MLEs</h3>
 <section id="confidence-intervals-for-mles" class="level4"><h4 class="anchored" data-anchor-id="confidence-intervals-for-mles">Confidence intervals for MLEs</h4>
 <p>An asymptotic approximation of a 95% confidence interval for <span class="math inline">\(\theta_k\)</span> is</p>
 <p><span class="math display">\[
@@ -897,15 +901,15 @@ Table&nbsp;C.2: Summary statistics for <code>cyclones</code> data
 <p>We could estimate <span class="math inline">\(P(Y=y)\)</span> for each value of <span class="math inline">\(y\)</span> in <span class="math inline">\(0:\infty\)</span> separately (“nonparametrically”) using the fraction of our data with <span class="math inline">\(Y_i=y\)</span>, but then we would be estimating an infinitely large set of parameters, and we would have low precision. We will probably do better with a parametric model.</p>
 <div id="exr-cyclone-choose-dist" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.1</strong></span> What parametric probability distribution family might we use to model this empirical distribution?</p>
+</div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span>Let’s use the Poisson. The Poisson distribution is appropriate for this data , because the data are counts that could theoretically take any integer value (discrete) in the range <span class="math inline">\(0:\infty\)</span>. Visually, the plot of our data closely resembles a Poisson or binomial distribution. Since cyclones do not have an “upper limit” on the number of events we could potentially observe in one season, the Poisson distribution is more appropriate than the binomial.</p>
 </div>
-</div>
 <div id="exr-def-poisson" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.2</strong></span> Write down the Poisson distribution’s probability mass function.</p>
+</div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[P(Y=y) = \frac{\lambda^{y} e^{-\lambda}}{y!}\]</span></p>
-</div>
 </div>
 </section><section id="estimating-the-model-parameters-using-maximum-likelihood" class="level3" data-number="C.2.4"><h3 data-number="C.2.4" class="anchored" data-anchor-id="estimating-the-model-parameters-using-maximum-likelihood">
 <span class="header-section-number">C.2.4</span> Estimating the model parameters using maximum likelihood</h3>
@@ -913,6 +917,7 @@ Table&nbsp;C.2: Summary statistics for <code>cyclones</code> data
 <p>What is the likelihood?</p>
 <div id="exr-poisson-likelihood" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.3</strong></span> Write down the likelihood (probability mass function or probability density function) of a single observation <span class="math inline">\(x\)</span>, according to your model.</p>
+</div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
 \begin{aligned}
@@ -922,16 +927,16 @@ Table&nbsp;C.2: Summary statistics for <code>cyclones</code> data
 \end{aligned}
 \]</span></p>
 </div>
-</div>
 <div id="exr-poisson-parameters" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.4</strong></span> Write down the vector of parameters in your model.</p>
+</div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span>There is only one parameter, <span class="math inline">\(\lambda\)</span>:</p>
 <p><span class="math display">\[\theta = (\lambda)\]</span></p>
 </div>
-</div>
 <div id="exr-poisson-mean-and-variance" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.5</strong></span> Write down the population mean and variance of a single observation from your chosen probability model, as a function of the parameters (extra credit - derive them).</p>
+</div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
 <ul>
@@ -941,9 +946,9 @@ Table&nbsp;C.2: Summary statistics for <code>cyclones</code> data
 </li>
 </ul>
 </div>
-</div>
 <div id="exr-sample-likelihood" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.6</strong></span> Write down the likelihood of the full dataset.</p>
+</div>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
 \begin{aligned}
@@ -954,7 +959,6 @@ Table&nbsp;C.2: Summary statistics for <code>cyclones</code> data
 &amp;= \prod_{i=1}^{13} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}
 \end{aligned}
 \]</span></p>
-</div>
 </div>
 <div id="exr-graph-likelihood" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.7</strong></span> Graph the likelihood as a function of <span class="math inline">\(\lambda\)</span>.</p>
@@ -1173,7 +1177,7 @@ n\lambda &amp;= \sum_{i = 1}^nx_i\\
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mle</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><span class="math display">\[\hat{\lambda}_{\text{ML}} = \bar x = 5.5385\]</span></p>
+<p><span class="math display">\[\hat{\lambda}_{\text{ML}} = \bar x = 5.53846154\]</span></p>
 </div>
 </div>
 <div id="exr-graph-mle" class="theorem exercise">
@@ -1228,7 +1232,7 @@ Figure&nbsp;C.8: Observed information function of Dobson cyclone data
 </div>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># specify initial guess:</span></span>
-<span><span class="va">lambda_cur</span> <span class="op">=</span> <span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">cur_lambda_est</span> <span class="op">=</span> <span class="fl">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </div>
@@ -1253,8 +1257,8 @@ Figure&nbsp;C.8: Observed information function of Dobson cyclone data
 \begin{aligned}
 \ell'(\lambda)
 &amp;\approx \ell'^*(\lambda)
-\\ &amp;\stackrel{\text{def}}{=}\ell'({\widehat{\lambda}}^*) - \ell''({\widehat{\lambda}}^*)(\lambda - {\widehat{\lambda}}^*)
-\\ &amp;= \left(\frac{72}{{\widehat{\lambda}}^*}  - n\right) - \left(-\frac{72}{\left({\widehat{\lambda}}^*\right)^2}\right) (\lambda - {\widehat{\lambda}}^*)
+\\ &amp;\stackrel{\text{def}}{=}\ell'({\widehat{\lambda}}^*) + \ell''({\widehat{\lambda}}^*)(\lambda - {\widehat{\lambda}}^*)
+\\ &amp;= \left(\frac{72}{{\widehat{\lambda}}^*}  - n\right) + \left(-\frac{72}{\left({\widehat{\lambda}}^*\right)^2}\right) (\lambda - {\widehat{\lambda}}^*)
 \end{aligned}
 \]</span></p>
 <hr>
@@ -1279,10 +1283,10 @@ Figure&nbsp;C.8: Observed information function of Dobson cyclone data
 <span>  fun <span class="op">=</span> <span class="va">approx_score</span>, </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"approximate score function"</span><span class="op">)</span>,</span>
 <span>  n <span class="op">=</span> <span class="fl">1001</span>, </span>
-<span>  args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lhat <span class="op">=</span> <span class="va">lambda_cur</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lhat <span class="op">=</span> <span class="va">cur_lambda_est</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
 <span>  size <span class="op">=</span> <span class="va">point_size</span>,</span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">lambda_cur</span>, y <span class="op">=</span> <span class="fu">score</span><span class="op">(</span>lambda <span class="op">=</span> <span class="va">lambda_cur</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cur_lambda_est</span>, y <span class="op">=</span> <span class="fu">score</span><span class="op">(</span>lambda <span class="op">=</span> <span class="va">cur_lambda_est</span><span class="op">)</span>,</span>
 <span>      col <span class="op">=</span> <span class="st">"current estimate"</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
@@ -1337,10 +1341,10 @@ Figure&nbsp;C.9: score function of Dobson cyclone data and approximate score fun
 <span>  fun <span class="op">=</span> <span class="va">approx_loglik</span>, </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"approximate log-likelihood"</span><span class="op">)</span>,</span>
 <span>  n <span class="op">=</span> <span class="fl">1001</span>, </span>
-<span>  args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lhat <span class="op">=</span> <span class="va">lambda_cur</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lhat <span class="op">=</span> <span class="va">cur_lambda_est</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
 <span>  size <span class="op">=</span> <span class="va">point_size</span>,</span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">lambda_cur</span>, y <span class="op">=</span> <span class="fu">loglik</span><span class="op">(</span>lambda <span class="op">=</span> <span class="va">lambda_cur</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cur_lambda_est</span>, y <span class="op">=</span> <span class="fu">loglik</span><span class="op">(</span>lambda <span class="op">=</span> <span class="va">cur_lambda_est</span><span class="op">)</span>,</span>
 <span>      col <span class="op">=</span> <span class="st">"current estimate"</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
@@ -1379,9 +1383,9 @@ Figure&nbsp;C.10: log-likelihood of Dobson cyclone data and approximate log-like
 \end{aligned}
 \]</span></p>
 <div class="cell">
-<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">new_lambda_cur</span> <span class="op">&lt;-</span> </span>
-<span>   <span class="va">lambda_cur</span> <span class="op">-</span> </span>
-<span>   <span class="fu">score</span><span class="op">(</span><span class="va">lambda_cur</span><span class="op">)</span> <span class="op">*</span> <span class="fu">hessian</span><span class="op">(</span><span class="va">lambda_cur</span><span class="op">)</span><span class="op">^</span><span class="op">-</span><span class="fl">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">new_lambda_est</span> <span class="op">&lt;-</span> </span>
+<span>   <span class="va">cur_lambda_est</span> <span class="op">-</span> </span>
+<span>   <span class="fu">score</span><span class="op">(</span><span class="va">cur_lambda_est</span><span class="op">)</span> <span class="op">*</span> <span class="fu">hessian</span><span class="op">(</span><span class="va">cur_lambda_est</span><span class="op">)</span><span class="op">^</span><span class="op">-</span><span class="fl">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <hr>
@@ -1390,7 +1394,7 @@ Figure&nbsp;C.10: log-likelihood of Dobson cyclone data and approximate log-like
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
 <span>size <span class="op">=</span> <span class="va">point_size</span>,</span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>x <span class="op">=</span> <span class="va">new_lambda_cur</span>,</span>
+<span>x <span class="op">=</span> <span class="va">new_lambda_est</span>,</span>
 <span>y <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>col <span class="op">=</span> <span class="st">"new estimate"</span></span>
 <span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1399,11 +1403,11 @@ Figure&nbsp;C.10: log-likelihood of Dobson cyclone data and approximate log-like
 <span>linewidth <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>alpha <span class="op">=</span> <span class="fl">.7</span>,</span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>x <span class="op">=</span> <span class="va">lambda_cur</span>, </span>
+<span>x <span class="op">=</span> <span class="va">cur_lambda_est</span>, </span>
 <span>y <span class="op">=</span> <span class="fu">approx_score</span><span class="op">(</span></span>
-<span>lhat <span class="op">=</span> <span class="va">lambda_cur</span>, </span>
-<span>lambda <span class="op">=</span> <span class="va">lambda_cur</span><span class="op">)</span>,</span>
-<span>xend <span class="op">=</span> <span class="va">new_lambda_cur</span>, </span>
+<span>lhat <span class="op">=</span> <span class="va">cur_lambda_est</span>, </span>
+<span>lambda <span class="op">=</span> <span class="va">cur_lambda_est</span><span class="op">)</span>,</span>
+<span>xend <span class="op">=</span> <span class="va">new_lambda_est</span>, </span>
 <span>yend <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>col <span class="op">=</span> <span class="st">"update"</span></span>
 <span><span class="op">)</span></span>
@@ -1422,7 +1426,7 @@ Figure&nbsp;C.11: score function of Dobson cyclone data and approximate score fu
 </div>
 <hr>
 <div class="notes">
-<p>So we update <span class="math inline">\({\widehat{\lambda}}^*\leftarrow 3\)</span> and repeat our estimation process:</p>
+<p>So we update <span class="math inline">\({\widehat{\lambda}}^*\leftarrow 4.375\)</span> and repeat our estimation process:</p>
 </div>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">plot2</span> <span class="op">+</span></span>
@@ -1430,10 +1434,10 @@ Figure&nbsp;C.11: score function of Dobson cyclone data and approximate score fu
 <span>  fun <span class="op">=</span> <span class="va">approx_score</span>, </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"new approximate score function"</span><span class="op">)</span>,</span>
 <span>  n <span class="op">=</span> <span class="fl">1001</span>, </span>
-<span>  args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lhat <span class="op">=</span> <span class="va">new_lambda_cur</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lhat <span class="op">=</span> <span class="va">new_lambda_est</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
 <span>  size <span class="op">=</span> <span class="va">point_size</span>,</span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">new_lambda_cur</span>, y <span class="op">=</span> <span class="fu">score</span><span class="op">(</span>lambda <span class="op">=</span> <span class="va">new_lambda_cur</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">new_lambda_est</span>, y <span class="op">=</span> <span class="fu">score</span><span class="op">(</span>lambda <span class="op">=</span> <span class="va">new_lambda_est</span><span class="op">)</span>,</span>
 <span>      col <span class="op">=</span> <span class="st">"new estimate"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
@@ -2577,23 +2581,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-365"><a href="#cb18-365" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-366"><a href="#cb18-366" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-367"><a href="#cb18-367" aria-hidden="true" tabindex="-1"></a>\ba</span>
-<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a>\score(\lambda) </span>
-<span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a>&amp;\approx \score^*(\lambda)</span>
-<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;\eqdef \score(\esttmpl) - \hessian(\esttmpl)(\lambda - \esttmpl)</span>
+<span id="cb18-368"><a href="#cb18-368" aria-hidden="true" tabindex="-1"></a>\score(\th) </span>
+<span id="cb18-369"><a href="#cb18-369" aria-hidden="true" tabindex="-1"></a>&amp;\approx \score^*(\th)</span>
+<span id="cb18-370"><a href="#cb18-370" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;\eqdef \score(\esttmp{\th}) + \hessian(\esttmp{\th})(\th - \esttmp{\th})</span>
 <span id="cb18-371"><a href="#cb18-371" aria-hidden="true" tabindex="-1"></a>\ea</span>
 <span id="cb18-372"><a href="#cb18-372" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-373"><a href="#cb18-373" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-374"><a href="#cb18-374" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb18-375"><a href="#cb18-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-376"><a href="#cb18-376" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a>The approximate score function, $\score^*(\lambda)$, is a linear function of $\lambda$, so it is easy to solve the corresponding approximate score equation, $\score^*(\lambda) = 0$, for $\lambda$:</span>
+<span id="cb18-377"><a href="#cb18-377" aria-hidden="true" tabindex="-1"></a>The approximate score function, $\score^*(\th)$, is a linear function of $\th$, so it is easy to solve the corresponding approximate score equation, $\score^*(\th) = 0$, for $\th$:</span>
 <span id="cb18-378"><a href="#cb18-378" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-379"><a href="#cb18-379" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a>\ba</span>
-<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a>\lambda </span>
-<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a>&amp;= \esttmpl - \score(\esttmpl) \cd \inv{\hessian(\esttmpl)}</span>
+<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a>\th </span>
+<span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a>&amp;= \esttmp{\th} - \score(\esttmp{\th}) \cd \inv{\hessian(\esttmp{\th})}</span>
 <span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a>\ea</span>
 <span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-387"><a href="#cb18-387" aria-hidden="true" tabindex="-1"></a></span>
@@ -2625,211 +2629,214 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb18-413"><a href="#cb18-413" aria-hidden="true" tabindex="-1"></a>$I_{e}(\theta,y)$ is sometimes computationally easier to compute for</span>
 <span id="cb18-414"><a href="#cb18-414" aria-hidden="true" tabindex="-1"></a>Newton-Raphson-type maximization algorithms.</span>
 <span id="cb18-415"><a href="#cb18-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Confidence intervals for MLEs</span></span>
-<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a>An asymptotic approximation of a 95% confidence interval for $\theta_k$ is</span>
-<span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a>\hthml \pm z_{0.975} \times \HSE{\hth_k}</span>
-<span id="cb18-423"><a href="#cb18-423" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a>where $z_\beta$ the $\beta$ quantile of the standard Gaussian distribution.</span>
-<span id="cb18-426"><a href="#cb18-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a><span class="fu">#### p-values and hypothesis tests for MLEs</span></span>
-<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-429"><a href="#cb18-429" aria-hidden="true" tabindex="-1"></a>(to add)</span>
-<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Likelihood ratio tests for MLEs</span></span>
-<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a>log(likelihood ratio) tests <span class="co">[</span><span class="ot">c.f. @dobson4e §5.7</span><span class="co">]</span>:</span>
-<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-435"><a href="#cb18-435" aria-hidden="true" tabindex="-1"></a>$$-2\ell_{0} \sim \chi^{2}(p - q)$$</span>
-<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-437"><a href="#cb18-437" aria-hidden="true" tabindex="-1"></a>See also <span class="ot">&lt;https://online.stat.psu.edu/stat504/book/export/html/657&gt;</span></span>
-<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prediction intervals for MLEs</span></span>
-<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-441"><a href="#cb18-441" aria-hidden="true" tabindex="-1"></a>$$\overline{X} \in <span class="co">[</span><span class="ot"> \widehat{\mu} \pm z_{1 - \alpha\text{/}2}\frac{\sigma}{m} </span><span class="co">]</span>$$</span>
-<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a>Where $m$ is the sample size of the new data to be predicted (typically</span>
-<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a>1, except for binary outcomes, where it needs to be bigger for</span>
-<span id="cb18-445"><a href="#cb18-445" aria-hidden="true" tabindex="-1"></a>prediction intervals to make sense)</span>
-<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-447"><a href="#cb18-447" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>I might sometimes switch the order of $x,$ $\theta$; this is</span>
-<span id="cb18-448"><a href="#cb18-448" aria-hidden="true" tabindex="-1"></a>    unintentional and not meaningful.</span>
+<span id="cb18-416"><a href="#cb18-416" aria-hidden="true" tabindex="-1"></a>c.f. <span class="ot">&lt;https://web.stanford.edu/class/archive/cs/cs109/cs109.1192/lectures/22%20-%20GradientAscent.pdf&gt;</span></span>
+<span id="cb18-417"><a href="#cb18-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-418"><a href="#cb18-418" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantifying (un)certainty of MLEs</span></span>
+<span id="cb18-419"><a href="#cb18-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-420"><a href="#cb18-420" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Confidence intervals for MLEs</span></span>
+<span id="cb18-421"><a href="#cb18-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-422"><a href="#cb18-422" aria-hidden="true" tabindex="-1"></a>An asymptotic approximation of a 95% confidence interval for $\theta_k$ is</span>
+<span id="cb18-423"><a href="#cb18-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-424"><a href="#cb18-424" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-425"><a href="#cb18-425" aria-hidden="true" tabindex="-1"></a>\hthml \pm z_{0.975} \times \HSE{\hth_k}</span>
+<span id="cb18-426"><a href="#cb18-426" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-427"><a href="#cb18-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-428"><a href="#cb18-428" aria-hidden="true" tabindex="-1"></a>where $z_\beta$ the $\beta$ quantile of the standard Gaussian distribution.</span>
+<span id="cb18-429"><a href="#cb18-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-430"><a href="#cb18-430" aria-hidden="true" tabindex="-1"></a><span class="fu">#### p-values and hypothesis tests for MLEs</span></span>
+<span id="cb18-431"><a href="#cb18-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-432"><a href="#cb18-432" aria-hidden="true" tabindex="-1"></a>(to add)</span>
+<span id="cb18-433"><a href="#cb18-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-434"><a href="#cb18-434" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Likelihood ratio tests for MLEs</span></span>
+<span id="cb18-435"><a href="#cb18-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-436"><a href="#cb18-436" aria-hidden="true" tabindex="-1"></a>log(likelihood ratio) tests <span class="co">[</span><span class="ot">c.f. @dobson4e §5.7</span><span class="co">]</span>:</span>
+<span id="cb18-437"><a href="#cb18-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-438"><a href="#cb18-438" aria-hidden="true" tabindex="-1"></a>$$-2\ell_{0} \sim \chi^{2}(p - q)$$</span>
+<span id="cb18-439"><a href="#cb18-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-440"><a href="#cb18-440" aria-hidden="true" tabindex="-1"></a>See also <span class="ot">&lt;https://online.stat.psu.edu/stat504/book/export/html/657&gt;</span></span>
+<span id="cb18-441"><a href="#cb18-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-442"><a href="#cb18-442" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prediction intervals for MLEs</span></span>
+<span id="cb18-443"><a href="#cb18-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-444"><a href="#cb18-444" aria-hidden="true" tabindex="-1"></a>$$\overline{X} \in <span class="co">[</span><span class="ot"> \widehat{\mu} \pm z_{1 - \alpha\text{/}2}\frac{\sigma}{m} </span><span class="co">]</span>$$</span>
+<span id="cb18-445"><a href="#cb18-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-446"><a href="#cb18-446" aria-hidden="true" tabindex="-1"></a>Where $m$ is the sample size of the new data to be predicted (typically</span>
+<span id="cb18-447"><a href="#cb18-447" aria-hidden="true" tabindex="-1"></a>1, except for binary outcomes, where it needs to be bigger for</span>
+<span id="cb18-448"><a href="#cb18-448" aria-hidden="true" tabindex="-1"></a>prediction intervals to make sense)</span>
 <span id="cb18-449"><a href="#cb18-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example: Maximum likelihood for Tropical Cyclones in Australia</span></span>
-<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-452"><a href="#cb18-452" aria-hidden="true" tabindex="-1"></a>{{&lt; include dobson-cyclone-example.qmd &gt;}}</span>
-<span id="cb18-453"><a href="#cb18-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Maximum likelihood inference for univariate Gaussian models</span></span>
-<span id="cb18-455"><a href="#cb18-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a>Suppose $X_{1}, ..., X_{n} \siid N(\mu, \sigma^{2})$.</span>
-<span id="cb18-457"><a href="#cb18-457" aria-hidden="true" tabindex="-1"></a>Let $X = (X_{1},\ldots,X_{n})^{\top}$ be these random</span>
-<span id="cb18-458"><a href="#cb18-458" aria-hidden="true" tabindex="-1"></a>variables in vector format. Let $x_{i}$ and $x$ denote the corresponding</span>
-<span id="cb18-459"><a href="#cb18-459" aria-hidden="true" tabindex="-1"></a>observed data. Then $\theta = (\mu,\sigma^{2})$ is</span>
-<span id="cb18-460"><a href="#cb18-460" aria-hidden="true" tabindex="-1"></a>the vector of true parameters, and $\Theta = (\Mu, \Sigma^2)$ is the vector of parameters as a random</span>
-<span id="cb18-461"><a href="#cb18-461" aria-hidden="true" tabindex="-1"></a>vector.</span>
-<span id="cb18-462"><a href="#cb18-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-463"><a href="#cb18-463" aria-hidden="true" tabindex="-1"></a>Then the log-likelihood</span>
-<span id="cb18-464"><a href="#cb18-464" aria-hidden="true" tabindex="-1"></a>is:</span>
+<span id="cb18-450"><a href="#cb18-450" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>I might sometimes switch the order of $x,$ $\theta$; this is</span>
+<span id="cb18-451"><a href="#cb18-451" aria-hidden="true" tabindex="-1"></a>    unintentional and not meaningful.</span>
+<span id="cb18-452"><a href="#cb18-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-453"><a href="#cb18-453" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example: Maximum likelihood for Tropical Cyclones in Australia</span></span>
+<span id="cb18-454"><a href="#cb18-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-455"><a href="#cb18-455" aria-hidden="true" tabindex="-1"></a>{{&lt; include dobson-cyclone-example.qmd &gt;}}</span>
+<span id="cb18-456"><a href="#cb18-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-457"><a href="#cb18-457" aria-hidden="true" tabindex="-1"></a><span class="fu">## Maximum likelihood inference for univariate Gaussian models</span></span>
+<span id="cb18-458"><a href="#cb18-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-459"><a href="#cb18-459" aria-hidden="true" tabindex="-1"></a>Suppose $X_{1}, ..., X_{n} \siid N(\mu, \sigma^{2})$.</span>
+<span id="cb18-460"><a href="#cb18-460" aria-hidden="true" tabindex="-1"></a>Let $X = (X_{1},\ldots,X_{n})^{\top}$ be these random</span>
+<span id="cb18-461"><a href="#cb18-461" aria-hidden="true" tabindex="-1"></a>variables in vector format. Let $x_{i}$ and $x$ denote the corresponding</span>
+<span id="cb18-462"><a href="#cb18-462" aria-hidden="true" tabindex="-1"></a>observed data. Then $\theta = (\mu,\sigma^{2})$ is</span>
+<span id="cb18-463"><a href="#cb18-463" aria-hidden="true" tabindex="-1"></a>the vector of true parameters, and $\Theta = (\Mu, \Sigma^2)$ is the vector of parameters as a random</span>
+<span id="cb18-464"><a href="#cb18-464" aria-hidden="true" tabindex="-1"></a>vector.</span>
 <span id="cb18-465"><a href="#cb18-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-466"><a href="#cb18-466" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-467"><a href="#cb18-467" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb18-468"><a href="#cb18-468" aria-hidden="true" tabindex="-1"></a>\ell </span>
-<span id="cb18-469"><a href="#cb18-469" aria-hidden="true" tabindex="-1"></a>&amp;\propto - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2}\sum_{i = 1}^{n}\frac{( x_{i} - \mu)^{2}}{\sigma^{2}}<span class="sc">\\</span></span>
-<span id="cb18-470"><a href="#cb18-470" aria-hidden="true" tabindex="-1"></a>&amp;= - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2\sigma^{2}}\sum_{i = 1}^{n}{x_{i}^{2} - 2x_{i}\mu + \mu^{2}}</span>
-<span id="cb18-471"><a href="#cb18-471" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb18-472"><a href="#cb18-472" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-473"><a href="#cb18-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-474"><a href="#cb18-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-475"><a href="#cb18-475" aria-hidden="true" tabindex="-1"></a><span class="fu">### The score function</span></span>
+<span id="cb18-466"><a href="#cb18-466" aria-hidden="true" tabindex="-1"></a>Then the log-likelihood</span>
+<span id="cb18-467"><a href="#cb18-467" aria-hidden="true" tabindex="-1"></a>is:</span>
+<span id="cb18-468"><a href="#cb18-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-469"><a href="#cb18-469" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-470"><a href="#cb18-470" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb18-471"><a href="#cb18-471" aria-hidden="true" tabindex="-1"></a>\ell </span>
+<span id="cb18-472"><a href="#cb18-472" aria-hidden="true" tabindex="-1"></a>&amp;\propto - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2}\sum_{i = 1}^{n}\frac{( x_{i} - \mu)^{2}}{\sigma^{2}}<span class="sc">\\</span></span>
+<span id="cb18-473"><a href="#cb18-473" aria-hidden="true" tabindex="-1"></a>&amp;= - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2\sigma^{2}}\sum_{i = 1}^{n}{x_{i}^{2} - 2x_{i}\mu + \mu^{2}}</span>
+<span id="cb18-474"><a href="#cb18-474" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb18-475"><a href="#cb18-475" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-476"><a href="#cb18-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-477"><a href="#cb18-477" aria-hidden="true" tabindex="-1"></a>$$\ell'(x,\theta) \eqdef \deriv{\theta}\ell(x,\theta) = \left( \begin{array}{r}</span>
-<span id="cb18-478"><a href="#cb18-478" aria-hidden="true" tabindex="-1"></a>\deriv{\mu}\ell(\theta;x) <span class="sc">\\</span></span>
-<span id="cb18-479"><a href="#cb18-479" aria-hidden="true" tabindex="-1"></a>\deriv{\sigma^{2}}\ell(\theta;x)</span>
-<span id="cb18-480"><a href="#cb18-480" aria-hidden="true" tabindex="-1"></a>\end{array} \right) = \left( \begin{array}{r}</span>
-<span id="cb18-481"><a href="#cb18-481" aria-hidden="true" tabindex="-1"></a>\ell_{\mu}'(\theta;x) <span class="sc">\\</span></span>
-<span id="cb18-482"><a href="#cb18-482" aria-hidden="true" tabindex="-1"></a>\ell_{\sigma^{2}}'(\theta;x)</span>
-<span id="cb18-483"><a href="#cb18-483" aria-hidden="true" tabindex="-1"></a>\end{array} \right)$$.</span>
-<span id="cb18-484"><a href="#cb18-484" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-485"><a href="#cb18-485" aria-hidden="true" tabindex="-1"></a>$\ell'(x,\theta)$ is the function we set equal to 0 and solve</span>
-<span id="cb18-486"><a href="#cb18-486" aria-hidden="true" tabindex="-1"></a>to find the MLE:</span>
+<span id="cb18-477"><a href="#cb18-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-478"><a href="#cb18-478" aria-hidden="true" tabindex="-1"></a><span class="fu">### The score function</span></span>
+<span id="cb18-479"><a href="#cb18-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-480"><a href="#cb18-480" aria-hidden="true" tabindex="-1"></a>$$\ell'(x,\theta) \eqdef \deriv{\theta}\ell(x,\theta) = \left( \begin{array}{r}</span>
+<span id="cb18-481"><a href="#cb18-481" aria-hidden="true" tabindex="-1"></a>\deriv{\mu}\ell(\theta;x) <span class="sc">\\</span></span>
+<span id="cb18-482"><a href="#cb18-482" aria-hidden="true" tabindex="-1"></a>\deriv{\sigma^{2}}\ell(\theta;x)</span>
+<span id="cb18-483"><a href="#cb18-483" aria-hidden="true" tabindex="-1"></a>\end{array} \right) = \left( \begin{array}{r}</span>
+<span id="cb18-484"><a href="#cb18-484" aria-hidden="true" tabindex="-1"></a>\ell_{\mu}'(\theta;x) <span class="sc">\\</span></span>
+<span id="cb18-485"><a href="#cb18-485" aria-hidden="true" tabindex="-1"></a>\ell_{\sigma^{2}}'(\theta;x)</span>
+<span id="cb18-486"><a href="#cb18-486" aria-hidden="true" tabindex="-1"></a>\end{array} \right)$$.</span>
 <span id="cb18-487"><a href="#cb18-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-488"><a href="#cb18-488" aria-hidden="true" tabindex="-1"></a>$${\widehat{\theta}}_{ML} = \left<span class="sc">\{</span> \theta:\ell'(x,\theta) = 0 \right<span class="sc">\}</span>$$</span>
-<span id="cb18-489"><a href="#cb18-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-490"><a href="#cb18-490" aria-hidden="true" tabindex="-1"></a><span class="fu">### MLE of $\mu$</span></span>
-<span id="cb18-491"><a href="#cb18-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-492"><a href="#cb18-492" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-493"><a href="#cb18-493" aria-hidden="true" tabindex="-1"></a>\ba</span>
-<span id="cb18-494"><a href="#cb18-494" aria-hidden="true" tabindex="-1"></a>\frac{d\ell}{d\mu} </span>
-<span id="cb18-495"><a href="#cb18-495" aria-hidden="true" tabindex="-1"></a>&amp;= - \frac{1}{2}\sum_{i = 1}^{n}</span>
-<span id="cb18-496"><a href="#cb18-496" aria-hidden="true" tabindex="-1"></a>\frac{- 2(x_{i} - \mu)}{\sigma^{2}}</span>
-<span id="cb18-497"><a href="#cb18-497" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= \frac{1}{\sigma^{2}}</span>
-<span id="cb18-498"><a href="#cb18-498" aria-hidden="true" tabindex="-1"></a>\sb{</span>
-<span id="cb18-499"><a href="#cb18-499" aria-hidden="true" tabindex="-1"></a>    \paren{</span>
-<span id="cb18-500"><a href="#cb18-500" aria-hidden="true" tabindex="-1"></a>        \sum_{i = 1}^{n}x_{i}</span>
-<span id="cb18-501"><a href="#cb18-501" aria-hidden="true" tabindex="-1"></a>    } </span>
-<span id="cb18-502"><a href="#cb18-502" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>n\mu</span>
-<span id="cb18-503"><a href="#cb18-503" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-504"><a href="#cb18-504" aria-hidden="true" tabindex="-1"></a>\ea</span>
-<span id="cb18-505"><a href="#cb18-505" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-506"><a href="#cb18-506" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-507"><a href="#cb18-507" aria-hidden="true" tabindex="-1"></a>If $\frac{d\ell}{d\mu} = 0$, then</span>
-<span id="cb18-508"><a href="#cb18-508" aria-hidden="true" tabindex="-1"></a>$\mu = \overline{x} \eqdef \frac{1}{n}\sum_{i = 1}^{n}x_{i}$.</span>
+<span id="cb18-488"><a href="#cb18-488" aria-hidden="true" tabindex="-1"></a>$\ell'(x,\theta)$ is the function we set equal to 0 and solve</span>
+<span id="cb18-489"><a href="#cb18-489" aria-hidden="true" tabindex="-1"></a>to find the MLE:</span>
+<span id="cb18-490"><a href="#cb18-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-491"><a href="#cb18-491" aria-hidden="true" tabindex="-1"></a>$${\widehat{\theta}}_{ML} = \left<span class="sc">\{</span> \theta:\ell'(x,\theta) = 0 \right<span class="sc">\}</span>$$</span>
+<span id="cb18-492"><a href="#cb18-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-493"><a href="#cb18-493" aria-hidden="true" tabindex="-1"></a><span class="fu">### MLE of $\mu$</span></span>
+<span id="cb18-494"><a href="#cb18-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-495"><a href="#cb18-495" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-496"><a href="#cb18-496" aria-hidden="true" tabindex="-1"></a>\ba</span>
+<span id="cb18-497"><a href="#cb18-497" aria-hidden="true" tabindex="-1"></a>\frac{d\ell}{d\mu} </span>
+<span id="cb18-498"><a href="#cb18-498" aria-hidden="true" tabindex="-1"></a>&amp;= - \frac{1}{2}\sum_{i = 1}^{n}</span>
+<span id="cb18-499"><a href="#cb18-499" aria-hidden="true" tabindex="-1"></a>\frac{- 2(x_{i} - \mu)}{\sigma^{2}}</span>
+<span id="cb18-500"><a href="#cb18-500" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= \frac{1}{\sigma^{2}}</span>
+<span id="cb18-501"><a href="#cb18-501" aria-hidden="true" tabindex="-1"></a>\sb{</span>
+<span id="cb18-502"><a href="#cb18-502" aria-hidden="true" tabindex="-1"></a>    \paren{</span>
+<span id="cb18-503"><a href="#cb18-503" aria-hidden="true" tabindex="-1"></a>        \sum_{i = 1}^{n}x_{i}</span>
+<span id="cb18-504"><a href="#cb18-504" aria-hidden="true" tabindex="-1"></a>    } </span>
+<span id="cb18-505"><a href="#cb18-505" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>n\mu</span>
+<span id="cb18-506"><a href="#cb18-506" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-507"><a href="#cb18-507" aria-hidden="true" tabindex="-1"></a>\ea</span>
+<span id="cb18-508"><a href="#cb18-508" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb18-509"><a href="#cb18-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-510"><a href="#cb18-510" aria-hidden="true" tabindex="-1"></a>$$\frac{d^{2}\ell}{(d\mu)^{2}} = \frac{- n}{\sigma^{2}} &lt; 0$$</span>
-<span id="cb18-511"><a href="#cb18-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-512"><a href="#cb18-512" aria-hidden="true" tabindex="-1"></a>So ${\widehat{\mu}}_{ML} = \overline{x}$.</span>
-<span id="cb18-513"><a href="#cb18-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-514"><a href="#cb18-514" aria-hidden="true" tabindex="-1"></a><span class="fu">### MLE of $\sigma^{2}$</span></span>
-<span id="cb18-515"><a href="#cb18-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-516"><a href="#cb18-516" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip}</span>
-<span id="cb18-517"><a href="#cb18-517" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reparametrizing the Gaussian distribution</span></span>
+<span id="cb18-510"><a href="#cb18-510" aria-hidden="true" tabindex="-1"></a>If $\frac{d\ell}{d\mu} = 0$, then</span>
+<span id="cb18-511"><a href="#cb18-511" aria-hidden="true" tabindex="-1"></a>$\mu = \overline{x} \eqdef \frac{1}{n}\sum_{i = 1}^{n}x_{i}$.</span>
+<span id="cb18-512"><a href="#cb18-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-513"><a href="#cb18-513" aria-hidden="true" tabindex="-1"></a>$$\frac{d^{2}\ell}{(d\mu)^{2}} = \frac{- n}{\sigma^{2}} &lt; 0$$</span>
+<span id="cb18-514"><a href="#cb18-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-515"><a href="#cb18-515" aria-hidden="true" tabindex="-1"></a>So ${\widehat{\mu}}_{ML} = \overline{x}$.</span>
+<span id="cb18-516"><a href="#cb18-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-517"><a href="#cb18-517" aria-hidden="true" tabindex="-1"></a><span class="fu">### MLE of $\sigma^{2}$</span></span>
 <span id="cb18-518"><a href="#cb18-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-519"><a href="#cb18-519" aria-hidden="true" tabindex="-1"></a>When solving for ${\widehat{\sigma}}_{ML}$, you can treat</span>
-<span id="cb18-520"><a href="#cb18-520" aria-hidden="true" tabindex="-1"></a>$\sigma^{2}$ as an atomic variable (don’t differentiate with respect to</span>
-<span id="cb18-521"><a href="#cb18-521" aria-hidden="true" tabindex="-1"></a>$\sigma$ or things get messy). In fact, you can replace $\sigma^{2}$</span>
-<span id="cb18-522"><a href="#cb18-522" aria-hidden="true" tabindex="-1"></a>with $1/\tau$ and differentiate with respect to $\tau$ instead, and the</span>
-<span id="cb18-523"><a href="#cb18-523" aria-hidden="true" tabindex="-1"></a>process might be even easier.</span>
-<span id="cb18-524"><a href="#cb18-524" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-525"><a href="#cb18-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-526"><a href="#cb18-526" aria-hidden="true" tabindex="-1"></a>$$\frac{d\ell}{d\sigma^{2}} = \deriv{\sigma^{2}}\left( - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2}\sum_{i = 1}^{n}\frac{\left( x_{i} - \mu \right)^{2}}{\sigma^{2}} \right)\ $$</span>
-<span id="cb18-527"><a href="#cb18-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-528"><a href="#cb18-528" aria-hidden="true" tabindex="-1"></a>$$= - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$</span>
-<span id="cb18-529"><a href="#cb18-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-530"><a href="#cb18-530" aria-hidden="true" tabindex="-1"></a>If $\frac{d\ell}{d\sigma^{2}} = 0$, then:</span>
-<span id="cb18-531"><a href="#cb18-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-532"><a href="#cb18-532" aria-hidden="true" tabindex="-1"></a>$$\frac{n}{2}\left( \sigma^{2} \right)^{- 1} = \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$</span>
-<span id="cb18-533"><a href="#cb18-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-534"><a href="#cb18-534" aria-hidden="true" tabindex="-1"></a>$$\sigma^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$</span>
-<span id="cb18-535"><a href="#cb18-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-536"><a href="#cb18-536" aria-hidden="true" tabindex="-1"></a>We plug in ${\widehat{\mu}}_{ML} = \overline{x}$ to maximize globally (a</span>
-<span id="cb18-537"><a href="#cb18-537" aria-hidden="true" tabindex="-1"></a>technique called profiling):</span>
+<span id="cb18-519"><a href="#cb18-519" aria-hidden="true" tabindex="-1"></a>:::{.callout-tip}</span>
+<span id="cb18-520"><a href="#cb18-520" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reparametrizing the Gaussian distribution</span></span>
+<span id="cb18-521"><a href="#cb18-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-522"><a href="#cb18-522" aria-hidden="true" tabindex="-1"></a>When solving for ${\widehat{\sigma}}_{ML}$, you can treat</span>
+<span id="cb18-523"><a href="#cb18-523" aria-hidden="true" tabindex="-1"></a>$\sigma^{2}$ as an atomic variable (don’t differentiate with respect to</span>
+<span id="cb18-524"><a href="#cb18-524" aria-hidden="true" tabindex="-1"></a>$\sigma$ or things get messy). In fact, you can replace $\sigma^{2}$</span>
+<span id="cb18-525"><a href="#cb18-525" aria-hidden="true" tabindex="-1"></a>with $1/\tau$ and differentiate with respect to $\tau$ instead, and the</span>
+<span id="cb18-526"><a href="#cb18-526" aria-hidden="true" tabindex="-1"></a>process might be even easier.</span>
+<span id="cb18-527"><a href="#cb18-527" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb18-528"><a href="#cb18-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-529"><a href="#cb18-529" aria-hidden="true" tabindex="-1"></a>$$\frac{d\ell}{d\sigma^{2}} = \deriv{\sigma^{2}}\left( - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2}\sum_{i = 1}^{n}\frac{\left( x_{i} - \mu \right)^{2}}{\sigma^{2}} \right)\ $$</span>
+<span id="cb18-530"><a href="#cb18-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-531"><a href="#cb18-531" aria-hidden="true" tabindex="-1"></a>$$= - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$</span>
+<span id="cb18-532"><a href="#cb18-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-533"><a href="#cb18-533" aria-hidden="true" tabindex="-1"></a>If $\frac{d\ell}{d\sigma^{2}} = 0$, then:</span>
+<span id="cb18-534"><a href="#cb18-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-535"><a href="#cb18-535" aria-hidden="true" tabindex="-1"></a>$$\frac{n}{2}\left( \sigma^{2} \right)^{- 1} = \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$</span>
+<span id="cb18-536"><a href="#cb18-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-537"><a href="#cb18-537" aria-hidden="true" tabindex="-1"></a>$$\sigma^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$</span>
 <span id="cb18-538"><a href="#cb18-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-539"><a href="#cb18-539" aria-hidden="true" tabindex="-1"></a>$$\sigma_{ML}^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2}$$</span>
-<span id="cb18-540"><a href="#cb18-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-541"><a href="#cb18-541" aria-hidden="true" tabindex="-1"></a>Now:</span>
-<span id="cb18-542"><a href="#cb18-542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-543"><a href="#cb18-543" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-544"><a href="#cb18-544" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb18-545"><a href="#cb18-545" aria-hidden="true" tabindex="-1"></a>\frac{d^{2}\ell}{\left( d\sigma^{2} \right)^{2}} </span>
-<span id="cb18-546"><a href="#cb18-546" aria-hidden="true" tabindex="-1"></a>&amp;= \deriv{\sigma^{2}}\left<span class="sc">\{</span> - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
-<span id="cb18-547"><a href="#cb18-547" aria-hidden="true" tabindex="-1"></a>&amp;= \left<span class="sc">\{</span> - \frac{n}{2}\deriv{\sigma^{2}}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\deriv{\sigma^{2}}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
-<span id="cb18-548"><a href="#cb18-548" aria-hidden="true" tabindex="-1"></a>&amp;= \left<span class="sc">\{</span> \frac{n}{2}\left( \sigma^{2} \right)^{- 2} - \left( \sigma^{2} \right)^{- 3}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
-<span id="cb18-549"><a href="#cb18-549" aria-hidden="true" tabindex="-1"></a>&amp;= \left( \sigma^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - \left( \sigma^{2} \right)^{- 1}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}</span></span>
-<span id="cb18-550"><a href="#cb18-550" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb18-551"><a href="#cb18-551" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-552"><a href="#cb18-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-553"><a href="#cb18-553" aria-hidden="true" tabindex="-1"></a>Evaluated at</span>
-<span id="cb18-554"><a href="#cb18-554" aria-hidden="true" tabindex="-1"></a>$\mu = \overline{x},\sigma^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2}$,</span>
-<span id="cb18-555"><a href="#cb18-555" aria-hidden="true" tabindex="-1"></a>we have:</span>
-<span id="cb18-556"><a href="#cb18-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-557"><a href="#cb18-557" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-558"><a href="#cb18-558" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb18-559"><a href="#cb18-559" aria-hidden="true" tabindex="-1"></a>\frac{d^{2}\ell}{\left( d\sigma^{2} \right)^{2}} </span>
-<span id="cb18-560"><a href="#cb18-560" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - \left( {\widehat{\sigma}}^{2} \right)^{- 1}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2} \right<span class="sc">\}\\</span></span>
-<span id="cb18-561"><a href="#cb18-561" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - \left( {\widehat{\sigma}}^{2} \right)^{- 1}n{\widehat{\sigma}}^{2} \right<span class="sc">\}\\</span></span>
-<span id="cb18-562"><a href="#cb18-562" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - n \right<span class="sc">\}\\</span></span>
-<span id="cb18-563"><a href="#cb18-563" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left<span class="sc">\{</span> \frac{1}{2} - 1 \right<span class="sc">\}\\</span></span>
-<span id="cb18-564"><a href="#cb18-564" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left( - \frac{1}{2} \right) &lt; 0</span>
-<span id="cb18-565"><a href="#cb18-565" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb18-566"><a href="#cb18-566" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-567"><a href="#cb18-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-568"><a href="#cb18-568" aria-hidden="true" tabindex="-1"></a>Finally, we have:</span>
-<span id="cb18-569"><a href="#cb18-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-570"><a href="#cb18-570" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-571"><a href="#cb18-571" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb18-572"><a href="#cb18-572" aria-hidden="true" tabindex="-1"></a>\frac{d^{2}\ell}{d\mu\ d\sigma^{2}} </span>
-<span id="cb18-573"><a href="#cb18-573" aria-hidden="true" tabindex="-1"></a>&amp;= \deriv{\mu}\left<span class="sc">\{</span> - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
-<span id="cb18-574"><a href="#cb18-574" aria-hidden="true" tabindex="-1"></a>&amp;= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\deriv{\mu}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}<span class="sc">\\</span></span>
-<span id="cb18-575"><a href="#cb18-575" aria-hidden="true" tabindex="-1"></a>&amp;= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}{- 2(x_{i} - \mu)}<span class="sc">\\</span></span>
-<span id="cb18-576"><a href="#cb18-576" aria-hidden="true" tabindex="-1"></a>&amp;= - \left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}{(x_{i} - \mu)}</span>
-<span id="cb18-577"><a href="#cb18-577" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb18-578"><a href="#cb18-578" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb18-579"><a href="#cb18-579" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-580"><a href="#cb18-580" aria-hidden="true" tabindex="-1"></a>Evaluated at</span>
-<span id="cb18-581"><a href="#cb18-581" aria-hidden="true" tabindex="-1"></a>$\mu = \widehat{\mu} = \overline{x},\sigma^{2} = {\widehat{\sigma}}^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2}$,</span>
-<span id="cb18-582"><a href="#cb18-582" aria-hidden="true" tabindex="-1"></a>we have:</span>
-<span id="cb18-583"><a href="#cb18-583" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-584"><a href="#cb18-584" aria-hidden="true" tabindex="-1"></a>$$\frac{d^{2}\ell}{d\mu\ d\sigma^{2}} = - \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left( n\overline{x} - n\overline{x} \right) = 0$$</span>
-<span id="cb18-585"><a href="#cb18-585" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-586"><a href="#cb18-586" aria-hidden="true" tabindex="-1"></a><span class="fu">### Covariance matrix</span></span>
-<span id="cb18-587"><a href="#cb18-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-588"><a href="#cb18-588" aria-hidden="true" tabindex="-1"></a>$$I = \begin{bmatrix}</span>
-<span id="cb18-589"><a href="#cb18-589" aria-hidden="true" tabindex="-1"></a>\frac{n}{\sigma^{2}} &amp; 0 <span class="sc">\\</span></span>
-<span id="cb18-590"><a href="#cb18-590" aria-hidden="true" tabindex="-1"></a>0 &amp; \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left( - \frac{1}{2} \right)</span>
-<span id="cb18-591"><a href="#cb18-591" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
-<span id="cb18-592"><a href="#cb18-592" aria-hidden="true" tabindex="-1"></a>a &amp; 0 <span class="sc">\\</span></span>
-<span id="cb18-593"><a href="#cb18-593" aria-hidden="true" tabindex="-1"></a>0 &amp; d</span>
-<span id="cb18-594"><a href="#cb18-594" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
-<span id="cb18-595"><a href="#cb18-595" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-596"><a href="#cb18-596" aria-hidden="true" tabindex="-1"></a>So:</span>
-<span id="cb18-597"><a href="#cb18-597" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-598"><a href="#cb18-598" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \frac{1}{ad}\begin{bmatrix}</span>
-<span id="cb18-599"><a href="#cb18-599" aria-hidden="true" tabindex="-1"></a>d &amp; 0 <span class="sc">\\</span></span>
-<span id="cb18-600"><a href="#cb18-600" aria-hidden="true" tabindex="-1"></a>0 &amp; a</span>
-<span id="cb18-601"><a href="#cb18-601" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
-<span id="cb18-602"><a href="#cb18-602" aria-hidden="true" tabindex="-1"></a>\frac{1}{a} &amp; 0 <span class="sc">\\</span></span>
-<span id="cb18-603"><a href="#cb18-603" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{1}{d}</span>
-<span id="cb18-604"><a href="#cb18-604" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
-<span id="cb18-605"><a href="#cb18-605" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-606"><a href="#cb18-606" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \begin{bmatrix}</span>
-<span id="cb18-607"><a href="#cb18-607" aria-hidden="true" tabindex="-1"></a>\frac{{\widehat{\sigma}}^{2}}{n} &amp; 0 <span class="sc">\\</span></span>
-<span id="cb18-608"><a href="#cb18-608" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{{2\left( {\widehat{\sigma}}^{2} \right)}^{2}}{n}</span>
-<span id="cb18-609"><a href="#cb18-609" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
-<span id="cb18-610"><a href="#cb18-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-611"><a href="#cb18-611" aria-hidden="true" tabindex="-1"></a>See @CaseBerg01 p322, example 7.2.12.</span>
-<span id="cb18-612"><a href="#cb18-612" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-613"><a href="#cb18-613" aria-hidden="true" tabindex="-1"></a>To prove it’s a maximum, need:</span>
-<span id="cb18-614"><a href="#cb18-614" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-615"><a href="#cb18-615" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\ell' = 0$</span>
-<span id="cb18-616"><a href="#cb18-616" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-617"><a href="#cb18-617" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>At least one diagonal element of $\ell''$ is negative.</span>
-<span id="cb18-618"><a href="#cb18-618" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-619"><a href="#cb18-619" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determinant of $\ell''$ is positive.</span>
-<span id="cb18-620"><a href="#cb18-620" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-539"><a href="#cb18-539" aria-hidden="true" tabindex="-1"></a>We plug in ${\widehat{\mu}}_{ML} = \overline{x}$ to maximize globally (a</span>
+<span id="cb18-540"><a href="#cb18-540" aria-hidden="true" tabindex="-1"></a>technique called profiling):</span>
+<span id="cb18-541"><a href="#cb18-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-542"><a href="#cb18-542" aria-hidden="true" tabindex="-1"></a>$$\sigma_{ML}^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2}$$</span>
+<span id="cb18-543"><a href="#cb18-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-544"><a href="#cb18-544" aria-hidden="true" tabindex="-1"></a>Now:</span>
+<span id="cb18-545"><a href="#cb18-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-546"><a href="#cb18-546" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-547"><a href="#cb18-547" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb18-548"><a href="#cb18-548" aria-hidden="true" tabindex="-1"></a>\frac{d^{2}\ell}{\left( d\sigma^{2} \right)^{2}} </span>
+<span id="cb18-549"><a href="#cb18-549" aria-hidden="true" tabindex="-1"></a>&amp;= \deriv{\sigma^{2}}\left<span class="sc">\{</span> - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
+<span id="cb18-550"><a href="#cb18-550" aria-hidden="true" tabindex="-1"></a>&amp;= \left<span class="sc">\{</span> - \frac{n}{2}\deriv{\sigma^{2}}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\deriv{\sigma^{2}}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
+<span id="cb18-551"><a href="#cb18-551" aria-hidden="true" tabindex="-1"></a>&amp;= \left<span class="sc">\{</span> \frac{n}{2}\left( \sigma^{2} \right)^{- 2} - \left( \sigma^{2} \right)^{- 3}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
+<span id="cb18-552"><a href="#cb18-552" aria-hidden="true" tabindex="-1"></a>&amp;= \left( \sigma^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - \left( \sigma^{2} \right)^{- 1}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}</span></span>
+<span id="cb18-553"><a href="#cb18-553" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb18-554"><a href="#cb18-554" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-555"><a href="#cb18-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-556"><a href="#cb18-556" aria-hidden="true" tabindex="-1"></a>Evaluated at</span>
+<span id="cb18-557"><a href="#cb18-557" aria-hidden="true" tabindex="-1"></a>$\mu = \overline{x},\sigma^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2}$,</span>
+<span id="cb18-558"><a href="#cb18-558" aria-hidden="true" tabindex="-1"></a>we have:</span>
+<span id="cb18-559"><a href="#cb18-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-560"><a href="#cb18-560" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-561"><a href="#cb18-561" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb18-562"><a href="#cb18-562" aria-hidden="true" tabindex="-1"></a>\frac{d^{2}\ell}{\left( d\sigma^{2} \right)^{2}} </span>
+<span id="cb18-563"><a href="#cb18-563" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - \left( {\widehat{\sigma}}^{2} \right)^{- 1}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2} \right<span class="sc">\}\\</span></span>
+<span id="cb18-564"><a href="#cb18-564" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - \left( {\widehat{\sigma}}^{2} \right)^{- 1}n{\widehat{\sigma}}^{2} \right<span class="sc">\}\\</span></span>
+<span id="cb18-565"><a href="#cb18-565" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left<span class="sc">\{</span> \frac{n}{2} - n \right<span class="sc">\}\\</span></span>
+<span id="cb18-566"><a href="#cb18-566" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left<span class="sc">\{</span> \frac{1}{2} - 1 \right<span class="sc">\}\\</span></span>
+<span id="cb18-567"><a href="#cb18-567" aria-hidden="true" tabindex="-1"></a>&amp;= \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left( - \frac{1}{2} \right) &lt; 0</span>
+<span id="cb18-568"><a href="#cb18-568" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb18-569"><a href="#cb18-569" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-570"><a href="#cb18-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-571"><a href="#cb18-571" aria-hidden="true" tabindex="-1"></a>Finally, we have:</span>
+<span id="cb18-572"><a href="#cb18-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-573"><a href="#cb18-573" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-574"><a href="#cb18-574" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb18-575"><a href="#cb18-575" aria-hidden="true" tabindex="-1"></a>\frac{d^{2}\ell}{d\mu\ d\sigma^{2}} </span>
+<span id="cb18-576"><a href="#cb18-576" aria-hidden="true" tabindex="-1"></a>&amp;= \deriv{\mu}\left<span class="sc">\{</span> - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right<span class="sc">\}\\</span></span>
+<span id="cb18-577"><a href="#cb18-577" aria-hidden="true" tabindex="-1"></a>&amp;= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\deriv{\mu}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}<span class="sc">\\</span></span>
+<span id="cb18-578"><a href="#cb18-578" aria-hidden="true" tabindex="-1"></a>&amp;= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}{- 2(x_{i} - \mu)}<span class="sc">\\</span></span>
+<span id="cb18-579"><a href="#cb18-579" aria-hidden="true" tabindex="-1"></a>&amp;= - \left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}{(x_{i} - \mu)}</span>
+<span id="cb18-580"><a href="#cb18-580" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb18-581"><a href="#cb18-581" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb18-582"><a href="#cb18-582" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-583"><a href="#cb18-583" aria-hidden="true" tabindex="-1"></a>Evaluated at</span>
+<span id="cb18-584"><a href="#cb18-584" aria-hidden="true" tabindex="-1"></a>$\mu = \widehat{\mu} = \overline{x},\sigma^{2} = {\widehat{\sigma}}^{2} = \frac{1}{n}\sum_{i = 1}^{n}\left( x_{i} - \overline{x} \right)^{2}$,</span>
+<span id="cb18-585"><a href="#cb18-585" aria-hidden="true" tabindex="-1"></a>we have:</span>
+<span id="cb18-586"><a href="#cb18-586" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-587"><a href="#cb18-587" aria-hidden="true" tabindex="-1"></a>$$\frac{d^{2}\ell}{d\mu\ d\sigma^{2}} = - \left( {\widehat{\sigma}}^{2} \right)^{- 2}\left( n\overline{x} - n\overline{x} \right) = 0$$</span>
+<span id="cb18-588"><a href="#cb18-588" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-589"><a href="#cb18-589" aria-hidden="true" tabindex="-1"></a><span class="fu">### Covariance matrix</span></span>
+<span id="cb18-590"><a href="#cb18-590" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-591"><a href="#cb18-591" aria-hidden="true" tabindex="-1"></a>$$I = \begin{bmatrix}</span>
+<span id="cb18-592"><a href="#cb18-592" aria-hidden="true" tabindex="-1"></a>\frac{n}{\sigma^{2}} &amp; 0 <span class="sc">\\</span></span>
+<span id="cb18-593"><a href="#cb18-593" aria-hidden="true" tabindex="-1"></a>0 &amp; \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left( - \frac{1}{2} \right)</span>
+<span id="cb18-594"><a href="#cb18-594" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
+<span id="cb18-595"><a href="#cb18-595" aria-hidden="true" tabindex="-1"></a>a &amp; 0 <span class="sc">\\</span></span>
+<span id="cb18-596"><a href="#cb18-596" aria-hidden="true" tabindex="-1"></a>0 &amp; d</span>
+<span id="cb18-597"><a href="#cb18-597" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
+<span id="cb18-598"><a href="#cb18-598" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-599"><a href="#cb18-599" aria-hidden="true" tabindex="-1"></a>So:</span>
+<span id="cb18-600"><a href="#cb18-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-601"><a href="#cb18-601" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \frac{1}{ad}\begin{bmatrix}</span>
+<span id="cb18-602"><a href="#cb18-602" aria-hidden="true" tabindex="-1"></a>d &amp; 0 <span class="sc">\\</span></span>
+<span id="cb18-603"><a href="#cb18-603" aria-hidden="true" tabindex="-1"></a>0 &amp; a</span>
+<span id="cb18-604"><a href="#cb18-604" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
+<span id="cb18-605"><a href="#cb18-605" aria-hidden="true" tabindex="-1"></a>\frac{1}{a} &amp; 0 <span class="sc">\\</span></span>
+<span id="cb18-606"><a href="#cb18-606" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{1}{d}</span>
+<span id="cb18-607"><a href="#cb18-607" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
+<span id="cb18-608"><a href="#cb18-608" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-609"><a href="#cb18-609" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \begin{bmatrix}</span>
+<span id="cb18-610"><a href="#cb18-610" aria-hidden="true" tabindex="-1"></a>\frac{{\widehat{\sigma}}^{2}}{n} &amp; 0 <span class="sc">\\</span></span>
+<span id="cb18-611"><a href="#cb18-611" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{{2\left( {\widehat{\sigma}}^{2} \right)}^{2}}{n}</span>
+<span id="cb18-612"><a href="#cb18-612" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
+<span id="cb18-613"><a href="#cb18-613" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-614"><a href="#cb18-614" aria-hidden="true" tabindex="-1"></a>See @CaseBerg01 p322, example 7.2.12.</span>
+<span id="cb18-615"><a href="#cb18-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-616"><a href="#cb18-616" aria-hidden="true" tabindex="-1"></a>To prove it’s a maximum, need:</span>
+<span id="cb18-617"><a href="#cb18-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-618"><a href="#cb18-618" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\ell' = 0$</span>
+<span id="cb18-619"><a href="#cb18-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-620"><a href="#cb18-620" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>At least one diagonal element of $\ell''$ is negative.</span>
+<span id="cb18-621"><a href="#cb18-621" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-622"><a href="#cb18-622" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determinant of $\ell''$ is positive.</span>
+<span id="cb18-623"><a href="#cb18-623" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
