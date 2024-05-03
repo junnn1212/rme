@@ -361,6 +361,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -460,7 +466,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-01: 12:41:43 (PM)</p>
+      <p class="date">Last modified: 2024-05-02: 10:34:45 (AM)</p>
     </div>
   </div>
   
@@ -705,11 +711,11 @@ Two meanings of “controls”
 \hat\rho(OC, \neg OC)
 &amp;=\frac{\hat{\text{p}}(MI|OC)}{\hat{\text{p}}(MI|\neg OC)}\\
 &amp;= \frac{0.0026}{7\times 10^{-4}}\\
-&amp;= 3.7143
+&amp;= 3.71428571
 \end{aligned}
 \]</span></p>
 <div class="notes">
-<p>We might summarize this result by saying that “the estimated probability of MI among OC users was 3.7143 as high as the estimated probability among OC non-users.</p>
+<p>We might summarize this result by saying that “the estimated probability of MI among OC users was 3.71428571 as high as the estimated probability among OC non-users.</p>
 </div>
 </div>
 <hr>
@@ -748,7 +754,7 @@ Two meanings of “controls”
 <p><span class="math display">\[
 \begin{aligned}
 \rho(OC, \neg OC)
-&amp;= 3.7143
+&amp;= 3.71428571
 \end{aligned}
 \]</span></p>
 <p>In comparison, the risk ratio for non-OC versus OC is:</p>
@@ -757,7 +763,7 @@ Two meanings of “controls”
 \rho(\neg OC, OC)
 &amp;=\frac{\hat{\text{p}}(MI|\neg OC)}{\hat{\text{p}}(MI|OC)}\\
 &amp;= \frac{7\times 10^{-4}}{0.0026}\\
-&amp;= 0.2692\\
+&amp;= 0.26923077\\
 &amp;= \frac{1}{\rho(OC, \neg OC)}
 \end{aligned}
 \]</span></p>
@@ -845,7 +851,7 @@ Figure&nbsp;3.1: Odds versus probability
 <p><span class="theorem-title"><strong>Exercise 3.6 (Calculating odds)</strong></span> Estimate the odds of MI, for non-OC users.</p>
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
-\omega(\neg OC) = 7.0049\times 10^{-4}
+\omega(\neg OC) = 7.00490343\times 10^{-4}
 \]</span></p>
 </div>
 </div>
@@ -884,7 +890,7 @@ Figure&nbsp;3.1: Odds versus probability
 <p><span class="theorem-title"><strong>Example 3.6 (calculating odds using the shortcut)</strong></span> In <a href="#exm-odds" class="quarto-xref">Example&nbsp;<span>3.5</span></a>, we calculated <span class="math display">\[
 \begin{aligned}
 \omega(OC)
-&amp;=0.0026
+&amp;=0.00260678
 \end{aligned}
 \]</span></p>
 <p>Let’s recalculate this result using our shortcut.</p>
@@ -895,7 +901,7 @@ Figure&nbsp;3.1: Odds versus probability
 \begin{aligned}
 \omega(OC)
 &amp;=\frac{13}{5000-13}\\
-&amp;=0.0026
+&amp;=0.00260678
 \end{aligned}
 \]</span></p>
 <p>Same answer as in <a href="#exm-odds" class="quarto-xref">Example&nbsp;<span>3.5</span></a>!</p>
@@ -904,7 +910,7 @@ Figure&nbsp;3.1: Odds versus probability
 <section id="odds-of-rare-events" class="level4">
 <h4 class="anchored" data-anchor-id="odds-of-rare-events">Odds of rare events</h4>
 <p>For rare events (small <span class="math inline">\(\pi\)</span>), odds and probabilities are nearly equal, because <span class="math inline">\(1-\pi \approx 1\)</span> (see <a href="#fig-odds-probs" class="quarto-xref">Figure&nbsp;<span>3.1</span></a>).</p>
-<p>For example, in <a href="#exm-odds" class="quarto-xref">Example&nbsp;<span>3.5</span></a>, the probability and odds differ by <span class="math inline">\(6.7776\times 10^{-6}\)</span>.</p>
+<p>For example, in <a href="#exm-odds" class="quarto-xref">Example&nbsp;<span>3.5</span></a>, the probability and odds differ by <span class="math inline">\(6.77762182\times 10^{-6}\)</span>.</p>
 <hr>
 <div id="exr-odds-probs" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.7</strong></span> What odds value corresponds to the probability <span class="math inline">\(\pi = 0.2\)</span>, and what is the numerical difference between these two values?</p>
@@ -1005,7 +1011,7 @@ Important
 \theta(\omega(OC), \omega(\neg OC))
 &amp;= \frac{\omega(OC)}{\omega(\neg OC)}\\
 &amp;= \frac{0.0026}{7\times 10^{-4}}\\
-&amp;= 3.7143\\
+&amp;= 3.71428571\\
 \end{aligned}
 \]</span></p>
 </div>
@@ -1187,9 +1193,9 @@ Table&nbsp;3.2: A generic 2x2 table
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span></p>
 <ul>
-<li><p><span class="math inline">\(\omega(OC|MI) = P(OC|MI)/(1 – P(OC|MI) = \frac{13}{7} = 1.8571\)</span></p></li>
-<li><p><span class="math inline">\(\omega(OC|\neg MI) = P(OC|\neg MI)/(1 – P(OC|\neg MI) = \frac{4987}{9993} = 0.499\)</span></p></li>
-<li><p><span class="math inline">\(\theta(OC,MI) = \frac{\omega(OC|MI)}{\omega(OC|\neg MI)} = \frac{13/7}{4987/9993} = 3.7214\)</span></p></li>
+<li><p><span class="math inline">\(\omega(OC|MI) = P(OC|MI)/(1 – P(OC|MI) = \frac{13}{7} = 1.85714286\)</span></p></li>
+<li><p><span class="math inline">\(\omega(OC|\neg MI) = P(OC|\neg MI)/(1 – P(OC|\neg MI) = \frac{4987}{9993} = 0.49904933\)</span></p></li>
+<li><p><span class="math inline">\(\theta(OC,MI) = \frac{\omega(OC|MI)}{\omega(OC|\neg MI)} = \frac{13/7}{4987/9993} = 3.72136125\)</span></p></li>
 </ul>
 <div class="notes">
 <p>This is the same estimate we calculated in <a href="#exm-OR" class="quarto-xref">Example&nbsp;<span>3.7</span></a>.</p>
@@ -5635,7 +5641,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb63-1277"><a href="#cb63-1277" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-1278"><a href="#cb63-1278" aria-hidden="true" tabindex="-1"></a>"The **Western Collaborative Group Study (WCGS)** was a large</span>
 <span id="cb63-1279"><a href="#cb63-1279" aria-hidden="true" tabindex="-1"></a>epidemiological study designed to investigate the association between</span>
-<span id="cb63-1280"><a href="#cb63-1280" aria-hidden="true" tabindex="-1"></a>the"type A" behavior pattern and coronary heart disease (CHD) (Rosenman</span>
+<span id="cb63-1280"><a href="#cb63-1280" aria-hidden="true" tabindex="-1"></a>the "type A" behavior pattern and coronary heart disease (CHD) (Rosenman</span>
 <span id="cb63-1281"><a href="#cb63-1281" aria-hidden="true" tabindex="-1"></a>et al. 1964)."</span>
 <span id="cb63-1282"><a href="#cb63-1282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-1283"><a href="#cb63-1283" aria-hidden="true" tabindex="-1"></a>*From Wikipedia, "Type A and Type B personality theory":*</span>

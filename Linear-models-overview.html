@@ -328,6 +328,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
+  </div>
+</li>
       </ul>
 </li>
     </ul>
@@ -446,7 +452,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-30: 12:24:56 (PM)</p>
+      <p class="date">Last modified: 2024-05-02: 12:17:08 (PM)</p>
     </div>
   </div>
   
@@ -1283,7 +1289,7 @@ Figure&nbsp;2.4: <code>palmerpenguins</code> model with <code>bill_length</code>
 <p><span id="eq-linreg-score"><span class="math display">\[
 \ell'_{\beta}(\tilde{y}|\mathbf{x},\beta, \sigma^2)
 = -
-\frac{1}{2\sigma^2}\frac{d}{d\beta}
+\frac{1}{2\sigma^2}\frac{\partial}{\partial \beta}
 \left(\sum_{i=1}^n (y_i - \tilde{x_i}' \beta)^2\right)
 \tag{2.6}\]</span></span></p>
 </section><section id="some-tools-from-vector-calculus" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="some-tools-from-vector-calculus">
@@ -1325,23 +1331,23 @@ x_1\beta_1+x_2\beta_2 +...+x_p \beta_p
 <hr>
 <p>If <span class="math inline">\(f(\beta)\)</span> is a function that takes <span class="math inline">\(\beta\)</span> as input and outputs a scalar, such as <span class="math inline">\(f(\beta) = x'\beta\)</span>, then:</p>
 <p><span class="math display">\[
-\frac{d}{d \beta} f(\beta)=
+\frac{\partial}{\partial  \beta} f(\beta)=
 \begin{bmatrix}
-\frac{d}{d\beta_1}f(\beta) \\
-\frac{d}{d\beta_2}f(\beta) \\
+\frac{\partial}{\partial \beta_1}f(\beta) \\
+\frac{\partial}{\partial \beta_2}f(\beta) \\
 \vdots \\
-\frac{d}{d\beta_p}f(\beta)
+\frac{\partial}{\partial \beta_p}f(\beta)
 \end{bmatrix}
 \]</span></p>
 <hr>
 <p>In particular, if <span class="math inline">\(f(\beta) = x'\beta\)</span>, then:</p>
 <p><span class="math display">\[
-\frac{d}{d \beta} x'\beta=
+\frac{\partial}{\partial  \beta} x'\beta=
 \begin{bmatrix}
-\frac{d}{d\beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
-\frac{d}{d\beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
+\frac{\partial}{\partial \beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
+\frac{\partial}{\partial \beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
 \vdots \\
-\frac{d}{d\beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )
+\frac{\partial}{\partial \beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )
 \end{bmatrix}
 =
 \begin{bmatrix}
@@ -1355,19 +1361,19 @@ x_{p}
 <hr>
 <p>In general:</p>
 <p><span class="math display">\[
-\frac{d}{d\beta} x'\beta = x
+\frac{\partial}{\partial \beta} x'\beta = x
 \]</span></p>
 <p>This looks a lot like non-vector calculus, except that you have to transpose the coefficient.</p>
 <hr>
 <p>Similarly,</p>
 <p><span class="math display">\[
-\frac{d}{d\beta} \beta'\beta = 2\beta
+\frac{\partial}{\partial \beta} \beta'\beta = 2\beta
 \]</span></p>
 <p>This is like taking the derivative of <span class="math inline">\(x^2\)</span>.</p>
 <hr>
 <p>And finally, if <span class="math inline">\(S\)</span> is a <span class="math inline">\(p\times p\)</span> matrix, then:</p>
 <p><span class="math display">\[
-\frac{d}{d\beta} \beta'S\beta = 2S\beta
+\frac{\partial}{\partial \beta} \beta'S\beta = 2S\beta
 \]</span></p>
 <p>Again, this is like taking the derivative of <span class="math inline">\(cx^2\)</span> with respect to <span class="math inline">\(x\)</span> in non-vector calculus.</p>
 <hr>
@@ -1391,10 +1397,10 @@ x_{p}
 <span class="header-section-number">2.3.3</span> Analyzing the linear regression score function</h3>
 <p><span class="math display">\[
 \begin{aligned}
-\frac{d}{d\beta}\left(
+\frac{\partial}{\partial \beta}\left(
 \sum_{i=1}^n (y_i - x_i' \beta)^2\right) &amp;=
-\frac{d}{d\beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)\\
-&amp;= \frac{d}{d\beta} (y'y - 2y'X\beta +\beta'X'X\beta)\\
+\frac{\partial}{\partial \beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)\\
+&amp;= \frac{\partial}{\partial \beta} (y'y - 2y'X\beta +\beta'X'X\beta)\\
 &amp;= (- 2X'y +2X'X\beta)
 \end{aligned}
 \]</span></p>
@@ -3877,7 +3883,7 @@ Figure&nbsp;2.18: Scale-location plot of <code>birthweight</code> data
 </div>
 </section></section></section><section id="model-selection-1" class="level2" data-number="2.9"><h2 data-number="2.9" class="anchored" data-anchor-id="model-selection-1">
 <span class="header-section-number">2.9</span> Model selection</h2>
-<p>(adapted from <span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> §6.3.3; for more information on prediction, see <span class="citation" data-cites="james2013introduction">James et al. (<a href="references.html#ref-james2013introduction" role="doc-biblioref">2013</a>)</span>).</p>
+<p>(adapted from <span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> §6.3.3; for more information on prediction, see <span class="citation" data-cites="james2013introduction">James et al. (<a href="references.html#ref-james2013introduction" role="doc-biblioref">2013</a>)</span> and <span class="citation" data-cites="rms2e">Harrell (<a href="references.html#ref-rms2e" role="doc-biblioref">2015</a>)</span>).</p>
 <div class="notes">
 <p>If we have a lot of covariates in our dataset, we might want to choose a small subset to use in our model.</p>
 <p>There are a few possible metrics to consider for choosing a “best” model.</p>
@@ -4591,6 +4597,9 @@ Dunn, Peter K, Gordon K Smyth, et al. 2018. <em>Generalized Linear Models with E
 </div>
 <div id="ref-fieller2018basics" class="csl-entry" role="listitem">
 Fieller, Nick. 2016. <em>Basics of Matrix Algebra for Statistics with r</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781315370200">https://doi.org/10.1201/9781315370200</a>.
+</div>
+<div id="ref-rms2e" class="csl-entry" role="listitem">
+Harrell, Frank E. 2015. <em>Regression Modeling Strategies: With Applications to Linear Models, Logistic Regression, and Survival Analysis</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-3-319-19425-7">https://doi.org/10.1007/978-3-319-19425-7</a>.
 </div>
 <div id="ref-james2013introduction" class="csl-entry" role="listitem">
 James, Gareth, Daniela Witten, Trevor Hastie, Robert Tibshirani, et al. 2013. <em>An Introduction to Statistical Learning</em>. Vol. 112. Springer. <a href="https://www.statlearning.com/">https://www.statlearning.com/</a>.
@@ -5896,7 +5905,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-691"><a href="#cb116-691" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb116-692"><a href="#cb116-692" aria-hidden="true" tabindex="-1"></a>\ell'_{\beta}(\vec y|\mat x,\beta, \sigma^2) </span>
 <span id="cb116-693"><a href="#cb116-693" aria-hidden="true" tabindex="-1"></a>= - </span>
-<span id="cb116-694"><a href="#cb116-694" aria-hidden="true" tabindex="-1"></a>\frac{1}{2\sigma^2}\frac{d}{d\beta}</span>
+<span id="cb116-694"><a href="#cb116-694" aria-hidden="true" tabindex="-1"></a>\frac{1}{2\sigma^2}\deriv{\beta}</span>
 <span id="cb116-695"><a href="#cb116-695" aria-hidden="true" tabindex="-1"></a>\paren{\sum_{i=1}^n (y_i - \vec{x_i}' \beta)^2}</span>
 <span id="cb116-696"><a href="#cb116-696" aria-hidden="true" tabindex="-1"></a>$$ {#eq-linreg-score}</span>
 <span id="cb116-697"><a href="#cb116-697" aria-hidden="true" tabindex="-1"></a></span>
@@ -5949,12 +5958,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-744"><a href="#cb116-744" aria-hidden="true" tabindex="-1"></a>If $f(\beta)$ is a function that takes $\beta$ as input and outputs a scalar, such as $f(\beta) = x'\beta$, then:</span>
 <span id="cb116-745"><a href="#cb116-745" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-746"><a href="#cb116-746" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb116-747"><a href="#cb116-747" aria-hidden="true" tabindex="-1"></a>\frac{d}{d \beta} f(\beta)= </span>
+<span id="cb116-747"><a href="#cb116-747" aria-hidden="true" tabindex="-1"></a>\deriv{ \beta} f(\beta)= </span>
 <span id="cb116-748"><a href="#cb116-748" aria-hidden="true" tabindex="-1"></a>\begin{bmatrix}</span>
-<span id="cb116-749"><a href="#cb116-749" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta_1}f(\beta) <span class="sc">\\</span></span>
-<span id="cb116-750"><a href="#cb116-750" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta_2}f(\beta) <span class="sc">\\</span></span>
+<span id="cb116-749"><a href="#cb116-749" aria-hidden="true" tabindex="-1"></a>\deriv{\beta_1}f(\beta) <span class="sc">\\</span></span>
+<span id="cb116-750"><a href="#cb116-750" aria-hidden="true" tabindex="-1"></a>\deriv{\beta_2}f(\beta) <span class="sc">\\</span></span>
 <span id="cb116-751"><a href="#cb116-751" aria-hidden="true" tabindex="-1"></a>\vdots <span class="sc">\\</span></span>
-<span id="cb116-752"><a href="#cb116-752" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta_p}f(\beta)</span>
+<span id="cb116-752"><a href="#cb116-752" aria-hidden="true" tabindex="-1"></a>\deriv{\beta_p}f(\beta)</span>
 <span id="cb116-753"><a href="#cb116-753" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}</span>
 <span id="cb116-754"><a href="#cb116-754" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb116-755"><a href="#cb116-755" aria-hidden="true" tabindex="-1"></a></span>
@@ -5963,12 +5972,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-758"><a href="#cb116-758" aria-hidden="true" tabindex="-1"></a>In particular, if $f(\beta) = x'\beta$, then:</span>
 <span id="cb116-759"><a href="#cb116-759" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-760"><a href="#cb116-760" aria-hidden="true" tabindex="-1"></a>$$ </span>
-<span id="cb116-761"><a href="#cb116-761" aria-hidden="true" tabindex="-1"></a>\frac{d}{d \beta} x'\beta= </span>
+<span id="cb116-761"><a href="#cb116-761" aria-hidden="true" tabindex="-1"></a>\deriv{ \beta} x'\beta= </span>
 <span id="cb116-762"><a href="#cb116-762" aria-hidden="true" tabindex="-1"></a>\begin{bmatrix}</span>
-<span id="cb116-763"><a href="#cb116-763" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) <span class="sc">\\</span></span>
-<span id="cb116-764"><a href="#cb116-764" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) <span class="sc">\\</span></span>
+<span id="cb116-763"><a href="#cb116-763" aria-hidden="true" tabindex="-1"></a>\deriv{\beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) <span class="sc">\\</span></span>
+<span id="cb116-764"><a href="#cb116-764" aria-hidden="true" tabindex="-1"></a>\deriv{\beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) <span class="sc">\\</span></span>
 <span id="cb116-765"><a href="#cb116-765" aria-hidden="true" tabindex="-1"></a>\vdots <span class="sc">\\</span></span>
-<span id="cb116-766"><a href="#cb116-766" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )</span>
+<span id="cb116-766"><a href="#cb116-766" aria-hidden="true" tabindex="-1"></a>\deriv{\beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )</span>
 <span id="cb116-767"><a href="#cb116-767" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} </span>
 <span id="cb116-768"><a href="#cb116-768" aria-hidden="true" tabindex="-1"></a>=</span>
 <span id="cb116-769"><a href="#cb116-769" aria-hidden="true" tabindex="-1"></a>\begin{bmatrix}</span>
@@ -5985,7 +5994,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-780"><a href="#cb116-780" aria-hidden="true" tabindex="-1"></a>In general:</span>
 <span id="cb116-781"><a href="#cb116-781" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-782"><a href="#cb116-782" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb116-783"><a href="#cb116-783" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta} x'\beta = x</span>
+<span id="cb116-783"><a href="#cb116-783" aria-hidden="true" tabindex="-1"></a>\deriv{\beta} x'\beta = x</span>
 <span id="cb116-784"><a href="#cb116-784" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb116-785"><a href="#cb116-785" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-786"><a href="#cb116-786" aria-hidden="true" tabindex="-1"></a>This looks a lot like non-vector calculus, except that you have to transpose the coefficient.</span>
@@ -5995,7 +6004,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-790"><a href="#cb116-790" aria-hidden="true" tabindex="-1"></a>Similarly,</span>
 <span id="cb116-791"><a href="#cb116-791" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-792"><a href="#cb116-792" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb116-793"><a href="#cb116-793" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta} \beta'\beta = 2\beta</span>
+<span id="cb116-793"><a href="#cb116-793" aria-hidden="true" tabindex="-1"></a>\deriv{\beta} \beta'\beta = 2\beta</span>
 <span id="cb116-794"><a href="#cb116-794" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb116-795"><a href="#cb116-795" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-796"><a href="#cb116-796" aria-hidden="true" tabindex="-1"></a>This is like taking the derivative of $x^2$.</span>
@@ -6005,7 +6014,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-800"><a href="#cb116-800" aria-hidden="true" tabindex="-1"></a>And finally, if $S$ is a $p\times p$ matrix, then:</span>
 <span id="cb116-801"><a href="#cb116-801" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-802"><a href="#cb116-802" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb116-803"><a href="#cb116-803" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta} \beta'S\beta = 2S\beta</span>
+<span id="cb116-803"><a href="#cb116-803" aria-hidden="true" tabindex="-1"></a>\deriv{\beta} \beta'S\beta = 2S\beta</span>
 <span id="cb116-804"><a href="#cb116-804" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb116-805"><a href="#cb116-805" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-806"><a href="#cb116-806" aria-hidden="true" tabindex="-1"></a>Again, this is like taking the derivative of $cx^2$ with respect to $x$ in non-vector calculus.</span>
@@ -6038,10 +6047,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-833"><a href="#cb116-833" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-834"><a href="#cb116-834" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb116-835"><a href="#cb116-835" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb116-836"><a href="#cb116-836" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta}\paren{</span>
+<span id="cb116-836"><a href="#cb116-836" aria-hidden="true" tabindex="-1"></a>\deriv{\beta}\paren{</span>
 <span id="cb116-837"><a href="#cb116-837" aria-hidden="true" tabindex="-1"></a>\sum_{i=1}^n (y_i - x_i' \beta)^2} &amp;= </span>
-<span id="cb116-838"><a href="#cb116-838" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)<span class="sc">\\</span></span>
-<span id="cb116-839"><a href="#cb116-839" aria-hidden="true" tabindex="-1"></a>&amp;= \frac{d}{d\beta} (y'y - 2y'X\beta +\beta'X'X\beta)<span class="sc">\\</span></span>
+<span id="cb116-838"><a href="#cb116-838" aria-hidden="true" tabindex="-1"></a>\deriv{\beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)<span class="sc">\\</span></span>
+<span id="cb116-839"><a href="#cb116-839" aria-hidden="true" tabindex="-1"></a>&amp;= \deriv{\beta} (y'y - 2y'X\beta +\beta'X'X\beta)<span class="sc">\\</span></span>
 <span id="cb116-840"><a href="#cb116-840" aria-hidden="true" tabindex="-1"></a>&amp;= (- 2X'y +2X'X\beta)</span>
 <span id="cb116-841"><a href="#cb116-841" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
 <span id="cb116-842"><a href="#cb116-842" aria-hidden="true" tabindex="-1"></a>$$</span>
@@ -7274,7 +7283,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb116-2189"><a href="#cb116-2189" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-2190"><a href="#cb116-2190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model selection</span></span>
 <span id="cb116-2191"><a href="#cb116-2191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb116-2192"><a href="#cb116-2192" aria-hidden="true" tabindex="-1"></a>(adapted from @dobson4e §6.3.3; for more information on prediction, see @james2013introduction).</span>
+<span id="cb116-2192"><a href="#cb116-2192" aria-hidden="true" tabindex="-1"></a>(adapted from @dobson4e §6.3.3; for more information on prediction, see @james2013introduction and @rms2e).</span>
 <span id="cb116-2193"><a href="#cb116-2193" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb116-2194"><a href="#cb116-2194" aria-hidden="true" tabindex="-1"></a>::: notes</span>
 <span id="cb116-2195"><a href="#cb116-2195" aria-hidden="true" tabindex="-1"></a>If we have a lot of covariates in our dataset, we might want to choose a small subset to use in our model.</span>
