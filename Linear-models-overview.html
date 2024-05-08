@@ -306,32 +306,38 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./intro-MLEs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./common-mistakes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-to-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -454,7 +460,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-07: 14:03:48 (PM)</p>
+      <p class="date">Last modified: 2024-05-07: 18:36:23 (PM)</p>
     </div>
   </div>
   
@@ -543,7 +549,7 @@ Note
 <li>
 <span class="citation" data-cites="dunn2018generalized">Dunn, Smyth, et al. (<a href="references.html#ref-dunn2018generalized" role="doc-biblioref">2018</a>)</span>, Chapters 2-3</li>
 <li>
-<span class="citation" data-cites="vittinghoff2012regression">Vittinghoff et al. (<a href="references.html#ref-vittinghoff2012regression" role="doc-biblioref">2012</a>)</span>, Chapter 4</li>
+<span class="citation" data-cites="vittinghoff2e">Vittinghoff et al. (<a href="references.html#ref-vittinghoff2e" role="doc-biblioref">2012</a>)</span>, Chapter 4</li>
 </ul>
 <p>There are numerous textbooks specifically for linear regression, including:</p>
 <ul>
@@ -3985,7 +3991,7 @@ Figure&nbsp;2.18: Scale-location plot of <code>birthweight</code> data
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">full</td>
-<td style="text-align: right;">6.722</td>
+<td style="text-align: right;">6.807</td>
 <td style="text-align: right;">0.4805</td>
 <td style="text-align: right;">0.3831</td>
 <td style="text-align: right;">5.956</td>
@@ -3993,7 +3999,7 @@ Figure&nbsp;2.18: Scale-location plot of <code>birthweight</code> data
 </tr>
 <tr class="even">
 <td style="text-align: left;">reduced</td>
-<td style="text-align: right;">6.484</td>
+<td style="text-align: right;">6.398</td>
 <td style="text-align: right;">0.4454</td>
 <td style="text-align: right;">0.3802</td>
 <td style="text-align: right;">5.971</td>
@@ -4130,10 +4136,10 @@ Figure&nbsp;2.19: Lasso selection
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">cvfit</span>, s <span class="op">=</span> <span class="st">"lambda.1se"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 4 x 1 sparse Matrix of class "dgCMatrix"</span></span>
 <span><span class="co">#&gt;                  s1</span></span>
-<span><span class="co">#&gt; (Intercept) 34.4241</span></span>
+<span><span class="co">#&gt; (Intercept) 34.1090</span></span>
 <span><span class="co">#&gt; age          .     </span></span>
-<span><span class="co">#&gt; weight      -0.0662</span></span>
-<span><span class="co">#&gt; protein      0.6607</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; weight      -0.1041</span></span>
+<span><span class="co">#&gt; protein      0.9441</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section></section></section><section id="categorical-covariates-with-more-than-two-levels" class="level2" data-number="2.10"><h2 data-number="2.10" class="anchored" data-anchor-id="categorical-covariates-with-more-than-two-levels">
@@ -5052,7 +5058,7 @@ Seber, George AF, and Alan J Lee. 2012. <em>Linear Regression Analysis</em>. 2nd
 <div id="ref-venablescodingMatrices" class="csl-entry" role="listitem">
 Venables, Bill. 2023. <em>codingMatrices: Alternative Factor Coding Matrices for Linear Model Formulae</em>. <a href="https://CRAN.R-project.org/package=codingMatrices">https://CRAN.R-project.org/package=codingMatrices</a>.
 </div>
-<div id="ref-vittinghoff2012regression" class="csl-entry" role="listitem">
+<div id="ref-vittinghoff2e" class="csl-entry" role="listitem">
 Vittinghoff, Eric, David V Glidden, Stephen C Shiboski, and Charles E McCulloch. 2012. <em>Regression Methods in Biostatistics: Linear, Logistic, Survival, and Repeated Measures Models</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-1-4614-1353-0">https://doi.org/10.1007/978-1-4614-1353-0</a>.
 </div>
 </div>
@@ -5695,7 +5701,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb120-15"><a href="#cb120-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb120-16"><a href="#cb120-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@dobson4e, Chapters 2-6</span>
 <span id="cb120-17"><a href="#cb120-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@dunn2018generalized, Chapters 2-3</span>
-<span id="cb120-18"><a href="#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@vittinghoff2012regression, Chapter 4</span>
+<span id="cb120-18"><a href="#cb120-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@vittinghoff2e, Chapter 4</span>
 <span id="cb120-19"><a href="#cb120-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb120-20"><a href="#cb120-20" aria-hidden="true" tabindex="-1"></a>There are numerous textbooks specifically for linear regression, including:</span>
 <span id="cb120-21"><a href="#cb120-21" aria-hidden="true" tabindex="-1"></a></span>

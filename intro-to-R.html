@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Regression Models for Epidemiology - Appendix F — Statistical computing in R</title>
+<title>Regression Models for Epidemiology - Appendix G — Statistical computing in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +160,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./intro-to-R.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./intro-to-R.html"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -300,32 +300,38 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./intro-MLEs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./common-mistakes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-to-R.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -340,31 +346,31 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#functions" id="toc-functions" class="nav-link active" data-scroll-target="#functions"><span class="header-section-number">F.1</span> Functions</a>
+  <li><a href="#functions" id="toc-functions" class="nav-link active" data-scroll-target="#functions"><span class="header-section-number">G.1</span> Functions</a>
   <ul class="collapse">
-  <li><a href="#methods-versus-functions" id="toc-methods-versus-functions" class="nav-link" data-scroll-target="#methods-versus-functions"><span class="header-section-number">F.1.1</span> Methods versus functions</a></li>
-  <li><a href="#debugging-r-and-c-code" id="toc-debugging-r-and-c-code" class="nav-link" data-scroll-target="#debugging-r-and-c-code"><span class="header-section-number">F.1.2</span> Debugging R and C code</a></li>
+  <li><a href="#methods-versus-functions" id="toc-methods-versus-functions" class="nav-link" data-scroll-target="#methods-versus-functions"><span class="header-section-number">G.1.1</span> Methods versus functions</a></li>
+  <li><a href="#debugging-r-and-c-code" id="toc-debugging-r-and-c-code" class="nav-link" data-scroll-target="#debugging-r-and-c-code"><span class="header-section-number">G.1.2</span> Debugging R and C code</a></li>
   </ul></li>
-  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse"><span class="header-section-number">F.2</span> The <code>tidyverse</code></a></li>
-  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping"><span class="header-section-number">F.3</span> Piping</a>
+  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse"><span class="header-section-number">G.2</span> The <code>tidyverse</code></a></li>
+  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping"><span class="header-section-number">G.3</span> Piping</a>
   <ul class="collapse">
-  <li><a href="#which-pipe-should-i-use" id="toc-which-pipe-should-i-use" class="nav-link" data-scroll-target="#which-pipe-should-i-use"><span class="header-section-number">F.3.1</span> Which pipe should I use?</a></li>
-  <li><a href="#why-doesnt-ggplot2-use-piping" id="toc-why-doesnt-ggplot2-use-piping" class="nav-link" data-scroll-target="#why-doesnt-ggplot2-use-piping"><span class="header-section-number">F.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</a></li>
+  <li><a href="#which-pipe-should-i-use" id="toc-which-pipe-should-i-use" class="nav-link" data-scroll-target="#which-pipe-should-i-use"><span class="header-section-number">G.3.1</span> Which pipe should I use?</a></li>
+  <li><a href="#why-doesnt-ggplot2-use-piping" id="toc-why-doesnt-ggplot2-use-piping" class="nav-link" data-scroll-target="#why-doesnt-ggplot2-use-piping"><span class="header-section-number">G.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</a></li>
   </ul></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">F.4</span> Quarto</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">F.5</span> Packages</a></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">F.6</span> Git</a></li>
-  <li><a href="#spatial-data-science" id="toc-spatial-data-science" class="nav-link" data-scroll-target="#spatial-data-science"><span class="header-section-number">F.7</span> Spatial data science</a></li>
-  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps"><span class="header-section-number">F.8</span> Shiny apps</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">G.4</span> Quarto</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">G.5</span> Packages</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">G.6</span> Git</a></li>
+  <li><a href="#spatial-data-science" id="toc-spatial-data-science" class="nav-link" data-scroll-target="#spatial-data-science"><span class="header-section-number">G.7</span> Spatial data science</a></li>
+  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps"><span class="header-section-number">G.8</span> Shiny apps</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/intro-to-R.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./intro-to-R.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./intro-to-R.html"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Appendix F — Statistical computing in R</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Appendix G — Statistical computing in R</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -395,23 +401,23 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li>Building R packages: <span class="citation" data-cites="rpkgs">Wickham and Bryan (<a href="references.html#ref-rpkgs" role="doc-biblioref">2023</a>)</span></li>
 <li>Translations from SAS: <span class="citation" data-cites="kleinman2009sas">Kleinman and Horton (<a href="references.html#ref-kleinman2009sas" role="doc-biblioref">2009</a>)</span></li>
 </ul>
-<section id="functions" class="level2" data-number="F.1">
-<h2 data-number="F.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">F.1</span> Functions</h2>
+<section id="functions" class="level2" data-number="G.1">
+<h2 data-number="G.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">G.1</span> Functions</h2>
 <ul>
 <li>Read this ASAP: <a href="https://r4ds.hadley.nz/functions.html" class="uri">https://r4ds.hadley.nz/functions.html</a></li>
 <li>Use this as a reference: <a href="https://adv-r.hadley.nz/functions.html" class="uri">https://adv-r.hadley.nz/functions.html</a></li>
 </ul>
-<section id="methods-versus-functions" class="level3" data-number="F.1.1">
-<h3 data-number="F.1.1" class="anchored" data-anchor-id="methods-versus-functions"><span class="header-section-number">F.1.1</span> Methods versus functions</h3>
+<section id="methods-versus-functions" class="level3" data-number="G.1.1">
+<h3 data-number="G.1.1" class="anchored" data-anchor-id="methods-versus-functions"><span class="header-section-number">G.1.1</span> Methods versus functions</h3>
 <p>See <a href="https://adv-r.hadley.nz/oo.html#oop-systems" class="uri">https://adv-r.hadley.nz/oo.html#oop-systems</a></p>
 </section>
-<section id="debugging-r-and-c-code" class="level3" data-number="F.1.2">
-<h3 data-number="F.1.2" class="anchored" data-anchor-id="debugging-r-and-c-code"><span class="header-section-number">F.1.2</span> Debugging R and C code</h3>
+<section id="debugging-r-and-c-code" class="level3" data-number="G.1.2">
+<h3 data-number="G.1.2" class="anchored" data-anchor-id="debugging-r-and-c-code"><span class="header-section-number">G.1.2</span> Debugging R and C code</h3>
 <p>See <a href="https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html" class="uri">https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html</a></p>
 </section>
 </section>
-<section id="the-tidyverse" class="level2" data-number="F.2">
-<h2 data-number="F.2" class="anchored" data-anchor-id="the-tidyverse"><span class="header-section-number">F.2</span> The <code>tidyverse</code></h2>
+<section id="the-tidyverse" class="level2" data-number="G.2">
+<h2 data-number="G.2" class="anchored" data-anchor-id="the-tidyverse"><span class="header-section-number">G.2</span> The <code>tidyverse</code></h2>
 <blockquote class="blockquote">
 <p>The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</p>
 </blockquote>
@@ -426,23 +432,23 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><span class="citation" data-cites="kuhn2022tidy">Kuhn and Silge (<a href="references.html#ref-kuhn2022tidy" role="doc-biblioref">2022</a>)</span></li>
 </ul>
 </section>
-<section id="piping" class="level2" data-number="F.3">
-<h2 data-number="F.3" class="anchored" data-anchor-id="piping"><span class="header-section-number">F.3</span> Piping</h2>
+<section id="piping" class="level2" data-number="G.3">
+<h2 data-number="G.3" class="anchored" data-anchor-id="piping"><span class="header-section-number">G.3</span> Piping</h2>
 <p>See <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe"><span class="citation" data-cites="r4ds">Wickham, Çetinkaya-Rundel, and Grolemund (<span>2023</span>)</span></a> for details.</p>
 <p>There are currently (2024) two commonly-used pipe operators in R:</p>
 <ul>
 <li><p><code>%&gt;%</code>: the “<code>magrittr</code> pipe”, from the <a href="https://cran.r-project.org/web/packages/magrittr/index.html"><code>magrittr</code></a> package (<span class="citation" data-cites="magrittr">Bache and Wickham (<a href="references.html#ref-magrittr" role="doc-biblioref">2022</a>)</span>; <a href="https://r-pkgs.org/dependencies-in-practice.html#re-exporting">re-exported</a> by <a href="https://cran.r-project.org/web/packages/dplyr/index.html"><code>dplyr</code></a> and others) .</p></li>
 <li><p><code>|&gt;</code>: the “native pipe”, from base R (≥4.1.0)</p></li>
 </ul>
-<section id="which-pipe-should-i-use" class="level3" data-number="F.3.1">
-<h3 data-number="F.3.1" class="anchored" data-anchor-id="which-pipe-should-i-use"><span class="header-section-number">F.3.1</span> Which pipe should I use?</h3>
+<section id="which-pipe-should-i-use" class="level3" data-number="G.3.1">
+<h3 data-number="G.3.1" class="anchored" data-anchor-id="which-pipe-should-i-use"><span class="header-section-number">G.3.1</span> Which pipe should I use?</h3>
 <p><span class="citation" data-cites="r4ds">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2023</a>)</span> <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe:~:text=So%20why%20do%20we%20recommend%20the%20base%20pipe%3F">recommends the native pipe</a>:</p>
 <blockquote class="blockquote">
 <p>For simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.</p>
 </blockquote>
 </section>
-<section id="why-doesnt-ggplot2-use-piping" class="level3" data-number="F.3.2">
-<h3 data-number="F.3.2" class="anchored" data-anchor-id="why-doesnt-ggplot2-use-piping"><span class="header-section-number">F.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</h3>
+<section id="why-doesnt-ggplot2-use-piping" class="level3" data-number="G.3.2">
+<h3 data-number="G.3.2" class="anchored" data-anchor-id="why-doesnt-ggplot2-use-piping"><span class="header-section-number">G.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</h3>
 <p>Here’s <code>tidyverse</code> creator Hadley Wickham’s answer (from 2018):</p>
 <blockquote class="blockquote">
 <p>I think it’s worth unpacking this question into a few smaller pieces:</p>
@@ -455,16 +461,16 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <p>https://forum.posit.co/t/why-cant-ggplot2-use/4372/7</p>
 </section>
 </section>
-<section id="quarto" class="level2" data-number="F.4">
-<h2 data-number="F.4" class="anchored" data-anchor-id="quarto"><span class="header-section-number">F.4</span> Quarto</h2>
+<section id="quarto" class="level2" data-number="G.4">
+<h2 data-number="G.4" class="anchored" data-anchor-id="quarto"><span class="header-section-number">G.4</span> Quarto</h2>
 <p>Quarto is a system for writing documents with embedded R code and/or results:</p>
 <ul>
 <li>Read this ASAP: https://r4ds.hadley.nz/communicate</li>
 <li>Then use this for reference: https://quarto.org/docs/reference/</li>
 </ul>
 </section>
-<section id="packages" class="level2" data-number="F.5">
-<h2 data-number="F.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">F.5</span> Packages</h2>
+<section id="packages" class="level2" data-number="G.5">
+<h2 data-number="G.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">G.5</span> Packages</h2>
 <blockquote class="blockquote">
 <p>This book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.</p>
 </blockquote>
@@ -474,8 +480,8 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><p>Use the rest of <span class="citation" data-cites="rpkgs">Wickham and Bryan (<a href="references.html#ref-rpkgs" role="doc-biblioref">2023</a>)</span> as a reference</p></li>
 </ul>
 </section>
-<section id="git" class="level2" data-number="F.6">
-<h2 data-number="F.6" class="anchored" data-anchor-id="git"><span class="header-section-number">F.6</span> Git</h2>
+<section id="git" class="level2" data-number="G.6">
+<h2 data-number="G.6" class="anchored" data-anchor-id="git"><span class="header-section-number">G.6</span> Git</h2>
 <p>94% of respondents to a 2022 Stack Overflow survey reported using git for version control <a href="https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems">link</a></p>
 <p><a href="https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github">More details</a></p>
 <ul>
@@ -483,14 +489,14 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><p><a href="https://usethis.r-lib.org/articles/pr-functions.html" class="uri">https://usethis.r-lib.org/articles/pr-functions.html</a></p></li>
 </ul>
 </section>
-<section id="spatial-data-science" class="level2" data-number="F.7">
-<h2 data-number="F.7" class="anchored" data-anchor-id="spatial-data-science"><span class="header-section-number">F.7</span> Spatial data science</h2>
+<section id="spatial-data-science" class="level2" data-number="G.7">
+<h2 data-number="G.7" class="anchored" data-anchor-id="spatial-data-science"><span class="header-section-number">G.7</span> Spatial data science</h2>
 <ul>
 <li><span class="citation" data-cites="spatialds">Pebesma and Bivand (<a href="references.html#ref-spatialds" role="doc-biblioref">2023</a>)</span></li>
 </ul>
 </section>
-<section id="shiny-apps" class="level2" data-number="F.8">
-<h2 data-number="F.8" class="anchored" data-anchor-id="shiny-apps"><span class="header-section-number">F.8</span> Shiny apps</h2>
+<section id="shiny-apps" class="level2" data-number="G.8">
+<h2 data-number="G.8" class="anchored" data-anchor-id="shiny-apps"><span class="header-section-number">G.8</span> Shiny apps</h2>
 <ul>
 <li>Read this first: <span class="citation" data-cites="masteringshiny">Wickham (<a href="references.html#ref-masteringshiny" role="doc-biblioref">2021</a>)</span></li>
 <li>Use this as a reference: <span class="citation" data-cites="golembook">Fay et al. (<a href="references.html#ref-golembook" role="doc-biblioref">2021</a>)</span></li>
@@ -1152,12 +1158,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./notation.html" class="pagination-link" aria-label="Notation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Notation</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./.github/Contributing.html" class="pagination-link" aria-label="Contributing to `rme`">
-        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">

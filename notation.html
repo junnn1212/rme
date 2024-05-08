@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Regression Models for Epidemiology - Appendix E — Notation</title>
+<title>Regression Models for Epidemiology - Appendix F — Notation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,7 +169,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./notation.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Notation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./notation.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -309,32 +309,38 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./intro-MLEs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./common-mistakes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-to-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -349,16 +355,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-percent-sign" id="toc-the-percent-sign" class="nav-link active" data-scroll-target="#the-percent-sign"><span class="header-section-number">E.1</span> The percent sign</a></li>
+  <li><a href="#the-percent-sign" id="toc-the-percent-sign" class="nav-link active" data-scroll-target="#the-percent-sign"><span class="header-section-number">F.1</span> The percent sign</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/notation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./notation.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Notation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./notation.html"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Appendix E — Notation</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Appendix F — Notation</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -384,7 +390,7 @@ window.Quarto = {
 <div id="tbl-notation-collected" class="quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-notation-collected-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;E.1: Notation used in this book
+Table&nbsp;F.1: Notation used in this book
 </figcaption>
 <div aria-describedby="tbl-notation-collected-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
@@ -451,8 +457,8 @@ Table&nbsp;E.1: Notation used in this book
 </div>
 </figure>
 </div>
-<section id="the-percent-sign" class="level2" data-number="E.1">
-<h2 data-number="E.1" class="anchored" data-anchor-id="the-percent-sign"><span class="header-section-number">E.1</span> The percent sign</h2>
+<section id="the-percent-sign" class="level2" data-number="F.1">
+<h2 data-number="F.1" class="anchored" data-anchor-id="the-percent-sign"><span class="header-section-number">F.1</span> The percent sign</h2>
 <p>The percent sign “%” is just a shorthand for “<span class="math inline">\(\times \frac{1}{100}\)</span>”. The word “percent” comes from the Latin “per centum”; “centum” means 100 in Latin, so “percent” means “per hundred” (c.f., <a href="https://en.wikipedia.org/wiki/Percentage" class="uri">https://en.wikipedia.org/wiki/Percentage</a>)</p>
 <p>So, contrary to what you may have learned previously, <span class="math inline">\(10\% = 0.1\)</span> is a true and correct equality.</p>
 <div class="proof">
@@ -1080,12 +1086,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./common-mistakes.html" class="pagination-link" aria-label="Common Mistakes">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./intro-to-R.html" class="pagination-link" aria-label="Statistical computing in R">
-        <span class="nav-page-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
