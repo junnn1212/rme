@@ -411,7 +411,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-03: 18:07:28 (PM)</p>
+      <p class="date">Last modified: 2024-05-09: 12:53:42 (PM)</p>
     </div>
   </div>
   
@@ -547,7 +547,7 @@ Notation for the likelihood function
 </div>
 </section><section id="finding-the-maximum-of-a-function" class="level3" data-number="D.1.3"><h3 data-number="D.1.3" class="anchored" data-anchor-id="finding-the-maximum-of-a-function">
 <span class="header-section-number">D.1.3</span> Finding the maximum of a function</h3>
-<p>Recall from calculus: the maxima of a continuous function <span class="math inline">\(f(x)\)</span> over a range of input values <span class="math inline">\(\mathcal{R}\left(x\right)\)</span> can be found either:</p>
+<p>Recall from calculus: the maxima of a continuous function <span class="math inline">\(f(x)\)</span> over a range of input values <span class="math inline">\(\mathcal{R}(x)\)</span> can be found either:</p>
 <ul>
 <li>at the edges of the range of input values, <em>OR</em>:</li>
 <li>where the function is flat (i.e.&nbsp;where the gradient function <span class="math inline">\(f'(x) = 0\)</span>) <em>AND</em> the second derivative is negative definite (<span class="math inline">\(f''(x) &lt; 0\)</span>).</li>
@@ -651,11 +651,11 @@ Notation for the likelihood function
 <p><span class="math display">\[
 \begin{aligned}
 \mathbb{E}\left[\ell'\right]
-&amp;\stackrel{\text{def}}{=}\int_{x \in \mathcal{R}\left(x\right)}
+&amp;\stackrel{\text{def}}{=}\int_{x \in \mathcal{R}(x)}
 {
 \ell'(x,\theta) \text{p}(X = x | \theta) dx
 }
-\\ &amp;= \int_{x \in \mathcal{R}\left(X\right)}
+\\ &amp;= \int_{x \in \mathcal{R}(X)}
 {
 \left(
 \frac{\partial}{\partial \theta}
@@ -664,7 +664,7 @@ Notation for the likelihood function
 \text{p}(X = x | \theta) dx
 }
 \\ &amp;=
-\int_{x \in \mathcal{R}\left(X\right)}
+\int_{x \in \mathcal{R}(X)}
 {
 \frac
 {\frac{\partial}{\partial \theta} \text{p}(X = x | \theta)}
@@ -672,7 +672,7 @@ Notation for the likelihood function
 \text{p}(X = x | \theta) dx
 }
 \\ &amp;=
-\int_{x \in \mathcal{R}\left(X\right)}
+\int_{x \in \mathcal{R}(X)}
 {
 \frac{\partial}{\partial \theta} \text{p}(X = x | \theta) dx
 }
@@ -884,12 +884,9 @@ Table&nbsp;D.1: Number of tropical cyclones during a season from November to Apr
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="va">cyclones</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>years <span class="op">=</span> <span class="va">years</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>level <span class="op">=</span> <span class="va">years</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">years</span>, </span>
-<span>        y <span class="op">=</span> <span class="va">number</span>,</span>
-<span>        group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">cyclones</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>years <span class="op">=</span> <span class="va">years</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span>levels <span class="op">=</span> <span class="va">years</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">years</span>, y <span class="op">=</span> <span class="va">number</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Season"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -910,7 +907,7 @@ Figure&nbsp;D.1: Number of tropical cyclones per season in northeastern Australi
 <p>There’s no obvious correlation between adjacent seasons, so let’s assume that each season is independent of the others.</p>
 <p>Let’s also assume that they are identically distributed; let’s denote this distribution as <span class="math inline">\(P(Y=y)\)</span> (note that there’s no index <span class="math inline">\(i\)</span> in this expression, since we are assuming the <span class="math inline">\(Y_i\)</span>s are identically distributed). We can visualize the distribution using a bar plot (<a href="#fig-cyclones-bar-plot" class="quarto-xref">Figure&nbsp;<span>D.2</span></a>). <a href="#tbl-dobson-cyclones-sumstat" class="quarto-xref">Table&nbsp;<span>D.2</span></a> provides summary statistics.</p>
 <div class="cell">
-<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cyclones</span> <span class="op">|&gt;</span> </span>
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cyclones</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">number</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expand_limits.html">expand_limits</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1608,7 +1605,7 @@ Table&nbsp;D.3: Convergence of Newton-Raphson Algorithm for finding MLE of <code
 <span>y <span class="op">=</span> <span class="va">`log(likelihood)`</span>,</span>
 <span>yend <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lead</a></span><span class="op">(</span><span class="va">`log(likelihood)`</span><span class="op">)</span>,</span>
 <span>col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">iteration</span><span class="op">)</span></span>
-<span><span class="op">)</span>,</span>
+<span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div id="fig-NR-converge" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -2039,7 +2036,7 @@ Table&nbsp;D.4: HERS dataset
 </details><div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["mu-hat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sigma-hat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["se_hat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["confint_left"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["confint_right"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["tstat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pval"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["confint covers true mu"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["test rejects null hypothesis"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"97.42","2":"10.07","3":"1.007","4":"95.42","5":"99.42","6":"8.565","7":"1.457e-13","8":"TRUE","9":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["mu-hat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sigma-hat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["se_hat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["confint_left"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["confint_right"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["tstat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pval"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["confint covers true mu"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["test rejects null hypothesis"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"96.43","2":"10.7","3":"1.07","4":"94.31","5":"98.56","6":"7.139","7":"1.589e-10","8":"FALSE","9":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2928,7 +2925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb40-90"><a href="#cb40-90" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-91"><a href="#cb40-91" aria-hidden="true" tabindex="-1"></a><span class="fu">### Finding the maximum of a function</span></span>
 <span id="cb40-92"><a href="#cb40-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-93"><a href="#cb40-93" aria-hidden="true" tabindex="-1"></a>Recall from calculus: the maxima of a continuous function $f(x)$ over a range of input values $\range{x}$ can be found either:</span>
+<span id="cb40-93"><a href="#cb40-93" aria-hidden="true" tabindex="-1"></a>Recall from calculus: the maxima of a continuous function $f(x)$ over a range of input values $\rangef{x}$ can be found either:</span>
 <span id="cb40-94"><a href="#cb40-94" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-95"><a href="#cb40-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>at the edges of the range of input values, *OR*:</span>
 <span id="cb40-96"><a href="#cb40-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>where the function is flat (i.e. where the gradient function $f'(x) = 0$) *AND* the second derivative is negative definite ($f''(x) &lt; 0$).</span>
@@ -3091,11 +3088,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb40-253"><a href="#cb40-253" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb40-254"><a href="#cb40-254" aria-hidden="true" tabindex="-1"></a>\ba</span>
 <span id="cb40-255"><a href="#cb40-255" aria-hidden="true" tabindex="-1"></a>\E{\ell'}</span>
-<span id="cb40-256"><a href="#cb40-256" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \int_{x \in \range{x}}</span>
+<span id="cb40-256"><a href="#cb40-256" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \int_{x \in \rangef{x}}</span>
 <span id="cb40-257"><a href="#cb40-257" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb40-258"><a href="#cb40-258" aria-hidden="true" tabindex="-1"></a>\ell'(x,\th) \p(X = x | \th) dx</span>
 <span id="cb40-259"><a href="#cb40-259" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-260"><a href="#cb40-260" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= \int_{x \in \range{X}}</span>
+<span id="cb40-260"><a href="#cb40-260" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= \int_{x \in \rangef{X}}</span>
 <span id="cb40-261"><a href="#cb40-261" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb40-262"><a href="#cb40-262" aria-hidden="true" tabindex="-1"></a>\paren</span>
 <span id="cb40-263"><a href="#cb40-263" aria-hidden="true" tabindex="-1"></a>{</span>
@@ -3105,7 +3102,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb40-267"><a href="#cb40-267" aria-hidden="true" tabindex="-1"></a>\p(X = x | \theta) dx</span>
 <span id="cb40-268"><a href="#cb40-268" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb40-269"><a href="#cb40-269" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= </span>
-<span id="cb40-270"><a href="#cb40-270" aria-hidden="true" tabindex="-1"></a>\int_{x \in \range{X}}</span>
+<span id="cb40-270"><a href="#cb40-270" aria-hidden="true" tabindex="-1"></a>\int_{x \in \rangef{X}}</span>
 <span id="cb40-271"><a href="#cb40-271" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb40-272"><a href="#cb40-272" aria-hidden="true" tabindex="-1"></a>\frac</span>
 <span id="cb40-273"><a href="#cb40-273" aria-hidden="true" tabindex="-1"></a>{\deriv{\theta} \p(X = x | \th)}</span>
@@ -3113,7 +3110,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb40-275"><a href="#cb40-275" aria-hidden="true" tabindex="-1"></a>\p(X = x | \theta) dx</span>
 <span id="cb40-276"><a href="#cb40-276" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb40-277"><a href="#cb40-277" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= </span>
-<span id="cb40-278"><a href="#cb40-278" aria-hidden="true" tabindex="-1"></a>\int_{x \in \range{X}}</span>
+<span id="cb40-278"><a href="#cb40-278" aria-hidden="true" tabindex="-1"></a>\int_{x \in \rangef{X}}</span>
 <span id="cb40-279"><a href="#cb40-279" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb40-280"><a href="#cb40-280" aria-hidden="true" tabindex="-1"></a>\deriv{\theta} \p(X = x | \th) dx</span>
 <span id="cb40-281"><a href="#cb40-281" aria-hidden="true" tabindex="-1"></a>}</span>
