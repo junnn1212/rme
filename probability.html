@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.554">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Regression Models for Epidemiology - Appendix A — Probability</title>
+<title>Regression Models for Epidemiology - Appendix B — Probability</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./estimation.html" rel="next">
-<link href="./references.html" rel="prev">
+<link href="./math-prereqs.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./probability.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./math-prereqs.html">Appendices</a></li><li class="breadcrumb-item"><a href="./probability.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -273,50 +273,56 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./math-prereqs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mathematics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./probability.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estimation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Estimation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./inference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-MLEs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Introduction to Maximum Likelihood Inference</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./common-mistakes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Common Mistakes</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Notation</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-to-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Statistical computing in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
       </ul>
@@ -331,29 +337,29 @@ window.Quarto = {
   <ul>
 <li><a href="#configuring-r" id="toc-configuring-r" class="nav-link active" data-scroll-target="#configuring-r">Configuring R</a></li>
   <li>
-<a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">A.1</span> Random variables</a>
+<a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">B.1</span> Random variables</a>
   <ul class="collapse">
-<li><a href="#types-of-random-variables" id="toc-types-of-random-variables" class="nav-link" data-scroll-target="#types-of-random-variables"><span class="header-section-number">A.1.1</span> Types of random variables</a></li>
+<li><a href="#types-of-random-variables" id="toc-types-of-random-variables" class="nav-link" data-scroll-target="#types-of-random-variables"><span class="header-section-number">B.1.1</span> Types of random variables</a></li>
   </ul>
 </li>
   <li>
-<a href="#key-probability-distributions" id="toc-key-probability-distributions" class="nav-link" data-scroll-target="#key-probability-distributions"><span class="header-section-number">A.2</span> Key probability distributions</a>
+<a href="#key-probability-distributions" id="toc-key-probability-distributions" class="nav-link" data-scroll-target="#key-probability-distributions"><span class="header-section-number">B.2</span> Key probability distributions</a>
   <ul class="collapse">
-<li><a href="#the-bernoulli-distribution" id="toc-the-bernoulli-distribution" class="nav-link" data-scroll-target="#the-bernoulli-distribution"><span class="header-section-number">A.2.1</span> The Bernoulli distribution</a></li>
-  <li><a href="#the-poisson-distribution" id="toc-the-poisson-distribution" class="nav-link" data-scroll-target="#the-poisson-distribution"><span class="header-section-number">A.2.2</span> The Poisson distribution</a></li>
+<li><a href="#the-bernoulli-distribution" id="toc-the-bernoulli-distribution" class="nav-link" data-scroll-target="#the-bernoulli-distribution"><span class="header-section-number">B.2.1</span> The Bernoulli distribution</a></li>
+  <li><a href="#the-poisson-distribution" id="toc-the-poisson-distribution" class="nav-link" data-scroll-target="#the-poisson-distribution"><span class="header-section-number">B.2.2</span> The Poisson distribution</a></li>
   </ul>
 </li>
   <li>
-<a href="#characteristics-of-probability-distributions" id="toc-characteristics-of-probability-distributions" class="nav-link" data-scroll-target="#characteristics-of-probability-distributions"><span class="header-section-number">A.3</span> Characteristics of probability distributions</a>
+<a href="#characteristics-of-probability-distributions" id="toc-characteristics-of-probability-distributions" class="nav-link" data-scroll-target="#characteristics-of-probability-distributions"><span class="header-section-number">B.3</span> Characteristics of probability distributions</a>
   <ul class="collapse">
-<li><a href="#variance-and-related-characteristics" id="toc-variance-and-related-characteristics" class="nav-link" data-scroll-target="#variance-and-related-characteristics"><span class="header-section-number">A.3.1</span> Variance and related characteristics</a></li>
+<li><a href="#variance-and-related-characteristics" id="toc-variance-and-related-characteristics" class="nav-link" data-scroll-target="#variance-and-related-characteristics"><span class="header-section-number">B.3.1</span> Variance and related characteristics</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/probability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probability.html">Appendices</a></li><li class="breadcrumb-item"><a href="./probability.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Appendix A — Probability</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./math-prereqs.html">Appendices</a></li><li class="breadcrumb-item"><a href="./probability.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Appendix B — Probability</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -364,7 +370,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-09: 13:26:10 (PM)</p>
+      <p class="date">Last modified: 2024-05-11: 12:47:15 (PM)</p>
     </div>
   </div>
   
@@ -434,15 +440,15 @@ window.Quarto = {
 .quarto-figure-center > figure {
 text-align: center;
 }
-</style></section><section id="random-variables" class="level2" data-number="A.1"><h2 data-number="A.1" class="anchored" data-anchor-id="random-variables">
-<span class="header-section-number">A.1</span> Random variables</h2>
-<section id="types-of-random-variables" class="level3" data-number="A.1.1"><h3 data-number="A.1.1" class="anchored" data-anchor-id="types-of-random-variables">
-<span class="header-section-number">A.1.1</span> Types of random variables</h3>
+</style></section><section id="random-variables" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="random-variables">
+<span class="header-section-number">B.1</span> Random variables</h2>
+<section id="types-of-random-variables" class="level3" data-number="B.1.1"><h3 data-number="B.1.1" class="anchored" data-anchor-id="types-of-random-variables">
+<span class="header-section-number">B.1.1</span> Types of random variables</h3>
 <div id="def-binary" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.1 (binary variable)</strong></span> A <strong>binary variable</strong> is a random variable which has only two possible values in its range.</p>
+<p><span class="theorem-title"><strong>Definition B.1 (binary variable)</strong></span> A <strong>binary variable</strong> is a random variable which has only two possible values in its range.</p>
 </div>
 <div id="exr-binary-examples" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise A.1 (Examples of binary variables)</strong></span> What are some examples of binary variables in the health sciences?</p>
+<p><span class="theorem-title"><strong>Exercise B.1 (Examples of binary variables)</strong></span> What are some examples of binary variables in the health sciences?</p>
 </div>
 <hr>
 <div class="proof solution">
@@ -456,12 +462,12 @@ text-align: center;
 <li>vital status (dead vs alive)</li>
 </ul>
 </div>
-<hr></section></section><section id="key-probability-distributions" class="level2" data-number="A.2"><h2 data-number="A.2" class="anchored" data-anchor-id="key-probability-distributions">
-<span class="header-section-number">A.2</span> Key probability distributions</h2>
-<section id="the-bernoulli-distribution" class="level3" data-number="A.2.1"><h3 data-number="A.2.1" class="anchored" data-anchor-id="the-bernoulli-distribution">
-<span class="header-section-number">A.2.1</span> The Bernoulli distribution</h3>
+<hr></section></section><section id="key-probability-distributions" class="level2" data-number="B.2"><h2 data-number="B.2" class="anchored" data-anchor-id="key-probability-distributions">
+<span class="header-section-number">B.2</span> Key probability distributions</h2>
+<section id="the-bernoulli-distribution" class="level3" data-number="B.2.1"><h3 data-number="B.2.1" class="anchored" data-anchor-id="the-bernoulli-distribution">
+<span class="header-section-number">B.2.1</span> The Bernoulli distribution</h3>
 <div id="def-bernoulli" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.2 (Bernoulli distribution)</strong></span> The <strong>Bernoulli distribution</strong> family for a random variable <span class="math inline">\(X\)</span> is defined as:</p>
+<p><span class="theorem-title"><strong>Definition B.2 (Bernoulli distribution)</strong></span> The <strong>Bernoulli distribution</strong> family for a random variable <span class="math inline">\(X\)</span> is defined as:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \Pr(X=x) &amp;= \mathbb{1}_{x\in \left\{0,1\right\}}\pi^x(1-\pi)^{1-x}\\
@@ -469,24 +475,24 @@ text-align: center;
 \end{aligned}
 \]</span></p>
 </div>
-</section><section id="the-poisson-distribution" class="level3" data-number="A.2.2"><h3 data-number="A.2.2" class="anchored" data-anchor-id="the-poisson-distribution">
-<span class="header-section-number">A.2.2</span> The Poisson distribution</h3>
+</section><section id="the-poisson-distribution" class="level3" data-number="B.2.2"><h3 data-number="B.2.2" class="anchored" data-anchor-id="the-poisson-distribution">
+<span class="header-section-number">B.2.2</span> The Poisson distribution</h3>
 <div id="def-poisson" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.3 (Poisson distribution)</strong></span> <span class="math display">\[P(Y=y) = \frac{\lambda^{y} e^{-\lambda}}{y!}\]</span></p>
+<p><span class="theorem-title"><strong>Definition B.3 (Poisson distribution)</strong></span> <span class="math display">\[P(Y=y) = \frac{\lambda^{y} e^{-\lambda}}{y!}\]</span></p>
 </div>
-</section></section><section id="characteristics-of-probability-distributions" class="level2" data-number="A.3"><h2 data-number="A.3" class="anchored" data-anchor-id="characteristics-of-probability-distributions">
-<span class="header-section-number">A.3</span> Characteristics of probability distributions</h2>
+</section></section><section id="characteristics-of-probability-distributions" class="level2" data-number="B.3"><h2 data-number="B.3" class="anchored" data-anchor-id="characteristics-of-probability-distributions">
+<span class="header-section-number">B.3</span> Characteristics of probability distributions</h2>
 <div id="def-density" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.4 (Density function)</strong></span> The density function <span class="math inline">\(f(t)\)</span> or <span class="math inline">\(\text{p}(T=t)\)</span> for a random variable <span class="math inline">\(T\)</span> at value <span class="math inline">\(t\)</span> can be defined as the derivative of the cumulative probability function <span class="math inline">\(P(T\le t)\)</span>; that is:</p>
+<p><span class="theorem-title"><strong>Definition B.4 (Density function)</strong></span> The density function <span class="math inline">\(f(t)\)</span> or <span class="math inline">\(\text{p}(T=t)\)</span> for a random variable <span class="math inline">\(T\)</span> at value <span class="math inline">\(t\)</span> can be defined as the derivative of the cumulative probability function <span class="math inline">\(P(T\le t)\)</span>; that is:</p>
 <p><span class="math display">\[f(t) \stackrel{\text{def}}{=}\frac{\partial}{\partial t} \Pr(T\le t)\]</span></p>
 </div>
 <div id="def-hazard" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.5 (Hazard function)</strong></span> The hazard function for a random variable <span class="math inline">\(T\)</span> at value <span class="math inline">\(t\)</span> is the conditional density of <span class="math inline">\(T\)</span> at <span class="math inline">\(t\)</span>, given <span class="math inline">\(T\ge t\)</span>; that is:</p>
+<p><span class="theorem-title"><strong>Definition B.5 (Hazard function)</strong></span> The hazard function for a random variable <span class="math inline">\(T\)</span> at value <span class="math inline">\(t\)</span> is the conditional density of <span class="math inline">\(T\)</span> at <span class="math inline">\(t\)</span>, given <span class="math inline">\(T\ge t\)</span>; that is:</p>
 <p><span class="math display">\[h(t) \stackrel{\text{def}}{=}p(T=t|T\ge t)\]</span></p>
 <p>If <span class="math inline">\(T\)</span> represents the time at which an event occurs, then <span class="math inline">\(h(t)\)</span> is the probability that the event occurs at time <span class="math inline">\(t\)</span>, given that it has not occurred prior to time <span class="math inline">\(t\)</span>.</p>
 </div>
 <div id="def-expectation" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.6 (Expectation, expected value, population mean )</strong></span> The <strong>expectation</strong>, <strong>expected value</strong>, or <strong>population mean</strong> of a <em>continuous</em> random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>, <span class="math inline">\(\mu(X)\)</span>, or <span class="math inline">\(\mu_X\)</span>, is the weighted mean of <span class="math inline">\(X\)</span>’s possible values, weighted by the probability density function of those values:</p>
+<p><span class="theorem-title"><strong>Definition B.6 (Expectation, expected value, population mean )</strong></span> The <strong>expectation</strong>, <strong>expected value</strong>, or <strong>population mean</strong> of a <em>continuous</em> random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>, <span class="math inline">\(\mu(X)\)</span>, or <span class="math inline">\(\mu_X\)</span>, is the weighted mean of <span class="math inline">\(X\)</span>’s possible values, weighted by the probability density function of those values:</p>
 <p><span class="math display">\[\mathbb{E}\left[X\right] = \int_{x\in \mathcal{R}(X)} x \cdot \text{p}(X=x)dx\]</span></p>
 <p>The <strong>expectation</strong>, <strong>expected value</strong>, or <strong>population mean</strong> of a <em>discrete</em> random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>, <span class="math inline">\(\mu(X)\)</span>, or <span class="math inline">\(\mu_X\)</span>, is the mean of <span class="math inline">\(X\)</span>’s possible values, weighted by the probability mass function of those values:</p>
 <p><span class="math display">\[\mathbb{E}\left[X\right] = \sum_{x \in \mathcal{R}(X)} x \cdot \text{P}(X=x)\]</span></p>
@@ -494,7 +500,7 @@ text-align: center;
 </div>
 <hr>
 <div id="thm-bernoulli-mean" class="theorem">
-<p><span class="theorem-title"><strong>Theorem A.1 (Expectation of the Bernoulli distribution)</strong></span> The expectation of a Bernoulli random variable with parameter <span class="math inline">\(\pi\)</span> is:</p>
+<p><span class="theorem-title"><strong>Theorem B.1 (Expectation of the Bernoulli distribution)</strong></span> The expectation of a Bernoulli random variable with parameter <span class="math inline">\(\pi\)</span> is:</p>
 <p><span class="math display">\[\mathbb{E}\left[X\right] = \pi\]</span></p>
 </div>
 <hr>
@@ -512,17 +518,17 @@ text-align: center;
 \]</span></p>
 </div>
 <hr>
-<section id="variance-and-related-characteristics" class="level3" data-number="A.3.1"><h3 data-number="A.3.1" class="anchored" data-anchor-id="variance-and-related-characteristics">
-<span class="header-section-number">A.3.1</span> Variance and related characteristics</h3>
+<section id="variance-and-related-characteristics" class="level3" data-number="B.3.1"><h3 data-number="B.3.1" class="anchored" data-anchor-id="variance-and-related-characteristics">
+<span class="header-section-number">B.3.1</span> Variance and related characteristics</h3>
 <div id="def-variance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.7 (Variance)</strong></span> The variance of a random variable <span class="math inline">\(X\)</span> is the expectation of the squared difference between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>; that is:</p>
+<p><span class="theorem-title"><strong>Definition B.7 (Variance)</strong></span> The variance of a random variable <span class="math inline">\(X\)</span> is the expectation of the squared difference between <span class="math inline">\(X\)</span> and <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>; that is:</p>
 <p><span class="math display">\[
 \text{Var}\left(X\right) \stackrel{\text{def}}{=}\mathbb{E}\left[(X-\mathbb{E}\left[X\right])^2\right]
 \]</span></p>
 </div>
 <hr>
 <div id="thm-variance" class="theorem">
-<p><span class="theorem-title"><strong>Theorem A.2 (Alternative expression for variance)</strong></span> <span class="math display">\[\text{Var}\left(X\right)=\mathbb{E}\left[X^2\right] - \left(\mathbb{E}\left[X\right]\right)^2\]</span></p>
+<p><span class="theorem-title"><strong>Theorem B.2 (Simplified expression for variance)</strong></span> <span class="math display">\[\text{Var}\left(X\right)=\mathbb{E}\left[X^2\right] - \left(\mathbb{E}\left[X\right]\right)^2\]</span></p>
 <hr>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>By linearity of expectation, we have:</p>
@@ -540,21 +546,21 @@ text-align: center;
 </div>
 <hr>
 <div id="def-precision" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.8 (Precision)</strong></span> The <strong>precision</strong> of a random variable <span class="math inline">\(X\)</span>, often denoted <span class="math inline">\(\tau(X)\)</span>, <span class="math inline">\(\tau_X\)</span>, or shorthanded as <span class="math inline">\(\tau\)</span>, is the inverse of that random variable’s variance; that is:</p>
+<p><span class="theorem-title"><strong>Definition B.8 (Precision)</strong></span> The <strong>precision</strong> of a random variable <span class="math inline">\(X\)</span>, often denoted <span class="math inline">\(\tau(X)\)</span>, <span class="math inline">\(\tau_X\)</span>, or shorthanded as <span class="math inline">\(\tau\)</span>, is the inverse of that random variable’s variance; that is:</p>
 <p><span class="math display">\[\tau(X) \stackrel{\text{def}}{=}\left(\text{Var}\left(X\right)\right)^{-1}\]</span></p>
 </div>
 <div id="def-sd" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.9 (Standard deviation)</strong></span> The standard deviation of a random variable <span class="math inline">\(X\)</span> is the square-root of the variance of <span class="math inline">\(X\)</span>:</p>
+<p><span class="theorem-title"><strong>Definition B.9 (Standard deviation)</strong></span> The standard deviation of a random variable <span class="math inline">\(X\)</span> is the square-root of the variance of <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[\text{SD}\left(X\right) \stackrel{\text{def}}{=}\sqrt{\text{Var}\left(X\right)}\]</span></p>
 </div>
 <hr>
 <div id="def-cov" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.10 (Covariance)</strong></span> For any two one-dimensional random variables, <span class="math inline">\(X,Y\)</span>:</p>
+<p><span class="theorem-title"><strong>Definition B.10 (Covariance)</strong></span> For any two one-dimensional random variables, <span class="math inline">\(X,Y\)</span>:</p>
 <p><span class="math display">\[\text{Cov}\left(X,Y\right) \stackrel{\text{def}}{=}\mathbb{E}\left[(X - \mathbb{E}\left[X\right])(Y - \mathbb{E}\left[Y\right])\right]\]</span></p>
 </div>
 <hr>
 <div id="thm-alt-cov" class="theorem">
-<p><span class="theorem-title"><strong>Theorem A.3</strong></span> <span class="math display">\[\text{Cov}\left(X,Y\right)= \mathbb{E}\left[XY\right] - \mathbb{E}\left[X\right] \mathbb{E}\left[Y\right]\]</span></p>
+<p><span class="theorem-title"><strong>Theorem B.3</strong></span> <span class="math display">\[\text{Cov}\left(X,Y\right)= \mathbb{E}\left[XY\right] - \mathbb{E}\left[X\right] \mathbb{E}\left[Y\right]\]</span></p>
 </div>
 <hr>
 <div class="proof">
@@ -562,7 +568,7 @@ text-align: center;
 </div>
 <hr>
 <div id="lem-cov-xx" class="theorem lemma">
-<p><span class="theorem-title"><strong>Lemma A.1 (The covariance of a variable with itself is its variance)</strong></span> For any random variable <span class="math inline">\(X\)</span>:</p>
+<p><span class="theorem-title"><strong>Lemma B.1 (The covariance of a variable with itself is its variance)</strong></span> For any random variable <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[\text{Cov}\left(X,X\right) = \text{Var}\left(X\right)\]</span></p>
 </div>
 <div class="proof">
@@ -576,7 +582,7 @@ text-align: center;
 </div>
 <hr>
 <div id="def-cov-vec-x" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.11 (Variance/covariance of a <span class="math inline">\(p \times 1\)</span> random vector)</strong></span> For a <span class="math inline">\(p \times 1\)</span> dimensional random vector <span class="math inline">\(X\)</span>,</p>
+<p><span class="theorem-title"><strong>Definition B.11 (Variance/covariance of a <span class="math inline">\(p \times 1\)</span> random vector)</strong></span> For a <span class="math inline">\(p \times 1\)</span> dimensional random vector <span class="math inline">\(X\)</span>,</p>
 <p><span class="math display">\[
 \begin{aligned}
 \text{Var}(X)
@@ -587,7 +593,7 @@ text-align: center;
 </div>
 <hr>
 <div id="thm-vcov-vec" class="theorem">
-<p><span class="theorem-title"><strong>Theorem A.4 (Alternate expression for variance of a random vector)</strong></span> <span class="math display">\[
+<p><span class="theorem-title"><strong>Theorem B.4 (Alternate expression for variance of a random vector)</strong></span> <span class="math display">\[
 \begin{aligned}
 \text{Var}\left(X\right)
 &amp;= E[ X^{\top}X ] - {E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack
@@ -609,7 +615,7 @@ text-align: center;
 </div>
 <hr>
 <div id="thm-var-lincom" class="theorem">
-<p><span class="theorem-title"><strong>Theorem A.5 (Variance of a linear combination)</strong></span> For any set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> and corresponding constants <span class="math inline">\(a_1, ... ,a_n\)</span>:</p>
+<p><span class="theorem-title"><strong>Theorem B.5 (Variance of a linear combination)</strong></span> For any set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> and corresponding constants <span class="math inline">\(a_1, ... ,a_n\)</span>:</p>
 <p><span class="math display">\[\text{Var}\left(\sum_{i=1}^na_i X_i\right) = \sum_{i=1}^n\sum_{j=1}^n a_i a_j \text{Cov}\left(X_i,X_j\right)\]</span></p>
 </div>
 <hr>
@@ -618,51 +624,66 @@ text-align: center;
 </div>
 <hr>
 <div id="lem-var-lincom2" class="theorem lemma">
-<p><span class="theorem-title"><strong>Lemma A.2</strong></span> For any two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>:</p>
+<p><span class="theorem-title"><strong>Lemma B.2</strong></span> For any two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and scalars <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>:</p>
 <p><span class="math display">\[\text{Var}\left(aX + bY\right) = a^2 \text{Var}\left(X\right) + b^2 \text{Var}\left(Y\right) + 2(a \cdot b) \text{Cov}\left(X,Y\right)\]</span></p>
 </div>
 <hr>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Apply <a href="#thm-var-lincom" class="quarto-xref">Theorem&nbsp;<span>A.5</span></a> with <span class="math inline">\(n=2\)</span>, <span class="math inline">\(X_1 = X\)</span>, and <span class="math inline">\(X_2 = Y\)</span>.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Apply <a href="#thm-var-lincom" class="quarto-xref">Theorem&nbsp;<span>B.5</span></a> with <span class="math inline">\(n=2\)</span>, <span class="math inline">\(X_1 = X\)</span>, and <span class="math inline">\(X_2 = Y\)</span>.</p>
 <p>Or, see <a href="https://statproofbook.github.io/P/var-lincomb.html" class="uri">https://statproofbook.github.io/P/var-lincomb.html</a></p>
 </div>
 <hr>
 <div id="def-homosked" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.12 (homoskedastic, heteroskedastic)</strong></span> A random variable <span class="math inline">\(Y\)</span> is <strong>homoskedastic</strong> (with respect to covariates <span class="math inline">\(X\)</span>) if the variance of <span class="math inline">\(Y\)</span> does not vary with <span class="math inline">\(X\)</span>:</p>
+<p><span class="theorem-title"><strong>Definition B.12 (homoskedastic, heteroskedastic)</strong></span> A random variable <span class="math inline">\(Y\)</span> is <strong>homoskedastic</strong> (with respect to covariates <span class="math inline">\(X\)</span>) if the variance of <span class="math inline">\(Y\)</span> does not vary with <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[\text{Var}(Y|X=x) = \sigma^2, \forall x\]</span></p>
 <p>Otherwise it is <strong>heteroskedastic</strong>.</p>
 </div>
 <hr>
 <div id="def-indpt" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.13 (Statistical independence)</strong></span> A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>statistically independent</strong> if their joint probability is equal to the product of their marginal probabilities:</p>
+<p><span class="theorem-title"><strong>Definition B.13 (Statistical independence)</strong></span> A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>statistically independent</strong> if their joint probability is equal to the product of their marginal probabilities:</p>
 <p><span class="math display">\[\Pr(X_1=x_1, \ldots, X_n = x_n) = \prod_{i=1}^n{\Pr(X_i=x_i)}\]</span></p>
+</div>
+<div class="notes">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The symbol for independence, <span class="math inline">\(⫫\)</span>, is essentially just <span class="math inline">\(\prod\)</span> upside-down. So the symbol can remind you of its definition (<a href="#def-indpt" class="quarto-xref">Definition&nbsp;<span>B.13</span></a>).</p>
+</div>
+</div>
 </div>
 <hr>
 <div id="def-cind" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.14 (Conditional independence)</strong></span> A set of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are <strong>conditionally statistically independent</strong> given a set of covariates <span class="math inline">\(X_1, \ldots, X_n\)</span> if the joint probability of the <span class="math inline">\(Y_i\)</span>s given the <span class="math inline">\(X_i\)</span>s is equal to the product of their marginal probabilities:</p>
+<p><span class="theorem-title"><strong>Definition B.14 (Conditional independence)</strong></span> A set of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are <strong>conditionally statistically independent</strong> given a set of covariates <span class="math inline">\(X_1, \ldots, X_n\)</span> if the joint probability of the <span class="math inline">\(Y_i\)</span>s given the <span class="math inline">\(X_i\)</span>s is equal to the product of their marginal probabilities:</p>
 <p><span class="math display">\[\Pr(Y_1=y_1, \ldots, Y_n = y_n|X_1=x_1, \ldots, X_n = x_n) = \prod_{i=1}^n{\Pr(Y_i=y_i|X_i=x_i)}\]</span></p>
 </div>
 <hr>
 <div id="def-ident" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.15 (Identically distributed)</strong></span> A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>identically distributed</strong> if they have the same range <span class="math inline">\(\mathcal{R}(X)\)</span> and if their marginal distributions <span class="math inline">\(\text{P}(X_1=x_1), ..., \text{P}(X_n=x_n)\)</span> are all equal to some shared distribution <span class="math inline">\(\text{P}(X=x)\)</span>:</p>
+<p><span class="theorem-title"><strong>Definition B.15 (Identically distributed)</strong></span> A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>identically distributed</strong> if they have the same range <span class="math inline">\(\mathcal{R}(X)\)</span> and if their marginal distributions <span class="math inline">\(\text{P}(X_1=x_1), ..., \text{P}(X_n=x_n)\)</span> are all equal to some shared distribution <span class="math inline">\(\text{P}(X=x)\)</span>:</p>
 <p><span class="math display">\[
 \forall i\in \left\{1:n\right\}, \forall x \in \mathcal{R}(X): \text{P}(X_i=x) = \text{P}(X=x)
 \]</span></p>
 </div>
 <hr>
 <div id="def-cident" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.16 (Conditionally identically distributed)</strong></span> A set of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are <strong>conditionally identically distributed</strong> given a set of covariates <span class="math inline">\(X_1, \ldots, X_n\)</span> if <span class="math inline">\(Y_1, \ldots, Y_n\)</span> have the same range <span class="math inline">\(\mathcal{R}(X)\)</span> and if the distributions <span class="math inline">\(\text{P}(Y_i=y_i|X_i =x_i)\)</span> are all equal to the same distribution <span class="math inline">\(\text{P}(Y=y|X=x)\)</span>:</p>
+<p><span class="theorem-title"><strong>Definition B.16 (Conditionally identically distributed)</strong></span> A set of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are <strong>conditionally identically distributed</strong> given a set of covariates <span class="math inline">\(X_1, \ldots, X_n\)</span> if <span class="math inline">\(Y_1, \ldots, Y_n\)</span> have the same range <span class="math inline">\(\mathcal{R}(X)\)</span> and if the distributions <span class="math inline">\(\text{P}(Y_i=y_i|X_i =x_i)\)</span> are all equal to the same distribution <span class="math inline">\(\text{P}(Y=y|X=x)\)</span>:</p>
 <p><span class="math display">\[
 \text{P}(Y_i=y|X_i=x) = \text{P}(Y=y|X=x)
 \]</span></p>
 </div>
 <hr>
 <div id="def-iid" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.17 (Independent and identically distributed)</strong></span> A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>independent and identically distributed</strong> (shorthand: “<span class="math inline">\(X_i\ \text{iid}\)</span>”) if they are statistically independent and identically distributed.</p>
+<p><span class="theorem-title"><strong>Definition B.17 (Independent and identically distributed)</strong></span> A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>independent and identically distributed</strong> (shorthand: “<span class="math inline">\(X_i\ \text{iid}\)</span>”) if they are statistically independent and identically distributed.</p>
 </div>
 <hr>
 <div id="def-iid" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition A.18 (Conditionally independent and identically distributed)</strong></span> A set of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are <strong>conditionally independent and identically distributed</strong> (shorthand: “<span class="math inline">\(Y_i | X_i\ \text{ciid}\)</span>” or just “<span class="math inline">\(Y_i |X_i\ \text{iid}\)</span>”) given a set of covariates <span class="math inline">\(X_1, \ldots, X_n\)</span> if <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are conditionally independent given <span class="math inline">\(X_1, \ldots, X_n\)</span> and <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are identically distributed given <span class="math inline">\(X_1, \ldots, X_n\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition B.18 (Conditionally independent and identically distributed)</strong></span> A set of random variables <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are <strong>conditionally independent and identically distributed</strong> (shorthand: “<span class="math inline">\(Y_i | X_i\ \text{ciid}\)</span>” or just “<span class="math inline">\(Y_i |X_i\ \text{iid}\)</span>”) given a set of covariates <span class="math inline">\(X_1, \ldots, X_n\)</span> if <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are conditionally independent given <span class="math inline">\(X_1, \ldots, X_n\)</span> and <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are identically distributed given <span class="math inline">\(X_1, \ldots, X_n\)</span>.</p>
 </div>
 
 
@@ -1274,13 +1295,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
+      <a href="./math-prereqs.html" class="pagination-link" aria-label="Mathematics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mathematics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./estimation.html" class="pagination-link" aria-label="Estimation">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -1419,7 +1440,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>:::{#thm-variance}</span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Alternative expression for variance</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Simplified expression for variance</span></span>
 <span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>$$\Var{X}=\E{X^2} - \sqf{\E{X}}$$</span>
 <span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a></span>
@@ -1620,76 +1641,85 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a>::: notes</span>
 <span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a>:::{#def-cind}</span>
-<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conditional independence</span></span>
-<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{Y}$ are **conditionally statistically independent** </span>
-<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a>given a set of covariates $\X1n$</span>
-<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a>if the joint probability of the $Y_i$s given the $X_i$s is equal to </span>
-<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a>the product of their marginal probabilities:</span>
+<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a>::::{.callout-tip}</span>
+<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a>The symbol for independence, $\ind$, is essentially just $\prod$ upside-down.</span>
+<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a>So the symbol can remind you of its definition (@def-indpt).</span>
+<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a>$$\Pr(\dsvn{Y}{y}|\dsvn{X}{x}) = \prodi1n{\Pr(Y_i=y_i|X_i=x_i)}$$</span>
+<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a>:::{#def-cind}</span>
 <span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conditional independence</span></span>
 <span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a>:::{#def-ident}</span>
-<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Identically distributed</span></span>
-<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a>A set of random variables $\X1n$ are **identically distributed**</span>
-<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a>if they have the same range $\rangef{X}$ and if</span>
-<span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a>their marginal distributions $\P(X_1=x_1), ..., \P(X_n=x_n)$ are all </span>
-<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a>equal to some shared distribution $\P(X=x)$:</span>
+<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{Y}$ are **conditionally statistically independent** </span>
+<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a>given a set of covariates $\X1n$</span>
+<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a>if the joint probability of the $Y_i$s given the $X_i$s is equal to </span>
+<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a>the product of their marginal probabilities:</span>
+<span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a>$$\Pr(\dsvn{Y}{y}|\dsvn{X}{x}) = \prodi1n{\Pr(Y_i=y_i|X_i=x_i)}$$</span>
+<span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb3-362"><a href="#cb3-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a>\forall i\in \set{1:n}, \forall x \in \rangef{X}: \P(X_i=x) = \P(X=x)</span>
-<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>:::{#def-ident}</span>
+<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Identically distributed</span></span>
 <span id="cb3-366"><a href="#cb3-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-369"><a href="#cb3-369" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-370"><a href="#cb3-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-371"><a href="#cb3-371" aria-hidden="true" tabindex="-1"></a>:::{#def-cident}</span>
-<span id="cb3-372"><a href="#cb3-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-373"><a href="#cb3-373" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Conditionally identically distributed</span></span>
-<span id="cb3-374"><a href="#cb3-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-375"><a href="#cb3-375" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{Y}$ are **conditionally identically distributed** </span>
-<span id="cb3-376"><a href="#cb3-376" aria-hidden="true" tabindex="-1"></a>given a set of covariates $\X1n$ </span>
-<span id="cb3-377"><a href="#cb3-377" aria-hidden="true" tabindex="-1"></a>if $\dsn{Y}$ have the same range $\rangef{X}$ and if</span>
-<span id="cb3-378"><a href="#cb3-378" aria-hidden="true" tabindex="-1"></a>the distributions $\P(Y_i=y_i|X_i =x_i)$ are all </span>
-<span id="cb3-379"><a href="#cb3-379" aria-hidden="true" tabindex="-1"></a>equal to the same distribution $\P(Y=y|X=x)$:</span>
-<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-381"><a href="#cb3-381" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-382"><a href="#cb3-382" aria-hidden="true" tabindex="-1"></a>\P(Y_i=y|X_i=x) = \P(Y=y|X=x)</span>
-<span id="cb3-383"><a href="#cb3-383" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-384"><a href="#cb3-384" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb3-385"><a href="#cb3-385" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-386"><a href="#cb3-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-387"><a href="#cb3-387" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-388"><a href="#cb3-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-389"><a href="#cb3-389" aria-hidden="true" tabindex="-1"></a>:::{#def-iid}</span>
-<span id="cb3-390"><a href="#cb3-390" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Independent and identically distributed</span></span>
-<span id="cb3-391"><a href="#cb3-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-392"><a href="#cb3-392" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{X}$ are **independent and identically distributed**</span>
-<span id="cb3-393"><a href="#cb3-393" aria-hidden="true" tabindex="-1"></a>(shorthand: "$X_i\ \iid$") if they are statistically independent and identically distributed.</span>
-<span id="cb3-394"><a href="#cb3-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-395"><a href="#cb3-395" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-396"><a href="#cb3-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-397"><a href="#cb3-397" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-398"><a href="#cb3-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-399"><a href="#cb3-399" aria-hidden="true" tabindex="-1"></a>:::{#def-iid}</span>
-<span id="cb3-400"><a href="#cb3-400" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Conditionally independent and identically distributed</span></span>
-<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-402"><a href="#cb3-402" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{Y}$ are **conditionally independent and identically distributed** (shorthand: "$Y_i | X_i\ \ciid$" or just "$Y_i |X_i\ \iid$") given a set of covariates $\dsn{X}$</span>
-<span id="cb3-403"><a href="#cb3-403" aria-hidden="true" tabindex="-1"></a>if $\dsn{Y}$ are conditionally independent given $\dsn{X}$ and $\dsn{Y}$ are identically distributed given </span>
-<span id="cb3-404"><a href="#cb3-404" aria-hidden="true" tabindex="-1"></a>$\dsn{X}$.</span>
+<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a>A set of random variables $\X1n$ are **identically distributed**</span>
+<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a>if they have the same range $\rangef{X}$ and if</span>
+<span id="cb3-369"><a href="#cb3-369" aria-hidden="true" tabindex="-1"></a>their marginal distributions $\P(X_1=x_1), ..., \P(X_n=x_n)$ are all </span>
+<span id="cb3-370"><a href="#cb3-370" aria-hidden="true" tabindex="-1"></a>equal to some shared distribution $\P(X=x)$:</span>
+<span id="cb3-371"><a href="#cb3-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-372"><a href="#cb3-372" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-373"><a href="#cb3-373" aria-hidden="true" tabindex="-1"></a>\forall i\in \set{1:n}, \forall x \in \rangef{X}: \P(X_i=x) = \P(X=x)</span>
+<span id="cb3-374"><a href="#cb3-374" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-375"><a href="#cb3-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-376"><a href="#cb3-376" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-377"><a href="#cb3-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-378"><a href="#cb3-378" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-379"><a href="#cb3-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-380"><a href="#cb3-380" aria-hidden="true" tabindex="-1"></a>:::{#def-cident}</span>
+<span id="cb3-381"><a href="#cb3-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-382"><a href="#cb3-382" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Conditionally identically distributed</span></span>
+<span id="cb3-383"><a href="#cb3-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-384"><a href="#cb3-384" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{Y}$ are **conditionally identically distributed** </span>
+<span id="cb3-385"><a href="#cb3-385" aria-hidden="true" tabindex="-1"></a>given a set of covariates $\X1n$ </span>
+<span id="cb3-386"><a href="#cb3-386" aria-hidden="true" tabindex="-1"></a>if $\dsn{Y}$ have the same range $\rangef{X}$ and if</span>
+<span id="cb3-387"><a href="#cb3-387" aria-hidden="true" tabindex="-1"></a>the distributions $\P(Y_i=y_i|X_i =x_i)$ are all </span>
+<span id="cb3-388"><a href="#cb3-388" aria-hidden="true" tabindex="-1"></a>equal to the same distribution $\P(Y=y|X=x)$:</span>
+<span id="cb3-389"><a href="#cb3-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-390"><a href="#cb3-390" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-391"><a href="#cb3-391" aria-hidden="true" tabindex="-1"></a>\P(Y_i=y|X_i=x) = \P(Y=y|X=x)</span>
+<span id="cb3-392"><a href="#cb3-392" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-393"><a href="#cb3-393" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb3-394"><a href="#cb3-394" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb3-395"><a href="#cb3-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-396"><a href="#cb3-396" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-397"><a href="#cb3-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-398"><a href="#cb3-398" aria-hidden="true" tabindex="-1"></a>:::{#def-iid}</span>
+<span id="cb3-399"><a href="#cb3-399" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Independent and identically distributed</span></span>
+<span id="cb3-400"><a href="#cb3-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-401"><a href="#cb3-401" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{X}$ are **independent and identically distributed**</span>
+<span id="cb3-402"><a href="#cb3-402" aria-hidden="true" tabindex="-1"></a>(shorthand: "$X_i\ \iid$") if they are statistically independent and identically distributed.</span>
+<span id="cb3-403"><a href="#cb3-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-404"><a href="#cb3-404" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-405"><a href="#cb3-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-406"><a href="#cb3-406" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-406"><a href="#cb3-406" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-407"><a href="#cb3-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-408"><a href="#cb3-408" aria-hidden="true" tabindex="-1"></a>:::{#def-iid}</span>
+<span id="cb3-409"><a href="#cb3-409" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Conditionally independent and identically distributed</span></span>
+<span id="cb3-410"><a href="#cb3-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-411"><a href="#cb3-411" aria-hidden="true" tabindex="-1"></a>A set of random variables $\dsn{Y}$ are **conditionally independent and identically distributed** (shorthand: "$Y_i | X_i\ \ciid$" or just "$Y_i |X_i\ \iid$") given a set of covariates $\dsn{X}$</span>
+<span id="cb3-412"><a href="#cb3-412" aria-hidden="true" tabindex="-1"></a>if $\dsn{Y}$ are conditionally independent given $\dsn{X}$ and $\dsn{Y}$ are identically distributed given </span>
+<span id="cb3-413"><a href="#cb3-413" aria-hidden="true" tabindex="-1"></a>$\dsn{X}$.</span>
+<span id="cb3-414"><a href="#cb3-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-415"><a href="#cb3-415" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

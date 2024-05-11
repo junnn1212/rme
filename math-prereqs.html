@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Ezra Morrison">
 
-<title>Regression Models for Epidemiology</title>
+<title>Regression Models for Epidemiology - Appendix A — Mathematics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,7 +84,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro-to-GLMs.html" rel="next">
+<link href="./probability.html" rel="next">
+<link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,6 +147,35 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
   });
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="custom.scss">
 </head>
@@ -160,7 +189,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./math-prereqs.html">Appendices</a></li><li class="breadcrumb-item"><a href="./math-prereqs.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mathematics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -197,7 +226,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -288,7 +317,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./math-prereqs.html" class="sidebar-item-text sidebar-link">
+  <a href="./math-prereqs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mathematics</span></span></a>
   </div>
 </li>
@@ -352,50 +381,31 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <li><a href="#some-key-facts" id="toc-some-key-facts" class="nav-link active" data-scroll-target="#some-key-facts"><span class="header-section-number">A.1</span> Some key facts</a>
   <ul class="collapse">
-  <li><a href="#using-these-lecture-notes" id="toc-using-these-lecture-notes" class="nav-link" data-scroll-target="#using-these-lecture-notes">Using these lecture notes</a>
-  <ul class="collapse">
-  <li><a href="#compiling-chapters-as-lecture-slide-decks" id="toc-compiling-chapters-as-lecture-slide-decks" class="nav-link" data-scroll-target="#compiling-chapters-as-lecture-slide-decks">Compiling chapters as lecture slide decks</a></li>
-  <li><a href="#extracting-latex-commands-from-the-online-version-of-the-notes" id="toc-extracting-latex-commands-from-the-online-version-of-the-notes" class="nav-link" data-scroll-target="#extracting-latex-commands-from-the-online-version-of-the-notes">Extracting LaTeX commands from the online version of the notes</a></li>
-  <li><a href="#dark-mode" id="toc-dark-mode" class="nav-link" data-scroll-target="#dark-mode">Dark Mode</a></li>
+  <li><a href="#logarithms-and-exponentials" id="toc-logarithms-and-exponentials" class="nav-link" data-scroll-target="#logarithms-and-exponentials"><span class="header-section-number">A.1.1</span> logarithms and exponentials</a></li>
   </ul></li>
-  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other resources</a></li>
-  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">License</a></li>
-  </ul></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">A.2</span> Additional resources</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/math-prereqs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./math-prereqs.html">Appendices</a></li><li class="breadcrumb-item"><a href="./math-prereqs.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mathematics</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Regression Models for Epidemiology</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Appendix A — Mathematics</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://demorrison.ucdavis.edu/">Ezra Morrison</a> </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Department of Public Health Sciences, School of Medicine, University of California, Davis
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-11: 16:16:21 (PM)</p>
+      <p class="date">Last modified: 2024-05-11: 13:17:09 (PM)</p>
     </div>
   </div>
   
@@ -407,134 +417,79 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This web-book is derived from my lecture slides for Epidemiology 204: “Quantitative Epidemiology III: Statistical Models”, at UC Davis.</p>
-<p>I have drawn these materials from many sources, including but not limited to:</p>
-<ul>
-<li><p><a href="https://dmrocke.ucdavis.edu/">David Rocke</a>’s materials from the <a href="https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html">2021 edition of this course</a></p></li>
-<li><p><a href="https://hua-zhou.github.io/">Hua Zhou</a>’s materials from the <a href="https://ucla-biostat-200c-2020spring.github.io/schedule/schedule.html">2020 edition of Biostat 200C at UCLA</a></p></li>
-<li><p><span class="citation" data-cites="vittinghoff2e">Vittinghoff et al. (<a href="references.html#ref-vittinghoff2e" role="doc-biblioref">2012</a>)</span></p></li>
-<li><p><span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span></p></li>
-<li><p><span class="citation" data-cites="rms2e">Harrell (<a href="references.html#ref-rms2e" role="doc-biblioref">2015</a>)</span></p></li>
-</ul>
-<section id="using-these-lecture-notes" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="using-these-lecture-notes">Using these lecture notes</h2>
-<p>These lecture notes are available online at <a href="https://d-morrison.github.io/rme/" class="uri">https://d-morrison.github.io/rme/</a>. The online notes are searchable and are currently being iteratively updated<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. A pdf version of the notes is also downloadable from <a href="https://d-morrison.github.io/rme/Regression-Models-for-Epidemiology.pdf" class="uri">https://d-morrison.github.io/rme/Regression-Models-for-Epidemiology.pdf</a>, and the source files are available at <a href="https://github.com/d-morrison/rme" class="uri">https://github.com/d-morrison/rme</a>.</p>
-<section id="compiling-chapters-as-lecture-slide-decks" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="compiling-chapters-as-lecture-slide-decks">Compiling chapters as lecture slide decks</h3>
-<p>Each chapter’s source file can also be compiled as a lecture slide deck, using the <a href="https://github.com/d-morrison/rme/blob/main/_quarto-revealjs.yml"><code>_quarto-revealjs.yml</code></a> <a href="https://quarto.org/docs/projects/profiles.html">Quarto profile</a> included in the <a href="https://github.com/d-morrison/rme">git repository on Github</a>.</p>
-<p>For example, to compile <a href="logistic-regression.html" class="quarto-xref">Chapter&nbsp;<span>3&nbsp; Models for Binary Outcomes</span></a> as a slide deck:</p>
-<ol type="1">
-<li><p><a href="https://quarto.org/docs/get-started/">install quarto</a></p></li>
-<li><p>clone the project repository from <a href="https://github.com/d-morrison/rme">Github</a></p></li>
-<li><p>Install the project dependencies using <code>devtools</code>:</p></li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools) <span class="co"># install from CRAN if needed</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_deps</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li>Render the chapter using the <code>revealjs</code> profile using the following terminal shell command:</li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render logistic-regression.qmd <span class="at">--profile</span><span class="op">=</span>revealjs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can also render all the chapters listed in the <a href="https://github.com/d-morrison/rme/blob/main/_quarto-revealjs.yml"><code>_quarto-revealjs.yml</code></a> <a href="https://quarto.org/docs/projects/profiles.html">Quarto profile</a> as slide decks simultaneously:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--profile</span><span class="op">=</span>revealjs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These lecture notes use calculus and linear algebra.</p>
+<section id="some-key-facts" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="some-key-facts"><span class="header-section-number">A.1</span> Some key facts</h2>
+<section id="logarithms-and-exponentials" class="level3" data-number="A.1.1">
+<h3 data-number="A.1.1" class="anchored" data-anchor-id="logarithms-and-exponentials"><span class="header-section-number">A.1.1</span> logarithms and exponentials</h3>
+<div id="thm-deriv-log" class="theorem">
+<p><span class="theorem-title"><strong>Theorem A.1</strong></span> <span class="math display">\[\text{log}'\left\{x\right\} = \frac{1}{x} = x^{-1}\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Left to the reader.</p>
+</div>
 <hr>
-</section>
-<section id="extracting-latex-commands-from-the-online-version-of-the-notes" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="extracting-latex-commands-from-the-online-version-of-the-notes">Extracting LaTeX commands from the online version of the notes</h3>
-<p>If you want to extract the LaTeX commands for any math expressions in the online lecture notes, you should be able to right-click and get this pop-up menu:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Pop-up menu</figcaption>
-<p><img src="images/latex-popup-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="cor-deriv-log-chain" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary A.1</strong></span> <span class="math display">\[
+\frac{\partial}{\partial x}\text{log}\left\{f(x)\right\} = \frac{f'(x)}{f(x)}
+\]</span></p>
 </div>
-<p>If you select “TeX commands”, you will get a window with MathJax code, which is more or less a dialect of LaTeX:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>MathJax code window</figcaption>
-<p><img src="images/latex-popup-2.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Apply the chain rule and <a href="#thm-deriv-log" class="quarto-xref">Theorem&nbsp;<span>A.1</span></a>.</p>
 </div>
-<p>You can also grab the TeX commands from the quarto source files on github, but those files use custom macros (defined in <a href="https://github.com/d-morrison/rme/blob/main/macros.qmd" class="uri">https://github.com/d-morrison/rme/blob/main/macros.qmd</a>), so it’s a little harder to reuse code from the source files.</p>
 <hr>
-</section>
-<section id="dark-mode" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="dark-mode">Dark Mode</h3>
-<p>The online notes have two color palette themes: light and dark. You can toggle between them using the oval button near the top-left corner:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Palette toggle</figcaption>
-<p><img src="images/dark-mode.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="thm-log-exp" class="theorem">
+<p><span class="theorem-title"><strong>Theorem A.2</strong></span> <span class="math display">\[
+\text{log}\left\{a^b\right\} = b \cdot\text{log}\left\{a\right\}
+\]</span></p>
+</div>
+<div id="thm-log-prod" class="theorem">
+<p><span class="theorem-title"><strong>Theorem A.3</strong></span> <span class="math display">\[
+\text{log}\left\{a\cdot b\right\} = \text{log}\left\{a\right\} + \text{log}\left\{b\right\}
+\]</span></p>
+</div>
+<div id="cor-log-quot" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary A.2</strong></span> <span class="math display">\[\text{log}\left\{\frac{a}{b}\right\} = \text{log}\left\{a\right\} - \text{log}\left\{b\right\}\]</span></p>
+</div>
+<div id="thm-exp-sum" class="theorem">
+<p><span class="theorem-title"><strong>Theorem A.4</strong></span> <span class="math display">\[\text{exp}\left\{a+b\right\} = \text{exp}\left\{a\right\} \cdot\text{exp}\left\{b\right\}\]</span></p>
 </div>
 </section>
 </section>
-<section id="other-resources" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="other-resources">Other resources</h2>
-<p>These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and I encourage you to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes.</p>
-<p>Here are some additional resources:</p>
+<section id="additional-resources" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">A.2</span> Additional resources</h2>
+<p>Calculus:</p>
 <ul>
-<li><p><span class="citation" data-cites="dunn2018generalized">Dunn, Smyth, et al. (<a href="references.html#ref-dunn2018generalized" role="doc-biblioref">2018</a>)</span> is a recent textbook on GLMs. It doesn’t cover time-to-event models, and it doesn’t use the modern <a href="https://tidyverse.org/"><code>tidyverse</code></a> packages (<a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a>, <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a>, etc.), but otherwise it seems great.</p></li>
-<li><p><span class="citation" data-cites="moore2016applied">Moore (<a href="references.html#ref-moore2016applied" role="doc-biblioref">2016</a>)</span> is a recent textbook on survival analysis. It also doesn’t use the <code>tidyverse</code>, but otherwise seems great.</p></li>
-<li><p><span class="citation" data-cites="rms2e">Harrell (<a href="references.html#ref-rms2e" role="doc-biblioref">2015</a>)</span> is another popular textbook. It uses <a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a> but not <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a>, and covers GLMs and survival analysis. An abbreviated but continuously updated version with audio clips is available at <a href="https://hbiostat.org/rmsc/" class="uri">https://hbiostat.org/rmsc/</a>.</p></li>
-<li><p><span class="citation" data-cites="fox2015applied">Fox (<a href="references.html#ref-fox2015applied" role="doc-biblioref">2015</a>)</span> is another standard text.</p></li>
-<li><p><span class="citation" data-cites="mccullaghnelder">McCullagh and Nelder (<a href="references.html#ref-mccullaghnelder" role="doc-biblioref">1989</a>)</span> is a classic, theoretical textbook on GLMs</p></li>
-<li><p><span class="citation" data-cites="dalgaardintroductory">Dalgaard (<a href="references.html#ref-dalgaardintroductory" role="doc-biblioref">2008</a>)</span> covers GLMs and survival analysis at an applied level, using base R</p></li>
-<li><p><span class="citation" data-cites="vittinghoff2e">Vittinghoff et al. (<a href="references.html#ref-vittinghoff2e" role="doc-biblioref">2012</a>)</span> covers GLMs, survival analysis, and causal inference, using Stata</p></li>
-<li><p><span class="citation" data-cites="faraway2016extending">Faraway (<a href="references.html#ref-faraway2016extending" role="doc-biblioref">2016</a>)</span> has GLMs but not survival analysis</p></li>
-<li><p><a href="https://ucla-biostat-200c-2020spring.github.io/schedule/schedule.html" class="uri">https://ucla-biostat-200c-2020spring.github.io/schedule/schedule.html</a> provides course notes for “Biostat 200C - Methods in Biostatistics C” at UCLA, which is at the Biostatistics MS level.</p></li>
-<li><p><a href="https://online.stat.psu.edu/stat504/book/" class="uri">https://online.stat.psu.edu/stat504/book/</a> provides course notes for “STAT 504 - Analysis of Discrete Data” at Penn State University. It includes logistic regression and Poisson regression, as well as 2-way tables and other related topics, and includes SAS code.</p></li>
-<li><p><span class="citation" data-cites="NahhasIRMPHR">Nahhas (<a href="references.html#ref-NahhasIRMPHR" role="doc-biblioref">n.d.</a>)</span> is currently in-development</p></li>
+<li><span class="citation" data-cites="khuri2003advanced">Khuri (<a href="references.html#ref-khuri2003advanced" role="doc-biblioref">2003</a>)</span></li>
 </ul>
-</section>
-<section id="license" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="license">License</h2>
-<p>This book is licensed to you under <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
-<p>The code samples in this book are licensed under <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 1.0 Universal (CC0 1.0)</a>, i.e.&nbsp;public domain.</p>
+<p>Linear Algebra:</p>
+<ul>
+<li><span class="citation" data-cites="fieller2018basics">Fieller (<a href="references.html#ref-fieller2018basics" role="doc-biblioref">2016</a>)</span></li>
+<li><span class="citation" data-cites="banerjee2014linear">Banerjee and Roy (<a href="references.html#ref-banerjee2014linear" role="doc-biblioref">2014</a>)</span></li>
+<li><span class="citation" data-cites="searle2017matrix">Searle and Khuri (<a href="references.html#ref-searle2017matrix" role="doc-biblioref">2017</a>)</span></li>
+</ul>
+<p>Both and more:</p>
+<ul>
+<li><a href="https://hua-zhou.github.io/">Hua Zhou</a>’s <a href="https://ucla-biostat-216.github.io/2023fall/schedule/schedule.html">lecture notes for “UCLA Biostat 216 - Mathematical Methods for Biostatistics” (2023 Fall)</a></li>
+</ul>
 
 
 <!-- -->
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-dalgaardintroductory" class="csl-entry" role="listitem">
-Dalgaard, Peter. 2008. <em>Introductory Statistics with r</em>. New York, NY: Springer New York. <a href="https://link.springer.com/book/10.1007/978-0-387-79054-1">https://link.springer.com/book/10.1007/978-0-387-79054-1</a>.
+<div id="ref-banerjee2014linear" class="csl-entry" role="listitem">
+Banerjee, Sudipto, and Anindya Roy. 2014. <em>Linear Algebra and Matrix Analysis for Statistics</em>. Vol. 181. Crc Press Boca Raton.
 </div>
-<div id="ref-dobson4e" class="csl-entry" role="listitem">
-Dobson, Annette J, and Adrian G Barnett. 2018. <em>An Introduction to Generalized Linear Models</em>. 4th ed. CRC press. <a href="https://doi.org/10.1201/9781315182780">https://doi.org/10.1201/9781315182780</a>.
+<div id="ref-fieller2018basics" class="csl-entry" role="listitem">
+Fieller, Nick. 2016. <em>Basics of Matrix Algebra for Statistics with r</em>. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781315370200">https://doi.org/10.1201/9781315370200</a>.
 </div>
-<div id="ref-dunn2018generalized" class="csl-entry" role="listitem">
-Dunn, Peter K, Gordon K Smyth, et al. 2018. <em>Generalized Linear Models with Examples in r</em>. Vol. 53. Springer. <a href="https://link.springer.com/book/10.1007/978-1-4419-0118-7">https://link.springer.com/book/10.1007/978-1-4419-0118-7</a>.
+<div id="ref-khuri2003advanced" class="csl-entry" role="listitem">
+Khuri, André I. 2003. <em>Advanced Calculus with Applications in Statistics</em>. John Wiley &amp; Sons. <a href="https://www.wiley.com/en-us/Advanced+Calculus+with+Applications+in+Statistics%2C+2nd+Edition-p-9780471391043">https://www.wiley.com/en-us/Advanced+Calculus+with+Applications+in+Statistics%2C+2nd+Edition-p-9780471391043</a>.
 </div>
-<div id="ref-faraway2016extending" class="csl-entry" role="listitem">
-Faraway, Julian J. 2016. <em>Extending the Linear Model with r: Generalized Linear, Mixed Effects and Nonparametric Regression Models</em>. 2nd ed. Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781315382722">https://doi.org/10.1201/9781315382722</a>.
-</div>
-<div id="ref-fox2015applied" class="csl-entry" role="listitem">
-Fox, John. 2015. <em>Applied Regression Analysis and Generalized Linear Models</em>. Sage publications.
-</div>
-<div id="ref-rms2e" class="csl-entry" role="listitem">
-Harrell, Frank E. 2015. <em>Regression Modeling Strategies: With Applications to Linear Models, Logistic Regression, and Survival Analysis</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-3-319-19425-7">https://doi.org/10.1007/978-3-319-19425-7</a>.
-</div>
-<div id="ref-mccullaghnelder" class="csl-entry" role="listitem">
-McCullagh, Peter, and J. A. Nelder. 1989. <em>Generalized Linear Models</em>. 2nd ed. Routledge. <a href="https://www.utstat.toronto.edu/~brunner/oldclass/2201s11/readings/glmbook.pdf">https://www.utstat.toronto.edu/~brunner/oldclass/2201s11/readings/glmbook.pdf</a>.
-</div>
-<div id="ref-moore2016applied" class="csl-entry" role="listitem">
-Moore, Dirk F. 2016. <em>Applied Survival Analysis Using r</em>. Vol. 473. Springer.
-</div>
-<div id="ref-NahhasIRMPHR" class="csl-entry" role="listitem">
-Nahhas, Ramzi W. n.d. <em>Introduction to Regression Methods for Public Health Using r</em>. CRC Press. <a href="https://www.bookdown.org/rwnahhas/RMPH/">https://www.bookdown.org/rwnahhas/RMPH/</a>.
-</div>
-<div id="ref-vittinghoff2e" class="csl-entry" role="listitem">
-Vittinghoff, Eric, David V Glidden, Stephen C Shiboski, and Charles E McCulloch. 2012. <em>Regression Methods in Biostatistics: Linear, Logistic, Survival, and Repeated Measures Models</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-1-4614-1353-0">https://doi.org/10.1007/978-1-4614-1353-0</a>.
+<div id="ref-searle2017matrix" class="csl-entry" role="listitem">
+Searle, Shayle R, and Andre I Khuri. 2017. <em>Matrix Algebra Useful for Statistics</em>. John Wiley &amp; Sons.
 </div>
 </div>
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>see the source file repository for recent changes: <a href="https://github.com/d-morrison/rme" class="uri">https://github.com/d-morrison/rme</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -1146,107 +1101,93 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro-to-GLMs.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./probability.html" class="pagination-link" aria-label="Probability">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Probability</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preface {.unnumbered}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>This web-book is derived from my lecture slides for Epidemiology 204: "Quantitative Epidemiology III: Statistical Models", at UC Davis.</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>I have drawn these materials from many sources, including but not limited to:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">David Rocke</span><span class="co">](https://dmrocke.ucdavis.edu/)</span>'s materials from the <span class="co">[</span><span class="ot">2021 edition of this course </span><span class="co">](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Hua Zhou</span><span class="co">](https://hua-zhou.github.io/)</span>'s materials from the <span class="co">[</span><span class="ot">2020 edition of Biostat 200C at UCLA</span><span class="co">](https://ucla-biostat-200c-2020spring.github.io/schedule/schedule.html)</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@vittinghoff2e</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@dobson4e</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@rms2e</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using these lecture notes {.unnumbered}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>These lecture notes are available online at <span class="ot">&lt;https://d-morrison.github.io/rme/&gt;</span>.</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>The online notes are searchable and are currently being iteratively updated^<span class="co">[</span><span class="ot">see the source file repository for recent changes: &lt;https://github.com/d-morrison/rme&gt;</span><span class="co">]</span>.</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>A pdf version of the notes is also downloadable from <span class="ot">&lt;https://d-morrison.github.io/rme/Regression-Models-for-Epidemiology.pdf&gt;</span>,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>and the source files are available at <span class="ot">&lt;https://github.com/d-morrison/rme&gt;</span>.</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### Compiling chapters as lecture slide decks {.unnumbered}</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>Each chapter's source file can also be compiled as a lecture slide deck, using the </span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">`_quarto-revealjs.yml`</span><span class="co">](https://github.com/d-morrison/rme/blob/main/_quarto-revealjs.yml)</span> <span class="co">[</span><span class="ot">Quarto profile</span><span class="co">](https://quarto.org/docs/projects/profiles.html)</span> </span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>included in the <span class="co">[</span><span class="ot">git repository on Github</span><span class="co">](https://github.com/d-morrison/rme)</span>.</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>For example, to compile <span class="co">[</span><span class="ot">Chapter @sec-Bernoulli-models</span><span class="co">]</span> as a slide deck:</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>1) <span class="co">[</span><span class="ot">install quarto</span><span class="co">](https://quarto.org/docs/get-started/)</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>2) clone the project repository from <span class="co">[</span><span class="ot">Github</span><span class="co">](https://github.com/d-morrison/rme)</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>3) Install the project dependencies using <span class="in">`devtools`</span>:</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="in">``` r </span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools) <span class="co"># install from CRAN if needed</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_deps</span>()</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>4) Render the chapter using the <span class="in">`revealjs`</span> profile using the following terminal shell command:</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render logistic-regression.qmd <span class="at">--profile</span><span class="op">=</span>revealjs</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>You can also render all the chapters listed in the <span class="co">[</span><span class="ot">`_quarto-revealjs.yml`</span><span class="co">](https://github.com/d-morrison/rme/blob/main/_quarto-revealjs.yml)</span> </span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto profile</span><span class="co">](https://quarto.org/docs/projects/profiles.html)</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>as slide decks simultaneously:</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--profile</span><span class="op">=</span>revealjs</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a><span class="fu">### Extracting LaTeX commands from the online version of the notes {.unnumbered}</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>If you want to extract the LaTeX commands for any math expressions in the online lecture notes, you should be able to right-click and get this pop-up menu:</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="al">![Pop-up menu](images/latex-popup-1.png)</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>If you select "TeX commands", you will get a window with MathJax code, which is more or less a dialect of LaTeX:</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="al">![MathJax code window](images/latex-popup-2.png)</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>You can also grab the TeX commands from the quarto source files on github, but those files use custom macros (defined in <span class="ot">&lt;https://github.com/d-morrison/rme/blob/main/macros.qmd&gt;</span>), so it's a little harder to reuse code from the source files.</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dark Mode {.unnumbered}</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>The online notes have two color palette themes: light and dark.</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>You can toggle between them using the oval button near the top-left corner:</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="al">![Palette toggle](images/dark-mode.png)</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other resources {.unnumbered}</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and I encourage you to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes. </span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>Here are some additional resources:</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>{{&lt; include other-resources.qmd &gt;}}</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## License {.unnumbered}</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>This book is licensed to you under <span class="co">[</span><span class="ot">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</span><span class="co">](http://creativecommons.org/licenses/by-nc-nd/4.0/)</span>.</span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>The code samples in this book are licensed under <span class="co">[</span><span class="ot">Creative Commons CC0 1.0 Universal (CC0 1.0)</span><span class="co">](https://creativecommons.org/publicdomain/zero/1.0/)</span>, i.e. public domain.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mathematics</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>{{&lt; include macros.qmd &gt;}}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>These lecture notes use calculus and linear algebra.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Some key facts</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### logarithms and exponentials</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>:::{#thm-deriv-log}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>$$\dlogf{x} = \frac{1}{x} = x^{-1}$$</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>::: proof</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Left to the reader.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>:::{#cor-deriv-log-chain}</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>\deriv{x}\log{f(x)} = \frac{f'(x)}{f(x)}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>::: proof</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>Apply the chain rule and @thm-deriv-log.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>:::{#thm-log-exp}</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>\log{a^b} = b \cd \log{a}</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>:::{#thm-log-prod}</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\log{a\cd b} = \log{a} + \log{b}</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>:::{#cor-log-quot}</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>$$\log{\frac{a}{b}} = \log{a} - \log{b}$$</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>:::{#thm-exp-sum}</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>$$\exp{a+b} = \exp{a} \cd \exp{b}$$</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Additional resources</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>Calculus:</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@khuri2003advanced</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Linear Algebra:</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@fieller2018basics</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@banerjee2014linear</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@searle2017matrix</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>Both and more:</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Hua Zhou</span><span class="co">](https://hua-zhou.github.io/)</span>'s <span class="co">[</span><span class="ot">lecture notes for "UCLA Biostat 216 - Mathematical Methods for Biostatistics" (2023 Fall)</span><span class="co">](https://ucla-biostat-216.github.io/2023fall/schedule/schedule.html)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -1260,7 +1201,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/math-prereqs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
