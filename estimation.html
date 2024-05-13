@@ -420,7 +420,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-23: 16:25:33 (PM)</p>
+      <p class="date">Last modified: 2024-05-12: 21:19:18 (PM)</p>
     </div>
   </div>
   
@@ -552,8 +552,8 @@ Notation for estimators
 <section id="error" class="level3" data-number="C.3.2">
 <h3 data-number="C.3.2" class="anchored" data-anchor-id="error"><span class="header-section-number">C.3.2</span> Error</h3>
 <div id="def-error" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition C.6 (Error)</strong></span> The <strong>error</strong> of an estimate <span class="math inline">\(\hat\theta\)</span> of a true value <span class="math inline">\(\theta\)</span>, often denoted <span class="math inline">\(\epsilon(\hat\theta)\)</span>, or more completely <span class="math inline">\(\epsilon(\hat\theta, \theta)\)</span>, is the difference between the estimate and its estimand <span class="math inline">\(\theta\)</span>; that is:</p>
-<p><span class="math display">\[\epsilon(\hat\theta) \stackrel{\text{def}}{=}\hat\theta- \theta\]</span></p>
+<p><span class="theorem-title"><strong>Definition C.6 (Error)</strong></span> The <strong>error</strong> of an estimate <span class="math inline">\(\hat\theta\)</span> of a true value <span class="math inline">\(\theta\)</span>, often denoted <span class="math inline">\(\varepsilon(\hat\theta)\)</span>, or more completely <span class="math inline">\(\varepsilon(\hat\theta, \theta)\)</span>, is the difference between the estimate and its estimand <span class="math inline">\(\theta\)</span>; that is:</p>
+<p><span class="math display">\[\varepsilon(\hat\theta) \stackrel{\text{def}}{=}\hat\theta- \theta\]</span></p>
 </div>
 <p>Some frequently-used measures of accuracy include:</p>
 </section>
@@ -561,7 +561,7 @@ Notation for estimators
 <h3 data-number="C.3.3" class="anchored" data-anchor-id="mean-squared-error"><span class="header-section-number">C.3.3</span> Mean squared error</h3>
 <div id="def-mse" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.7 (Mean squared error)</strong></span> The <strong>mean squared error</strong> of an estimator <span class="math inline">\(\hat\theta\)</span>, denoted <span class="math inline">\(\text{MSE}\left(\hat\theta\right)\)</span>, is the expectation of the square of the error<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
-<p><span class="math display">\[\text{MSE}\left(\hat\theta\right) \stackrel{\text{def}}{=}\mathbb{E}\left[(\epsilon(\hat\theta))^2\right]\]</span></p>
+<p><span class="math display">\[\text{MSE}\left(\hat\theta\right) \stackrel{\text{def}}{=}\mathbb{E}\left[(\varepsilon(\hat\theta))^2\right]\]</span></p>
 </div>
 </section>
 <section id="mean-absolute-error" class="level3" data-number="C.3.4">
@@ -569,7 +569,7 @@ Notation for estimators
 <div id="def-mae" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.8 (Mean absolute error)</strong></span> The <strong>mean absolute error</strong> of an estimator is the expectation of the absolute value of the error:</p>
 <p><span class="math display">\[
-\text{MAE}\left(\hat\theta\right) \stackrel{\text{def}}{=}\mathbb{E}\left[\left|\epsilon(\hat\theta)\right|\right]
+\text{MAE}\left(\hat\theta\right) \stackrel{\text{def}}{=}\mathbb{E}\left[\left|\varepsilon(\hat\theta)\right|\right]
 \]</span></p>
 </div>
 </section>
@@ -577,7 +577,7 @@ Notation for estimators
 <h3 data-number="C.3.5" class="anchored" data-anchor-id="bias"><span class="header-section-number">C.3.5</span> Bias</h3>
 <div id="def-bias" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.9 (Bias)</strong></span> The <strong>bias</strong> of an estimator <span class="math inline">\(\hat\theta\)</span> for an estimand <span class="math inline">\(\theta\)</span> is the expected value of the error:</p>
-<p><span id="eq-bias-def"><span class="math display">\[\text{Bias}\left(\hat\theta\right) \stackrel{\text{def}}{=}\mathbb{E}\left[\epsilon(\hat\theta)\right] \tag{C.1}\]</span></span></p>
+<p><span id="eq-bias-def"><span class="math display">\[\text{Bias}\left(\hat\theta\right) \stackrel{\text{def}}{=}\mathbb{E}\left[\varepsilon(\hat\theta)\right] \tag{C.1}\]</span></span></p>
 </div>
 <hr>
 <div id="thm-bias-exprs" class="theorem">
@@ -587,7 +587,7 @@ Notation for estimators
 <p><span class="proof-title"><em>Proof</em>. </span><span class="math display">\[
 \begin{aligned}
 \text{Bias}\left(\hat\theta\right)
-&amp;\stackrel{\text{def}}{=}\mathbb{E}\left[\epsilon(\hat\theta)\right]\\
+&amp;\stackrel{\text{def}}{=}\mathbb{E}\left[\varepsilon(\hat\theta)\right]\\
 &amp;= \mathbb{E}\left[\hat\theta- \theta\right]\\
 &amp;=\mathbb{E}\left[\hat\theta\right] - \mathbb{E}\left[\theta\right]\\
 &amp;=\mathbb{E}\left[\hat\theta\right] - \theta
@@ -656,7 +656,7 @@ Notation for estimators
 <p><span class="math display">\[
 \begin{aligned}
 \text{MSE}\left(\hat\theta\right)
-&amp;\stackrel{\text{def}}{=}\mathbb{E}\left[\left(\epsilon(\hat\theta)\right)^2\right]\\
+&amp;\stackrel{\text{def}}{=}\mathbb{E}\left[\left(\varepsilon(\hat\theta)\right)^2\right]\\
 &amp;= \mathbb{E}\left[\left(\hat\theta- \theta\right)^2\right]\\
 &amp;= \mathbb{E}\left[\left(\hat\theta- \mathbb{E}\left[\hat\theta\right]\right)^2\right]\\
 &amp;\stackrel{\text{def}}{=}\text{Var}\left(\hat\theta\right)
@@ -682,15 +682,15 @@ Notation for estimators
 <p><span class="theorem-title"><strong>Definition C.11 (Standard error)</strong></span> The <strong>standard error</strong> of an estimator <span class="math inline">\(\hat\theta\)</span> is just the <a href="./probability.html#def-sd">standard deviation</a> of <span class="math inline">\(\hat\theta\)</span>; that is:</p>
 <p><span class="math display">\[\text{SE}\left(\hat\theta\right) \stackrel{\text{def}}{=}\text{SD}\left(\hat\theta\right)\]</span></p>
 </div>
-<p>“Standard error” is a confusing concept in a few ways. First of all, it isn’t even defined as a characteristic of the <a href="#def-error">error</a>, <span class="math inline">\(\epsilon(\hat\theta)\)</span>! Moreover, it is just a synonym for standard deviation, so it seems like a redundant concept. However, standard errors help us construct p-values and confidence intervals, so they come up a lot - often enough to give them their own name.</p>
+<p>“Standard error” is a confusing concept in a few ways. First of all, it isn’t even defined as a characteristic of the <a href="#def-error">error</a>, <span class="math inline">\(\varepsilon(\hat\theta)\)</span>! Moreover, it is just a synonym for standard deviation, so it seems like a redundant concept. However, standard errors help us construct p-values and confidence intervals, so they come up a lot - often enough to give them their own name.</p>
 <p>We can relate standard error to actual error, by rearranging the result from <a href="#thm-mse-bias-variance" class="quarto-xref">Theorem&nbsp;<span>C.2</span></a>:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \text{Var}\left(\hat\theta\right) &amp;= \text{Var}\left(\hat\theta- \theta\right)\\
-&amp;= \text{Var}\left(\epsilon(\hat\theta)\right)\\
+&amp;= \text{Var}\left(\varepsilon(\hat\theta)\right)\\
 \end{aligned}
 \]</span> So the variance of the estimator is equal to the variance of the error, and the standard error is equal to the standard deviation of the error:</p>
-<p><span class="math display">\[\text{SE}\left(\hat\theta\right) = \text{SD}\left(\epsilon(\hat\theta)\right)\]</span></p>
+<p><span class="math display">\[\text{SE}\left(\hat\theta\right) = \text{SD}\left(\varepsilon(\hat\theta)\right)\]</span></p>
 <hr>
 <div id="cor-var-mse-bias" class="theorem corollary">
 <p><span class="theorem-title"><strong>Corollary C.1 (Standard error squared equals MSE minus squared bias)</strong></span> standard error is what is left over of MSE after bias is removed:</p>
@@ -706,7 +706,7 @@ Notation for estimators
 \]</span></p>
 </div>
 <div id="cor-se-rmse-unbiased" class="theorem corollary">
-<p><span class="theorem-title"><strong>Corollary C.2 (For unbiased estimators, SE = RMSE)</strong></span> If <span class="math inline">\(\mathbb{E}\left[\epsilon\left(\hat\theta\right)\right] = 0\)</span>, then:</p>
+<p><span class="theorem-title"><strong>Corollary C.2 (For unbiased estimators, SE = RMSE)</strong></span> If <span class="math inline">\(\mathbb{E}\left[\varepsilon\left(\hat\theta\right)\right] = 0\)</span>, then:</p>
 <p><span class="math display">\[\text{SE}\left(\hat\theta\right) = \sqrt{\text{MSE}\left(\hat\theta\right)}\]</span></p>
 <p>(this result is equivalent to <a href="#eq-unbiased-mse" class="quarto-xref">Equation&nbsp;<span>C.4</span></a>)</p>
 </div>
@@ -1542,7 +1542,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>The **mean squared error** of an estimator $\hth$, denoted</span>
 <span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>$\mselr{\hth}$, is the expectation of the square of the error<span class="ot">[^1]</span>:</span>
 <span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>$$\mselr{\hth} \eqdef \E{(\epsilon(\hth))^2}$$</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>$$\mselr{\hth} \eqdef \E{(\err(\hth))^2}$$</span>
 <span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mean absolute error</span></span>
@@ -1554,7 +1554,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>absolute value of the error:</span>
 <span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>\maelr{\hth} \eqdef \E{\abs{\epsilon(\hth)}}</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>\maelr{\hth} \eqdef \E{\abs{\err(\hth)}}</span>
 <span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
@@ -1566,7 +1566,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>The **bias** of an estimator $\hth$ for an estimand $\theta$ is the</span>
 <span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>expected value of the error:</span>
 <span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>$$\bias{\hth} \eqdef \E{\epsilon(\hth)}$$ {#eq-bias-def}</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>$$\bias{\hth} \eqdef \E{\err(\hth)}$$ {#eq-bias-def}</span>
 <span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>---</span>
@@ -1583,7 +1583,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
 <span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a>\bias{\hth} </span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \E{\epsilon(\hth)}<span class="sc">\\</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \E{\err(\hth)}<span class="sc">\\</span></span>
 <span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a>&amp;= \E{\hth - \theta}<span class="sc">\\</span></span>
 <span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>&amp;=\E{\hth} - \E{\theta}<span class="sc">\\</span></span>
 <span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>&amp;=\E{\hth} - \theta</span>
