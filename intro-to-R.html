@@ -357,17 +357,21 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
   <li><a href="#methods-versus-functions" id="toc-methods-versus-functions" class="nav-link" data-scroll-target="#methods-versus-functions"><span class="header-section-number">H.1.1</span> Methods versus functions</a></li>
   <li><a href="#debugging-r-and-c-code" id="toc-debugging-r-and-c-code" class="nav-link" data-scroll-target="#debugging-r-and-c-code"><span class="header-section-number">H.1.2</span> Debugging R and C code</a></li>
   </ul></li>
-  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse"><span class="header-section-number">H.2</span> The <code>tidyverse</code></a></li>
-  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping"><span class="header-section-number">H.3</span> Piping</a>
+  <li><a href="#data.frames-and-tibbles" id="toc-data.frames-and-tibbles" class="nav-link" data-scroll-target="#data.frames-and-tibbles"><span class="header-section-number">H.2</span> <code>data.frame</code>s and <code>tibble</code>s</a>
   <ul class="collapse">
-  <li><a href="#which-pipe-should-i-use" id="toc-which-pipe-should-i-use" class="nav-link" data-scroll-target="#which-pipe-should-i-use"><span class="header-section-number">H.3.1</span> Which pipe should I use?</a></li>
-  <li><a href="#why-doesnt-ggplot2-use-piping" id="toc-why-doesnt-ggplot2-use-piping" class="nav-link" data-scroll-target="#why-doesnt-ggplot2-use-piping"><span class="header-section-number">H.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</a></li>
+  <li><a href="#displaying-tibbles" id="toc-displaying-tibbles" class="nav-link" data-scroll-target="#displaying-tibbles"><span class="header-section-number">H.2.1</span> Displaying <code>tibble</code>s</a></li>
   </ul></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">H.4</span> Quarto</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">H.5</span> Packages</a></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">H.6</span> Git</a></li>
-  <li><a href="#spatial-data-science" id="toc-spatial-data-science" class="nav-link" data-scroll-target="#spatial-data-science"><span class="header-section-number">H.7</span> Spatial data science</a></li>
-  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps"><span class="header-section-number">H.8</span> Shiny apps</a></li>
+  <li><a href="#the-tidyverse" id="toc-the-tidyverse" class="nav-link" data-scroll-target="#the-tidyverse"><span class="header-section-number">H.3</span> The <code>tidyverse</code></a></li>
+  <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping"><span class="header-section-number">H.4</span> Piping</a>
+  <ul class="collapse">
+  <li><a href="#which-pipe-should-i-use" id="toc-which-pipe-should-i-use" class="nav-link" data-scroll-target="#which-pipe-should-i-use"><span class="header-section-number">H.4.1</span> Which pipe should I use?</a></li>
+  <li><a href="#why-doesnt-ggplot2-use-piping" id="toc-why-doesnt-ggplot2-use-piping" class="nav-link" data-scroll-target="#why-doesnt-ggplot2-use-piping"><span class="header-section-number">H.4.2</span> Why doesn’t <code>ggplot2</code> use piping?</a></li>
+  </ul></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">H.5</span> Quarto</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">H.6</span> Packages</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">H.7</span> Git</a></li>
+  <li><a href="#spatial-data-science" id="toc-spatial-data-science" class="nav-link" data-scroll-target="#spatial-data-science"><span class="header-section-number">H.8</span> Spatial data science</a></li>
+  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps"><span class="header-section-number">H.9</span> Shiny apps</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/intro-to-R.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -387,7 +391,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-07: 11:27:54 (AM)</p>
+      <p class="date">Last modified: 2024-05-14: 12:48:35 (PM)</p>
     </div>
   </div>
   
@@ -422,8 +426,15 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <p>See <a href="https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html" class="uri">https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html</a></p>
 </section>
 </section>
-<section id="the-tidyverse" class="level2" data-number="H.2">
-<h2 data-number="H.2" class="anchored" data-anchor-id="the-tidyverse"><span class="header-section-number">H.2</span> The <code>tidyverse</code></h2>
+<section id="data.frames-and-tibbles" class="level2" data-number="H.2">
+<h2 data-number="H.2" class="anchored" data-anchor-id="data.frames-and-tibbles"><span class="header-section-number">H.2</span> <code>data.frame</code>s and <code>tibble</code>s</h2>
+<section id="displaying-tibbles" class="level3" data-number="H.2.1">
+<h3 data-number="H.2.1" class="anchored" data-anchor-id="displaying-tibbles"><span class="header-section-number">H.2.1</span> Displaying <code>tibble</code>s</h3>
+<p>See <code>vignette("digits", package = "tibble")</code></p>
+</section>
+</section>
+<section id="the-tidyverse" class="level2" data-number="H.3">
+<h2 data-number="H.3" class="anchored" data-anchor-id="the-tidyverse"><span class="header-section-number">H.3</span> The <code>tidyverse</code></h2>
 <blockquote class="blockquote">
 <p>The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</p>
 </blockquote>
@@ -438,23 +449,23 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><span class="citation" data-cites="kuhn2022tidy">Kuhn and Silge (<a href="references.html#ref-kuhn2022tidy" role="doc-biblioref">2022</a>)</span></li>
 </ul>
 </section>
-<section id="piping" class="level2" data-number="H.3">
-<h2 data-number="H.3" class="anchored" data-anchor-id="piping"><span class="header-section-number">H.3</span> Piping</h2>
+<section id="piping" class="level2" data-number="H.4">
+<h2 data-number="H.4" class="anchored" data-anchor-id="piping"><span class="header-section-number">H.4</span> Piping</h2>
 <p>See <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe"><span class="citation" data-cites="r4ds">Wickham, Çetinkaya-Rundel, and Grolemund (<span>2023</span>)</span></a> for details.</p>
 <p>There are currently (2024) two commonly-used pipe operators in R:</p>
 <ul>
 <li><p><code>%&gt;%</code>: the “<code>magrittr</code> pipe”, from the <a href="https://cran.r-project.org/web/packages/magrittr/index.html"><code>magrittr</code></a> package (<span class="citation" data-cites="magrittr">Bache and Wickham (<a href="references.html#ref-magrittr" role="doc-biblioref">2022</a>)</span>; <a href="https://r-pkgs.org/dependencies-in-practice.html#re-exporting">re-exported</a> by <a href="https://cran.r-project.org/web/packages/dplyr/index.html"><code>dplyr</code></a> and others) .</p></li>
 <li><p><code>|&gt;</code>: the “native pipe”, from base R (≥4.1.0)</p></li>
 </ul>
-<section id="which-pipe-should-i-use" class="level3" data-number="H.3.1">
-<h3 data-number="H.3.1" class="anchored" data-anchor-id="which-pipe-should-i-use"><span class="header-section-number">H.3.1</span> Which pipe should I use?</h3>
+<section id="which-pipe-should-i-use" class="level3" data-number="H.4.1">
+<h3 data-number="H.4.1" class="anchored" data-anchor-id="which-pipe-should-i-use"><span class="header-section-number">H.4.1</span> Which pipe should I use?</h3>
 <p><span class="citation" data-cites="r4ds">Wickham, Çetinkaya-Rundel, and Grolemund (<a href="references.html#ref-r4ds" role="doc-biblioref">2023</a>)</span> <a href="https://r4ds.hadley.nz/data-transform.html#sec-the-pipe:~:text=So%20why%20do%20we%20recommend%20the%20base%20pipe%3F">recommends the native pipe</a>:</p>
 <blockquote class="blockquote">
 <p>For simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.</p>
 </blockquote>
 </section>
-<section id="why-doesnt-ggplot2-use-piping" class="level3" data-number="H.3.2">
-<h3 data-number="H.3.2" class="anchored" data-anchor-id="why-doesnt-ggplot2-use-piping"><span class="header-section-number">H.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</h3>
+<section id="why-doesnt-ggplot2-use-piping" class="level3" data-number="H.4.2">
+<h3 data-number="H.4.2" class="anchored" data-anchor-id="why-doesnt-ggplot2-use-piping"><span class="header-section-number">H.4.2</span> Why doesn’t <code>ggplot2</code> use piping?</h3>
 <p>Here’s <code>tidyverse</code> creator Hadley Wickham’s answer (from 2018):</p>
 <blockquote class="blockquote">
 <p>I think it’s worth unpacking this question into a few smaller pieces:</p>
@@ -467,16 +478,16 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <p>https://forum.posit.co/t/why-cant-ggplot2-use/4372/7</p>
 </section>
 </section>
-<section id="quarto" class="level2" data-number="H.4">
-<h2 data-number="H.4" class="anchored" data-anchor-id="quarto"><span class="header-section-number">H.4</span> Quarto</h2>
+<section id="quarto" class="level2" data-number="H.5">
+<h2 data-number="H.5" class="anchored" data-anchor-id="quarto"><span class="header-section-number">H.5</span> Quarto</h2>
 <p>Quarto is a system for writing documents with embedded R code and/or results:</p>
 <ul>
 <li>Read this ASAP: https://r4ds.hadley.nz/communicate</li>
 <li>Then use this for reference: https://quarto.org/docs/reference/</li>
 </ul>
 </section>
-<section id="packages" class="level2" data-number="H.5">
-<h2 data-number="H.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">H.5</span> Packages</h2>
+<section id="packages" class="level2" data-number="H.6">
+<h2 data-number="H.6" class="anchored" data-anchor-id="packages"><span class="header-section-number">H.6</span> Packages</h2>
 <blockquote class="blockquote">
 <p>This book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.</p>
 </blockquote>
@@ -486,8 +497,8 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><p>Use the rest of <span class="citation" data-cites="rpkgs">Wickham and Bryan (<a href="references.html#ref-rpkgs" role="doc-biblioref">2023</a>)</span> as a reference</p></li>
 </ul>
 </section>
-<section id="git" class="level2" data-number="H.6">
-<h2 data-number="H.6" class="anchored" data-anchor-id="git"><span class="header-section-number">H.6</span> Git</h2>
+<section id="git" class="level2" data-number="H.7">
+<h2 data-number="H.7" class="anchored" data-anchor-id="git"><span class="header-section-number">H.7</span> Git</h2>
 <p>94% of respondents to a 2022 Stack Overflow survey reported using git for version control <a href="https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems">link</a></p>
 <p><a href="https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github">More details</a></p>
 <ul>
@@ -495,14 +506,14 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><p><a href="https://usethis.r-lib.org/articles/pr-functions.html" class="uri">https://usethis.r-lib.org/articles/pr-functions.html</a></p></li>
 </ul>
 </section>
-<section id="spatial-data-science" class="level2" data-number="H.7">
-<h2 data-number="H.7" class="anchored" data-anchor-id="spatial-data-science"><span class="header-section-number">H.7</span> Spatial data science</h2>
+<section id="spatial-data-science" class="level2" data-number="H.8">
+<h2 data-number="H.8" class="anchored" data-anchor-id="spatial-data-science"><span class="header-section-number">H.8</span> Spatial data science</h2>
 <ul>
 <li><span class="citation" data-cites="spatialds">Pebesma and Bivand (<a href="references.html#ref-spatialds" role="doc-biblioref">2023</a>)</span></li>
 </ul>
 </section>
-<section id="shiny-apps" class="level2" data-number="H.8">
-<h2 data-number="H.8" class="anchored" data-anchor-id="shiny-apps"><span class="header-section-number">H.8</span> Shiny apps</h2>
+<section id="shiny-apps" class="level2" data-number="H.9">
+<h2 data-number="H.9" class="anchored" data-anchor-id="shiny-apps"><span class="header-section-number">H.9</span> Shiny apps</h2>
 <ul>
 <li>Read this first: <span class="citation" data-cites="masteringshiny">Wickham (<a href="references.html#ref-masteringshiny" role="doc-biblioref">2021</a>)</span></li>
 <li>Use this as a reference: <span class="citation" data-cites="golembook">Fay et al. (<a href="references.html#ref-golembook" role="doc-biblioref">2021</a>)</span></li>
@@ -1197,82 +1208,88 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>See <span class="ot">&lt;https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html&gt;</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## The `tidyverse`</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## `data.frame`s and `tibble`s</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">### Displaying `tibble`s</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://www.tidyverse.org/</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>See <span class="in">`vignette("digits", package = "tibble")`</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>These packages are being actively developed by <span class="co">[</span><span class="ot">Hadley Wickham</span><span class="co">](https://hadley.nz/)</span> and his colleagues at <span class="co">[</span><span class="ot">posit</span><span class="co">](https://posit.co/)</span>^[<span class="co">[</span><span class="ot">the company formerly known as RStudio</span><span class="co">]( https://posit.co/blog/rstudio-is-becoming-posit/)</span>].</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## The `tidyverse`</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>Details: </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@welcometidyverse</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@r4ds</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@kuhn2022tidy</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://www.tidyverse.org/</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>These packages are being actively developed by <span class="co">[</span><span class="ot">Hadley Wickham</span><span class="co">](https://hadley.nz/)</span> and his colleagues at <span class="co">[</span><span class="ot">posit</span><span class="co">](https://posit.co/)</span>^[<span class="co">[</span><span class="ot">the company formerly known as RStudio</span><span class="co">]( https://posit.co/blog/rstudio-is-becoming-posit/)</span>].</span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Piping</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Details: </span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>See <span class="co">[</span><span class="ot">@r4ds</span><span class="co">](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe)</span> for details.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>There are currently (2024) two commonly-used pipe operators in R:</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@welcometidyverse</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@r4ds</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@kuhn2022tidy</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`%&gt;%`</span>: the "<span class="in">`magrittr`</span> pipe", from the <span class="co">[</span><span class="ot">`magrittr`</span><span class="co">](https://cran.r-project.org/web/packages/magrittr/index.html)</span> package (@magrittr; <span class="co">[</span><span class="ot">re-exported</span><span class="co">](https://r-pkgs.org/dependencies-in-practice.html#re-exporting)</span> by <span class="co">[</span><span class="ot">`dplyr`</span><span class="co">](https://cran.r-project.org/web/packages/dplyr/index.html)</span> and others) .</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Piping</span></span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`|&gt;`</span>: the "native pipe", from base R (≥4.1.0)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>See <span class="co">[</span><span class="ot">@r4ds</span><span class="co">](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe)</span> for details.</span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Which pipe should I use?</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>There are currently (2024) two commonly-used pipe operators in R:</span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>@r4ds <span class="co">[</span><span class="ot">recommends the native pipe</span><span class="co">](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe:~:text=So%20why%20do%20we%20recommend%20the%20base%20pipe%3F)</span>:</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`%&gt;%`</span>: the "<span class="in">`magrittr`</span> pipe", from the <span class="co">[</span><span class="ot">`magrittr`</span><span class="co">](https://cran.r-project.org/web/packages/magrittr/index.html)</span> package (@magrittr; <span class="co">[</span><span class="ot">re-exported</span><span class="co">](https://r-pkgs.org/dependencies-in-practice.html#re-exporting)</span> by <span class="co">[</span><span class="ot">`dplyr`</span><span class="co">](https://cran.r-project.org/web/packages/dplyr/index.html)</span> and others) .</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; For simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`|&gt;`</span>: the "native pipe", from base R (≥4.1.0)</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why doesn't `ggplot2` use piping?</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">### Which pipe should I use?</span></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>Here's <span class="in">`tidyverse`</span> creator Hadley Wickham's answer (from 2018):</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>@r4ds <span class="co">[</span><span class="ot">recommends the native pipe</span><span class="co">](https://r4ds.hadley.nz/data-transform.html#sec-the-pipe:~:text=So%20why%20do%20we%20recommend%20the%20base%20pipe%3F)</span>:</span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; I think it's worth unpacking this question into a few smaller pieces:</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Should ggplot2 use the pipe? IMO, yes.</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Could ggplot2 support both the pipe and plus? No</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Would it be worth it to create a ggplot3 that uses the pipe? No.</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; For simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why doesn't `ggplot2` use piping?</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>Here's <span class="in">`tidyverse`</span> creator Hadley Wickham's answer (from 2018):</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>https://forum.posit.co/t/why-cant-ggplot2-use/4372/7</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>Quarto is a system for writing documents with embedded R code and/or results:</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; I think it's worth unpacking this question into a few smaller pieces:</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Should ggplot2 use the pipe? IMO, yes.</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Could ggplot2 support both the pipe and plus? No</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Would it be worth it to create a ggplot3 that uses the pipe? No.</span></span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Read this ASAP: https://r4ds.hadley.nz/communicate</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Then use this for reference: https://quarto.org/docs/reference/</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Packages</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://r-pkgs.org/introduction.html#:~:text=This%20book%20espouses,of%20package%20structure.</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>https://forum.posit.co/t/why-cant-ggplot2-use/4372/7</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>Quarto is a system for writing documents with embedded R code and/or results:</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Read this ASAP: https://r4ds.hadley.nz/communicate</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Then use this for reference: https://quarto.org/docs/reference/</span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Read this ASAP: <span class="ot">&lt;https://r-pkgs.org/whole-game.html&gt;</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the rest of @rpkgs as a reference</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Git</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>94% of respondents to a 2022 Stack Overflow survey  reported using git for version control <span class="co">[</span><span class="ot">link</span><span class="co">](https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems)</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">More details</span><span class="co">](https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github)</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Packages</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; This book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>https://r-pkgs.org/introduction.html#:~:text=This%20book%20espouses,of%20package%20structure.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Read this ASAP: <span class="ot">&lt;https://r-pkgs.org/whole-game.html&gt;</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the rest of @rpkgs as a reference</span>
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="ot">&lt;https://happygitwithr.com/&gt;</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="fu">## Git</span></span>
 <span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="ot">&lt;https://usethis.r-lib.org/articles/pr-functions.html&gt;</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>94% of respondents to a 2022 Stack Overflow survey  reported using git for version control <span class="co">[</span><span class="ot">link</span><span class="co">](https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems)</span></span>
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Spatial data science</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">More details</span><span class="co">](https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github)</span></span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@spatialds</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="ot">&lt;https://happygitwithr.com/&gt;</span></span>
 <span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="fu">## Shiny apps</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="ot">&lt;https://usethis.r-lib.org/articles/pr-functions.html&gt;</span></span>
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Read this first: @masteringshiny</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use this as a reference: @golembook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## Spatial data science</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>@spatialds</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## Shiny apps</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Read this first: @masteringshiny</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use this as a reference: @golembook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

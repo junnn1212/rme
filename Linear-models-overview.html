@@ -465,7 +465,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-12: 21:41:28 (PM)</p>
+      <p class="date">Last modified: 2024-05-16: 13:44:16 (PM)</p>
     </div>
   </div>
   
@@ -900,11 +900,16 @@ Figure&nbsp;2.2: Parallel-slopes model of birthweight
 </div>
 <div id="exr-pred-fem-parallel" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1</strong></span> According to this model, what’s the mean birthweight for a female born at 36 weeks?</p>
-<div class="cell" data-tbl-cap="Estimated coefficients for [model @eq-lm-parallel]">
+<div id="tbl-coef-model1" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-coef-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.4: Estimated coefficients for <a href="#eq-lm-parallel" class="quarto-xref">model&nbsp;<span>2.1</span></a>
+</figcaption><div aria-describedby="tbl-coef-model1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">bw_lm1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; (Intercept)     sexmale         age </span></span>
-<span><span class="co">#&gt;     -1773.3       163.0       120.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; -1773.32184   163.03930   120.89433</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+</figure>
 </div>
 </div>
 <hr>
@@ -924,7 +929,7 @@ Figure&nbsp;2.2: Parallel-slopes model of birthweight
 \begin{aligned}
 E[Y|A = 0, A = 36]
 &amp;= \beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36 \\
-&amp;=  2578.8739
+&amp;=  2578.873934
 \end{aligned}
 \]</span></p>
 </div>
@@ -955,7 +960,7 @@ E[Y|A = 0, A = 36]
 \begin{aligned}
 E[Y|M = 1, A = 36]
 &amp;= \beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 \\
-&amp;=  2741.9132
+&amp;=  2741.91323693
 \end{aligned}
 \]</span></p>
 </div>
@@ -975,9 +980,9 @@ E[Y|M = 1, A = 36]
 \begin{aligned}
 &amp; E[Y|M = 1, A = 36] - E[Y|M = 0, A = 36]\\
 &amp;=
-2741.9132 - 2578.8739\\
+2741.91323693 - 2578.873934\\
 &amp;=
-163.0393
+163.03930293
 \end{aligned}
 \]</span></p>
 <p>Shortcut:</p>
@@ -987,7 +992,7 @@ E[Y|M = 1, A = 36]
 &amp;= (\beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36) -
 (\beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36) \\
 &amp;= \beta_M \\
-&amp;=  163.0393
+&amp;=  163.03930293
 \end{aligned}
 \]</span></p>
 </div>
@@ -1019,7 +1024,7 @@ E[Y|A=a, S=s] = \beta_0 + \beta_A a+ \beta_M m + \beta_{AM} (a \cdot m)
 <span>    select <span class="op">=</span> <span class="st">"{estimate}"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-bw-model-coefs-interact" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bw-model-coefs-interact-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.4: Birthweight model with interaction term
+Table&nbsp;2.5: Birthweight model with interaction term
 </figcaption><div aria-describedby="tbl-bw-model-coefs-interact-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -1126,7 +1131,7 @@ Note
 <p><span class="math display">\[
 E[Y|A = 0, X_2 = 36] =
 \beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36 + \beta_{AM} \cdot (0 * 36)
-=  2552.7333
+=  2552.73333333
 \]</span></p>
 </div>
 <hr>
@@ -1148,7 +1153,7 @@ E[Y|A = 0, X_2 = 36] =
 \begin{aligned}
 E[Y|A = 0, X_2 = 36]
 &amp;= \beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 + \beta_{AM} \cdot 1 \cdot 36\\
-&amp;= 2762.7069
+&amp;= 2762.70689655
 \end{aligned}
 \]</span></p>
 </div>
@@ -1164,7 +1169,7 @@ E[Y|A = 0, X_2 = 36]
 &amp;= (\beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 + \beta_{AM} \cdot 1 \cdot 36)\\
 &amp;\ \ \ \ \  -(\beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36 + \beta_{AM} \cdot 0 \cdot 36) \\
 &amp;= \beta_{S} + \beta_{AM}\cdot 36\\
-&amp;=  209.9736
+&amp;=  209.97356322
 \end{aligned}
 \]</span></p>
 </div>
@@ -1200,7 +1205,7 @@ E[Y|A = 0, X_2 = 36]
 <span>    select <span class="op">=</span> <span class="st">"{estimate}"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-bw-model-coefs-interact2" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bw-model-coefs-interact2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.5: Birthweight model with interaction term
+Table&nbsp;2.6: Birthweight model with interaction term
 </figcaption><div aria-describedby="tbl-bw-model-coefs-interact2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -1253,7 +1258,7 @@ Table&nbsp;2.5: Birthweight model with interaction term
 <span>    select <span class="op">=</span> <span class="st">"{estimate}"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-bw-model-coefs-strat" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bw-model-coefs-strat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.6: Birthweight model - stratified betas
+Table&nbsp;2.7: Birthweight model - stratified betas
 </figcaption><div aria-describedby="tbl-bw-model-coefs-strat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -1447,7 +1452,7 @@ Var(\hat \beta) \approx (\mathcal I_{\beta})^{-1} = \sigma^2 (X'X)^{-1}
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bw_lm2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/parameters/reference/model_parameters.html">parameters</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/insight/reference/display.html">print_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-mod-intx" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mod-intx-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.7: Estimated model for <code>birthweight</code> data with interaction term
+Table&nbsp;2.8: Estimated model for <code>birthweight</code> data with interaction term
 </figcaption><div aria-describedby="tbl-mod-intx-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -1597,7 +1602,7 @@ too many <span class="rlang"><b>R</b></span> (and S) outputs to be easily change
 <p>Research question: is there really an interaction between sex and age?</p>
 <p><span class="math inline">\(H_0: \beta_{AM} = 0\)</span></p>
 <p><span class="math inline">\(H_A: \beta_{AM} \neq 0\)</span></p>
-<p><span class="math inline">\(P(|\hat\beta_{AM}| &gt; |-18.4172| \mid H_0)\)</span> = ?</p>
+<p><span class="math inline">\(P(|\hat\beta_{AM}| &gt; |-18.41724138| \mid H_0)\)</span> = ?</p>
 </section><section id="wald-tests-and-cis" class="level3 smaller" data-number="2.4.2"><h3 class="smaller anchored" data-number="2.4.2" data-anchor-id="wald-tests-and-cis">
 <span class="header-section-number">2.4.2</span> Wald tests and CIs</h3>
 <p>R can give you Wald tests for single coefficients and corresponding CIs:</p>
@@ -1721,17 +1726,17 @@ too many <span class="rlang"><b>R</b></span> (and S) outputs to be easily change
 \begin{aligned}
 &amp;P\left(
 | \hat \beta_{AM}  | &gt;
-| -18.4172| \middle| H_0
+| -18.41724138| \middle| H_0
 \right)
 \\
 &amp;= \Pr \left(
 \left| \frac{\hat\beta_{AM}}{\hat{SE}(\hat\beta_{AM})} \right| &gt;
-\left| \frac{-18.4172}{41.7558} \right| \middle| H_0
+\left| \frac{-18.41724138}{41.75581745} \right| \middle| H_0
 \right)\\
 &amp;= \Pr \left(
-\left| T_{20} \right|  &gt;  0.4411 | H_0
+\left| T_{20} \right|  &gt;  0.44107007 | H_0
 \right)\\
-&amp;= 0.6639
+&amp;= 0.66389342
 \end{aligned}
 \]</span></p>
 <div class="notes">
@@ -2024,12 +2029,12 @@ Figure&nbsp;2.5: Chi-square distribution
 <span><span class="va">n_unique.bw</span>  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">bw.X.unique</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>For example, in the <code>birthweight</code> data, there are <span class="math inline">\(q = 12\)</span> unique patterns (<a href="#tbl-bw-x-combos" class="quarto-xref">Table&nbsp;<span>2.8</span></a>).</p>
+<p>For example, in the <code>birthweight</code> data, there are <span class="math inline">\(q = 12\)</span> unique patterns (<a href="#tbl-bw-x-combos" class="quarto-xref">Table&nbsp;<span>2.9</span></a>).</p>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bw.X.unique</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-bw-x-combos" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bw-x-combos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.8: Unique covariate combinations in the <code>birthweight</code> data, with replicate counts
+Table&nbsp;2.9: Unique covariate combinations in the <code>birthweight</code> data, with replicate counts
 </figcaption><div aria-describedby="tbl-bw-x-combos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -2112,7 +2117,7 @@ Table&nbsp;2.8: Unique covariate combinations in the <code>birthweight</code> da
 </div>
 <hr>
 <div id="exm-replicate-bw" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.1 (Replicates in the <code>birthweight</code> data)</strong></span> In the <code>birthweight</code> dataset, there are 2 replicates of the combination “female, age 36” (<a href="#tbl-bw-x-combos" class="quarto-xref">Table&nbsp;<span>2.8</span></a>).</p>
+<p><span class="theorem-title"><strong>Example 2.1 (Replicates in the <code>birthweight</code> data)</strong></span> In the <code>birthweight</code> dataset, there are 2 replicates of the combination “female, age 36” (<a href="#tbl-bw-x-combos" class="quarto-xref">Table&nbsp;<span>2.9</span></a>).</p>
 </div>
 <hr>
 <div id="exr-replicate-bw" class="theorem exercise">
@@ -2162,7 +2167,7 @@ Table&nbsp;2.8: Unique covariate combinations in the <code>birthweight</code> da
 <span>  <span class="fu"><a href="https://easystats.github.io/insight/reference/display.html">print_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-bw-model-sat" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bw-model-sat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.9: Saturated model for the <code>birthweight</code> data
+Table&nbsp;2.10: Saturated model for the <code>birthweight</code> data
 </figcaption><div aria-describedby="tbl-bw-model-sat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -2324,12 +2329,12 @@ Table&nbsp;2.9: Saturated model for the <code>birthweight</code> data
 </table>
 </div>
 </div>
-<p>The likelihood ratio statistic for this test is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell) = 10.3554\]</span> where:</p>
+<p>The likelihood ratio statistic for this test is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell) = 10.35537421\]</span> where:</p>
 <ul>
 <li>
-<span class="math inline">\(\ell_{\text{max}}\)</span> is the log-likelihood of the full model: -151.4016</li>
+<span class="math inline">\(\ell_{\text{max}}\)</span> is the log-likelihood of the full model: -151.40160056</li>
 <li>
-<span class="math inline">\(\ell\)</span> is the log-likelihood of our comparison model (two slopes, two intercepts): -156.5793</li>
+<span class="math inline">\(\ell\)</span> is the log-likelihood of our comparison model (two slopes, two intercepts): -156.57928767</li>
 </ul>
 <p>This statistic is called the <strong>deviance</strong> or <strong>residual deviance</strong> for our two-slopes and two-intercepts model; it tells us how much the likelihood of that model deviates from the likelihood of the maximal model.</p>
 <p>The corresponding p-value tells us whether there we have enough evidence to detect that our two-slopes, two-intercepts model is a worse fit for the data than the maximal model; in other words, it tells us if there’s evidence that we missed any important patterns. (Remember, a nonsignificant p-value could mean that we didn’t miss anything and a more complicated model is unnecessary, or it could mean we just don’t have enough data to tell the difference between these models.)</p>
@@ -2408,12 +2413,12 @@ Table&nbsp;2.9: Saturated model for the <code>birthweight</code> data
 </table>
 </div>
 </div>
-<p>The likelihood ratio statistic for the test comparing the null model to the maximal model is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell_{0}) = 35.1067\]</span> where:</p>
+<p>The likelihood ratio statistic for the test comparing the null model to the maximal model is <span class="math display">\[\lambda = 2 * (\ell_{\text{full}} - \ell_{0}) = 35.10673188\]</span> where:</p>
 <ul>
 <li>
-<span class="math inline">\(\ell_{\text{0}}\)</span> is the log-likelihood of the null model: -168.955</li>
+<span class="math inline">\(\ell_{\text{0}}\)</span> is the log-likelihood of the null model: -168.9549665</li>
 <li>
-<span class="math inline">\(\ell_{\text{full}}\)</span> is the log-likelihood of the maximal model: -151.4016</li>
+<span class="math inline">\(\ell_{\text{full}}\)</span> is the log-likelihood of the maximal model: -151.40160056</li>
 </ul>
 <p>In R, this test is:</p>
 <div class="cell">
@@ -3329,7 +3334,7 @@ Figure&nbsp;2.9: Marginal distribution of standardized residuals
 </ul>
 <p>This should be true <strong>for every</strong> value of <span class="math inline">\(x\)</span>.</p>
 <hr>
-<p>If we didn’t correctly guess the functional form of linear component of the mean, <span class="math display">\[\text{E}[Y|X=x] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p\]</span></p>
+<p>If we didn’t correctly guess the functional form of the linear component of the mean, <span class="math display">\[\text{E}[Y|X=x] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p\]</span></p>
 <p>Then the the residuals might have nonzero mean.</p>
 <p>Regardless of whether we guessed the mean function correctly, ther the variance of the residuals might differ between values of <span class="math inline">\(x\)</span>.</p>
 <hr>
@@ -3604,7 +3609,7 @@ Figure&nbsp;2.16: logarithmic fit
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">lm_PLOS_linear</span>, <span class="va">lm_PLOS_quad</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-plos-lin-quad-anova" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-plos-lin-quad-anova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.10: linear vs quadratic
+Table&nbsp;2.11: linear vs quadratic
 </figcaption><div aria-describedby="tbl-plos-lin-quad-anova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -3644,7 +3649,7 @@ Table&nbsp;2.10: linear vs quadratic
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb84"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">lm_PLOS_quad</span>, <span class="va">lm_PLOS_cub</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-plos-quad-cub-anova" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-plos-quad-cub-anova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.11: quadratic vs cubic
+Table&nbsp;2.12: quadratic vs cubic
 </figcaption><div aria-describedby="tbl-plos-quad-cub-anova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -3921,7 +3926,7 @@ Figure&nbsp;2.18: Scale-location plot of <code>birthweight</code> data
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">full</td>
-<td style="text-align: right;">6.721</td>
+<td style="text-align: right;">6.946</td>
 <td style="text-align: right;">0.4805</td>
 <td style="text-align: right;">0.3831</td>
 <td style="text-align: right;">5.956</td>
@@ -3929,7 +3934,7 @@ Figure&nbsp;2.18: Scale-location plot of <code>birthweight</code> data
 </tr>
 <tr class="even">
 <td style="text-align: left;">reduced</td>
-<td style="text-align: right;">6.576</td>
+<td style="text-align: right;">6.627</td>
 <td style="text-align: right;">0.4454</td>
 <td style="text-align: right;">0.3802</td>
 <td style="text-align: right;">5.971</td>
@@ -4066,10 +4071,10 @@ Figure&nbsp;2.19: Lasso selection
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb105"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">cvfit</span>, s <span class="op">=</span> <span class="st">"lambda.1se"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 4 x 1 sparse Matrix of class "dgCMatrix"</span></span>
 <span><span class="co">#&gt;                  s1</span></span>
-<span><span class="co">#&gt; (Intercept) 34.2044</span></span>
+<span><span class="co">#&gt; (Intercept) 34.4241</span></span>
 <span><span class="co">#&gt; age          .     </span></span>
-<span><span class="co">#&gt; weight      -0.0926</span></span>
-<span><span class="co">#&gt; protein      0.8582</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">#&gt; weight      -0.0662</span></span>
+<span><span class="co">#&gt; protein      0.6607</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section></section></section><section id="categorical-covariates-with-more-than-two-levels" class="level2" data-number="2.10"><h2 data-number="2.10" class="anchored" data-anchor-id="categorical-covariates-with-more-than-two-levels">
@@ -4088,13 +4093,13 @@ Figure&nbsp;2.19: Lasso selection
 </section><section id="section" class="level3" data-number="2.10.2"><h3 data-number="2.10.2" class="anchored" data-anchor-id="section">
 <span class="header-section-number">2.10.2</span> </h3>
 <div class="notes">
-<p>For example, <a href="#tbl-iris-data" class="quarto-xref">Table&nbsp;<span>2.12</span></a> shows the <a href="https://www.meganstodel.com/posts/no-to-iris/">(in)famous</a> <code>iris</code> data (<span class="citation" data-cites="anderson1935irises">Anderson (<a href="references.html#ref-anderson1935irises" role="doc-biblioref">1935</a>)</span>), and <a href="#tbl-iris-summary" class="quarto-xref">Table&nbsp;<span>2.13</span></a> provides summary statistics. The data include three species: “setosa”, “versicolor”, and “virginica”.</p>
+<p>For example, <a href="#tbl-iris-data" class="quarto-xref">Table&nbsp;<span>2.13</span></a> shows the <a href="https://www.meganstodel.com/posts/no-to-iris/">(in)famous</a> <code>iris</code> data (<span class="citation" data-cites="anderson1935irises">Anderson (<a href="references.html#ref-anderson1935irises" role="doc-biblioref">1935</a>)</span>), and <a href="#tbl-iris-summary" class="quarto-xref">Table&nbsp;<span>2.14</span></a> provides summary statistics. The data include three species: “setosa”, “versicolor”, and “virginica”.</p>
 </div>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb107"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-iris-data" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-iris-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.12: The <code>iris</code> data
+Table&nbsp;2.13: The <code>iris</code> data
 </figcaption><div aria-describedby="tbl-iris-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -4164,7 +4169,7 @@ Table&nbsp;2.12: The <code>iris</code> data
 <span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-iris-summary" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-iris-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.13: Summary statistics for the <code>iris</code> data
+Table&nbsp;2.14: Summary statistics for the <code>iris</code> data
 </figcaption><div aria-describedby="tbl-iris-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
@@ -4285,7 +4290,7 @@ Table&nbsp;2.13: Summary statistics for the <code>iris</code> data
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">X</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-numeric-coding" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-numeric-coding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.14: <code>iris</code> data with numeric coding of species
+Table&nbsp;2.15: <code>iris</code> data with numeric coding of species
 </figcaption><div aria-describedby="tbl-numeric-coding-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -4319,7 +4324,7 @@ Table&nbsp;2.14: <code>iris</code> data with numeric coding of species
 <span><span class="va">iris_lm1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/parameters/reference/model_parameters.html">parameters</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/insight/reference/display.html">print_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-iris-numeric-species" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-iris-numeric-species-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.15: Model of <code>iris</code> data with numeric coding of <code>Species</code>
+Table&nbsp;2.16: Model of <code>iris</code> data with numeric coding of <code>Species</code>
 </figcaption><div aria-describedby="tbl-iris-numeric-species-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -4389,7 +4394,7 @@ Figure&nbsp;2.20: Model of <code>iris</code> data with numeric coding of <code>S
 <span><span class="va">iris_lm2</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/parameters/reference/model_parameters.html">parameters</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/insight/reference/display.html">print_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-iris-model-factor1" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-iris-model-factor1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.16: Model of <code>iris</code> data with <code>Species</code> as a categorical variable
+Table&nbsp;2.17: Model of <code>iris</code> data with <code>Species</code> as a categorical variable
 </figcaption><div aria-describedby="tbl-iris-model-factor1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -4610,7 +4615,7 @@ Figure&nbsp;2.21
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb118"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hers</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div id="tbl-HERS" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-HERS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2.17: HERS dataset
+Table&nbsp;2.18: HERS dataset
 </figcaption><div aria-describedby="tbl-HERS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <table class="do-not-create-environment cell table table-sm table-striped small">
@@ -5841,7 +5846,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb120-238"><a href="#cb120-238" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb120-241"><a href="#cb120-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb120-242"><a href="#cb120-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Estimated coefficients for [model @eq-lm-parallel]"</span></span>
-<span id="cb120-243"><a href="#cb120-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: coef-tab-model1</span></span>
+<span id="cb120-243"><a href="#cb120-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-coef-model1</span></span>
 <span id="cb120-244"><a href="#cb120-244" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(bw_lm1)</span>
 <span id="cb120-245"><a href="#cb120-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb120-246"><a href="#cb120-246" aria-hidden="true" tabindex="-1"></a></span>
@@ -7360,493 +7365,494 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb120-1881"><a href="#cb120-1881" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb120-1882"><a href="#cb120-1882" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb120-1883"><a href="#cb120-1883" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1884"><a href="#cb120-1884" aria-hidden="true" tabindex="-1"></a>If we didn't correctly guess the functional form of linear component of the mean, $$\text{E}<span class="co">[</span><span class="ot">Y|X=x</span><span class="co">]</span> = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$$</span>
-<span id="cb120-1885"><a href="#cb120-1885" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1886"><a href="#cb120-1886" aria-hidden="true" tabindex="-1"></a>Then the the residuals might have nonzero mean.</span>
-<span id="cb120-1887"><a href="#cb120-1887" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1888"><a href="#cb120-1888" aria-hidden="true" tabindex="-1"></a>Regardless of whether we guessed the mean function correctly, ther the variance of the residuals might differ between values of $x$.</span>
-<span id="cb120-1889"><a href="#cb120-1889" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1890"><a href="#cb120-1890" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-1891"><a href="#cb120-1891" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1892"><a href="#cb120-1892" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Residuals versus fitted values</span></span>
-<span id="cb120-1893"><a href="#cb120-1893" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1894"><a href="#cb120-1894" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-1895"><a href="#cb120-1895" aria-hidden="true" tabindex="-1"></a>To look for these issues, we can plot the residuals $e_i$ against the fitted values $\hat y_i$ (@fig-bw_lm2-resid-vs-fitted).</span>
-<span id="cb120-1896"><a href="#cb120-1896" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-1899"><a href="#cb120-1899" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-1900"><a href="#cb120-1900" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bw_lm2-resid-vs-fitted</span></span>
-<span id="cb120-1901"><a href="#cb120-1901" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "`birthweight` model  (@eq-BW-lm-interact): residuals versus fitted values"</span></span>
-<span id="cb120-1902"><a href="#cb120-1902" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(bw_lm2, <span class="at">which =</span> <span class="dv">1</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
-<span id="cb120-1903"><a href="#cb120-1903" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-1904"><a href="#cb120-1904" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1905"><a href="#cb120-1905" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-1906"><a href="#cb120-1906" aria-hidden="true" tabindex="-1"></a>If the model is correct, the blue line should stay flat and close to 0, and the cloud of dots should have the same vertical spread regardless of the fitted value.</span>
-<span id="cb120-1907"><a href="#cb120-1907" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1908"><a href="#cb120-1908" aria-hidden="true" tabindex="-1"></a>If not, we probably need to change the functional form of linear component of the mean, $$\text{E}<span class="co">[</span><span class="ot">Y|X=x</span><span class="co">]</span> = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$$</span>
-<span id="cb120-1909"><a href="#cb120-1909" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1910"><a href="#cb120-1910" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-1911"><a href="#cb120-1911" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1912"><a href="#cb120-1912" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-1913"><a href="#cb120-1913" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1914"><a href="#cb120-1914" aria-hidden="true" tabindex="-1"></a>{{&lt; include exm-plot-fits.qmd &gt;}}</span>
-<span id="cb120-1915"><a href="#cb120-1915" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-1916"><a href="#cb120-1916" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1917"><a href="#cb120-1917" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Scale-location plot</span></span>
-<span id="cb120-1918"><a href="#cb120-1918" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1919"><a href="#cb120-1919" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-1920"><a href="#cb120-1920" aria-hidden="true" tabindex="-1"></a>We can also plot the square roots of the absolute values of the standardized residuals against the fitted values (@fig-bw-scale-loc).</span>
-<span id="cb120-1921"><a href="#cb120-1921" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-1922"><a href="#cb120-1922" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1925"><a href="#cb120-1925" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-1926"><a href="#cb120-1926" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bw-scale-loc</span></span>
-<span id="cb120-1927"><a href="#cb120-1927" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Scale-location plot of `birthweight` data"</span></span>
-<span id="cb120-1928"><a href="#cb120-1928" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(bw_lm2, <span class="at">which =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
-<span id="cb120-1929"><a href="#cb120-1929" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-1930"><a href="#cb120-1930" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1931"><a href="#cb120-1931" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-1932"><a href="#cb120-1932" aria-hidden="true" tabindex="-1"></a>Here, the blue line doesn't need to be near 0, </span>
-<span id="cb120-1933"><a href="#cb120-1933" aria-hidden="true" tabindex="-1"></a>but it should be flat. </span>
-<span id="cb120-1934"><a href="#cb120-1934" aria-hidden="true" tabindex="-1"></a>If not, the residual variance $\sigma^2$ might not be constant, </span>
-<span id="cb120-1935"><a href="#cb120-1935" aria-hidden="true" tabindex="-1"></a>and we might need to transform our outcome $Y$ </span>
-<span id="cb120-1936"><a href="#cb120-1936" aria-hidden="true" tabindex="-1"></a>(or use a model that allows non-constant variance).</span>
-<span id="cb120-1937"><a href="#cb120-1937" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-1938"><a href="#cb120-1938" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1939"><a href="#cb120-1939" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-1940"><a href="#cb120-1940" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1941"><a href="#cb120-1941" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Residuals versus leverage</span></span>
-<span id="cb120-1942"><a href="#cb120-1942" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1943"><a href="#cb120-1943" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-1944"><a href="#cb120-1944" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1945"><a href="#cb120-1945" aria-hidden="true" tabindex="-1"></a>We can also plot our standardized residuals against "leverage", which roughly speaking is a measure of how unusual each $x_i$ value is. Very unusual $x_i$ values can have extreme effects on the model fit, so we might want to remove those observations as outliers, particularly if they have large residuals.</span>
-<span id="cb120-1946"><a href="#cb120-1946" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1947"><a href="#cb120-1947" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-1948"><a href="#cb120-1948" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1951"><a href="#cb120-1951" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-1952"><a href="#cb120-1952" aria-hidden="true" tabindex="-1"></a><span class="co">#| labels: fig-bw_lm2_resid-vs-leverage</span></span>
-<span id="cb120-1953"><a href="#cb120-1953" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "`birthweight` model with interactions (@eq-BW-lm-interact): residuals versus leverage"</span></span>
-<span id="cb120-1954"><a href="#cb120-1954" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(bw_lm2, <span class="at">which =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
-<span id="cb120-1955"><a href="#cb120-1955" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-1956"><a href="#cb120-1956" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1957"><a href="#cb120-1957" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-1958"><a href="#cb120-1958" aria-hidden="true" tabindex="-1"></a>The blue line should be relatively flat and close to 0 here.</span>
-<span id="cb120-1959"><a href="#cb120-1959" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-1960"><a href="#cb120-1960" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1961"><a href="#cb120-1961" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-1962"><a href="#cb120-1962" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1963"><a href="#cb120-1963" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diagnostics constructed by hand</span></span>
-<span id="cb120-1964"><a href="#cb120-1964" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1967"><a href="#cb120-1967" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-1968"><a href="#cb120-1968" aria-hidden="true" tabindex="-1"></a>bw <span class="ot">=</span> </span>
-<span id="cb120-1969"><a href="#cb120-1969" aria-hidden="true" tabindex="-1"></a>  bw <span class="sc">|&gt;</span> </span>
-<span id="cb120-1970"><a href="#cb120-1970" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb120-1971"><a href="#cb120-1971" aria-hidden="true" tabindex="-1"></a>    <span class="at">predlm2 =</span> <span class="fu">predict</span>(bw_lm2),</span>
-<span id="cb120-1972"><a href="#cb120-1972" aria-hidden="true" tabindex="-1"></a>    <span class="at">residlm2 =</span> weight <span class="sc">-</span> predlm2,</span>
-<span id="cb120-1973"><a href="#cb120-1973" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_resid =</span> residlm2 <span class="sc">/</span> <span class="fu">sigma</span>(bw_lm2),</span>
-<span id="cb120-1974"><a href="#cb120-1974" aria-hidden="true" tabindex="-1"></a>    <span class="co"># std_resid_builtin = rstandard(bw_lm2), # uses leverage</span></span>
-<span id="cb120-1975"><a href="#cb120-1975" aria-hidden="true" tabindex="-1"></a>    <span class="at">sqrt_abs_std_resid =</span> std_resid <span class="sc">|&gt;</span> <span class="fu">abs</span>() <span class="sc">|&gt;</span> <span class="fu">sqrt</span>()</span>
-<span id="cb120-1976"><a href="#cb120-1976" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-1977"><a href="#cb120-1977" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb120-1978"><a href="#cb120-1978" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1979"><a href="#cb120-1979" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-1980"><a href="#cb120-1980" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1981"><a href="#cb120-1981" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Residuals vs fitted</span></span>
-<span id="cb120-1982"><a href="#cb120-1982" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1985"><a href="#cb120-1985" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-1986"><a href="#cb120-1986" aria-hidden="true" tabindex="-1"></a>resid_vs_fit <span class="ot">=</span> bw <span class="sc">|&gt;</span> </span>
-<span id="cb120-1987"><a href="#cb120-1987" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb120-1988"><a href="#cb120-1988" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> predlm2, <span class="at">y =</span> residlm2, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
-<span id="cb120-1989"><a href="#cb120-1989" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb120-1990"><a href="#cb120-1990" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb120-1991"><a href="#cb120-1991" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb120-1992"><a href="#cb120-1992" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
-<span id="cb120-1993"><a href="#cb120-1993" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1994"><a href="#cb120-1994" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-1995"><a href="#cb120-1995" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-1996"><a href="#cb120-1996" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
-<span id="cb120-1999"><a href="#cb120-1999" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2000"><a href="#cb120-2000" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resid_vs_fit)</span>
-<span id="cb120-2001"><a href="#cb120-2001" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2002"><a href="#cb120-2002" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-2003"><a href="#cb120-2003" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2004"><a href="#cb120-2004" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
-<span id="cb120-2007"><a href="#cb120-2007" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2008"><a href="#cb120-2008" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resid_vs_fit)</span>
-<span id="cb120-2009"><a href="#cb120-2009" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2010"><a href="#cb120-2010" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-2011"><a href="#cb120-2011" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2012"><a href="#cb120-2012" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Standardized residuals vs fitted</span></span>
-<span id="cb120-2013"><a href="#cb120-2013" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2016"><a href="#cb120-2016" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2017"><a href="#cb120-2017" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">|&gt;</span> </span>
-<span id="cb120-2018"><a href="#cb120-2018" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb120-2019"><a href="#cb120-2019" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> predlm2, <span class="at">y =</span> std_resid, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
-<span id="cb120-2020"><a href="#cb120-2020" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb120-2021"><a href="#cb120-2021" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb120-2022"><a href="#cb120-2022" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb120-2023"><a href="#cb120-2023" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
-<span id="cb120-2024"><a href="#cb120-2024" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2025"><a href="#cb120-2025" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2026"><a href="#cb120-2026" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2027"><a href="#cb120-2027" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Standardized residuals vs gestational age</span></span>
-<span id="cb120-2028"><a href="#cb120-2028" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2031"><a href="#cb120-2031" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2032"><a href="#cb120-2032" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">|&gt;</span> </span>
-<span id="cb120-2033"><a href="#cb120-2033" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb120-2034"><a href="#cb120-2034" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> std_resid, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
-<span id="cb120-2035"><a href="#cb120-2035" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb120-2036"><a href="#cb120-2036" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb120-2037"><a href="#cb120-2037" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb120-2038"><a href="#cb120-2038" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
-<span id="cb120-2039"><a href="#cb120-2039" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2040"><a href="#cb120-2040" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2041"><a href="#cb120-2041" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2042"><a href="#cb120-2042" aria-hidden="true" tabindex="-1"></a><span class="fu">##### `sqrt(abs(rstandard()))` vs fitted</span></span>
-<span id="cb120-2043"><a href="#cb120-2043" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2044"><a href="#cb120-2044" aria-hidden="true" tabindex="-1"></a>Compare with <span class="in">`autoplot(bw_lm2, 3)`</span></span>
-<span id="cb120-2045"><a href="#cb120-2045" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2048"><a href="#cb120-2048" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2049"><a href="#cb120-2049" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">|&gt;</span> </span>
-<span id="cb120-2050"><a href="#cb120-2050" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb120-2051"><a href="#cb120-2051" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> predlm2, <span class="at">y =</span> sqrt_abs_std_resid, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
-<span id="cb120-2052"><a href="#cb120-2052" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb120-2053"><a href="#cb120-2053" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb120-2054"><a href="#cb120-2054" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb120-2055"><a href="#cb120-2055" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
-<span id="cb120-2056"><a href="#cb120-2056" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1884"><a href="#cb120-1884" aria-hidden="true" tabindex="-1"></a>If we didn't correctly guess the functional form of the linear component of the mean, </span>
+<span id="cb120-1885"><a href="#cb120-1885" aria-hidden="true" tabindex="-1"></a>$$\text{E}<span class="co">[</span><span class="ot">Y|X=x</span><span class="co">]</span> = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$$</span>
+<span id="cb120-1886"><a href="#cb120-1886" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1887"><a href="#cb120-1887" aria-hidden="true" tabindex="-1"></a>Then the the residuals might have nonzero mean.</span>
+<span id="cb120-1888"><a href="#cb120-1888" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1889"><a href="#cb120-1889" aria-hidden="true" tabindex="-1"></a>Regardless of whether we guessed the mean function correctly, ther the variance of the residuals might differ between values of $x$.</span>
+<span id="cb120-1890"><a href="#cb120-1890" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1891"><a href="#cb120-1891" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-1892"><a href="#cb120-1892" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1893"><a href="#cb120-1893" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Residuals versus fitted values</span></span>
+<span id="cb120-1894"><a href="#cb120-1894" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1895"><a href="#cb120-1895" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-1896"><a href="#cb120-1896" aria-hidden="true" tabindex="-1"></a>To look for these issues, we can plot the residuals $e_i$ against the fitted values $\hat y_i$ (@fig-bw_lm2-resid-vs-fitted).</span>
+<span id="cb120-1897"><a href="#cb120-1897" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-1900"><a href="#cb120-1900" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-1901"><a href="#cb120-1901" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bw_lm2-resid-vs-fitted</span></span>
+<span id="cb120-1902"><a href="#cb120-1902" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "`birthweight` model  (@eq-BW-lm-interact): residuals versus fitted values"</span></span>
+<span id="cb120-1903"><a href="#cb120-1903" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(bw_lm2, <span class="at">which =</span> <span class="dv">1</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
+<span id="cb120-1904"><a href="#cb120-1904" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-1905"><a href="#cb120-1905" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1906"><a href="#cb120-1906" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-1907"><a href="#cb120-1907" aria-hidden="true" tabindex="-1"></a>If the model is correct, the blue line should stay flat and close to 0, and the cloud of dots should have the same vertical spread regardless of the fitted value.</span>
+<span id="cb120-1908"><a href="#cb120-1908" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1909"><a href="#cb120-1909" aria-hidden="true" tabindex="-1"></a>If not, we probably need to change the functional form of linear component of the mean, $$\text{E}<span class="co">[</span><span class="ot">Y|X=x</span><span class="co">]</span> = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$$</span>
+<span id="cb120-1910"><a href="#cb120-1910" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1911"><a href="#cb120-1911" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-1912"><a href="#cb120-1912" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1913"><a href="#cb120-1913" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-1914"><a href="#cb120-1914" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1915"><a href="#cb120-1915" aria-hidden="true" tabindex="-1"></a>{{&lt; include exm-plot-fits.qmd &gt;}}</span>
+<span id="cb120-1916"><a href="#cb120-1916" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-1917"><a href="#cb120-1917" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1918"><a href="#cb120-1918" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Scale-location plot</span></span>
+<span id="cb120-1919"><a href="#cb120-1919" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1920"><a href="#cb120-1920" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-1921"><a href="#cb120-1921" aria-hidden="true" tabindex="-1"></a>We can also plot the square roots of the absolute values of the standardized residuals against the fitted values (@fig-bw-scale-loc).</span>
+<span id="cb120-1922"><a href="#cb120-1922" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-1923"><a href="#cb120-1923" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1926"><a href="#cb120-1926" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-1927"><a href="#cb120-1927" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-bw-scale-loc</span></span>
+<span id="cb120-1928"><a href="#cb120-1928" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Scale-location plot of `birthweight` data"</span></span>
+<span id="cb120-1929"><a href="#cb120-1929" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(bw_lm2, <span class="at">which =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
+<span id="cb120-1930"><a href="#cb120-1930" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-1931"><a href="#cb120-1931" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1932"><a href="#cb120-1932" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-1933"><a href="#cb120-1933" aria-hidden="true" tabindex="-1"></a>Here, the blue line doesn't need to be near 0, </span>
+<span id="cb120-1934"><a href="#cb120-1934" aria-hidden="true" tabindex="-1"></a>but it should be flat. </span>
+<span id="cb120-1935"><a href="#cb120-1935" aria-hidden="true" tabindex="-1"></a>If not, the residual variance $\sigma^2$ might not be constant, </span>
+<span id="cb120-1936"><a href="#cb120-1936" aria-hidden="true" tabindex="-1"></a>and we might need to transform our outcome $Y$ </span>
+<span id="cb120-1937"><a href="#cb120-1937" aria-hidden="true" tabindex="-1"></a>(or use a model that allows non-constant variance).</span>
+<span id="cb120-1938"><a href="#cb120-1938" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-1939"><a href="#cb120-1939" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1940"><a href="#cb120-1940" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-1941"><a href="#cb120-1941" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1942"><a href="#cb120-1942" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Residuals versus leverage</span></span>
+<span id="cb120-1943"><a href="#cb120-1943" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1944"><a href="#cb120-1944" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-1945"><a href="#cb120-1945" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1946"><a href="#cb120-1946" aria-hidden="true" tabindex="-1"></a>We can also plot our standardized residuals against "leverage", which roughly speaking is a measure of how unusual each $x_i$ value is. Very unusual $x_i$ values can have extreme effects on the model fit, so we might want to remove those observations as outliers, particularly if they have large residuals.</span>
+<span id="cb120-1947"><a href="#cb120-1947" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1948"><a href="#cb120-1948" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-1949"><a href="#cb120-1949" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1952"><a href="#cb120-1952" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-1953"><a href="#cb120-1953" aria-hidden="true" tabindex="-1"></a><span class="co">#| labels: fig-bw_lm2_resid-vs-leverage</span></span>
+<span id="cb120-1954"><a href="#cb120-1954" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "`birthweight` model with interactions (@eq-BW-lm-interact): residuals versus leverage"</span></span>
+<span id="cb120-1955"><a href="#cb120-1955" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(bw_lm2, <span class="at">which =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="fu">print</span>()</span>
+<span id="cb120-1956"><a href="#cb120-1956" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-1957"><a href="#cb120-1957" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1958"><a href="#cb120-1958" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-1959"><a href="#cb120-1959" aria-hidden="true" tabindex="-1"></a>The blue line should be relatively flat and close to 0 here.</span>
+<span id="cb120-1960"><a href="#cb120-1960" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-1961"><a href="#cb120-1961" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1962"><a href="#cb120-1962" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-1963"><a href="#cb120-1963" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1964"><a href="#cb120-1964" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diagnostics constructed by hand</span></span>
+<span id="cb120-1965"><a href="#cb120-1965" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1968"><a href="#cb120-1968" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-1969"><a href="#cb120-1969" aria-hidden="true" tabindex="-1"></a>bw <span class="ot">=</span> </span>
+<span id="cb120-1970"><a href="#cb120-1970" aria-hidden="true" tabindex="-1"></a>  bw <span class="sc">|&gt;</span> </span>
+<span id="cb120-1971"><a href="#cb120-1971" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb120-1972"><a href="#cb120-1972" aria-hidden="true" tabindex="-1"></a>    <span class="at">predlm2 =</span> <span class="fu">predict</span>(bw_lm2),</span>
+<span id="cb120-1973"><a href="#cb120-1973" aria-hidden="true" tabindex="-1"></a>    <span class="at">residlm2 =</span> weight <span class="sc">-</span> predlm2,</span>
+<span id="cb120-1974"><a href="#cb120-1974" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_resid =</span> residlm2 <span class="sc">/</span> <span class="fu">sigma</span>(bw_lm2),</span>
+<span id="cb120-1975"><a href="#cb120-1975" aria-hidden="true" tabindex="-1"></a>    <span class="co"># std_resid_builtin = rstandard(bw_lm2), # uses leverage</span></span>
+<span id="cb120-1976"><a href="#cb120-1976" aria-hidden="true" tabindex="-1"></a>    <span class="at">sqrt_abs_std_resid =</span> std_resid <span class="sc">|&gt;</span> <span class="fu">abs</span>() <span class="sc">|&gt;</span> <span class="fu">sqrt</span>()</span>
+<span id="cb120-1977"><a href="#cb120-1977" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb120-1978"><a href="#cb120-1978" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb120-1979"><a href="#cb120-1979" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1980"><a href="#cb120-1980" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-1981"><a href="#cb120-1981" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1982"><a href="#cb120-1982" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Residuals vs fitted</span></span>
+<span id="cb120-1983"><a href="#cb120-1983" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1986"><a href="#cb120-1986" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-1987"><a href="#cb120-1987" aria-hidden="true" tabindex="-1"></a>resid_vs_fit <span class="ot">=</span> bw <span class="sc">|&gt;</span> </span>
+<span id="cb120-1988"><a href="#cb120-1988" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb120-1989"><a href="#cb120-1989" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> predlm2, <span class="at">y =</span> residlm2, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
+<span id="cb120-1990"><a href="#cb120-1990" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb120-1991"><a href="#cb120-1991" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb120-1992"><a href="#cb120-1992" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb120-1993"><a href="#cb120-1993" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
+<span id="cb120-1994"><a href="#cb120-1994" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1995"><a href="#cb120-1995" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-1996"><a href="#cb120-1996" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-1997"><a href="#cb120-1997" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="html"}</span>
+<span id="cb120-2000"><a href="#cb120-2000" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2001"><a href="#cb120-2001" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resid_vs_fit)</span>
+<span id="cb120-2002"><a href="#cb120-2002" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2003"><a href="#cb120-2003" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-2004"><a href="#cb120-2004" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2005"><a href="#cb120-2005" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="pdf"}</span>
+<span id="cb120-2008"><a href="#cb120-2008" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2009"><a href="#cb120-2009" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resid_vs_fit)</span>
+<span id="cb120-2010"><a href="#cb120-2010" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2011"><a href="#cb120-2011" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-2012"><a href="#cb120-2012" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2013"><a href="#cb120-2013" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Standardized residuals vs fitted</span></span>
+<span id="cb120-2014"><a href="#cb120-2014" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2017"><a href="#cb120-2017" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2018"><a href="#cb120-2018" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">|&gt;</span> </span>
+<span id="cb120-2019"><a href="#cb120-2019" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb120-2020"><a href="#cb120-2020" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> predlm2, <span class="at">y =</span> std_resid, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
+<span id="cb120-2021"><a href="#cb120-2021" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb120-2022"><a href="#cb120-2022" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb120-2023"><a href="#cb120-2023" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb120-2024"><a href="#cb120-2024" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
+<span id="cb120-2025"><a href="#cb120-2025" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2026"><a href="#cb120-2026" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2027"><a href="#cb120-2027" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2028"><a href="#cb120-2028" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Standardized residuals vs gestational age</span></span>
+<span id="cb120-2029"><a href="#cb120-2029" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2032"><a href="#cb120-2032" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2033"><a href="#cb120-2033" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">|&gt;</span> </span>
+<span id="cb120-2034"><a href="#cb120-2034" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb120-2035"><a href="#cb120-2035" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> std_resid, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
+<span id="cb120-2036"><a href="#cb120-2036" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb120-2037"><a href="#cb120-2037" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb120-2038"><a href="#cb120-2038" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb120-2039"><a href="#cb120-2039" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
+<span id="cb120-2040"><a href="#cb120-2040" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2041"><a href="#cb120-2041" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2042"><a href="#cb120-2042" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2043"><a href="#cb120-2043" aria-hidden="true" tabindex="-1"></a><span class="fu">##### `sqrt(abs(rstandard()))` vs fitted</span></span>
+<span id="cb120-2044"><a href="#cb120-2044" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2045"><a href="#cb120-2045" aria-hidden="true" tabindex="-1"></a>Compare with <span class="in">`autoplot(bw_lm2, 3)`</span></span>
+<span id="cb120-2046"><a href="#cb120-2046" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2049"><a href="#cb120-2049" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2050"><a href="#cb120-2050" aria-hidden="true" tabindex="-1"></a>bw <span class="sc">|&gt;</span> </span>
+<span id="cb120-2051"><a href="#cb120-2051" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb120-2052"><a href="#cb120-2052" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> predlm2, <span class="at">y =</span> sqrt_abs_std_resid, <span class="at">col =</span> sex, <span class="at">shape =</span> sex)</span>
+<span id="cb120-2053"><a href="#cb120-2053" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb120-2054"><a href="#cb120-2054" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb120-2055"><a href="#cb120-2055" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb120-2056"><a href="#cb120-2056" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)</span>
 <span id="cb120-2057"><a href="#cb120-2057" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2058"><a href="#cb120-2058" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2059"><a href="#cb120-2059" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2060"><a href="#cb120-2060" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model selection</span></span>
-<span id="cb120-2061"><a href="#cb120-2061" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2062"><a href="#cb120-2062" aria-hidden="true" tabindex="-1"></a>(adapted from @dobson4e §6.3.3; for more information on prediction, see @james2013introduction and @rms2e).</span>
-<span id="cb120-2063"><a href="#cb120-2063" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2064"><a href="#cb120-2064" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-2065"><a href="#cb120-2065" aria-hidden="true" tabindex="-1"></a>If we have a lot of covariates in our dataset, we might want to choose a small subset to use in our model.</span>
-<span id="cb120-2066"><a href="#cb120-2066" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2067"><a href="#cb120-2067" aria-hidden="true" tabindex="-1"></a>There are a few possible metrics to consider for choosing a "best" model.</span>
-<span id="cb120-2068"><a href="#cb120-2068" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-2069"><a href="#cb120-2069" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2070"><a href="#cb120-2070" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mean squared error</span></span>
-<span id="cb120-2071"><a href="#cb120-2071" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2072"><a href="#cb120-2072" aria-hidden="true" tabindex="-1"></a>We might want to minimize the **mean squared error**, $\text E<span class="co">[</span><span class="ot">(y-\hat y)^2</span><span class="co">]</span>$, for new observations that weren't in our data set when we fit the model.</span>
-<span id="cb120-2073"><a href="#cb120-2073" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2074"><a href="#cb120-2074" aria-hidden="true" tabindex="-1"></a>Unfortunately, $$\frac{1}{n}\sum_{i=1}^n (y_i-\hat y_i)^2$$ gives a biased estimate of $\text E<span class="co">[</span><span class="ot">(y-\hat y)^2</span><span class="co">]</span>$ for new data. If we want an unbiased estimate, we will have to be clever.</span>
-<span id="cb120-2075"><a href="#cb120-2075" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2076"><a href="#cb120-2076" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2077"><a href="#cb120-2077" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2078"><a href="#cb120-2078" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Cross-validation</span></span>
-<span id="cb120-2079"><a href="#cb120-2079" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2082"><a href="#cb120-2082" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2083"><a href="#cb120-2083" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"carbohydrate"</span>, <span class="at">package =</span> <span class="st">"dobson"</span>)</span>
-<span id="cb120-2084"><a href="#cb120-2084" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cvTools)</span>
-<span id="cb120-2085"><a href="#cb120-2085" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(carbohydrate <span class="sc">~</span> ., <span class="at">data =</span> carbohydrate)</span>
-<span id="cb120-2086"><a href="#cb120-2086" aria-hidden="true" tabindex="-1"></a>cv_full <span class="ot">=</span> </span>
-<span id="cb120-2087"><a href="#cb120-2087" aria-hidden="true" tabindex="-1"></a>  full_model <span class="sc">|&gt;</span> <span class="fu">cvFit</span>(</span>
-<span id="cb120-2088"><a href="#cb120-2088" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> carbohydrate, <span class="at">K =</span> <span class="dv">5</span>, <span class="at">R =</span> <span class="dv">10</span>,</span>
-<span id="cb120-2089"><a href="#cb120-2089" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> carbohydrate<span class="sc">$</span>carbohydrate)</span>
-<span id="cb120-2090"><a href="#cb120-2090" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2091"><a href="#cb120-2091" aria-hidden="true" tabindex="-1"></a>reduced_model <span class="ot">=</span> <span class="fu">update</span>(full_model, </span>
-<span id="cb120-2092"><a href="#cb120-2092" aria-hidden="true" tabindex="-1"></a>                       <span class="at">formula =</span> <span class="sc">~</span> . <span class="sc">-</span> age)</span>
-<span id="cb120-2093"><a href="#cb120-2093" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2094"><a href="#cb120-2094" aria-hidden="true" tabindex="-1"></a>cv_reduced <span class="ot">=</span> </span>
-<span id="cb120-2095"><a href="#cb120-2095" aria-hidden="true" tabindex="-1"></a>  reduced_model <span class="sc">|&gt;</span> <span class="fu">cvFit</span>(</span>
-<span id="cb120-2096"><a href="#cb120-2096" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> carbohydrate, <span class="at">K =</span> <span class="dv">5</span>, <span class="at">R =</span> <span class="dv">10</span>,</span>
-<span id="cb120-2097"><a href="#cb120-2097" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> carbohydrate<span class="sc">$</span>carbohydrate)</span>
-<span id="cb120-2098"><a href="#cb120-2098" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2099"><a href="#cb120-2099" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2100"><a href="#cb120-2100" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2101"><a href="#cb120-2101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2104"><a href="#cb120-2104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2105"><a href="#cb120-2105" aria-hidden="true" tabindex="-1"></a>results_reduced <span class="ot">=</span> </span>
-<span id="cb120-2106"><a href="#cb120-2106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb120-2107"><a href="#cb120-2107" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"wgt+protein"</span>,</span>
-<span id="cb120-2108"><a href="#cb120-2108" aria-hidden="true" tabindex="-1"></a>      <span class="at">errs =</span> cv_reduced<span class="sc">$</span>reps[])</span>
-<span id="cb120-2109"><a href="#cb120-2109" aria-hidden="true" tabindex="-1"></a>results_full <span class="ot">=</span> </span>
-<span id="cb120-2110"><a href="#cb120-2110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">model =</span> <span class="st">"wgt+age+protein"</span>,</span>
-<span id="cb120-2111"><a href="#cb120-2111" aria-hidden="true" tabindex="-1"></a>           <span class="at">errs =</span> cv_full<span class="sc">$</span>reps[])</span>
-<span id="cb120-2112"><a href="#cb120-2112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2113"><a href="#cb120-2113" aria-hidden="true" tabindex="-1"></a>cv_results <span class="ot">=</span> </span>
-<span id="cb120-2114"><a href="#cb120-2114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(results_reduced, results_full)</span>
-<span id="cb120-2115"><a href="#cb120-2115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2116"><a href="#cb120-2116" aria-hidden="true" tabindex="-1"></a>cv_results <span class="sc">|&gt;</span> </span>
-<span id="cb120-2117"><a href="#cb120-2117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> model, <span class="at">x =</span> errs)) <span class="sc">+</span></span>
-<span id="cb120-2118"><a href="#cb120-2118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb120-2119"><a href="#cb120-2119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2120"><a href="#cb120-2120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2121"><a href="#cb120-2121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2122"><a href="#cb120-2122" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2123"><a href="#cb120-2123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2124"><a href="#cb120-2124" aria-hidden="true" tabindex="-1"></a><span class="fu">##### comparing metrics</span></span>
-<span id="cb120-2125"><a href="#cb120-2125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2128"><a href="#cb120-2128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2129"><a href="#cb120-2129" aria-hidden="true" tabindex="-1"></a>compare_results <span class="ot">=</span> <span class="fu">tribble</span>(</span>
-<span id="cb120-2130"><a href="#cb120-2130" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> model, <span class="sc">~</span> cvRMSE, <span class="sc">~</span> r.squared, <span class="sc">~</span>adj.r.squared, <span class="sc">~</span> trainRMSE, <span class="sc">~</span>loglik,</span>
-<span id="cb120-2131"><a href="#cb120-2131" aria-hidden="true" tabindex="-1"></a>  <span class="st">"full"</span>, cv_full<span class="sc">$</span>cv, <span class="fu">summary</span>(full_model)<span class="sc">$</span>r.squared,  <span class="fu">summary</span>(full_model)<span class="sc">$</span>adj.r.squared, <span class="fu">sigma</span>(full_model), <span class="fu">logLik</span>(full_model) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
-<span id="cb120-2132"><a href="#cb120-2132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"reduced"</span>, cv_reduced<span class="sc">$</span>cv, <span class="fu">summary</span>(reduced_model)<span class="sc">$</span>r.squared, <span class="fu">summary</span>(reduced_model)<span class="sc">$</span>adj.r.squared, <span class="fu">sigma</span>(reduced_model), <span class="fu">logLik</span>(reduced_model) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>())</span>
-<span id="cb120-2133"><a href="#cb120-2133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2134"><a href="#cb120-2134" aria-hidden="true" tabindex="-1"></a>compare_results</span>
-<span id="cb120-2135"><a href="#cb120-2135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2136"><a href="#cb120-2136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2137"><a href="#cb120-2137" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2138"><a href="#cb120-2138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2141"><a href="#cb120-2141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2142"><a href="#cb120-2142" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(full_model, reduced_model)</span>
-<span id="cb120-2143"><a href="#cb120-2143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2144"><a href="#cb120-2144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2145"><a href="#cb120-2145" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2146"><a href="#cb120-2146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2147"><a href="#cb120-2147" aria-hidden="true" tabindex="-1"></a><span class="fu">#### stepwise regression</span></span>
-<span id="cb120-2148"><a href="#cb120-2148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2151"><a href="#cb120-2151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2152"><a href="#cb120-2152" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
-<span id="cb120-2153"><a href="#cb120-2153" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">:::</span><span class="fu">ols_step_both_aic</span>(full_model)</span>
-<span id="cb120-2154"><a href="#cb120-2154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2155"><a href="#cb120-2155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2156"><a href="#cb120-2156" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2157"><a href="#cb120-2157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2158"><a href="#cb120-2158" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Lasso</span></span>
-<span id="cb120-2159"><a href="#cb120-2159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2160"><a href="#cb120-2160" aria-hidden="true" tabindex="-1"></a>$$\arg min_{\theta} \llik(\th) + \lambda \sum_{j=1}^p|\beta_j|$$</span>
-<span id="cb120-2161"><a href="#cb120-2161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2164"><a href="#cb120-2164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2165"><a href="#cb120-2165" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
-<span id="cb120-2166"><a href="#cb120-2166" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> carbohydrate<span class="sc">$</span>carbohydrate</span>
-<span id="cb120-2167"><a href="#cb120-2167" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> carbohydrate <span class="sc">|&gt;</span> </span>
-<span id="cb120-2168"><a href="#cb120-2168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, weight, protein) <span class="sc">|&gt;</span> </span>
-<span id="cb120-2169"><a href="#cb120-2169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
-<span id="cb120-2170"><a href="#cb120-2170" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">glmnet</span>(x,y)</span>
-<span id="cb120-2171"><a href="#cb120-2171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2172"><a href="#cb120-2172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2173"><a href="#cb120-2173" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2174"><a href="#cb120-2174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2177"><a href="#cb120-2177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2178"><a href="#cb120-2178" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Lasso selection"</span></span>
-<span id="cb120-2179"><a href="#cb120-2179" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-carbs-lasso</span></span>
-<span id="cb120-2180"><a href="#cb120-2180" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(fit, <span class="at">xvar =</span> <span class="st">'lambda'</span>)</span>
-<span id="cb120-2181"><a href="#cb120-2181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2182"><a href="#cb120-2182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2183"><a href="#cb120-2183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2184"><a href="#cb120-2184" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2185"><a href="#cb120-2185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2188"><a href="#cb120-2188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2189"><a href="#cb120-2189" aria-hidden="true" tabindex="-1"></a>cvfit <span class="ot">=</span> <span class="fu">cv.glmnet</span>(x,y)</span>
-<span id="cb120-2190"><a href="#cb120-2190" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cvfit)</span>
-<span id="cb120-2191"><a href="#cb120-2191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2192"><a href="#cb120-2192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2193"><a href="#cb120-2193" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2194"><a href="#cb120-2194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2197"><a href="#cb120-2197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2198"><a href="#cb120-2198" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cvfit, <span class="at">s =</span> <span class="st">"lambda.1se"</span>)</span>
-<span id="cb120-2199"><a href="#cb120-2199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2200"><a href="#cb120-2200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2058"><a href="#cb120-2058" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2059"><a href="#cb120-2059" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2060"><a href="#cb120-2060" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2061"><a href="#cb120-2061" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model selection</span></span>
+<span id="cb120-2062"><a href="#cb120-2062" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2063"><a href="#cb120-2063" aria-hidden="true" tabindex="-1"></a>(adapted from @dobson4e §6.3.3; for more information on prediction, see @james2013introduction and @rms2e).</span>
+<span id="cb120-2064"><a href="#cb120-2064" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2065"><a href="#cb120-2065" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-2066"><a href="#cb120-2066" aria-hidden="true" tabindex="-1"></a>If we have a lot of covariates in our dataset, we might want to choose a small subset to use in our model.</span>
+<span id="cb120-2067"><a href="#cb120-2067" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2068"><a href="#cb120-2068" aria-hidden="true" tabindex="-1"></a>There are a few possible metrics to consider for choosing a "best" model.</span>
+<span id="cb120-2069"><a href="#cb120-2069" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-2070"><a href="#cb120-2070" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2071"><a href="#cb120-2071" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mean squared error</span></span>
+<span id="cb120-2072"><a href="#cb120-2072" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2073"><a href="#cb120-2073" aria-hidden="true" tabindex="-1"></a>We might want to minimize the **mean squared error**, $\text E<span class="co">[</span><span class="ot">(y-\hat y)^2</span><span class="co">]</span>$, for new observations that weren't in our data set when we fit the model.</span>
+<span id="cb120-2074"><a href="#cb120-2074" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2075"><a href="#cb120-2075" aria-hidden="true" tabindex="-1"></a>Unfortunately, $$\frac{1}{n}\sum_{i=1}^n (y_i-\hat y_i)^2$$ gives a biased estimate of $\text E<span class="co">[</span><span class="ot">(y-\hat y)^2</span><span class="co">]</span>$ for new data. If we want an unbiased estimate, we will have to be clever.</span>
+<span id="cb120-2076"><a href="#cb120-2076" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2077"><a href="#cb120-2077" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2078"><a href="#cb120-2078" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2079"><a href="#cb120-2079" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Cross-validation</span></span>
+<span id="cb120-2080"><a href="#cb120-2080" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2083"><a href="#cb120-2083" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2084"><a href="#cb120-2084" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"carbohydrate"</span>, <span class="at">package =</span> <span class="st">"dobson"</span>)</span>
+<span id="cb120-2085"><a href="#cb120-2085" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cvTools)</span>
+<span id="cb120-2086"><a href="#cb120-2086" aria-hidden="true" tabindex="-1"></a>full_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(carbohydrate <span class="sc">~</span> ., <span class="at">data =</span> carbohydrate)</span>
+<span id="cb120-2087"><a href="#cb120-2087" aria-hidden="true" tabindex="-1"></a>cv_full <span class="ot">=</span> </span>
+<span id="cb120-2088"><a href="#cb120-2088" aria-hidden="true" tabindex="-1"></a>  full_model <span class="sc">|&gt;</span> <span class="fu">cvFit</span>(</span>
+<span id="cb120-2089"><a href="#cb120-2089" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> carbohydrate, <span class="at">K =</span> <span class="dv">5</span>, <span class="at">R =</span> <span class="dv">10</span>,</span>
+<span id="cb120-2090"><a href="#cb120-2090" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> carbohydrate<span class="sc">$</span>carbohydrate)</span>
+<span id="cb120-2091"><a href="#cb120-2091" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2092"><a href="#cb120-2092" aria-hidden="true" tabindex="-1"></a>reduced_model <span class="ot">=</span> <span class="fu">update</span>(full_model, </span>
+<span id="cb120-2093"><a href="#cb120-2093" aria-hidden="true" tabindex="-1"></a>                       <span class="at">formula =</span> <span class="sc">~</span> . <span class="sc">-</span> age)</span>
+<span id="cb120-2094"><a href="#cb120-2094" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2095"><a href="#cb120-2095" aria-hidden="true" tabindex="-1"></a>cv_reduced <span class="ot">=</span> </span>
+<span id="cb120-2096"><a href="#cb120-2096" aria-hidden="true" tabindex="-1"></a>  reduced_model <span class="sc">|&gt;</span> <span class="fu">cvFit</span>(</span>
+<span id="cb120-2097"><a href="#cb120-2097" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> carbohydrate, <span class="at">K =</span> <span class="dv">5</span>, <span class="at">R =</span> <span class="dv">10</span>,</span>
+<span id="cb120-2098"><a href="#cb120-2098" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> carbohydrate<span class="sc">$</span>carbohydrate)</span>
+<span id="cb120-2099"><a href="#cb120-2099" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2100"><a href="#cb120-2100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2101"><a href="#cb120-2101" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2102"><a href="#cb120-2102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2105"><a href="#cb120-2105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2106"><a href="#cb120-2106" aria-hidden="true" tabindex="-1"></a>results_reduced <span class="ot">=</span> </span>
+<span id="cb120-2107"><a href="#cb120-2107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb120-2108"><a href="#cb120-2108" aria-hidden="true" tabindex="-1"></a>      <span class="at">model =</span> <span class="st">"wgt+protein"</span>,</span>
+<span id="cb120-2109"><a href="#cb120-2109" aria-hidden="true" tabindex="-1"></a>      <span class="at">errs =</span> cv_reduced<span class="sc">$</span>reps[])</span>
+<span id="cb120-2110"><a href="#cb120-2110" aria-hidden="true" tabindex="-1"></a>results_full <span class="ot">=</span> </span>
+<span id="cb120-2111"><a href="#cb120-2111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">model =</span> <span class="st">"wgt+age+protein"</span>,</span>
+<span id="cb120-2112"><a href="#cb120-2112" aria-hidden="true" tabindex="-1"></a>           <span class="at">errs =</span> cv_full<span class="sc">$</span>reps[])</span>
+<span id="cb120-2113"><a href="#cb120-2113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2114"><a href="#cb120-2114" aria-hidden="true" tabindex="-1"></a>cv_results <span class="ot">=</span> </span>
+<span id="cb120-2115"><a href="#cb120-2115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(results_reduced, results_full)</span>
+<span id="cb120-2116"><a href="#cb120-2116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2117"><a href="#cb120-2117" aria-hidden="true" tabindex="-1"></a>cv_results <span class="sc">|&gt;</span> </span>
+<span id="cb120-2118"><a href="#cb120-2118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> model, <span class="at">x =</span> errs)) <span class="sc">+</span></span>
+<span id="cb120-2119"><a href="#cb120-2119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb120-2120"><a href="#cb120-2120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2121"><a href="#cb120-2121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2122"><a href="#cb120-2122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2123"><a href="#cb120-2123" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2124"><a href="#cb120-2124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2125"><a href="#cb120-2125" aria-hidden="true" tabindex="-1"></a><span class="fu">##### comparing metrics</span></span>
+<span id="cb120-2126"><a href="#cb120-2126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2129"><a href="#cb120-2129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2130"><a href="#cb120-2130" aria-hidden="true" tabindex="-1"></a>compare_results <span class="ot">=</span> <span class="fu">tribble</span>(</span>
+<span id="cb120-2131"><a href="#cb120-2131" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> model, <span class="sc">~</span> cvRMSE, <span class="sc">~</span> r.squared, <span class="sc">~</span>adj.r.squared, <span class="sc">~</span> trainRMSE, <span class="sc">~</span>loglik,</span>
+<span id="cb120-2132"><a href="#cb120-2132" aria-hidden="true" tabindex="-1"></a>  <span class="st">"full"</span>, cv_full<span class="sc">$</span>cv, <span class="fu">summary</span>(full_model)<span class="sc">$</span>r.squared,  <span class="fu">summary</span>(full_model)<span class="sc">$</span>adj.r.squared, <span class="fu">sigma</span>(full_model), <span class="fu">logLik</span>(full_model) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb120-2133"><a href="#cb120-2133" aria-hidden="true" tabindex="-1"></a>  <span class="st">"reduced"</span>, cv_reduced<span class="sc">$</span>cv, <span class="fu">summary</span>(reduced_model)<span class="sc">$</span>r.squared, <span class="fu">summary</span>(reduced_model)<span class="sc">$</span>adj.r.squared, <span class="fu">sigma</span>(reduced_model), <span class="fu">logLik</span>(reduced_model) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>())</span>
+<span id="cb120-2134"><a href="#cb120-2134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2135"><a href="#cb120-2135" aria-hidden="true" tabindex="-1"></a>compare_results</span>
+<span id="cb120-2136"><a href="#cb120-2136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2137"><a href="#cb120-2137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2138"><a href="#cb120-2138" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2139"><a href="#cb120-2139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2142"><a href="#cb120-2142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2143"><a href="#cb120-2143" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(full_model, reduced_model)</span>
+<span id="cb120-2144"><a href="#cb120-2144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2145"><a href="#cb120-2145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2146"><a href="#cb120-2146" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2147"><a href="#cb120-2147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2148"><a href="#cb120-2148" aria-hidden="true" tabindex="-1"></a><span class="fu">#### stepwise regression</span></span>
+<span id="cb120-2149"><a href="#cb120-2149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2152"><a href="#cb120-2152" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2153"><a href="#cb120-2153" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span>
+<span id="cb120-2154"><a href="#cb120-2154" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">:::</span><span class="fu">ols_step_both_aic</span>(full_model)</span>
+<span id="cb120-2155"><a href="#cb120-2155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2156"><a href="#cb120-2156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2157"><a href="#cb120-2157" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2158"><a href="#cb120-2158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2159"><a href="#cb120-2159" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Lasso</span></span>
+<span id="cb120-2160"><a href="#cb120-2160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2161"><a href="#cb120-2161" aria-hidden="true" tabindex="-1"></a>$$\arg min_{\theta} \llik(\th) + \lambda \sum_{j=1}^p|\beta_j|$$</span>
+<span id="cb120-2162"><a href="#cb120-2162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2165"><a href="#cb120-2165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2166"><a href="#cb120-2166" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
+<span id="cb120-2167"><a href="#cb120-2167" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> carbohydrate<span class="sc">$</span>carbohydrate</span>
+<span id="cb120-2168"><a href="#cb120-2168" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> carbohydrate <span class="sc">|&gt;</span> </span>
+<span id="cb120-2169"><a href="#cb120-2169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, weight, protein) <span class="sc">|&gt;</span> </span>
+<span id="cb120-2170"><a href="#cb120-2170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb120-2171"><a href="#cb120-2171" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="fu">glmnet</span>(x,y)</span>
+<span id="cb120-2172"><a href="#cb120-2172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2173"><a href="#cb120-2173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2174"><a href="#cb120-2174" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2175"><a href="#cb120-2175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2178"><a href="#cb120-2178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2179"><a href="#cb120-2179" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Lasso selection"</span></span>
+<span id="cb120-2180"><a href="#cb120-2180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-carbs-lasso</span></span>
+<span id="cb120-2181"><a href="#cb120-2181" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(fit, <span class="at">xvar =</span> <span class="st">'lambda'</span>)</span>
+<span id="cb120-2182"><a href="#cb120-2182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2183"><a href="#cb120-2183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2184"><a href="#cb120-2184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2185"><a href="#cb120-2185" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2186"><a href="#cb120-2186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2189"><a href="#cb120-2189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2190"><a href="#cb120-2190" aria-hidden="true" tabindex="-1"></a>cvfit <span class="ot">=</span> <span class="fu">cv.glmnet</span>(x,y)</span>
+<span id="cb120-2191"><a href="#cb120-2191" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cvfit)</span>
+<span id="cb120-2192"><a href="#cb120-2192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2193"><a href="#cb120-2193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2194"><a href="#cb120-2194" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2195"><a href="#cb120-2195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2198"><a href="#cb120-2198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2199"><a href="#cb120-2199" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(cvfit, <span class="at">s =</span> <span class="st">"lambda.1se"</span>)</span>
+<span id="cb120-2200"><a href="#cb120-2200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb120-2201"><a href="#cb120-2201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2202"><a href="#cb120-2202" aria-hidden="true" tabindex="-1"></a><span class="fu">## Categorical covariates with more than two levels</span></span>
-<span id="cb120-2203"><a href="#cb120-2203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2204"><a href="#cb120-2204" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example: `birthweight`</span></span>
-<span id="cb120-2205"><a href="#cb120-2205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2206"><a href="#cb120-2206" aria-hidden="true" tabindex="-1"></a>In the birthweight example, the variable <span class="in">`sex`</span> had only two observed values:</span>
-<span id="cb120-2207"><a href="#cb120-2207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2210"><a href="#cb120-2210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2211"><a href="#cb120-2211" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(bw<span class="sc">$</span>sex)</span>
-<span id="cb120-2212"><a href="#cb120-2212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2213"><a href="#cb120-2213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2214"><a href="#cb120-2214" aria-hidden="true" tabindex="-1"></a>If there are more than two observed values, we can't just use a single variable with 0s and 1s.</span>
-<span id="cb120-2215"><a href="#cb120-2215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2216"><a href="#cb120-2216" aria-hidden="true" tabindex="-1"></a><span class="fu">### </span></span>
-<span id="cb120-2217"><a href="#cb120-2217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2218"><a href="#cb120-2218" aria-hidden="true" tabindex="-1"></a>:::{.notes}</span>
-<span id="cb120-2219"><a href="#cb120-2219" aria-hidden="true" tabindex="-1"></a>For example, @tbl-iris-data shows the <span class="co">[</span><span class="ot">(in)famous</span><span class="co">](https://www.meganstodel.com/posts/no-to-iris/)</span> <span class="in">`iris`</span> data (@anderson1935irises), </span>
-<span id="cb120-2220"><a href="#cb120-2220" aria-hidden="true" tabindex="-1"></a>and @tbl-iris-summary provides summary statistics. </span>
-<span id="cb120-2221"><a href="#cb120-2221" aria-hidden="true" tabindex="-1"></a>The data include three species: "setosa", "versicolor", and "virginica".</span>
-<span id="cb120-2222"><a href="#cb120-2222" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-2223"><a href="#cb120-2223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2226"><a href="#cb120-2226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2227"><a href="#cb120-2227" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The `iris` data"</span></span>
-<span id="cb120-2228"><a href="#cb120-2228" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-data</span></span>
-<span id="cb120-2229"><a href="#cb120-2229" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
-<span id="cb120-2230"><a href="#cb120-2230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2231"><a href="#cb120-2231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2234"><a href="#cb120-2234" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2235"><a href="#cb120-2235" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Summary statistics for the `iris` data"</span></span>
-<span id="cb120-2236"><a href="#cb120-2236" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-summary</span></span>
-<span id="cb120-2237"><a href="#cb120-2237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2238"><a href="#cb120-2238" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(table1)</span>
-<span id="cb120-2239"><a href="#cb120-2239" aria-hidden="true" tabindex="-1"></a><span class="fu">table1</span>(</span>
-<span id="cb120-2240"><a href="#cb120-2240" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="sc">~</span> . <span class="sc">|</span> Species,</span>
-<span id="cb120-2241"><a href="#cb120-2241" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
-<span id="cb120-2242"><a href="#cb120-2242" aria-hidden="true" tabindex="-1"></a>  <span class="at">overall =</span> <span class="cn">FALSE</span></span>
-<span id="cb120-2243"><a href="#cb120-2243" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb120-2244"><a href="#cb120-2244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2245"><a href="#cb120-2245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2246"><a href="#cb120-2246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2247"><a href="#cb120-2247" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2248"><a href="#cb120-2248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2249"><a href="#cb120-2249" aria-hidden="true" tabindex="-1"></a>If we want to model <span class="in">`Sepal.Length`</span> by species, we could create a variable $X$ that represents "setosa" as $X=1$, "virginica" as $X=2$, and "versicolor" as $X=3$.</span>
-<span id="cb120-2250"><a href="#cb120-2250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2253"><a href="#cb120-2253" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2254"><a href="#cb120-2254" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-numeric-coding</span></span>
-<span id="cb120-2255"><a href="#cb120-2255" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "`iris` data with numeric coding of species"</span></span>
-<span id="cb120-2256"><a href="#cb120-2256" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris) <span class="co"># this step is not always necessary, but ensures you're starting  </span></span>
-<span id="cb120-2257"><a href="#cb120-2257" aria-hidden="true" tabindex="-1"></a><span class="co"># from the original version of a dataset stored in a loaded package</span></span>
-<span id="cb120-2258"><a href="#cb120-2258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2259"><a href="#cb120-2259" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">=</span> </span>
-<span id="cb120-2260"><a href="#cb120-2260" aria-hidden="true" tabindex="-1"></a>  iris <span class="sc">|&gt;</span> </span>
-<span id="cb120-2261"><a href="#cb120-2261" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb120-2262"><a href="#cb120-2262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb120-2263"><a href="#cb120-2263" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">case_when</span>(</span>
-<span id="cb120-2264"><a href="#cb120-2264" aria-hidden="true" tabindex="-1"></a>      Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb120-2265"><a href="#cb120-2265" aria-hidden="true" tabindex="-1"></a>      Species <span class="sc">==</span> <span class="st">"virginica"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb120-2266"><a href="#cb120-2266" aria-hidden="true" tabindex="-1"></a>      Species <span class="sc">==</span> <span class="st">"versicolor"</span> <span class="sc">~</span> <span class="dv">3</span></span>
-<span id="cb120-2267"><a href="#cb120-2267" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb120-2268"><a href="#cb120-2268" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb120-2269"><a href="#cb120-2269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2270"><a href="#cb120-2270" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span> </span>
-<span id="cb120-2271"><a href="#cb120-2271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Species, X)</span>
-<span id="cb120-2272"><a href="#cb120-2272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2273"><a href="#cb120-2273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2274"><a href="#cb120-2274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2275"><a href="#cb120-2275" aria-hidden="true" tabindex="-1"></a>Then we could fit a model like:</span>
-<span id="cb120-2276"><a href="#cb120-2276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2279"><a href="#cb120-2279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2280"><a href="#cb120-2280" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-numeric-species</span></span>
-<span id="cb120-2281"><a href="#cb120-2281" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Model of `iris` data with numeric coding of `Species`"</span></span>
-<span id="cb120-2282"><a href="#cb120-2282" aria-hidden="true" tabindex="-1"></a>iris_lm1 <span class="ot">=</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> X, <span class="at">data =</span> iris)</span>
-<span id="cb120-2283"><a href="#cb120-2283" aria-hidden="true" tabindex="-1"></a>iris_lm1 <span class="sc">|&gt;</span> <span class="fu">parameters</span>() <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span>
-<span id="cb120-2284"><a href="#cb120-2284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2285"><a href="#cb120-2285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2286"><a href="#cb120-2286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2287"><a href="#cb120-2287" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see how that model looks:</span></span>
-<span id="cb120-2288"><a href="#cb120-2288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2291"><a href="#cb120-2291" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2292"><a href="#cb120-2292" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-iris-numeric-species-model</span></span>
-<span id="cb120-2293"><a href="#cb120-2293" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Model of `iris` data with numeric coding of `Species`"</span></span>
-<span id="cb120-2294"><a href="#cb120-2294" aria-hidden="true" tabindex="-1"></a>iris_plot1 <span class="ot">=</span> iris <span class="sc">|&gt;</span> </span>
-<span id="cb120-2295"><a href="#cb120-2295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb120-2296"><a href="#cb120-2296" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb120-2297"><a href="#cb120-2297" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> X, </span>
-<span id="cb120-2298"><a href="#cb120-2298" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Sepal.Length)</span>
-<span id="cb120-2299"><a href="#cb120-2299" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb120-2300"><a href="#cb120-2300" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb120-2301"><a href="#cb120-2301" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(</span>
-<span id="cb120-2302"><a href="#cb120-2302" aria-hidden="true" tabindex="-1"></a>    <span class="at">intercept =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">1</span>], </span>
-<span id="cb120-2303"><a href="#cb120-2303" aria-hidden="true" tabindex="-1"></a>    <span class="at">slope =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">2</span>]) <span class="sc">+</span></span>
-<span id="cb120-2304"><a href="#cb120-2304" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span>
-<span id="cb120-2305"><a href="#cb120-2305" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(iris_plot1)</span>
-<span id="cb120-2306"><a href="#cb120-2306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2307"><a href="#cb120-2307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2308"><a href="#cb120-2308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2309"><a href="#cb120-2309" aria-hidden="true" tabindex="-1"></a>We have forced the model to use a straight line for the three estimated means. Maybe not a good idea?</span>
-<span id="cb120-2310"><a href="#cb120-2310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2311"><a href="#cb120-2311" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see what R does with categorical variables by default:</span></span>
-<span id="cb120-2312"><a href="#cb120-2312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2315"><a href="#cb120-2315" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2316"><a href="#cb120-2316" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-model-factor1</span></span>
-<span id="cb120-2317"><a href="#cb120-2317" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Model of `iris` data with `Species` as a categorical variable"</span></span>
-<span id="cb120-2318"><a href="#cb120-2318" aria-hidden="true" tabindex="-1"></a>iris_lm2 <span class="ot">=</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span>
-<span id="cb120-2319"><a href="#cb120-2319" aria-hidden="true" tabindex="-1"></a>iris_lm2 <span class="sc">|&gt;</span> <span class="fu">parameters</span>() <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span>
-<span id="cb120-2320"><a href="#cb120-2320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2321"><a href="#cb120-2321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2322"><a href="#cb120-2322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2323"><a href="#cb120-2323" aria-hidden="true" tabindex="-1"></a><span class="fu">### Re-parametrize with no intercept</span></span>
-<span id="cb120-2324"><a href="#cb120-2324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2325"><a href="#cb120-2325" aria-hidden="true" tabindex="-1"></a>If you don't want the default and offset option, you can use "-1" like we've seen previously:</span>
-<span id="cb120-2326"><a href="#cb120-2326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2329"><a href="#cb120-2329" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2330"><a href="#cb120-2330" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-no-intcpt</span></span>
-<span id="cb120-2331"><a href="#cb120-2331" aria-hidden="true" tabindex="-1"></a>iris.lm2b <span class="ot">=</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> iris)</span>
-<span id="cb120-2332"><a href="#cb120-2332" aria-hidden="true" tabindex="-1"></a>iris.lm2b <span class="sc">|&gt;</span> <span class="fu">parameters</span>() <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span>
-<span id="cb120-2333"><a href="#cb120-2333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2334"><a href="#cb120-2334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2335"><a href="#cb120-2335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2336"><a href="#cb120-2336" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see what these new models look like:</span></span>
-<span id="cb120-2337"><a href="#cb120-2337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2340"><a href="#cb120-2340" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2341"><a href="#cb120-2341" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-iris-no-intcpt</span></span>
-<span id="cb120-2342"><a href="#cb120-2342" aria-hidden="true" tabindex="-1"></a>iris_plot2 <span class="ot">=</span> </span>
-<span id="cb120-2343"><a href="#cb120-2343" aria-hidden="true" tabindex="-1"></a>  iris <span class="sc">|&gt;</span> </span>
-<span id="cb120-2344"><a href="#cb120-2344" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb120-2345"><a href="#cb120-2345" aria-hidden="true" tabindex="-1"></a>    <span class="at">predlm2 =</span> <span class="fu">predict</span>(iris_lm2)) <span class="sc">|&gt;</span> </span>
-<span id="cb120-2346"><a href="#cb120-2346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(X) <span class="sc">|&gt;</span> </span>
-<span id="cb120-2347"><a href="#cb120-2347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb120-2348"><a href="#cb120-2348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb120-2349"><a href="#cb120-2349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> predlm2), <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb120-2350"><a href="#cb120-2350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(</span>
-<span id="cb120-2351"><a href="#cb120-2351" aria-hidden="true" tabindex="-1"></a>    <span class="at">intercept =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">1</span>], </span>
-<span id="cb120-2352"><a href="#cb120-2352" aria-hidden="true" tabindex="-1"></a>    <span class="at">slope =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">2</span>]) <span class="sc">+</span> </span>
-<span id="cb120-2353"><a href="#cb120-2353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span>
-<span id="cb120-2354"><a href="#cb120-2354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2355"><a href="#cb120-2355" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(iris_plot2)</span>
-<span id="cb120-2356"><a href="#cb120-2356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2357"><a href="#cb120-2357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2358"><a href="#cb120-2358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2359"><a href="#cb120-2359" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see how R did that:</span></span>
-<span id="cb120-2360"><a href="#cb120-2360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2363"><a href="#cb120-2363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2364"><a href="#cb120-2364" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-model-matrix-factor</span></span>
-<span id="cb120-2365"><a href="#cb120-2365" aria-hidden="true" tabindex="-1"></a><span class="fu">formula</span>(iris_lm2)</span>
-<span id="cb120-2366"><a href="#cb120-2366" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(iris_lm2) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
-<span id="cb120-2367"><a href="#cb120-2367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2368"><a href="#cb120-2368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2369"><a href="#cb120-2369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2370"><a href="#cb120-2370" aria-hidden="true" tabindex="-1"></a>This is called a "corner point parametrization".</span>
-<span id="cb120-2371"><a href="#cb120-2371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2374"><a href="#cb120-2374" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2375"><a href="#cb120-2375" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-group-point-parameterization</span></span>
-<span id="cb120-2376"><a href="#cb120-2376" aria-hidden="true" tabindex="-1"></a><span class="fu">formula</span>(iris.lm2b)</span>
-<span id="cb120-2377"><a href="#cb120-2377" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(iris.lm2b) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
-<span id="cb120-2378"><a href="#cb120-2378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2379"><a href="#cb120-2379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2380"><a href="#cb120-2380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2381"><a href="#cb120-2381" aria-hidden="true" tabindex="-1"></a>This can be called a "group point parametrization".</span>
-<span id="cb120-2382"><a href="#cb120-2382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2383"><a href="#cb120-2383" aria-hidden="true" tabindex="-1"></a>There are more options; see @dobson4e §6.4.1 and the </span>
-<span id="cb120-2384"><a href="#cb120-2384" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">`codingMatrices` package</span><span class="co">](https://CRAN.R-project.org/package=codingMatrices)</span> </span>
-<span id="cb120-2385"><a href="#cb120-2385" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">vignette</span><span class="co">](https://cran.r-project.org/web/packages/codingMatrices/vignettes/codingMatrices.pdf)</span> </span>
-<span id="cb120-2386"><a href="#cb120-2386" aria-hidden="true" tabindex="-1"></a>(@venablescodingMatrices).</span>
-<span id="cb120-2387"><a href="#cb120-2387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2388"><a href="#cb120-2388" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ordinal covariates</span></span>
-<span id="cb120-2389"><a href="#cb120-2389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2390"><a href="#cb120-2390" aria-hidden="true" tabindex="-1"></a>(c.f. @dobson4e §2.4.4)</span>
-<span id="cb120-2391"><a href="#cb120-2391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2392"><a href="#cb120-2392" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2393"><a href="#cb120-2393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2394"><a href="#cb120-2394" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb120-2395"><a href="#cb120-2395" aria-hidden="true" tabindex="-1"></a>We can create ordinal variables in R using the <span class="in">`ordered()`</span> function^<span class="co">[</span><span class="ot">or equivalently, `factor(ordered = TRUE)`</span><span class="co">]</span>.</span>
-<span id="cb120-2396"><a href="#cb120-2396" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-2397"><a href="#cb120-2397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2398"><a href="#cb120-2398" aria-hidden="true" tabindex="-1"></a>:::{#exm-ordinal-variable}</span>
-<span id="cb120-2399"><a href="#cb120-2399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2402"><a href="#cb120-2402" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2403"><a href="#cb120-2403" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb120-2404"><a href="#cb120-2404" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="fu">paste0</span>(</span>
-<span id="cb120-2405"><a href="#cb120-2405" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://regression.ucsf.edu/sites/g/files/tkssra6706/"</span>,</span>
-<span id="cb120-2406"><a href="#cb120-2406" aria-hidden="true" tabindex="-1"></a>  <span class="st">"f/wysiwyg/home/data/hersdata.dta"</span>)</span>
-<span id="cb120-2407"><a href="#cb120-2407" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb120-2408"><a href="#cb120-2408" aria-hidden="true" tabindex="-1"></a>hers <span class="ot">=</span> <span class="fu">read_dta</span>(url)</span>
-<span id="cb120-2409"><a href="#cb120-2409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2410"><a href="#cb120-2410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2413"><a href="#cb120-2413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2414"><a href="#cb120-2414" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb120-2415"><a href="#cb120-2415" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb120-2416"><a href="#cb120-2416" aria-hidden="true" tabindex="-1"></a>hers <span class="ot">=</span> <span class="fu">read_stata</span>(<span class="st">"data/hersdata.dta"</span>)</span>
-<span id="cb120-2417"><a href="#cb120-2417" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2418"><a href="#cb120-2418" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2421"><a href="#cb120-2421" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2422"><a href="#cb120-2422" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "HERS dataset"</span></span>
-<span id="cb120-2423"><a href="#cb120-2423" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-HERS</span></span>
-<span id="cb120-2424"><a href="#cb120-2424" aria-hidden="true" tabindex="-1"></a>hers <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
-<span id="cb120-2425"><a href="#cb120-2425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb120-2426"><a href="#cb120-2426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2202"><a href="#cb120-2202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2203"><a href="#cb120-2203" aria-hidden="true" tabindex="-1"></a><span class="fu">## Categorical covariates with more than two levels</span></span>
+<span id="cb120-2204"><a href="#cb120-2204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2205"><a href="#cb120-2205" aria-hidden="true" tabindex="-1"></a><span class="fu">### Example: `birthweight`</span></span>
+<span id="cb120-2206"><a href="#cb120-2206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2207"><a href="#cb120-2207" aria-hidden="true" tabindex="-1"></a>In the birthweight example, the variable <span class="in">`sex`</span> had only two observed values:</span>
+<span id="cb120-2208"><a href="#cb120-2208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2211"><a href="#cb120-2211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2212"><a href="#cb120-2212" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(bw<span class="sc">$</span>sex)</span>
+<span id="cb120-2213"><a href="#cb120-2213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2214"><a href="#cb120-2214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2215"><a href="#cb120-2215" aria-hidden="true" tabindex="-1"></a>If there are more than two observed values, we can't just use a single variable with 0s and 1s.</span>
+<span id="cb120-2216"><a href="#cb120-2216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2217"><a href="#cb120-2217" aria-hidden="true" tabindex="-1"></a><span class="fu">### </span></span>
+<span id="cb120-2218"><a href="#cb120-2218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2219"><a href="#cb120-2219" aria-hidden="true" tabindex="-1"></a>:::{.notes}</span>
+<span id="cb120-2220"><a href="#cb120-2220" aria-hidden="true" tabindex="-1"></a>For example, @tbl-iris-data shows the <span class="co">[</span><span class="ot">(in)famous</span><span class="co">](https://www.meganstodel.com/posts/no-to-iris/)</span> <span class="in">`iris`</span> data (@anderson1935irises), </span>
+<span id="cb120-2221"><a href="#cb120-2221" aria-hidden="true" tabindex="-1"></a>and @tbl-iris-summary provides summary statistics. </span>
+<span id="cb120-2222"><a href="#cb120-2222" aria-hidden="true" tabindex="-1"></a>The data include three species: "setosa", "versicolor", and "virginica".</span>
+<span id="cb120-2223"><a href="#cb120-2223" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-2224"><a href="#cb120-2224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2227"><a href="#cb120-2227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2228"><a href="#cb120-2228" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "The `iris` data"</span></span>
+<span id="cb120-2229"><a href="#cb120-2229" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-data</span></span>
+<span id="cb120-2230"><a href="#cb120-2230" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span>
+<span id="cb120-2231"><a href="#cb120-2231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2232"><a href="#cb120-2232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2235"><a href="#cb120-2235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2236"><a href="#cb120-2236" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Summary statistics for the `iris` data"</span></span>
+<span id="cb120-2237"><a href="#cb120-2237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-summary</span></span>
+<span id="cb120-2238"><a href="#cb120-2238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2239"><a href="#cb120-2239" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(table1)</span>
+<span id="cb120-2240"><a href="#cb120-2240" aria-hidden="true" tabindex="-1"></a><span class="fu">table1</span>(</span>
+<span id="cb120-2241"><a href="#cb120-2241" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="sc">~</span> . <span class="sc">|</span> Species,</span>
+<span id="cb120-2242"><a href="#cb120-2242" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> iris,</span>
+<span id="cb120-2243"><a href="#cb120-2243" aria-hidden="true" tabindex="-1"></a>  <span class="at">overall =</span> <span class="cn">FALSE</span></span>
+<span id="cb120-2244"><a href="#cb120-2244" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb120-2245"><a href="#cb120-2245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2246"><a href="#cb120-2246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2247"><a href="#cb120-2247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2248"><a href="#cb120-2248" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2249"><a href="#cb120-2249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2250"><a href="#cb120-2250" aria-hidden="true" tabindex="-1"></a>If we want to model <span class="in">`Sepal.Length`</span> by species, we could create a variable $X$ that represents "setosa" as $X=1$, "virginica" as $X=2$, and "versicolor" as $X=3$.</span>
+<span id="cb120-2251"><a href="#cb120-2251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2254"><a href="#cb120-2254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2255"><a href="#cb120-2255" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-numeric-coding</span></span>
+<span id="cb120-2256"><a href="#cb120-2256" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "`iris` data with numeric coding of species"</span></span>
+<span id="cb120-2257"><a href="#cb120-2257" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris) <span class="co"># this step is not always necessary, but ensures you're starting  </span></span>
+<span id="cb120-2258"><a href="#cb120-2258" aria-hidden="true" tabindex="-1"></a><span class="co"># from the original version of a dataset stored in a loaded package</span></span>
+<span id="cb120-2259"><a href="#cb120-2259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2260"><a href="#cb120-2260" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">=</span> </span>
+<span id="cb120-2261"><a href="#cb120-2261" aria-hidden="true" tabindex="-1"></a>  iris <span class="sc">|&gt;</span> </span>
+<span id="cb120-2262"><a href="#cb120-2262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb120-2263"><a href="#cb120-2263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb120-2264"><a href="#cb120-2264" aria-hidden="true" tabindex="-1"></a>    <span class="at">X =</span> <span class="fu">case_when</span>(</span>
+<span id="cb120-2265"><a href="#cb120-2265" aria-hidden="true" tabindex="-1"></a>      Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb120-2266"><a href="#cb120-2266" aria-hidden="true" tabindex="-1"></a>      Species <span class="sc">==</span> <span class="st">"virginica"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb120-2267"><a href="#cb120-2267" aria-hidden="true" tabindex="-1"></a>      Species <span class="sc">==</span> <span class="st">"versicolor"</span> <span class="sc">~</span> <span class="dv">3</span></span>
+<span id="cb120-2268"><a href="#cb120-2268" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb120-2269"><a href="#cb120-2269" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb120-2270"><a href="#cb120-2270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2271"><a href="#cb120-2271" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">|&gt;</span> </span>
+<span id="cb120-2272"><a href="#cb120-2272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Species, X)</span>
+<span id="cb120-2273"><a href="#cb120-2273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2274"><a href="#cb120-2274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2275"><a href="#cb120-2275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2276"><a href="#cb120-2276" aria-hidden="true" tabindex="-1"></a>Then we could fit a model like:</span>
+<span id="cb120-2277"><a href="#cb120-2277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2280"><a href="#cb120-2280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2281"><a href="#cb120-2281" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-numeric-species</span></span>
+<span id="cb120-2282"><a href="#cb120-2282" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Model of `iris` data with numeric coding of `Species`"</span></span>
+<span id="cb120-2283"><a href="#cb120-2283" aria-hidden="true" tabindex="-1"></a>iris_lm1 <span class="ot">=</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> X, <span class="at">data =</span> iris)</span>
+<span id="cb120-2284"><a href="#cb120-2284" aria-hidden="true" tabindex="-1"></a>iris_lm1 <span class="sc">|&gt;</span> <span class="fu">parameters</span>() <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span>
+<span id="cb120-2285"><a href="#cb120-2285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2286"><a href="#cb120-2286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2287"><a href="#cb120-2287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2288"><a href="#cb120-2288" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see how that model looks:</span></span>
+<span id="cb120-2289"><a href="#cb120-2289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2292"><a href="#cb120-2292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2293"><a href="#cb120-2293" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-iris-numeric-species-model</span></span>
+<span id="cb120-2294"><a href="#cb120-2294" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Model of `iris` data with numeric coding of `Species`"</span></span>
+<span id="cb120-2295"><a href="#cb120-2295" aria-hidden="true" tabindex="-1"></a>iris_plot1 <span class="ot">=</span> iris <span class="sc">|&gt;</span> </span>
+<span id="cb120-2296"><a href="#cb120-2296" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb120-2297"><a href="#cb120-2297" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb120-2298"><a href="#cb120-2298" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> X, </span>
+<span id="cb120-2299"><a href="#cb120-2299" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Sepal.Length)</span>
+<span id="cb120-2300"><a href="#cb120-2300" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb120-2301"><a href="#cb120-2301" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb120-2302"><a href="#cb120-2302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(</span>
+<span id="cb120-2303"><a href="#cb120-2303" aria-hidden="true" tabindex="-1"></a>    <span class="at">intercept =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">1</span>], </span>
+<span id="cb120-2304"><a href="#cb120-2304" aria-hidden="true" tabindex="-1"></a>    <span class="at">slope =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">2</span>]) <span class="sc">+</span></span>
+<span id="cb120-2305"><a href="#cb120-2305" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span>
+<span id="cb120-2306"><a href="#cb120-2306" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(iris_plot1)</span>
+<span id="cb120-2307"><a href="#cb120-2307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2308"><a href="#cb120-2308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2309"><a href="#cb120-2309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2310"><a href="#cb120-2310" aria-hidden="true" tabindex="-1"></a>We have forced the model to use a straight line for the three estimated means. Maybe not a good idea?</span>
+<span id="cb120-2311"><a href="#cb120-2311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2312"><a href="#cb120-2312" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see what R does with categorical variables by default:</span></span>
+<span id="cb120-2313"><a href="#cb120-2313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2316"><a href="#cb120-2316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2317"><a href="#cb120-2317" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-model-factor1</span></span>
+<span id="cb120-2318"><a href="#cb120-2318" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "Model of `iris` data with `Species` as a categorical variable"</span></span>
+<span id="cb120-2319"><a href="#cb120-2319" aria-hidden="true" tabindex="-1"></a>iris_lm2 <span class="ot">=</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species, <span class="at">data =</span> iris)</span>
+<span id="cb120-2320"><a href="#cb120-2320" aria-hidden="true" tabindex="-1"></a>iris_lm2 <span class="sc">|&gt;</span> <span class="fu">parameters</span>() <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span>
+<span id="cb120-2321"><a href="#cb120-2321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2322"><a href="#cb120-2322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2323"><a href="#cb120-2323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2324"><a href="#cb120-2324" aria-hidden="true" tabindex="-1"></a><span class="fu">### Re-parametrize with no intercept</span></span>
+<span id="cb120-2325"><a href="#cb120-2325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2326"><a href="#cb120-2326" aria-hidden="true" tabindex="-1"></a>If you don't want the default and offset option, you can use "-1" like we've seen previously:</span>
+<span id="cb120-2327"><a href="#cb120-2327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2330"><a href="#cb120-2330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2331"><a href="#cb120-2331" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-no-intcpt</span></span>
+<span id="cb120-2332"><a href="#cb120-2332" aria-hidden="true" tabindex="-1"></a>iris.lm2b <span class="ot">=</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Species <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> iris)</span>
+<span id="cb120-2333"><a href="#cb120-2333" aria-hidden="true" tabindex="-1"></a>iris.lm2b <span class="sc">|&gt;</span> <span class="fu">parameters</span>() <span class="sc">|&gt;</span> <span class="fu">print_md</span>()</span>
+<span id="cb120-2334"><a href="#cb120-2334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2335"><a href="#cb120-2335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2336"><a href="#cb120-2336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2337"><a href="#cb120-2337" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see what these new models look like:</span></span>
+<span id="cb120-2338"><a href="#cb120-2338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2341"><a href="#cb120-2341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2342"><a href="#cb120-2342" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-iris-no-intcpt</span></span>
+<span id="cb120-2343"><a href="#cb120-2343" aria-hidden="true" tabindex="-1"></a>iris_plot2 <span class="ot">=</span> </span>
+<span id="cb120-2344"><a href="#cb120-2344" aria-hidden="true" tabindex="-1"></a>  iris <span class="sc">|&gt;</span> </span>
+<span id="cb120-2345"><a href="#cb120-2345" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb120-2346"><a href="#cb120-2346" aria-hidden="true" tabindex="-1"></a>    <span class="at">predlm2 =</span> <span class="fu">predict</span>(iris_lm2)) <span class="sc">|&gt;</span> </span>
+<span id="cb120-2347"><a href="#cb120-2347" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(X) <span class="sc">|&gt;</span> </span>
+<span id="cb120-2348"><a href="#cb120-2348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> X, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb120-2349"><a href="#cb120-2349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb120-2350"><a href="#cb120-2350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> predlm2), <span class="at">col =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb120-2351"><a href="#cb120-2351" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(</span>
+<span id="cb120-2352"><a href="#cb120-2352" aria-hidden="true" tabindex="-1"></a>    <span class="at">intercept =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">1</span>], </span>
+<span id="cb120-2353"><a href="#cb120-2353" aria-hidden="true" tabindex="-1"></a>    <span class="at">slope =</span> <span class="fu">coef</span>(iris_lm1)[<span class="dv">2</span>]) <span class="sc">+</span> </span>
+<span id="cb120-2354"><a href="#cb120-2354" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">18</span>)</span>
+<span id="cb120-2355"><a href="#cb120-2355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2356"><a href="#cb120-2356" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(iris_plot2)</span>
+<span id="cb120-2357"><a href="#cb120-2357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2358"><a href="#cb120-2358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2359"><a href="#cb120-2359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2360"><a href="#cb120-2360" aria-hidden="true" tabindex="-1"></a><span class="fu">### Let's see how R did that:</span></span>
+<span id="cb120-2361"><a href="#cb120-2361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2364"><a href="#cb120-2364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2365"><a href="#cb120-2365" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-model-matrix-factor</span></span>
+<span id="cb120-2366"><a href="#cb120-2366" aria-hidden="true" tabindex="-1"></a><span class="fu">formula</span>(iris_lm2)</span>
+<span id="cb120-2367"><a href="#cb120-2367" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(iris_lm2) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
+<span id="cb120-2368"><a href="#cb120-2368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2369"><a href="#cb120-2369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2370"><a href="#cb120-2370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2371"><a href="#cb120-2371" aria-hidden="true" tabindex="-1"></a>This is called a "corner point parametrization".</span>
+<span id="cb120-2372"><a href="#cb120-2372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2375"><a href="#cb120-2375" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2376"><a href="#cb120-2376" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-iris-group-point-parameterization</span></span>
+<span id="cb120-2377"><a href="#cb120-2377" aria-hidden="true" tabindex="-1"></a><span class="fu">formula</span>(iris.lm2b)</span>
+<span id="cb120-2378"><a href="#cb120-2378" aria-hidden="true" tabindex="-1"></a><span class="fu">model.matrix</span>(iris.lm2b) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="fu">unique</span>()</span>
+<span id="cb120-2379"><a href="#cb120-2379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2380"><a href="#cb120-2380" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2381"><a href="#cb120-2381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2382"><a href="#cb120-2382" aria-hidden="true" tabindex="-1"></a>This can be called a "group point parametrization".</span>
+<span id="cb120-2383"><a href="#cb120-2383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2384"><a href="#cb120-2384" aria-hidden="true" tabindex="-1"></a>There are more options; see @dobson4e §6.4.1 and the </span>
+<span id="cb120-2385"><a href="#cb120-2385" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">`codingMatrices` package</span><span class="co">](https://CRAN.R-project.org/package=codingMatrices)</span> </span>
+<span id="cb120-2386"><a href="#cb120-2386" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">vignette</span><span class="co">](https://cran.r-project.org/web/packages/codingMatrices/vignettes/codingMatrices.pdf)</span> </span>
+<span id="cb120-2387"><a href="#cb120-2387" aria-hidden="true" tabindex="-1"></a>(@venablescodingMatrices).</span>
+<span id="cb120-2388"><a href="#cb120-2388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2389"><a href="#cb120-2389" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ordinal covariates</span></span>
+<span id="cb120-2390"><a href="#cb120-2390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2391"><a href="#cb120-2391" aria-hidden="true" tabindex="-1"></a>(c.f. @dobson4e §2.4.4)</span>
+<span id="cb120-2392"><a href="#cb120-2392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2393"><a href="#cb120-2393" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2394"><a href="#cb120-2394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2395"><a href="#cb120-2395" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb120-2396"><a href="#cb120-2396" aria-hidden="true" tabindex="-1"></a>We can create ordinal variables in R using the <span class="in">`ordered()`</span> function^<span class="co">[</span><span class="ot">or equivalently, `factor(ordered = TRUE)`</span><span class="co">]</span>.</span>
+<span id="cb120-2397"><a href="#cb120-2397" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-2398"><a href="#cb120-2398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2399"><a href="#cb120-2399" aria-hidden="true" tabindex="-1"></a>:::{#exm-ordinal-variable}</span>
+<span id="cb120-2400"><a href="#cb120-2400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2403"><a href="#cb120-2403" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2404"><a href="#cb120-2404" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb120-2405"><a href="#cb120-2405" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="fu">paste0</span>(</span>
+<span id="cb120-2406"><a href="#cb120-2406" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://regression.ucsf.edu/sites/g/files/tkssra6706/"</span>,</span>
+<span id="cb120-2407"><a href="#cb120-2407" aria-hidden="true" tabindex="-1"></a>  <span class="st">"f/wysiwyg/home/data/hersdata.dta"</span>)</span>
+<span id="cb120-2408"><a href="#cb120-2408" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb120-2409"><a href="#cb120-2409" aria-hidden="true" tabindex="-1"></a>hers <span class="ot">=</span> <span class="fu">read_dta</span>(url)</span>
+<span id="cb120-2410"><a href="#cb120-2410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2411"><a href="#cb120-2411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2414"><a href="#cb120-2414" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2415"><a href="#cb120-2415" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb120-2416"><a href="#cb120-2416" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb120-2417"><a href="#cb120-2417" aria-hidden="true" tabindex="-1"></a>hers <span class="ot">=</span> <span class="fu">read_stata</span>(<span class="st">"data/hersdata.dta"</span>)</span>
+<span id="cb120-2418"><a href="#cb120-2418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2419"><a href="#cb120-2419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2422"><a href="#cb120-2422" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2423"><a href="#cb120-2423" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "HERS dataset"</span></span>
+<span id="cb120-2424"><a href="#cb120-2424" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-HERS</span></span>
+<span id="cb120-2425"><a href="#cb120-2425" aria-hidden="true" tabindex="-1"></a>hers <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb120-2426"><a href="#cb120-2426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb120-2427"><a href="#cb120-2427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2428"><a href="#cb120-2428" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb120-2429"><a href="#cb120-2429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2430"><a href="#cb120-2430" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb120-2431"><a href="#cb120-2431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2434"><a href="#cb120-2434" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb120-2435"><a href="#cb120-2435" aria-hidden="true" tabindex="-1"></a><span class="co"># C(contr = codingMatrices::contr.diff)</span></span>
-<span id="cb120-2436"><a href="#cb120-2436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2428"><a href="#cb120-2428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2429"><a href="#cb120-2429" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb120-2430"><a href="#cb120-2430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2431"><a href="#cb120-2431" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb120-2432"><a href="#cb120-2432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2435"><a href="#cb120-2435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb120-2436"><a href="#cb120-2436" aria-hidden="true" tabindex="-1"></a><span class="co"># C(contr = codingMatrices::contr.diff)</span></span>
 <span id="cb120-2437"><a href="#cb120-2437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-2438"><a href="#cb120-2438" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb120-2438"><a href="#cb120-2438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-2439"><a href="#cb120-2439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
