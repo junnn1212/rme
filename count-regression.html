@@ -341,7 +341,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
+  <a href="./Contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
@@ -364,10 +364,7 @@ window.Quarto = {
   <li>
 <a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a>
   <ul class="collapse">
-<li><a href="#examples-of-count-outcomes" id="toc-examples-of-count-outcomes" class="nav-link" data-scroll-target="#examples-of-count-outcomes"><span class="header-section-number">4.1.1</span> Examples of count outcomes</a></li>
-  <li><a href="#probability-distributions-for-count-outcomes" id="toc-probability-distributions-for-count-outcomes" class="nav-link" data-scroll-target="#probability-distributions-for-count-outcomes"><span class="header-section-number">4.1.2</span> Probability distributions for count outcomes</a></li>
-  <li><a href="#adding-covariates" id="toc-adding-covariates" class="nav-link" data-scroll-target="#adding-covariates"><span class="header-section-number">4.1.3</span> Adding covariates</a></li>
-  <li><a href="#rate-ratios" id="toc-rate-ratios" class="nav-link" data-scroll-target="#rate-ratios"><span class="header-section-number">4.1.4</span> Rate ratios</a></li>
+<li><a href="#rate-ratios" id="toc-rate-ratios" class="nav-link" data-scroll-target="#rate-ratios"><span class="header-section-number">4.1.1</span> Rate ratios</a></li>
   </ul>
 </li>
   <li>
@@ -398,6 +395,8 @@ window.Quarto = {
   <li><a href="#quasipoisson" id="toc-quasipoisson" class="nav-link" data-scroll-target="#quasipoisson"><span class="header-section-number">4.6.2</span> Quasipoisson</a></li>
   </ul>
 </li>
+  <li><a href="#example-needle-sharing" id="toc-example-needle-sharing" class="nav-link" data-scroll-target="#example-needle-sharing"><span class="header-section-number">4.7</span> Example: needle-sharing</a></li>
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">4.8</span> model</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/count-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -416,7 +415,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-16: 13:48:44 (PM)</p>
+      <p class="date">Last modified: 2024-05-16: 19:54:50 (PM)</p>
     </div>
   </div>
   
@@ -497,58 +496,26 @@ text-align: center;
 }
 </style></section></section><section id="introduction" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="introduction">
 <span class="header-section-number">4.1</span> Introduction</h2>
-<section id="examples-of-count-outcomes" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="examples-of-count-outcomes">
-<span class="header-section-number">4.1.1</span> Examples of count outcomes</h3>
-<ul>
-<li>Number of fish in a pond</li>
-<li>Number of cyclones per season</li>
-<li><a href="https://pubmed.ncbi.nlm.nih.gov/35587489/">Seconds of tooth-brushing per session (if rounded)</a></li>
-<li>Infections per person-year</li>
-<li>Visits to ER per person-month</li>
-<li>Car accidents per 1000 miles driven</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="notes">
+<p>This chapter presents models for <a href="./probability.html#sec-count-vars">count data</a> outcomes. With covariates, the event rate <span class="math inline">\(\lambda\)</span> becomes a function of the covariates <span class="math inline">\(\tilde{X}= (X_1, \dots,X_n)\)</span>. Typically, count data models use a <span class="math inline">\(\text{log}\left\{\right\}\)</span> link function, and thus an <span class="math inline">\(\text{exp}\left\{\right\}\)</span> inverse-link function. That is:</p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In many count outcomes, there is some sense of “exposure magnitude” or “duration of observation”: person-year, time at risk, session, miles driven, etc.</p>
-</div>
-</div>
-</section><section id="probability-distributions-for-count-outcomes" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="probability-distributions-for-count-outcomes">
-<span class="header-section-number">4.1.2</span> Probability distributions for count outcomes</h3>
-<ul>
-<li><p><a href="./probability.html#sec-poisson-dist">Poisson distribution</a></p></li>
-<li><p>Negative binomial distribution</p></li>
-</ul></section><section id="adding-covariates" class="level3" data-number="4.1.3"><h3 data-number="4.1.3" class="anchored" data-anchor-id="adding-covariates">
-<span class="header-section-number">4.1.3</span> Adding covariates</h3>
-<p>With covariates, <span class="math inline">\(\lambda\)</span> becomes a function of the covariates <span class="math inline">\(\tilde X = (X_1, \dots,X_n)\)</span>, with a <span class="math inline">\(\text{log}\left\{\right\}\)</span> link function (and thus an <span class="math inline">\(\text{exp}\left\{\right\}\)</span> inverse-link). That is:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\mathbb E[Y | \tilde X = \tilde x,T=t]
-&amp;= \mu(\tilde x,t)\\
-\mu(\tilde x,t)
-&amp;= \lambda(\tilde x)\cdot t\\
-\lambda(\tilde x)
-&amp;= \text{exp}\left\{\eta(\tilde x)\right\}\\
-\eta(\tilde x)
-&amp;= \tilde x'\tilde \beta = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p
+\mathbb{E}[Y | \tilde{X}= \tilde{x}, T = t] &amp;= \mu(\tilde{x},t)
+\\ \mu(\tilde{x},t) &amp;= \lambda(\tilde{x})\cdot t
+\\ \lambda(\tilde{x}) &amp;= \text{exp}\left\{\eta(\tilde{x})\right\}
+\\ \eta(\tilde{x}) &amp;= \tilde{x}'\tilde \beta = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p
 \end{aligned}
 \]</span></p>
 <p>Therefore, <span class="math display">\[
 \begin{aligned}
-\text{log}\left\{\{\mathbb E[Y | \tilde X = \tilde x,T=t] \}\right\}
-&amp;= \text{log}\left\{\{\mu(\tilde x)\}\right\}\\
-&amp;=\text{log}\left\{\{\lambda(\tilde x) \cdot t \}\right\}\\
-&amp;=\text{log}\left\{\lambda(\tilde x)\right\} + \text{log}\left\{t\right\}\\
-&amp;=\text{log}\left\{\text{exp}\left\{\eta(\tilde x)\right\}\right\} + \text{log}\left\{t\right\}\\
-&amp;=\eta(\tilde x) + \text{log}\left\{t\right\}\\
-&amp;=\tilde x'\tilde\beta + \text{log}\left\{t\right\}\\
+\text{log}\left\{\{\mathbb{E}[Y | \tilde{X}= \tilde{x},T=t] \}\right\}
+&amp;= \text{log}\left\{\{\mu(\tilde{x})\}\right\}\\
+&amp;=\text{log}\left\{\{\lambda(\tilde{x}) \cdot t \}\right\}\\
+&amp;=\text{log}\left\{\lambda(\tilde{x})\right\} + \text{log}\left\{t\right\}\\
+&amp;=\text{log}\left\{\text{exp}\left\{\eta(\tilde{x})\right\}\right\} + \text{log}\left\{t\right\}\\
+&amp;=\eta(\tilde{x}) + \text{log}\left\{t\right\}\\
+&amp;=\tilde{x}'\tilde\beta + \text{log}\left\{t\right\}\\
 &amp;=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \text{log}\left\{t\right\}\\
 \end{aligned}
 \]</span></p>
@@ -566,22 +533,22 @@ Note
 <p>Terms that enter the linear component of a model without a coefficient, such as <span class="math inline">\(\text{log}\left\{t\right\}\)</span> here, are called <strong>offsets</strong>.</p>
 </div>
 </div>
-</section><section id="rate-ratios" class="level3 smaller" data-number="4.1.4"><h3 class="smaller anchored" data-number="4.1.4" data-anchor-id="rate-ratios">
-<span class="header-section-number">4.1.4</span> Rate ratios</h3>
+<section id="rate-ratios" class="level3 smaller" data-number="4.1.1"><h3 class="smaller anchored" data-number="4.1.1" data-anchor-id="rate-ratios">
+<span class="header-section-number">4.1.1</span> Rate ratios</h3>
 <div class="notes">
 <p>Differences on the log-rate scale become ratios on the rate scale, because</p>
 </div>
 <p><span class="math display">\[\text{exp}\left\{a-b\right\} = \frac{\text{exp}\left\{a\right\}}{\text{exp}\left\{b\right\}}\]</span></p>
 <p>[math-preqs.qmd#cor-exp-sum]</p>
 <p>Therefore, according to this model, <strong>differences of <span class="math inline">\(\delta\)</span> in covariate <span class="math inline">\(x_j\)</span> correspond to rate ratios of <span class="math inline">\(\text{exp}\left\{\beta_j \cdot \delta\right\}\)</span></strong>.</p>
-<p>That is, letting <span class="math inline">\(\tilde X_{-j}\)</span> denote vector <span class="math inline">\(\tilde X\)</span> with element <span class="math inline">\(j\)</span> removed:</p>
+<p>That is, letting <span class="math inline">\(\tilde{X}_{-j}\)</span> denote vector <span class="math inline">\(\tilde{X}\)</span> with element <span class="math inline">\(j\)</span> removed:</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;{
 \left\{
-    \text{log}\left\{\mathbb E[Y |{\color{red}{X_j = a}}, \tilde X_{-j}=\tilde x_{-j},T=t]\right\}
+    \text{log}\left\{\mathbb{E}[Y |{\color{red}{X_j = a}}, \tilde{X}_{-j}=\tilde{x}_{-j},T=t]\right\}
     \atop
-    {-\text{log}\left\{\mathbb E[Y |{\color{red}{X_j = b}}, \tilde X_{-j}=\tilde x_{-j},T=t]\right\}}
+    {-\text{log}\left\{\mathbb{E}[Y |{\color{red}{X_j = b}}, \tilde{X}_{-j}=\tilde{x}_{-j},T=t]\right\}}
     \right\}
 }\\
 &amp;=
@@ -597,10 +564,10 @@ Note
 <p><span class="math display">\[
 \begin{aligned}
 \frac
-{\mathbb{E}[Y |{\color{red}{X_j = a}}, \tilde X_{-j} = \tilde x_{-j}, T = t]
+{\mathbb{E}[Y |{\color{red}{X_j = a}}, \tilde{X}_{-j} = \tilde{x}_{-j}, T = t]
 }
 {
-\mathbb E[Y |{\color{red}{X_j = b}}, \tilde X_{-j}=\tilde x_{-j},T=t]
+\mathbb{E}[Y |{\color{red}{X_j = b}}, \tilde{X}_{-j}=\tilde{x}_{-j},T=t]
 }
 =
 \text{exp}\left\{{\color{red}{\beta_j(a-b)}}\right\}
@@ -632,11 +599,11 @@ t = \frac{\hat \beta - \beta_0}{\hat{\text{se}}\left(\hat \beta\right)}
 <p><span class="math display">\[
 \begin{aligned}
 \hat y
-&amp;\stackrel{\text{def}}{=}\hat{\mathbb E}[Y|\tilde X= \tilde x,T=t]\\
-&amp;=\hat\mu(\tilde x, t)\\
-&amp;=\hat\lambda(\tilde x) \cdot t\\
-&amp;=\text{exp}\left\{\hat\eta(\tilde x)\right\} \cdot t\\
-&amp;=\text{exp}\left\{\tilde x'\hat{\boldsymbol{\beta}}\right\} \cdot t
+&amp;\stackrel{\text{def}}{=}\hat{\mathbb{E}}[Y|\tilde{X}= \tilde{x},T=t]\\
+&amp;=\hat\mu(\tilde{x}, t)\\
+&amp;=\hat\lambda(\tilde{x}) \cdot t\\
+&amp;=\text{exp}\left\{\hat\eta(\tilde{x})\right\} \cdot t\\
+&amp;=\text{exp}\left\{\tilde{x}'\hat{\boldsymbol{\beta}}\right\} \cdot t
 \end{aligned}
 \]</span></p>
 </section><section id="diagnostics" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="diagnostics">
@@ -682,7 +649,7 @@ Note
 <section id="models-for-zero-inflated-counts" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="models-for-zero-inflated-counts">
 <span class="header-section-number">4.5.1</span> Models for zero-inflated counts</h3>
 <p>We assume a latent (unobserved) binary variable, <span class="math inline">\(Z\)</span>, which we model using logistic regression:</p>
-<p><span class="math display">\[P(Z=1|X=x) = \pi(x) = \text{expit}(\gamma_0 + \gamma_1x_1 +...)\]</span></p>
+<p><span class="math display">\[P(Z=1|X=x) = \pi(x) = \text{expit}(\gamma_0 + \gamma_1 x_1 +...)\]</span></p>
 <p>According to this model, if <span class="math inline">\(Z=1\)</span>, then <span class="math inline">\(Y\)</span> will always be zero, regardless of <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>:</p>
 <p><span class="math display">\[P(Y=0|Z=1,X=x,T=t) = 1\]</span></p>
 <p>Otherwise (if <span class="math inline">\(Z=0\)</span>), <span class="math inline">\(Y\)</span> will have a Poisson distribution, conditional on <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>, as above.</p>
@@ -704,7 +671,7 @@ P(Y=y,Z=z|...)
 </div>
 <hr>
 <div id="exr-zinf-moments" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Derive the expected value and variance of <span class="math inline">\(Y\)</span>, conditional on <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>, as functions of <span class="math inline">\(P(Z=1|X=x,T=t)\)</span> and <span class="math inline">\(\mathbb E[Y|Z=0,X=x,T=t]\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Derive the expected value and variance of <span class="math inline">\(Y\)</span>, conditional on <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span>, as functions of <span class="math inline">\(P(Z=1|X=x,T=t)\)</span> and <span class="math inline">\(\mathbb{E}[Y|Z=0,X=x,T=t]\)</span>.</p>
 </div>
 </section></section><section id="over-dispersion" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="over-dispersion">
 <span class="header-section-number">4.6</span> Over-dispersion</h2>
@@ -713,13 +680,260 @@ P(Y=y,Z=z|...)
 <div class="notes">
 <p>The Poisson distribution model <strong>forces</strong> the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).</p>
 <p>When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.</p>
-<p>Most notably, the <a href="./probability.html#sec-nb">negative binomial model</a>.</p>
+<p>Most notably, the <a href="./probability.html#sec-nb-dist">negative binomial model</a>.</p>
 </div>
 <p>We can still model <span class="math inline">\(\mu\)</span> as a function of <span class="math inline">\(X\)</span> and <span class="math inline">\(T\)</span> as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for <span class="math inline">\(\text{P}(Y=y|Z=0,X=x,T=t)\)</span>.</p>
 </section><section id="quasipoisson" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="quasipoisson">
 <span class="header-section-number">4.6.2</span> Quasipoisson</h3>
 <p>An alternative to Negative binomial is the “quasipoisson” distribution. I’ve never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as <span class="math inline">\(\text{Var}\left(Y\right) = \mu\theta\)</span>, and estimates <span class="math inline">\(\theta\)</span> accordingly.</p>
 <p>See <code><a href="https://rdrr.io/r/stats/family.html">?quasipoisson</a></code> in R for more.</p>
+</section></section><section id="example-needle-sharing" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="example-needle-sharing">
+<span class="header-section-number">4.7</span> Example: needle-sharing</h2>
+<p>(adapted from <span class="citation" data-cites="vittinghoff2e">Vittinghoff et al. (<a href="references.html#ref-vittinghoff2e" role="doc-biblioref">2012</a>)</span>, §8)</p>
+<div class="cell">
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
+<span><span class="va">needles</span> <span class="op">=</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"inst/extdata/needle_sharing.dta"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>polydrug <span class="op">=</span> </span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">polydrug</span>, <span class="st">"multiple drugs used"</span>, <span class="st">"one drug used"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span>ref <span class="op">=</span> <span class="st">"one drug used"</span><span class="op">)</span>,</span>
+<span>         homeless <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">homeless</span>, <span class="st">"homeless"</span>, <span class="st">"not homeless"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>           <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span>ref <span class="op">=</span> <span class="st">"not homeless"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">needles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div id="tbl-needle-data" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-needle-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.1: Needle-sharing data
+</figcaption><div aria-describedby="tbl-needle-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["id"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sex"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ethn"],"name":[3],"type":["chr"],"align":["left"]},{"label":["age"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["dprsn_dx"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["sexabuse"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["shared_syr"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["hivstat"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["hplsns"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["nivdu"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["shsyryn"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["sqrtnivd"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["logshsyr"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["polydrug"],"name":[14],"type":["fct"],"align":["left"]},{"label":["sqrtninj"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["homeless"],"name":[16],"type":["fct"],"align":["left"]},{"label":["shsyr"],"name":[17],"type":["dbl"],"align":["right"]}],"data":[{"1":"2104","2":"M","3":"White","4":"47","5":"5","6":"0","7":"1","8":"0","9":"6","10":"90","11":"1","12":"9.4868326","13":"0.00000000","14":"one drug used","15":"9.4868326","16":"not homeless","17":"1"},{"1":"2009","2":"M","3":"White","4":"39","5":"1","6":"0","7":"1","8":"1","9":"2","10":"4","11":"1","12":"2.0000000","13":"0.00000000","14":"one drug used","15":"2.0000000","16":"homeless","17":"1"},{"1":"2032","2":"M","3":"White","4":"52","5":"1","6":"0","7":"1","8":"0","9":"18","10":"90","11":"1","12":"9.4868326","13":"0.00000000","14":"one drug used","15":"9.4868326","16":"not homeless","17":"1"},{"1":"2063","2":"M","3":"AA","4":"47","5":"1","6":"1","7":"1","8":"0","9":"1","10":"120","11":"1","12":"10.9544516","13":"0.00000000","14":"one drug used","15":"10.9544516","16":"homeless","17":"1"},{"1":"2059","2":"M","3":"Hispanic","4":"32","5":"1","6":"0","7":"2","8":"0","9":"12","10":"120","11":"1","12":"10.9544516","13":"0.69314718","14":"multiple drugs used","15":"10.9544516","16":"homeless","17":"2"},{"1":"2077","2":"M","3":"Hispanic","4":"54","5":"1","6":"0","7":"2","8":"0","9":"10","10":"120","11":"1","12":"10.9544516","13":"0.69314718","14":"one drug used","15":"10.9544516","16":"homeless","17":"2"},{"1":"2042","2":"F","3":"White","4":"32","5":"5","6":"0","7":"2","8":"0","9":"8","10":"15","11":"1","12":"3.8729835","13":"0.69314718","14":"one drug used","15":"3.8729835","16":"not homeless","17":"2"},{"1":"2017","2":"M","3":"White","4":"26","5":"5","6":"0","7":"2","8":"0","9":"11","10":"120","11":"1","12":"10.9544516","13":"0.69314718","14":"multiple drugs used","15":"10.9544516","16":"homeless","17":"2"},{"1":"2119","2":"M","3":"White","4":"54","5":"1","6":"0","7":"3","8":"0","9":"2","10":"90","11":"1","12":"9.4868326","13":"1.09861231","14":"one drug used","15":"9.4868326","16":"not homeless","17":"3"},{"1":"2085","2":"F","3":"White","4":"19","5":"5","6":"0","7":"3","8":"0","9":"7","10":"90","11":"1","12":"9.4868326","13":"1.09861231","14":"one drug used","15":"9.4868326","16":"not homeless","17":"3"},{"1":"2089","2":"M","3":"White","4":"33","5":"5","6":"0","7":"4","8":"1","9":"20","10":"4","11":"1","12":"2.0000000","13":"1.38629436","14":"one drug used","15":"2.0000000","16":"homeless","17":"4"},{"1":"2120","2":"M","3":"White","4":"22","5":"1","6":"0","7":"4","8":"NA","9":"8","10":"100","11":"1","12":"10.0000000","13":"1.38629436","14":"one drug used","15":"10.0000000","16":"not homeless","17":"4"},{"1":"2084","2":"M","3":"White","4":"45","5":"1","6":"0","7":"5","8":"0","9":"8","10":"50","11":"1","12":"7.0710678","13":"1.60943794","14":"one drug used","15":"7.0710678","16":"homeless","17":"5"},{"1":"2112","2":"M","3":"AA","4":"39","5":"1","6":"0","7":"5","8":"0","9":"3","10":"60","11":"1","12":"7.7459669","13":"1.60943794","14":"one drug used","15":"7.7459669","16":"not homeless","17":"5"},{"1":"2016","2":"M","3":"White","4":"40","5":"1","6":"0","7":"6","8":"0","9":"10","10":"120","11":"1","12":"10.9544516","13":"1.79175949","14":"one drug used","15":"10.9544516","16":"homeless","17":"6"},{"1":"2060","2":"M","3":"AA","4":"21","5":"1","6":"1","7":"6","8":"NA","9":"13","10":"24","11":"1","12":"4.8989797","13":"1.79175949","14":"one drug used","15":"4.8989797","16":"homeless","17":"6"},{"1":"2111","2":"M","3":"White & Hispa","4":"29","5":"1","6":"0","7":"7","8":"0","9":"11","10":"90","11":"1","12":"9.4868326","13":"1.94591010","14":"one drug used","15":"9.4868326","16":"homeless","17":"7"},{"1":"2078","2":"M","3":"White","4":"31","5":"5","6":"0","7":"8","8":"0","9":"19","10":"30","11":"1","12":"5.4772258","13":"2.07944155","14":"one drug used","15":"5.4772258","16":"homeless","17":"8"},{"1":"2054","2":"M","3":"Hispanic","4":"44","5":"1","6":"0","7":"8","8":"0","9":"1","10":"20","11":"1","12":"4.4721360","13":"2.07944155","14":"multiple drugs used","15":"4.4721360","16":"homeless","17":"8"},{"1":"2129","2":"M","3":"White","4":"46","5":"NA","6":"0","7":"10","8":"0","9":"6","10":"200","11":"1","12":"14.1421356","13":"2.30258512","14":"one drug used","15":"14.1421356","16":"not homeless","17":"10"},{"1":"2092","2":"M","3":"AA","4":"39","5":"1","6":"1","7":"10","8":"0","9":"6","10":"90","11":"1","12":"9.4868326","13":"2.30258512","14":"one drug used","15":"9.4868326","16":"homeless","17":"10"},{"1":"2083","2":"F","3":"White","4":"22","5":"5","6":"0","7":"30","8":"0","9":"13","10":"90","11":"1","12":"9.4868326","13":"3.40119743","14":"one drug used","15":"9.4868326","16":"not homeless","17":"30"},{"1":"2007","2":"F","3":"Hispanic","4":"47","5":"5","6":"1","7":"30","8":"NA","9":"14","10":"60","11":"1","12":"7.7459669","13":"3.40119743","14":"one drug used","15":"7.7459669","16":"not homeless","17":"30"},{"1":"2101","2":"M","3":"Hispanic","4":"36","5":"1","6":"0","7":"45","8":"2","9":"7","10":"45","11":"1","12":"6.7082038","13":"3.80666256","14":"one drug used","15":"6.7082038","16":"homeless","17":"45"},{"1":"2039","2":"F","3":"White","4":"40","5":"1","6":"0","7":"50","8":"0","9":"5","10":"140","11":"1","12":"11.8321600","13":"3.91202307","14":"one drug used","15":"11.8321600","16":"homeless","17":"50"},{"1":"2040","2":"M","3":"AA","4":"49","5":"1","6":"0","7":"60","8":"0","9":"0","10":"60","11":"1","12":"7.7459669","13":"4.09434462","14":"one drug used","15":"7.7459669","16":"homeless","17":"60"},{"1":"2086","2":"M","3":"White","4":"33","5":"1","6":"0","7":"60","8":"2","9":"4","10":"300","11":"1","12":"17.3205090","13":"4.09434462","14":"one drug used","15":"17.3205090","16":"homeless","17":"60"},{"1":"2030","2":"M","3":"White","4":"43","5":"5","6":"0","7":"0","8":"NA","9":"5","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2122","2":"F","3":"AA","4":"38","5":"5","6":"1","7":"0","8":"0","9":"2","10":"2","11":"0","12":"1.4142135","13":"NA","14":"multiple drugs used","15":"1.4142135","16":"not homeless","17":"NA"},{"1":"2044","2":"M","3":"AA","4":"49","5":"5","6":"0","7":"0","8":"NA","9":"0","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2066","2":"M","3":"Hispanic","4":"36","5":"1","6":"0","7":"0","8":"0","9":"3","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2053","2":"M","3":"AA","4":"42","5":"1","6":"0","7":"0","8":"0","9":"1","10":"4","11":"0","12":"2.0000000","13":"NA","14":"one drug used","15":"2.0000000","16":"not homeless","17":"NA"},{"1":"2038","2":"M","3":"White","4":"35","5":"1","6":"0","7":"0","8":"0","9":"2","10":"20","11":"0","12":"4.4721360","13":"NA","14":"one drug used","15":"4.4721360","16":"homeless","17":"NA"},{"1":"2070","2":"M","3":"White","4":"30","5":"1","6":"0","7":"0","8":"0","9":"2","10":"120","11":"0","12":"10.9544516","13":"NA","14":"multiple drugs used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2003","2":"M","3":"White","4":"54","5":"5","6":"0","7":"NA","8":"NA","9":"19","10":"90","11":"1","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2050","2":"M","3":"AA","4":"41","5":"5","6":"0","7":"0","8":"0","9":"3","10":"15","11":"0","12":"3.8729835","13":"NA","14":"multiple drugs used","15":"3.8729835","16":"homeless","17":"NA"},{"1":"2052","2":"M","3":"White","4":"36","5":"1","6":"0","7":"0","8":"0","9":"15","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2100","2":"F","3":"White","4":"30","5":"5","6":"1","7":"0","8":"0","9":"13","10":"240","11":"0","12":"15.4919338","13":"NA","14":"multiple drugs used","15":"15.4919338","16":"homeless","17":"NA"},{"1":"2110","2":"Trans","3":"White","4":"37","5":"1","6":"0","7":"0","8":"1","9":"15","10":"81","11":"0","12":"9.0000000","13":"NA","14":"one drug used","15":"9.0000000","16":"not homeless","17":"NA"},{"1":"2046","2":"M","3":"White","4":"22","5":"1","6":"NA","7":"0","8":"0","9":"8","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"NA","17":"NA"},{"1":"2048","2":"F","3":"AA","4":"43","5":"1","6":"0","7":"0","8":"0","9":"3","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2095","2":"M","3":"White","4":"45","5":"1","6":"0","7":"0","8":"0","9":"7","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2081","2":"F","3":"AA","4":"49","5":"1","6":"0","7":"0","8":"0","9":"3","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2021","2":"M","3":"Hispanic","4":"35","5":"1","6":"0","7":"0","8":"NA","9":"0","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2051","2":"M","3":"White","4":"41","5":"1","6":"1","7":"0","8":"0","9":"10","10":"24","11":"0","12":"4.8989797","13":"NA","14":"one drug used","15":"4.8989797","16":"homeless","17":"NA"},{"1":"2029","2":"M","3":"White","4":"27","5":"1","6":"0","7":"0","8":"0","9":"2","10":"120","11":"0","12":"10.9544516","13":"NA","14":"multiple drugs used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2023","2":"M","3":"AA","4":"51","5":"1","6":"0","7":"0","8":"0","9":"8","10":"150","11":"0","12":"12.2474489","13":"NA","14":"one drug used","15":"12.2474489","16":"homeless","17":"NA"},{"1":"2123","2":"M","3":"AA","4":"51","5":"5","6":"0","7":"0","8":"0","9":"0","10":"180","11":"0","12":"13.4164076","13":"NA","14":"multiple drugs used","15":"13.4164076","16":"not homeless","17":"NA"},{"1":"2117","2":"M","3":"White","4":"24","5":"1","6":"1","7":"0","8":"1","9":"1","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2072","2":"M","3":"AA","4":"46","5":"5","6":"0","7":"0","8":"0","9":"0","10":"8","11":"0","12":"2.8284271","13":"NA","14":"one drug used","15":"2.8284271","16":"not homeless","17":"NA"},{"1":"2005","2":"M","3":"White","4":"53","5":"5","6":"NA","7":"NA","8":"NA","9":"17","10":"12","11":"1","12":"3.4641016","13":"NA","14":"one drug used","15":"3.4641016","16":"NA","17":"NA"},{"1":"2074","2":"F","3":"Filipino","4":"39","5":"1","6":"0","7":"0","8":"0","9":"11","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2109","2":"M","3":"AA","4":"43","5":"1","6":"0","7":"0","8":"0","9":"9","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2057","2":"F","3":"AA","4":"41","5":"1","6":"1","7":"0","8":"0","9":"4","10":"4","11":"0","12":"2.0000000","13":"NA","14":"one drug used","15":"2.0000000","16":"not homeless","17":"NA"},{"1":"2102","2":"M","3":"White","4":"35","5":"1","6":"0","7":"0","8":"0","9":"1","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2035","2":"F","3":"White","4":"43","5":"1","6":"0","7":"0","8":"0","9":"20","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2064","2":"M","3":"White","4":"52","5":"5","6":"0","7":"0","8":"0","9":"18","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2091","2":"M","3":"White","4":"28","5":"1","6":"0","7":"0","8":"0","9":"0","10":"14","11":"0","12":"3.7416575","13":"NA","14":"one drug used","15":"3.7416575","16":"not homeless","17":"NA"},{"1":"2024","2":"F","3":"White","4":"31","5":"5","6":"0","7":"0","8":"0","9":"13","10":"2","11":"0","12":"1.4142135","13":"NA","14":"one drug used","15":"1.4142135","16":"homeless","17":"NA"},{"1":"2098","2":"M","3":"White","4":"48","5":"1","6":"0","7":"0","8":"0","9":"1","10":"9","11":"0","12":"3.0000000","13":"NA","14":"one drug used","15":"3.0000000","16":"not homeless","17":"NA"},{"1":"2061","2":"M","3":"White","4":"52","5":"1","6":"0","7":"0","8":"0","9":"7","10":"30","11":"0","12":"5.4772258","13":"NA","14":"one drug used","15":"5.4772258","16":"not homeless","17":"NA"},{"1":"2058","2":"F","3":"AA","4":"53","5":"1","6":"0","7":"0","8":"0","9":"2","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2103","2":"M","3":"White","4":"38","5":"1","6":"0","7":"0","8":"0","9":"12","10":"81","11":"0","12":"9.0000000","13":"NA","14":"one drug used","15":"9.0000000","16":"homeless","17":"NA"},{"1":"2107","2":"M","3":"White","4":"33","5":"1","6":"0","7":"0","8":"0","9":"5","10":"290","11":"0","12":"17.0293865","13":"NA","14":"one drug used","15":"17.0293865","16":"homeless","17":"NA"},{"1":"2026","2":"F","3":"AA","4":"49","5":"1","6":"0","7":"0","8":"0","9":"14","10":"60","11":"0","12":"7.7459669","13":"NA","14":"multiple drugs used","15":"7.7459669","16":"homeless","17":"NA"},{"1":"2041","2":"M","3":"AA","4":"54","5":"5","6":"0","7":"0","8":"NA","9":"5","10":"30","11":"0","12":"5.4772258","13":"NA","14":"one drug used","15":"5.4772258","16":"not homeless","17":"NA"},{"1":"2056","2":"M","3":"White","4":"25","5":"1","6":"0","7":"0","8":"0","9":"2","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2049","2":"F","3":"White","4":"44","5":"5","6":"1","7":"0","8":"0","9":"17","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2080","2":"M","3":"White","4":"53","5":"1","6":"0","7":"0","8":"0","9":"12","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"homeless","17":"NA"},{"1":"2108","2":"M","3":"White","4":"37","5":"1","6":"0","7":"0","8":"0","9":"4","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"homeless","17":"NA"},{"1":"2010","2":"M","3":"Hispanic","4":"34","5":"5","6":"0","7":"0","8":"NA","9":"9","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2013","2":"M","3":"White","4":"41","5":"5","6":"1","7":"0","8":"0","9":"19","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2008","2":"M","3":"AA","4":"53","5":"1","6":"0","7":"0","8":"0","9":"0","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2105","2":"M","3":"AA","4":"33","5":"1","6":"0","7":"0","8":"1","9":"10","10":"90","11":"0","12":"9.4868326","13":"NA","14":"multiple drugs used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2096","2":"M","3":"Indian","4":"46","5":"5","6":"0","7":"0","8":"0","9":"6","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2055","2":"M","3":"Hispanic","4":"42","5":"1","6":"0","7":"0","8":"0","9":"5","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2065","2":"M","3":"AA","4":"32","5":"1","6":"0","7":"0","8":"0","9":"1","10":"24","11":"0","12":"4.8989797","13":"NA","14":"one drug used","15":"4.8989797","16":"not homeless","17":"NA"},{"1":"2124","2":"F","3":"White","4":"41","5":"1","6":"0","7":"0","8":"0","9":"3","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2011","2":"M","3":"AA","4":"49","5":"1","6":"0","7":"0","8":"0","9":"2","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2027","2":"F","3":"AA","4":"47","5":"5","6":"0","7":"0","8":"1","9":"4","10":"28","11":"0","12":"5.2915025","13":"NA","14":"one drug used","15":"5.2915025","16":"homeless","17":"NA"},{"1":"2001","2":"M","3":"AA","4":"47","5":"1","6":"NA","7":"0","8":"0","9":"2","10":"300","11":"0","12":"17.3205090","13":"NA","14":"one drug used","15":"17.3205090","16":"NA","17":"NA"},{"1":"2073","2":"M","3":"Filipino","4":"49","5":"1","6":"0","7":"0","8":"0","9":"1","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2004","2":"F","3":"White","4":"40","5":"5","6":"1","7":"NA","8":"NA","9":"4","10":"90","11":"1","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2020","2":"M","3":"White","4":"36","5":"1","6":"0","7":"0","8":"0","9":"5","10":"150","11":"0","12":"12.2474489","13":"NA","14":"multiple drugs used","15":"12.2474489","16":"homeless","17":"NA"},{"1":"2022","2":"M","3":"White","4":"49","5":"1","6":"0","7":"0","8":"0","9":"3","10":"8","11":"0","12":"2.8284271","13":"NA","14":"multiple drugs used","15":"2.8284271","16":"not homeless","17":"NA"},{"1":"2045","2":"M","3":"White","4":"26","5":"1","6":"0","7":"0","8":"0","9":"6","10":"87","11":"0","12":"9.3273792","13":"NA","14":"one drug used","15":"9.3273792","16":"homeless","17":"NA"},{"1":"2067","2":"M","3":"White","4":"52","5":"1","6":"0","7":"0","8":"0","9":"1","10":"7","11":"0","12":"2.6457512","13":"NA","14":"one drug used","15":"2.6457512","16":"not homeless","17":"NA"},{"1":"2015","2":"F","3":"White","4":"39","5":"5","6":"0","7":"0","8":"0","9":"6","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2031","2":"M","3":"AA","4":"54","5":"1","6":"0","7":"0","8":"1","9":"1","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2014","2":"M","3":"White","4":"52","5":"5","6":"0","7":"0","8":"0","9":"4","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2106","2":"F","3":"Indian & White","4":"38","5":"1","6":"0","7":"0","8":"0","9":"1","10":"112","11":"0","12":"10.5830050","13":"NA","14":"multiple drugs used","15":"10.5830050","16":"not homeless","17":"NA"},{"1":"2034","2":"M","3":"AA","4":"44","5":"1","6":"0","7":"0","8":"0","9":"1","10":"84","11":"0","12":"9.1651516","13":"NA","14":"one drug used","15":"9.1651516","16":"not homeless","17":"NA"},{"1":"2028","2":"F","3":"White","4":"36","5":"5","6":"0","7":"0","8":"0","9":"5","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2082","2":"M","3":"White","4":"49","5":"1","6":"1","7":"0","8":"0","9":"19","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2006","2":"M","3":"Asian","4":"38","5":"5","6":"0","7":"NA","8":"NA","9":"3","10":"40","11":"1","12":"6.3245554","13":"NA","14":"one drug used","15":"6.3245554","16":"not homeless","17":"NA"},{"1":"2075","2":"F","3":"AA","4":"41","5":"1","6":"0","7":"0","8":"0","9":"7","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2090","2":"F","3":"White","4":"47","5":"1","6":"0","7":"0","8":"0","9":"6","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2068","2":"M","3":"White","4":"29","5":"1","6":"0","7":"0","8":"0","9":"0","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2121","2":"M","3":"White","4":"54","5":"1","6":"0","7":"0","8":"0","9":"14","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2036","2":"F","3":"AA","4":"47","5":"1","6":"0","7":"0","8":"0","9":"4","10":"92","11":"0","12":"9.5916634","13":"NA","14":"multiple drugs used","15":"9.5916634","16":"not homeless","17":"NA"},{"1":"2033","2":"M","3":"White","4":"53","5":"1","6":"0","7":"0","8":"0","9":"1","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"},{"1":"2094","2":"M","3":"White","4":"44","5":"5","6":"1","7":"0","8":"0","9":"8","10":"81","11":"0","12":"9.0000000","13":"NA","14":"multiple drugs used","15":"9.0000000","16":"homeless","17":"NA"},{"1":"2087","2":"M","3":"White","4":"41","5":"1","6":"0","7":"0","8":"0","9":"0","10":"180","11":"0","12":"13.4164076","13":"NA","14":"one drug used","15":"13.4164076","16":"homeless","17":"NA"},{"1":"2126","2":"M","3":"White","4":"29","5":"1","6":"1","7":"0","8":"0","9":"2","10":"240","11":"0","12":"15.4919338","13":"NA","14":"one drug used","15":"15.4919338","16":"homeless","17":"NA"},{"1":"2128","2":"F","3":"White","4":"41","5":"NA","6":"1","7":"0","8":"0","9":"7","10":"5","11":"0","12":"2.2360680","13":"NA","14":"one drug used","15":"2.2360680","16":"not homeless","17":"NA"},{"1":"2118","2":"M","3":"AA","4":"47","5":"1","6":"0","7":"0","8":"1","9":"6","10":"1","11":"0","12":"1.0000000","13":"NA","14":"one drug used","15":"1.0000000","16":"homeless","17":"NA"},{"1":"2125","2":"M","3":"White","4":"37","5":"5","6":"0","7":"0","8":"0","9":"5","10":"20","11":"0","12":"4.4721360","13":"NA","14":"multiple drugs used","15":"4.4721360","16":"not homeless","17":"NA"},{"1":"2099","2":"M","3":"White","4":"47","5":"1","6":"0","7":"0","8":"0","9":"7","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2079","2":"F","3":"White","4":"29","5":"5","6":"1","7":"0","8":"0","9":"8","10":"900","11":"0","12":"30.0000000","13":"NA","14":"one drug used","15":"30.0000000","16":"homeless","17":"NA"},{"1":"2088","2":"F","3":"AA","4":"39","5":"1","6":"0","7":"0","8":"0","9":"3","10":"0","11":"0","12":"0.0000000","13":"NA","14":"one drug used","15":"0.0000000","16":"not homeless","17":"NA"},{"1":"2114","2":"M","3":"White","4":"35","5":"1","6":"0","7":"0","8":"0","9":"12","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2062","2":"M","3":"AA","4":"45","5":"5","6":"0","7":"0","8":"0","9":"13","10":"12","11":"0","12":"3.4641016","13":"NA","14":"one drug used","15":"3.4641016","16":"not homeless","17":"NA"},{"1":"2002","2":"M","3":"White","4":"36","5":"5","6":"NA","7":"NA","8":"NA","9":"10","10":"30","11":"1","12":"5.4772258","13":"NA","14":"one drug used","15":"5.4772258","16":"NA","17":"NA"},{"1":"2097","2":"M","3":"White","4":"53","5":"5","6":"0","7":"0","8":"0","9":"18","10":"NA","11":"0","12":"NA","13":"NA","14":"one drug used","15":"NA","16":"homeless","17":"NA"},{"1":"2037","2":"M","3":"White","4":"23","5":"1","6":"0","7":"0","8":"0","9":"1","10":"870","11":"0","12":"29.4957619","13":"NA","14":"one drug used","15":"29.4957619","16":"not homeless","17":"NA"},{"1":"2113","2":"M","3":"White","4":"38","5":"1","6":"0","7":"0","8":"0","9":"6","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2071","2":"M","3":"White","4":"44","5":"1","6":"0","7":"0","8":"0","9":"17","10":"40","11":"0","12":"6.3245554","13":"NA","14":"one drug used","15":"6.3245554","16":"homeless","17":"NA"},{"1":"2116","2":"M","3":"White","4":"41","5":"1","6":"0","7":"0","8":"0","9":"4","10":"420","11":"0","12":"20.4939022","13":"NA","14":"one drug used","15":"20.4939022","16":"not homeless","17":"NA"},{"1":"2093","2":"F","3":"AA","4":"41","5":"1","6":"0","7":"0","8":"0","9":"1","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"not homeless","17":"NA"},{"1":"2127","2":"M","3":"White","4":"51","5":"5","6":"0","7":"0","8":"0","9":"11","10":"60","11":"0","12":"7.7459669","13":"NA","14":"one drug used","15":"7.7459669","16":"homeless","17":"NA"},{"1":"2019","2":"M","3":"White","4":"25","5":"1","6":"0","7":"0","8":"0","9":"18","10":"450","11":"0","12":"21.2132034","13":"NA","14":"multiple drugs used","15":"21.2132034","16":"homeless","17":"NA"},{"1":"2025","2":"F","3":"White","4":"51","5":"1","6":"0","7":"0","8":"0","9":"1","10":"5","11":"0","12":"2.2360680","13":"NA","14":"one drug used","15":"2.2360680","16":"homeless","17":"NA"},{"1":"2047","2":"M","3":"White","4":"36","5":"1","6":"0","7":"0","8":"0","9":"3","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2012","2":"M","3":"AA","4":"45","5":"5","6":"0","7":"0","8":"NA","9":"2","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2043","2":"M","3":"AA","4":"54","5":"1","6":"0","7":"0","8":"0","9":"7","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"homeless","17":"NA"},{"1":"2069","2":"M","3":"Hispanic","4":"37","5":"1","6":"0","7":"0","8":"0","9":"1","10":"120","11":"0","12":"10.9544516","13":"NA","14":"multiple drugs used","15":"10.9544516","16":"not homeless","17":"NA"},{"1":"2115","2":"M","3":"White","4":"48","5":"1","6":"0","7":"0","8":"0","9":"1","10":"90","11":"0","12":"9.4868326","13":"NA","14":"one drug used","15":"9.4868326","16":"not homeless","17":"NA"},{"1":"2076","2":"M","3":"AA","4":"45","5":"1","6":"0","7":"0","8":"1","9":"0","10":"120","11":"0","12":"10.9544516","13":"NA","14":"one drug used","15":"10.9544516","16":"homeless","17":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<hr>
+<div class="cell">
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">needles</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">age</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">shared_syr</span>,</span>
+<span>      col <span class="op">=</span> <span class="va">sex</span>,</span>
+<span>      shape <span class="op">=</span> <span class="va">ethn</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span></span>
+<span>    size <span class="op">=</span> <span class="fl">4</span>, </span>
+<span>    alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span></span>
+<span>    cols <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">polydrug</span><span class="op">)</span>, </span>
+<span>    rows <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">homeless</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div id="fig-needles" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-needles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Rates of needle sharing
+</figcaption><div aria-describedby="fig-needles-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="count-regression_files/figure-html/fig-needles-1.png" class="img-fluid figure-img" width="672">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="model" class="level2 smaller" data-number="4.8"><h2 class="smaller anchored" data-number="4.8" data-anchor-id="model">
+<span class="header-section-number">4.8</span> model</h2>
+<div class="cell">
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">glm1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">needles</span>,</span>
+<span>  family <span class="op">=</span> <span class="fu">stats</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/stats/family.html">poisson</a></span>,</span>
+<span>  <span class="va">shared_syr</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">homeless</span><span class="op">*</span><span class="va">polydrug</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://easystats.github.io/parameters/">parameters</a></span><span class="op">)</span></span>
+<span><span class="va">glm1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://easystats.github.io/parameters/reference/model_parameters.html">parameters</a></span><span class="op">(</span>exponentiate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://easystats.github.io/insight/reference/display.html">print_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div id="tbl-needles-pois" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-needles-pois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.2: Poisson model for needle-sharing data
+</figcaption><div aria-describedby="tbl-needles-pois-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<colgroup>
+<col style="width: 51%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 6%">
+<col style="width: 7%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: center;">IRR</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">95% CI</th>
+<th style="text-align: center;">z</th>
+<th style="text-align: center;">p</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: center;">8.95</td>
+<td style="text-align: center;">2.26</td>
+<td style="text-align: center;">(5.46, 14.68)</td>
+<td style="text-align: center;">8.69</td>
+<td style="text-align: center;">&lt; .001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">age</td>
+<td style="text-align: center;">0.97</td>
+<td style="text-align: center;">5.58e-03</td>
+<td style="text-align: center;">(0.96, 0.98)</td>
+<td style="text-align: center;">-5.41</td>
+<td style="text-align: center;">&lt; .001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sex (M)</td>
+<td style="text-align: center;">0.50</td>
+<td style="text-align: center;">0.06</td>
+<td style="text-align: center;">(0.40, 0.63)</td>
+<td style="text-align: center;">-5.88</td>
+<td style="text-align: center;">&lt; .001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sex (Trans)</td>
+<td style="text-align: center;">7.99e-08</td>
+<td style="text-align: center;">1.02e-04</td>
+<td style="text-align: center;">(0.00, Inf)</td>
+<td style="text-align: center;">-0.01</td>
+<td style="text-align: center;">0.990</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">homeless (homeless)</td>
+<td style="text-align: center;">3.58</td>
+<td style="text-align: center;">0.45</td>
+<td style="text-align: center;">(2.79, 4.59)</td>
+<td style="text-align: center;">10.06</td>
+<td style="text-align: center;">&lt; .001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">polydrug (multiple drugs used)</td>
+<td style="text-align: center;">1.45e-07</td>
+<td style="text-align: center;">5.82e-05</td>
+<td style="text-align: center;">(0.00, Inf)</td>
+<td style="text-align: center;">-0.04</td>
+<td style="text-align: center;">0.969</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">homeless (homeless) × polydrug (multiple drugs used)</td>
+<td style="text-align: center;">1.27e+06</td>
+<td style="text-align: center;">5.12e+08</td>
+<td style="text-align: center;">(0.00, Inf)</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">0.972</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sinhrks/ggfortify">ggfortify</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span><span class="op">(</span><span class="va">glm1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div id="tbl-pois-model-diagnostics" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pois-model-diagnostics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.3: Diagnostics for Poisson model
+</figcaption><div aria-describedby="tbl-pois-model-diagnostics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="count-regression_files/figure-html/tbl-pois-model-diagnostics-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>–</p>
+<div id="tbl-needles-nb" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-needles-nb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.4: Negative binomial model for needle-sharing data
+</figcaption><div aria-describedby="tbl-needles-nb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span> <span class="co">#need this for glm.nb()</span></span>
+<span><span class="va">glm1.nb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/glm.nb.html">glm.nb</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">needles</span>,</span>
+<span>  <span class="va">shared_syr</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">homeless</span><span class="op">*</span><span class="va">polydrug</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">glm1.nb</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; glm.nb(formula = shared_syr ~ age + sex + homeless * polydrug, </span></span>
+<span><span class="co">#&gt;     data = needles, init.theta = 0.08436295825, link = log)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                                                 Estimate  Std. Error z value</span></span>
+<span><span class="co">#&gt; (Intercept)                                   2.0557e+00  1.7133e+00  1.1999</span></span>
+<span><span class="co">#&gt; age                                          -2.7630e-02  3.8153e-02 -0.7242</span></span>
+<span><span class="co">#&gt; sexM                                         -1.0648e+00  8.0684e-01 -1.3197</span></span>
+<span><span class="co">#&gt; sexTrans                                     -2.5336e+01  1.1484e+05 -0.0002</span></span>
+<span><span class="co">#&gt; homelesshomeless                              1.6546e+00  7.2207e-01  2.2916</span></span>
+<span><span class="co">#&gt; polydrugmultiple drugs used                  -2.4562e+01  3.6055e+04 -0.0007</span></span>
+<span><span class="co">#&gt; homelesshomeless:polydrugmultiple drugs used  2.3178e+01  3.6055e+04  0.0006</span></span>
+<span><span class="co">#&gt;                                              Pr(&gt;|z|)  </span></span>
+<span><span class="co">#&gt; (Intercept)                                   0.23019  </span></span>
+<span><span class="co">#&gt; age                                           0.46895  </span></span>
+<span><span class="co">#&gt; sexM                                          0.18694  </span></span>
+<span><span class="co">#&gt; sexTrans                                      0.99982  </span></span>
+<span><span class="co">#&gt; homelesshomeless                              0.02193 *</span></span>
+<span><span class="co">#&gt; polydrugmultiple drugs used                   0.99946  </span></span>
+<span><span class="co">#&gt; homelesshomeless:polydrugmultiple drugs used  0.99949  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; (Dispersion parameter for Negative Binomial(0.0844) family taken to be 1)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     Null deviance: 69.8027  on 120  degrees of freedom</span></span>
+<span><span class="co">#&gt; Residual deviance: 57.7820  on 114  degrees of freedom</span></span>
+<span><span class="co">#&gt;   (7 observations deleted due to missingness)</span></span>
+<span><span class="co">#&gt; AIC: 317.506</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Number of Fisher Scoring iterations: 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;               Theta:  0.0844 </span></span>
+<span><span class="co">#&gt;           Std. Err.:  0.0197 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  2 x log-likelihood:  -301.5060</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</figure>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">glm1</span><span class="op">)</span><span class="op">)</span>, poisson <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">glm1</span><span class="op">)</span>, nb <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">glm1.nb</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div id="tbl-compare-poisson-nb" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-compare-poisson-nb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4.5: Poisson versus Negative Binomial Regression coefficient estimates
+</figcaption><div aria-describedby="tbl-compare-poisson-nb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["poisson"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["nb"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"2.191976536","3":"2.05571379"},{"1":"age","2":"-0.031134681","3":"-0.02762991"},{"1":"sexM","2":"-0.684243877","3":"-1.06477783"},{"1":"sexTrans","2":"-16.342578414","3":"-25.33599220"},{"1":"homelesshomeless","2":"1.274596498","3":"1.65465047"},{"1":"polydrugmultiple drugs used","2":"-15.747987598","3":"-24.56207462"},{"1":"homelesshomeless:polydrugmultiple drugs used","2":"14.057231587","3":"23.17790532"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
 
 
 <!-- -->
@@ -732,7 +946,7 @@ Dobson, Annette J, and Adrian G Barnett. 2018. <em>An Introduction to Generalize
 Vittinghoff, Eric, David V Glidden, Stephen C Shiboski, and Charles E McCulloch. 2012. <em>Regression Methods in Biostatistics: Linear, Logistic, Survival, and Repeated Measures Models</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-1-4614-1353-0">https://doi.org/10.1007/978-1-4614-1353-0</a>.
 </div>
 </div>
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1348,279 +1562,274 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Poisson regression and variations"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Models for Count Outcomes</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Acknowledgements {.unnumbered}</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>This content is adapted from:</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@dobson4e, Chapter 9</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@vittinghoff2e, Chapter 8</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>{{&lt; include shared-config.qmd &gt;}}</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### Examples of count outcomes</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>{{&lt; include exm-count-vars.qmd &gt;}}</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>In many count outcomes, there is some sense of "exposure magnitude" or "duration of observation": person-year, time at risk, session, miles driven, etc.</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">### Probability distributions for count outcomes</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Poisson distribution</span><span class="co">](probability.qmd#sec-poisson-dist)</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Negative binomial distribution</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding covariates</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>With covariates, $\lambda$ becomes a function of the covariates $\tilde X = (X_1, \dots,X_n)$, with a $\log{}$ link function (and thus an $\exp{}$ inverse-link). That is:</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>\mathbb E<span class="co">[</span><span class="ot">Y | \tilde X = \tilde x,T=t</span><span class="co">]</span> </span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>&amp;= \mu(\tilde x,t)<span class="sc">\\</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>\mu(\tilde x,t) </span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>&amp;= \lambda(\tilde x)\cdot t<span class="sc">\\</span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>\lambda(\tilde x) </span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>&amp;= \exp{\eta(\tilde x)}<span class="sc">\\</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>\eta(\tilde x) </span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>&amp;= \tilde x'\tilde \beta = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>Therefore,</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>\log{<span class="sc">\{</span>\mathbb E<span class="co">[</span><span class="ot">Y | \tilde X = \tilde x,T=t</span><span class="co">]</span> <span class="sc">\}</span>}</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>&amp;= \log{<span class="sc">\{</span>\mu(\tilde x)<span class="sc">\}</span>}<span class="sc">\\</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>&amp;=\log{<span class="sc">\{</span>\lambda(\tilde x) \cdot t <span class="sc">\}</span>}<span class="sc">\\</span></span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\lambda(\tilde x)} + \log{t}<span class="sc">\\</span></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\exp{\eta(\tilde x)}} + \log{t}<span class="sc">\\</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>&amp;=\eta(\tilde x) + \log{t}<span class="sc">\\</span></span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>&amp;=\tilde x'\tilde\beta + \log{t}<span class="sc">\\</span></span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>&amp;=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \log{t}<span class="sc">\\</span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>In contrast with the $X$s, $T$ enters this expression with a $\log{}$ transformation and without a corresponding $\beta$ coefficient. </span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>Terms that enter the linear component of a model without a coefficient, such as $\log{t}$ here, are called **offsets**.</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rate ratios {.smaller}</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>Differences on the log-rate scale become ratios on the rate scale, </span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>because</span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$</span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">math-preqs.qmd#cor-exp-sum</span><span class="co">]</span></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>Therefore, according to this model, </span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>**differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.</span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>That is, letting $\tilde X_{-j}$ denote vector $\tilde X$ with element $j$ removed: </span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>&amp;{</span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>\left<span class="sc">\{</span></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>    \log{\mathbb E<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = a}}, \tilde X_{-j}=\tilde x_{-j},T=t</span><span class="co">]</span>}</span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>    \atop </span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>    {-\log{\mathbb E<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = b}}, \tilde X_{-j}=\tilde x_{-j},T=t</span><span class="co">]</span>}}</span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>    \right<span class="sc">\}</span></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>}<span class="sc">\\</span></span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>&amp;= </span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>{\left<span class="sc">\{</span></span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>\log{t} + \beta_0 + \beta_1 x_1 + ... + {\color{red}{\beta_j (a)}} + ...+\beta_p x_p </span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>\atop </span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>{-\log{t} + \beta_0 + \beta_1 x_1 + ... + {\color{red}{\beta_j (b)}} + ...+\beta_p x_p}</span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>\right<span class="sc">\}</span>}<span class="sc">\\</span></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>&amp;= \color{red}{\beta_j(a-b)}</span>
-<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>And accordingly,</span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>\frac</span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>{\mathbb{E}<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = a}}, \tilde X_{-j} = \tilde x_{-j}, T = t</span><span class="co">]</span></span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>\mathbb E<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = b}}, \tilde X_{-j}=\tilde x_{-j},T=t</span><span class="co">]</span></span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>= </span>
-<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>\exp{{\color{red}{\beta_j(a-b)}}}</span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Inference for count regression models</span></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="fu">### Confidence intervals for regression coefficients and rate ratios</span></span>
-<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>As usual:</span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>\beta \in \left<span class="co">[</span><span class="ot">\ci \right</span><span class="co">]</span></span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>Rate ratios: exponentiate CI endpoints</span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>\exp{\beta} \in \left<span class="co">[</span><span class="ot">\exp{\ci} \right</span><span class="co">]</span></span>
-<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hypothesis tests for regression coefficients</span></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>t = \frac{\hat \beta - \beta_0}{\hse{\hb}}</span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>Compare $t$ or $|t|$ to the tails of the standard Gaussian distribution, according to the null hypothesis.</span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparing nested models</span></span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>log(likelihood ratio) tests, as usual.</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction</span></span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>\hat y </span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \hat{\mathbb E}<span class="co">[</span><span class="ot">Y|\tilde X= \tilde x,T=t</span><span class="co">]</span><span class="sc">\\</span></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\mu(\tilde x, t)<span class="sc">\\</span></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\lambda(\tilde x) \cdot t<span class="sc">\\</span></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\hat\eta(\tilde x)} \cdot t<span class="sc">\\</span></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\tilde x'\hat{\boldsymbol{\beta}}} \cdot t</span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diagnostics</span></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Residuals</span></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Observation residuals</span></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>$$e \eqdef y - \hat y$$</span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Pearson residuals</span></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>$$r = \frac{e}{\hse{e}} \approx \frac{e}{\sqrt{\hat y}}$$</span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Standardized Pearson residuals</span></span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>$$r_p = \frac{r}{\sqrt{1-h}}$$</span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>where $h$ is the "leverage" (which we will continue to leave undefined).</span>
-<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Deviance residuals</span></span>
-<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>d_k = \text{sign}(y - \hat y)\left<span class="sc">\{</span>\sqrt{2<span class="co">[</span><span class="ot">\ell_{\text{full}}(y) - \ell(\hat\beta; y)</span><span class="co">]</span>}\right<span class="sc">\}</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a>$$\text{sign}(x) \eqdef \frac{x}{|x|}$$</span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a>In other words:</span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\text{sign}(x) = -1$ if $x &lt; 0$</span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\text{sign}(x) = 0$ if $x = 0$</span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\text{sign}(x) = 1$ if $x &gt; 0$</span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>::::{.content-hidden}</span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sign,<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"sign(x)"</span>)</span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>::::</span>
-<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zero-inflation</span></span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="fu">### Models for zero-inflated counts</span></span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a>We assume a latent (unobserved) binary variable, $Z$, which we model using logistic regression:</span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>$$P(Z=1|X=x) = \pi(x) = \expit(\gamma_0 + \gamma_1x_1 +...)$$</span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>According to this model, if $Z=1$, then $Y$ will always be zero, regardless of $X$ and $T$:</span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a>$$P(Y=0|Z=1,X=x,T=t) = 1$$</span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>Otherwise (if $Z=0$), $Y$ will have a Poisson distribution, conditional on $X$ and $T$, as above.</span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>Even though we never observe $Z$, we can estimate the parameters $\gamma_0$-$\gamma_p$, via maximum likelihood:</span>
-<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>P(Y=y|X=x,T=t) &amp;= P(Y=y,Z=1|...) + P(Y=y,Z=0|...)</span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>(by the Law of Total Probability)</span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>where </span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>P(Y=y,Z=z|...) </span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>&amp;= P(Y=y|Z=z,...)P(Z=z|...)</span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>::: {#exr-zinf-pmf}</span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a>Expand $P(Y=0|X=x,T=t)$, $P(Y=1|X=x,T=t)$ and $P(Y=y|X=x,T=t)$ into expressions involving $P(Z=1|X=x,T=t)$ and $P(Y=y|Z=0,X=x,T=t)$.</span>
-<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>::: {#exr-zinf-moments}</span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a>Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\mathbb E<span class="co">[</span><span class="ot">Y|Z=0,X=x,T=t</span><span class="co">]</span>$.</span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="fu">## Over-dispersion</span></span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative binomial models</span></span>
-<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>::: notes</span>
-<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>The Poisson distribution model **forces** the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).</span>
-<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.</span>
-<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>Most notably, the <span class="co">[</span><span class="ot">negative binomial model</span><span class="co">](probability.qmd#sec-nb)</span>.</span>
-<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a>We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $\P(Y=y|Z=0,X=x,T=t)$.</span>
-<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quasipoisson</span></span>
-<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a>An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\Var{Y} = \mu\theta$, and estimates $\theta$ accordingly.</span>
-<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a>See <span class="in">`?quasipoisson`</span> in R for more.</span>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Poisson regression and variations"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Models for Count Outcomes</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Acknowledgements {.unnumbered}</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>This content is adapted from:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@dobson4e, Chapter 9</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@vittinghoff2e, Chapter 8</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>{{&lt; include shared-config.qmd &gt;}}</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>This chapter presents models for </span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">count data</span><span class="co">](probability.qmd#sec-count-vars)</span> outcomes.</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>With covariates,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>the event rate $\lambda$ </span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>becomes a function of the covariates</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>$\vX = (X_1, \dots,X_n)$.</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>Typically, count data models use</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>a $\log{}$ link function,</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>and thus an $\exp{}$ inverse-link function. </span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>That is:</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>\Expp<span class="co">[</span><span class="ot">Y | \vX = \vx, T = t</span><span class="co">]</span> &amp;= \mu(\vx,t)</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> \mu(\vx,t) &amp;= \lambda(\vx)\cdot t</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> \lambda(\vx) &amp;= \exp{\eta(\vx)}</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> \eta(\vx) &amp;= \vx'\tilde \beta = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>Therefore,</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>\log{<span class="sc">\{</span>\Expp<span class="co">[</span><span class="ot">Y | \vX = \vx,T=t</span><span class="co">]</span> <span class="sc">\}</span>}</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>&amp;= \log{<span class="sc">\{</span>\mu(\vx)<span class="sc">\}</span>}<span class="sc">\\</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>&amp;=\log{<span class="sc">\{</span>\lambda(\vx) \cdot t <span class="sc">\}</span>}<span class="sc">\\</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\lambda(\vx)} + \log{t}<span class="sc">\\</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\exp{\eta(\vx)}} + \log{t}<span class="sc">\\</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>&amp;=\eta(\vx) + \log{t}<span class="sc">\\</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>&amp;=\vx'\tilde\beta + \log{t}<span class="sc">\\</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>&amp;=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \log{t}<span class="sc">\\</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>In contrast with the $X$s, $T$ enters this expression with a $\log{}$ transformation and without a corresponding $\beta$ coefficient. </span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>Terms that enter the linear component of a model without a coefficient, such as $\log{t}$ here, are called **offsets**.</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="fu">### Rate ratios {.smaller}</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>Differences on the log-rate scale become ratios on the rate scale, </span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>because</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">math-preqs.qmd#cor-exp-sum</span><span class="co">]</span></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>Therefore, according to this model, </span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>**differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>That is, letting $\vX_{-j}$ denote vector $\vX$ with element $j$ removed: </span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>&amp;{</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>\left<span class="sc">\{</span></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>    \log{\Expp<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = a}}, \vX_{-j}=\vx_{-j},T=t</span><span class="co">]</span>}</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>    \atop </span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>    {-\log{\Expp<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = b}}, \vX_{-j}=\vx_{-j},T=t</span><span class="co">]</span>}}</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>    \right<span class="sc">\}</span></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>}<span class="sc">\\</span></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>&amp;= </span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>{\left<span class="sc">\{</span></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>\log{t} + \beta_0 + \beta_1 x_1 + ... + {\color{red}{\beta_j (a)}} + ...+\beta_p x_p </span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>\atop </span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>{-\log{t} + \beta_0 + \beta_1 x_1 + ... + {\color{red}{\beta_j (b)}} + ...+\beta_p x_p}</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>\right<span class="sc">\}</span>}<span class="sc">\\</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>&amp;= \color{red}{\beta_j(a-b)}</span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>And accordingly,</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>\frac</span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a>{\mathbb{E}<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = a}}, \vX_{-j} = \vx_{-j}, T = t</span><span class="co">]</span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>\Expp<span class="co">[</span><span class="ot">Y |{\color{red}{X_j = b}}, \vX_{-j}=\vx_{-j},T=t</span><span class="co">]</span></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>= </span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>\exp{{\color{red}{\beta_j(a-b)}}}</span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## Inference for count regression models</span></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a><span class="fu">### Confidence intervals for regression coefficients and rate ratios</span></span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>As usual:</span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>\beta \in \left<span class="co">[</span><span class="ot">\ci \right</span><span class="co">]</span></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>Rate ratios: exponentiate CI endpoints</span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>\exp{\beta} \in \left<span class="co">[</span><span class="ot">\exp{\ci} \right</span><span class="co">]</span></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hypothesis tests for regression coefficients</span></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>t = \frac{\hat \beta - \beta_0}{\hse{\hb}}</span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>Compare $t$ or $|t|$ to the tails of the standard Gaussian distribution, according to the null hypothesis.</span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="fu">### Comparing nested models</span></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>log(likelihood ratio) tests, as usual.</span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction</span></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a>\hat y </span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \hat{\Expp}<span class="co">[</span><span class="ot">Y|\vX= \vx,T=t</span><span class="co">]</span><span class="sc">\\</span></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\mu(\vx, t)<span class="sc">\\</span></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\lambda(\vx) \cdot t<span class="sc">\\</span></span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\hat\eta(\vx)} \cdot t<span class="sc">\\</span></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\vx'\hat{\boldsymbol{\beta}}} \cdot t</span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diagnostics</span></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="fu">### Residuals</span></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Observation residuals</span></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>$$e \eqdef y - \hat y$$</span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Pearson residuals</span></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a>$$r = \frac{e}{\hse{e}} \approx \frac{e}{\sqrt{\hat y}}$$</span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Standardized Pearson residuals</span></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>$$r_p = \frac{r}{\sqrt{1-h}}$$</span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>where $h$ is the "leverage" (which we will continue to leave undefined).</span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Deviance residuals</span></span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>d_k = \text{sign}(y - \hat y)\left<span class="sc">\{</span>\sqrt{2<span class="co">[</span><span class="ot">\ell_{\text{full}}(y) - \ell(\hat\beta; y)</span><span class="co">]</span>}\right<span class="sc">\}</span></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>$$\text{sign}(x) \eqdef \frac{x}{|x|}$$</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a>In other words:</span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\text{sign}(x) = -1$ if $x &lt; 0$</span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\text{sign}(x) = 0$ if $x = 0$</span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\text{sign}(x) = 1$ if $x &gt; 0$</span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a>::::{.content-hidden}</span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sign,<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"sign(x)"</span>)</span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a>::::</span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a><span class="fu">## Zero-inflation</span></span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a><span class="fu">### Models for zero-inflated counts</span></span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a>We assume a latent (unobserved) binary variable, $Z$, which we model using logistic regression:</span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>$$P(Z=1|X=x) = \pi(x) = \expit(\gamma_0 + \gamma_1 x_1 +...)$$</span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>According to this model, if $Z=1$, then $Y$ will always be zero, regardless of $X$ and $T$:</span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a>$$P(Y=0|Z=1,X=x,T=t) = 1$$</span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a>Otherwise (if $Z=0$), $Y$ will have a Poisson distribution, conditional on $X$ and $T$, as above.</span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>Even though we never observe $Z$, we can estimate the parameters $\gamma_0$-$\gamma_p$, via maximum likelihood:</span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a>P(Y=y|X=x,T=t) &amp;= P(Y=y,Z=1|...) + P(Y=y,Z=0|...)</span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a>(by the Law of Total Probability)</span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>where </span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>P(Y=y,Z=z|...) </span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a>&amp;= P(Y=y|Z=z,...)P(Z=z|...)</span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a>::: {#exr-zinf-pmf}</span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a>Expand $P(Y=0|X=x,T=t)$, $P(Y=1|X=x,T=t)$ and $P(Y=y|X=x,T=t)$ into expressions involving $P(Z=1|X=x,T=t)$ and $P(Y=y|Z=0,X=x,T=t)$.</span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a>::: {#exr-zinf-moments}</span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a>Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\Expp<span class="co">[</span><span class="ot">Y|Z=0,X=x,T=t</span><span class="co">]</span>$.</span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a><span class="fu">## Over-dispersion</span></span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a><span class="fu">### Negative binomial models</span></span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a>The Poisson distribution model **forces** the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).</span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.</span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>Most notably, the <span class="co">[</span><span class="ot">negative binomial model</span><span class="co">](probability.qmd#sec-nb-dist)</span>.</span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a>We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $\P(Y=y|Z=0,X=x,T=t)$.</span>
+<span id="cb9-259"><a href="#cb9-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-260"><a href="#cb9-260" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quasipoisson</span></span>
+<span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\Var{Y} = \mu\theta$, and estimates $\theta$ accordingly.</span>
+<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>See <span class="in">`?quasipoisson`</span> in R for more.</span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## Example: needle-sharing</span></span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>(adapted from @vittinghoff2e, §8)</span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a>{{&lt; include exr-needle-sharing.qmd &gt;}}</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

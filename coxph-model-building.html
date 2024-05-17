@@ -341,7 +341,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
+  <a href="./Contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
@@ -446,7 +446,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-02: 18:19:40 (PM)</p>
+      <p class="date">Last modified: 2024-05-16: 19:13:41 (PM)</p>
     </div>
   </div>
   
@@ -852,7 +852,7 @@ y_i &amp;\sim N(\eta_i,\sigma^2)
 \]</span></p>
 <ul>
 <li>
-<span class="math inline">\(\hat y_i\)</span> estimates the conditional mean of <span class="math inline">\(y_i\)</span> given the covariate values <span class="math inline">\(\tilde x_i\)</span>. This together with the prediction error says that we are predicting the distribution of values of <span class="math inline">\(y\)</span>.</li>
+<span class="math inline">\(\hat y_i\)</span> estimates the conditional mean of <span class="math inline">\(y_i\)</span> given the covariate values <span class="math inline">\(\tilde{x}_i\)</span>. This together with the prediction error says that we are predicting the distribution of values of <span class="math inline">\(y\)</span>.</li>
 </ul></section><section id="review-residuals-in-linear-regression" class="level3" data-number="7.3.2"><h3 data-number="7.3.2" class="anchored" data-anchor-id="review-residuals-in-linear-regression">
 <span class="header-section-number">7.3.2</span> Review: Residuals in Linear Regression</h3>
 <ul>
@@ -998,7 +998,7 @@ x_{ik}-\frac{\sum_{k\in R}x_{jk}\theta_k}{\sum_{k\in R}\theta_k}
 \begin{aligned}
 r^{CS}_i&amp;
 \stackrel{\text{def}}{=}-\ln[\hat S(t_i|x_i)]
-= \hat H(t_i|\tilde x_i)
+= \hat H(t_i|\tilde{x}_i)
 \end{aligned}
 \]</span></p>
 <p>should have an exponential distribution with constant hazard <span class="math inline">\(\lambda=1\)</span> if the estimate <span class="math inline">\(\hat S_i\)</span> is accurate, which means that these values should look like a censored sample from this exponential distribution. These values are called <strong>generalized residuals</strong> or <strong>Cox-Snell residuals</strong>.</p>
@@ -3466,7 +3466,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-406"><a href="#cb69-406" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb69-407"><a href="#cb69-407" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-408"><a href="#cb69-408" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>$\hat y_i$ estimates the conditional mean of $y_i$ given the</span>
-<span id="cb69-409"><a href="#cb69-409" aria-hidden="true" tabindex="-1"></a>    covariate values $\tilde x_i$. This together with the prediction</span>
+<span id="cb69-409"><a href="#cb69-409" aria-hidden="true" tabindex="-1"></a>    covariate values $\vx_i$. This together with the prediction</span>
 <span id="cb69-410"><a href="#cb69-410" aria-hidden="true" tabindex="-1"></a>    error says that we are predicting the distribution of values of $y$.</span>
 <span id="cb69-411"><a href="#cb69-411" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-412"><a href="#cb69-412" aria-hidden="true" tabindex="-1"></a><span class="fu">### Review: Residuals in Linear Regression</span></span>
@@ -3669,7 +3669,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb69-621"><a href="#cb69-621" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
 <span id="cb69-622"><a href="#cb69-622" aria-hidden="true" tabindex="-1"></a>r^{CS}_i&amp;</span>
 <span id="cb69-623"><a href="#cb69-623" aria-hidden="true" tabindex="-1"></a>\stackrel{\text{def}}{=}-\ln<span class="co">[</span><span class="ot">\hat S(t_i|x_i)</span><span class="co">]</span> </span>
-<span id="cb69-624"><a href="#cb69-624" aria-hidden="true" tabindex="-1"></a>= \hat H(t_i|\tilde x_i)</span>
+<span id="cb69-624"><a href="#cb69-624" aria-hidden="true" tabindex="-1"></a>= \hat H(t_i|\vx_i)</span>
 <span id="cb69-625"><a href="#cb69-625" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
 <span id="cb69-626"><a href="#cb69-626" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb69-627"><a href="#cb69-627" aria-hidden="true" tabindex="-1"></a></span>

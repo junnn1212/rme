@@ -135,7 +135,32 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     document.body.classList.add('hypothesis-enabled');
   });
 </script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><link rel="stylesheet" href="custom.scss">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="custom.scss">
 </head>
 <body class="nav-sidebar floating">
 
@@ -316,7 +341,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./.github/Contributing.html" class="sidebar-item-text sidebar-link">
+  <a href="./Contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Contributing to <code>rme</code></span></span></a>
   </div>
 </li>
@@ -370,7 +395,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-16: 13:44:58 (PM)</p>
+      <p class="date">Last modified: 2024-05-16: 18:48:17 (PM)</p>
     </div>
   </div>
   
@@ -753,9 +778,9 @@ Figure&nbsp;1.9: Mortality rates of adult flour beetles after five hours’ expo
 </section><section id="three-parts-to-regression-models" class="level3" data-number="1.2.10"><h3 data-number="1.2.10" class="anchored" data-anchor-id="three-parts-to-regression-models">
 <span class="header-section-number">1.2.10</span> Three parts to regression models</h3>
 <ul>
-<li><p>What distribution does the outcome have for a specific subpopulation defined by covariates? (outcome model)</p></li>
-<li><p>How does the combination of covariates relate to the mean? (link function)</p></li>
-<li><p>How do the covariates combine? (linear predictor, interactions)</p></li>
+<li><p>What distribution does the outcome have for a specific sub-population defined by covariates? (<strong>outcome model</strong>)</p></li>
+<li><p>How does the combination of covariates relate to the mean? (<strong>link function</strong>)</p></li>
+<li><p>How do the covariates combine? (<strong>linear predictor/linear component</strong>) <span class="math display">\[\eta \stackrel{\text{def}}{=}\tilde{x}^{\top} \tilde{\beta}= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ...\]</span></p></li>
 </ul>
 
 
@@ -1643,11 +1668,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a><span class="fu">### Three parts to regression models</span></span>
 <span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>What distribution does the outcome have for a specific subpopulation defined by covariates? (outcome model)</span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>What distribution does the outcome have for a specific sub-population defined by covariates? (**outcome model**)</span>
 <span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How does the combination of covariates relate to the mean? (link function)</span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How does the combination of covariates relate to the mean? (**link function**)</span>
 <span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How do the covariates combine? (linear predictor, interactions)</span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How do the covariates combine? (**linear predictor/linear component**)</span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>$$\eta \eqdef \vx \' \vb = \b_0 + \b_1 x_1 + \b_2 x_2 + ...$$</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
