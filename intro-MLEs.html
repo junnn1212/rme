@@ -1071,10 +1071,10 @@ Table&nbsp;E.2: Summary statistics for <code>cyclones</code> data
 <div class="proof solution">
 <p><span class="proof-title"><em>Solution</em>. </span><span class="math display">\[
 \begin{aligned}
-\mathcal{L}(\lambda; \tilde x)
-&amp;= P(\tilde X = \tilde x) \\
-&amp;= P(X_1 = x_1, X_2 = x_2, ..., X_{13} = x_{13}) \\
-&amp;= \prod_{i=1}^{13} P(X_i = x_i) \\
+\mathcal{L}(\lambda; \tilde{x})
+&amp;= \text{P}(\tilde{X}= \tilde{x}) \\
+&amp;= \text{P}(X_1 = x_1, X_2 = x_2, ..., X_{13} = x_{13}) \\
+&amp;= \prod_{i=1}^{13} \text{P}(X_i = x_i) \\
 &amp;= \prod_{i=1}^{13} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}
 \end{aligned}
 \]</span></p>
@@ -1299,7 +1299,7 @@ n\lambda &amp;= \sum_{i = 1}^nx_i\\
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mle</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p><span class="math display">\[\hat{\lambda}_{\text{ML}} = \bar x = 5.53846154\]</span></p>
+<p><span class="math display">\[\hat{\lambda}_{\text{ML}} = \bar x = 5.5385\]</span></p>
 </div>
 </div>
 <div id="exr-graph-mle" class="theorem exercise">
@@ -2082,7 +2082,7 @@ Table&nbsp;E.4: HERS dataset
 </details><div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["mu-hat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sigma-hat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["se_hat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["confint_left"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["confint_right"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["tstat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pval"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["confint covers true mu"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["test rejects null hypothesis"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"99.54","2":"10.63","3":"1.063","4":"97.43","5":"101.7","6":"10.11","7":"6.244e-17","8":"TRUE","9":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["mu-hat"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sigma-hat"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["se_hat"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["confint_left"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["confint_right"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["tstat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["pval"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["confint covers true mu"],"name":[8],"type":["lgl"],"align":["right"]},{"label":["test rejects null hypothesis"],"name":[9],"type":["lgl"],"align":["right"]}],"data":[{"1":"97.63","2":"10.76","3":"1.076","4":"95.5","5":"99.76","6":"8.216","7":"8.264e-13","8":"TRUE","9":"TRUE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>

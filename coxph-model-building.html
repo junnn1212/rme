@@ -872,8 +872,8 @@ y_i &amp;\sim N(\eta_i,\sigma^2)
 <p>The nature of time-to-event data results in very wide prediction intervals:</p>
 <ul>
 <li>Suppose a cancer patient is predicted to have a mean lifetime of 5 years after diagnosis and suppose the distribution is exponential.</li>
-<li>If we want a 95% interval for survival, the lower end is at the 0.025 percentage point of the exponential which is <code>qexp(.025, rate = 1/5)</code> = 0.12658904 years, or 1/40 of the mean lifetime.</li>
-<li>The upper end is at the 0.975 point which is <code>qexp(.975, rate = 1/5)</code> = 18.44439727 years, or 3.7 times the mean lifetime.</li>
+<li>If we want a 95% interval for survival, the lower end is at the 0.025 percentage point of the exponential which is <code>qexp(.025, rate = 1/5)</code> = 0.1266 years, or 1/40 of the mean lifetime.</li>
+<li>The upper end is at the 0.975 point which is <code>qexp(.975, rate = 1/5)</code> = 18.4444 years, or 3.7 times the mean lifetime.</li>
 <li>Saying that the survival time is somewhere between 6 weeks and 18 years does not seem very useful, but it may be the best we can do.</li>
 <li>For survival analysis, something is like a residual if it is small when the model is accurate or if the accumulation of them is in some way minimized by the estimation algorithm, but there is no exact equivalence to linear regression residuals.</li>
 <li>And if there is, they are mostly quite large!</li>
