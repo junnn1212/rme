@@ -395,7 +395,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-22: 10:52:54 (AM)</p>
+      <p class="date">Last modified: 2024-05-22: 11:25:22 (AM)</p>
     </div>
   </div>
   
@@ -473,9 +473,12 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <section id="other-resources" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="other-resources">Other resources</h2>
 <p>These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and I encourage you to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes.</p>
-<p>Here are some additional resources that I’ve come across; I haven’t had time to read most of them thoroughly yet, but they’re all on my to-do list. I’ll add my thoughts on them over time.</p>
+<p>Here are some additional resources that I’ve come across; I haven’t had time to read some of them thoroughly yet, but they’re all on my to-do list. I’ll add my thoughts on them over time.</p>
 <ul>
-<li><p><span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> is a classic textbook on GLMs. It was used in UCLA Biostatistics’s MS-level GLMs course (Biostat 200C) when I took it, and it helped me a lot. It is fairly mathematically rigorous and concise, bordering on terse. It covers GLMs in detail, and survival analysis briefly, and it also has helpful chapters on Bayesian methods. I have borrowed examples and explanations from it extensively in these notes.</p></li>
+<li><p><span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> is a classic textbook on GLMs. It was used in UCLA Biostatistics’s MS-level GLMs course (Biostat 200C) when I took it, and it helped me a lot. It is fairly mathematically rigorous and concise, bordering on terse. It covers GLMs in detail, and survival analysis briefly, and it also has helpful chapters on Bayesian methods. I have adapted examples and explanations from it extensively in these notes.</p></li>
+<li><p><span class="citation" data-cites="hosmer2013applied">Hosmer Jr, Lemeshow, and Sturdivant (<a href="references.html#ref-hosmer2013applied" role="doc-biblioref">2013</a>)</span> is a classic text on logistic regression. I haven’t read it yet.</p></li>
+<li><p><span class="citation" data-cites="agresti2012categorical">Agresti (<a href="references.html#ref-agresti2012categorical" role="doc-biblioref">2012</a>)</span> is another classic text for GLMs. I haven’t read it yet.</p></li>
+<li><p><span class="citation" data-cites="agresti2018introcat">Agresti (<a href="references.html#ref-agresti2018introcat" role="doc-biblioref">2018</a>)</span> appears to be a more applied version of <span class="citation" data-cites="agresti2012categorical">Agresti (<a href="references.html#ref-agresti2012categorical" role="doc-biblioref">2012</a>)</span>. I haven’t read it yet. There are <a href="https://bcs.wiley.com/he-bcs/Books?action=resource&amp;bcsId=11293&amp;itemId=1119405262&amp;resourceId=44770">extra exercises</a> and other resources available on the <a href="https://bcs.wiley.com/he-bcs/Books?action=index&amp;itemId=1119405262&amp;bcsId=11293">Student Companion Site</a></p></li>
 <li><p><span class="citation" data-cites="dunn2018generalized">Dunn, Smyth, et al. (<a href="references.html#ref-dunn2018generalized" role="doc-biblioref">2018</a>)</span> is a recent textbook on GLMs. It doesn’t cover time-to-event models, and it doesn’t use the modern <a href="https://tidyverse.org/"><code>tidyverse</code></a> packages (<a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a>, <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a>, etc.), but otherwise it seems great.</p></li>
 <li><p><span class="citation" data-cites="moore2016applied">Moore (<a href="references.html#ref-moore2016applied" role="doc-biblioref">2016</a>)</span> is a recent textbook on survival analysis. It also doesn’t use the <code>tidyverse</code>, but otherwise seems great.</p></li>
 <li><p><span class="citation" data-cites="klein2003survival">Klein, Moeschberger, et al. (<a href="references.html#ref-klein2003survival" role="doc-biblioref">2003</a>)</span> is a classic text for survival analysis. I read most of it in grad school, and it was very helpful. Examples and explanations from it are borrowed extensively in the second half of these notes (partially filtered through David Rocke’s course notes.)</p></li>
@@ -505,6 +508,12 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <!-- -->
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-agresti2012categorical" class="csl-entry" role="listitem">
+Agresti, Alan. 2012. <em>Categorical Data Analysis</em>. Vol. 792. John Wiley &amp; Sons. <a href="https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635">https://www.wiley.com/en-us/Categorical+Data+Analysis%2C+3rd+Edition-p-9780470463635</a>.
+</div>
+<div id="ref-agresti2018introcat" class="csl-entry" role="listitem">
+———. 2018. <em>An Introduction to Categorical Data Analysis</em>. John Wiley &amp; Sons. <a href="https://www.wiley.com/en-us/An+Introduction+to+Categorical+Data+Analysis%2C+3rd+Edition-p-9781119405283">https://www.wiley.com/en-us/An+Introduction+to+Categorical+Data+Analysis%2C+3rd+Edition-p-9781119405283</a>.
+</div>
 <div id="ref-clayton2013statistical" class="csl-entry" role="listitem">
 Clayton, David, and Michael Hills. 2013. <em>Statistical Models in Epidemiology</em>. OUP Oxford.
 </div>
@@ -525,6 +534,9 @@ Fox, John. 2015. <em>Applied Regression Analysis and Generalized Linear Models</
 </div>
 <div id="ref-rms2e" class="csl-entry" role="listitem">
 Harrell, Frank E. 2015. <em>Regression Modeling Strategies: With Applications to Linear Models, Logistic Regression, and Survival Analysis</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-3-319-19425-7">https://doi.org/10.1007/978-3-319-19425-7</a>.
+</div>
+<div id="ref-hosmer2013applied" class="csl-entry" role="listitem">
+Hosmer Jr, David W, Stanley Lemeshow, and Rodney X Sturdivant. 2013. <em>Applied Logistic Regression</em>. John Wiley &amp; Sons. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118548387">https://onlinelibrary.wiley.com/doi/book/10.1002/9781118548387</a>.
 </div>
 <div id="ref-jewell2003statistics" class="csl-entry" role="listitem">
 Jewell, Nicholas P. 2003. <em>Statistics for Epidemiology</em>. chapman; hall/CRC. <a href="https://www.routledge.com/Statistics-for-Epidemiology/Jewell/p/book/9781584884330">https://www.routledge.com/Statistics-for-Epidemiology/Jewell/p/book/9781584884330</a>.
@@ -1272,7 +1284,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>I have attempted to cite my sources throughout these notes. </span>
 <span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>Here are some additional resources that I've come across; </span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>I haven't had time to read most of them</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>I haven't had time to read some of them</span>
 <span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>thoroughly yet, but they're all on my to-do list. </span>
 <span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>I'll add my thoughts on them over time.</span>
 <span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
