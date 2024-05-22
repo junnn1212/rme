@@ -395,9 +395,12 @@ window.Quarto = {
   <li><a href="#quasipoisson" id="toc-quasipoisson" class="nav-link" data-scroll-target="#quasipoisson"><span class="header-section-number">4.6.2</span> Quasipoisson</a></li>
   </ul>
 </li>
-  <li><a href="#example-needle-sharing" id="toc-example-needle-sharing" class="nav-link" data-scroll-target="#example-needle-sharing"><span class="header-section-number">4.7</span> Example: needle-sharing</a></li>
-  <li><a href="#covariate-counts" id="toc-covariate-counts" class="nav-link" data-scroll-target="#covariate-counts"><span class="header-section-number">4.8</span> Covariate counts:</a></li>
-  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model"><span class="header-section-number">4.9</span> model</a></li>
+  <li>
+<a href="#example-needle-sharing" id="toc-example-needle-sharing" class="nav-link" data-scroll-target="#example-needle-sharing"><span class="header-section-number">4.7</span> Example: needle-sharing</a>
+  <ul class="collapse">
+<li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models"><span class="header-section-number">4.7.1</span> models</a></li>
+  </ul>
+</li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/count-regression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -750,8 +753,7 @@ Figure&nbsp;4.1: Rates of needle sharing
 </div>
 </div>
 </div>
-</section><section id="covariate-counts" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="covariate-counts">
-<span class="header-section-number">4.8</span> Covariate counts:</h2>
+<section id="covariate-counts" class="level4"><h4 class="anchored" data-anchor-id="covariate-counts">Covariate counts:</h4>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">needles</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sex</span>, <span class="va">homeless</span>, <span class="va">polydrug</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -768,8 +770,8 @@ Figure&nbsp;4.1: Rates of needle sharing
 <span><span class="va">needles</span> <span class="op">=</span> <span class="va">needles</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sex</span> <span class="op">!=</span> <span class="st">"Trans"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="model" class="level2 smaller" data-number="4.9"><h2 class="smaller anchored" data-number="4.9" data-anchor-id="model">
-<span class="header-section-number">4.9</span> model</h2>
+</section><section id="models" class="level3 smaller" data-number="4.7.1"><h3 class="smaller anchored" data-number="4.7.1" data-anchor-id="models">
+<span class="header-section-number">4.7.1</span> models</h3>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">glm1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">needles</span>,</span>
@@ -1275,7 +1277,7 @@ Dobson, Annette J, and Adrian G Barnett. 2018. <em>An Introduction to Generalize
 Vittinghoff, Eric, David V Glidden, Stephen C Shiboski, and Charles E McCulloch. 2012. <em>Regression Methods in Biostatistics: Linear, Logistic, Survival, and Repeated Measures Models</em>. 2nd ed. Springer. <a href="https://doi.org/10.1007/978-1-4614-1353-0">https://doi.org/10.1007/978-1-4614-1353-0</a>.
 </div>
 </div>
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
