@@ -364,8 +364,9 @@ window.Quarto = {
 <a href="#cox-model-for-the-bmt-data" id="toc-cox-model-for-the-bmt-data" class="nav-link" data-scroll-target="#cox-model-for-the-bmt-data"><span class="header-section-number">6.3</span> Cox Model for the <code>bmt</code> data</a>
   <ul class="collapse">
 <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model"><span class="header-section-number">6.3.1</span> Fit the model</a></li>
-  <li><a href="#survival-curves-from-the-cox-model" id="toc-survival-curves-from-the-cox-model" class="nav-link" data-scroll-target="#survival-curves-from-the-cox-model"><span class="header-section-number">6.3.2</span> Survival Curves from the Cox Model</a></li>
-  <li><a href="#examining-survfit" id="toc-examining-survfit" class="nav-link" data-scroll-target="#examining-survfit"><span class="header-section-number">6.3.3</span> Examining <code>survfit</code></a></li>
+  <li><a href="#tests-for-nested-models" id="toc-tests-for-nested-models" class="nav-link" data-scroll-target="#tests-for-nested-models"><span class="header-section-number">6.3.2</span> Tests for nested models</a></li>
+  <li><a href="#survival-curves-from-the-cox-model" id="toc-survival-curves-from-the-cox-model" class="nav-link" data-scroll-target="#survival-curves-from-the-cox-model"><span class="header-section-number">6.3.3</span> Survival Curves from the Cox Model</a></li>
+  <li><a href="#examining-survfit" id="toc-examining-survfit" class="nav-link" data-scroll-target="#examining-survfit"><span class="header-section-number">6.3.4</span> Examining <code>survfit</code></a></li>
   </ul>
 </li>
   <li><a href="#adjustment-for-ties-optional" id="toc-adjustment-for-ties-optional" class="nav-link" data-scroll-target="#adjustment-for-ties-optional"><span class="header-section-number">6.4</span> Adjustment for Ties (optional)</a></li>
@@ -459,7 +460,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-30: 9:36:37 (AM)</p>
+      <p class="date">Last modified: 2024-05-30: 10:16:47 (AM)</p>
     </div>
   </div>
   
@@ -936,6 +937,8 @@ h(t|X=x)&amp;= h_0(t)e^{\eta(\boldsymbol{x})}=\theta(\boldsymbol{x}) h_0(t)
 <p>Inference on all coefficients and combinations can be constructed using <code>coef(bmt.cox)</code> and <code>vcov(bmt.cox)</code> as with logistic and poisson regression.</p>
 <p><strong>Concordance</strong> is agreement of first failure between pairs of subjects and higher predicted risk between those subjects, omitting non-informative pairs.</p>
 <p>The Rsquare value is Cox and Snell’s pseudo R-squared and is not very useful.</p>
+</section><section id="tests-for-nested-models" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="tests-for-nested-models">
+<span class="header-section-number">6.3.2</span> Tests for nested models</h3>
 <p><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> prints three tests for whether the model with the group covariate is better than the one without</p>
 <ul>
 <li>
@@ -946,8 +949,8 @@ h(t|X=x)&amp;= h_0(t)e^{\eta(\boldsymbol{x})}=\theta(\boldsymbol{x}) h_0(t)
 <code>Score</code> = log-rank test, as with comparison of survival functions.</li>
 </ul>
 <p>The likelihood ratio test is probably best in smaller samples, followed by the Wald test.</p>
-</section><section id="survival-curves-from-the-cox-model" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="survival-curves-from-the-cox-model">
-<span class="header-section-number">6.3.2</span> Survival Curves from the Cox Model</h3>
+</section><section id="survival-curves-from-the-cox-model" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="survival-curves-from-the-cox-model">
+<span class="header-section-number">6.3.3</span> Survival Curves from the Cox Model</h3>
 <p>We can take a look at the resulting group-specific curves:</p>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span></span>
@@ -989,8 +992,8 @@ h(t|X=x)&amp;= h_0(t)e^{\eta(\boldsymbol{x})}=\theta(\boldsymbol{x}) h_0(t)
 <blockquote class="blockquote">
 <p>If the <code>newdata</code> argument is missing, a curve is produced for a single “pseudo” subject with covariate values equal to the means component of the fit. The resulting curve(s) almost never make sense, but the default remains due to an unwarranted attachment to the option shown by some users and by other packages. Two particularly egregious examples are factor variables and interactions. Suppose one were studying interspecies transmission of a virus, and the data set has a factor variable with levels (“pig”, “chicken”) and about equal numbers of observations for each. The “mean” covariate level will be 0.5 – is this a flying pig?</p>
 </blockquote>
-</section><section id="examining-survfit" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="examining-survfit">
-<span class="header-section-number">6.3.3</span> Examining <code>survfit</code>
+</section><section id="examining-survfit" class="level3" data-number="6.3.4"><h3 data-number="6.3.4" class="anchored" data-anchor-id="examining-survfit">
+<span class="header-section-number">6.3.4</span> Examining <code>survfit</code>
 </h3>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/survfit.html">survfit</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d3</span><span class="op">)</span> <span class="op">~</span> <span class="va">group</span>, data <span class="op">=</span> <span class="va">bmt</span><span class="op">)</span></span>
@@ -4385,180 +4388,182 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb81-553"><a href="#cb81-553" aria-hidden="true" tabindex="-1"></a>The Rsquare value is Cox and Snell's pseudo R-squared and is not very</span>
 <span id="cb81-554"><a href="#cb81-554" aria-hidden="true" tabindex="-1"></a>useful.</span>
 <span id="cb81-555"><a href="#cb81-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-556"><a href="#cb81-556" aria-hidden="true" tabindex="-1"></a><span class="in">`summary()`</span> prints three tests for whether the model with the group</span>
-<span id="cb81-557"><a href="#cb81-557" aria-hidden="true" tabindex="-1"></a>covariate is better than the one without</span>
-<span id="cb81-558"><a href="#cb81-558" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-559"><a href="#cb81-559" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Likelihood ratio test`</span> (chi-squared)</span>
-<span id="cb81-560"><a href="#cb81-560" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Wald test`</span> (also chi-squared), obtained by adding the squares of the z-scores</span>
-<span id="cb81-561"><a href="#cb81-561" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Score`</span> = log-rank test, as with comparison of survival functions.</span>
-<span id="cb81-562"><a href="#cb81-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-563"><a href="#cb81-563" aria-hidden="true" tabindex="-1"></a>The likelihood ratio test is probably best in smaller samples, followed</span>
-<span id="cb81-564"><a href="#cb81-564" aria-hidden="true" tabindex="-1"></a>by the Wald test.</span>
-<span id="cb81-565"><a href="#cb81-565" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-566"><a href="#cb81-566" aria-hidden="true" tabindex="-1"></a><span class="fu">### Survival Curves from the Cox Model</span></span>
+<span id="cb81-556"><a href="#cb81-556" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tests for nested models</span></span>
+<span id="cb81-557"><a href="#cb81-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-558"><a href="#cb81-558" aria-hidden="true" tabindex="-1"></a><span class="in">`summary()`</span> prints three tests for whether the model with the group</span>
+<span id="cb81-559"><a href="#cb81-559" aria-hidden="true" tabindex="-1"></a>covariate is better than the one without</span>
+<span id="cb81-560"><a href="#cb81-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-561"><a href="#cb81-561" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Likelihood ratio test`</span> (chi-squared)</span>
+<span id="cb81-562"><a href="#cb81-562" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Wald test`</span> (also chi-squared), obtained by adding the squares of the z-scores</span>
+<span id="cb81-563"><a href="#cb81-563" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Score`</span> = log-rank test, as with comparison of survival functions.</span>
+<span id="cb81-564"><a href="#cb81-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-565"><a href="#cb81-565" aria-hidden="true" tabindex="-1"></a>The likelihood ratio test is probably best in smaller samples, followed</span>
+<span id="cb81-566"><a href="#cb81-566" aria-hidden="true" tabindex="-1"></a>by the Wald test.</span>
 <span id="cb81-567"><a href="#cb81-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-568"><a href="#cb81-568" aria-hidden="true" tabindex="-1"></a>We can take a look at the resulting group-specific curves:</span>
+<span id="cb81-568"><a href="#cb81-568" aria-hidden="true" tabindex="-1"></a><span class="fu">### Survival Curves from the Cox Model</span></span>
 <span id="cb81-569"><a href="#cb81-569" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-572"><a href="#cb81-572" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb81-573"><a href="#cb81-573" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Survival Functions for Three Groups by KM and Cox Model"</span></span>
-<span id="cb81-574"><a href="#cb81-574" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-575"><a href="#cb81-575" aria-hidden="true" tabindex="-1"></a>km_fit <span class="ot">=</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(t2, d3) <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">as.data.frame</span>(bmt))</span>
+<span id="cb81-570"><a href="#cb81-570" aria-hidden="true" tabindex="-1"></a>We can take a look at the resulting group-specific curves:</span>
+<span id="cb81-571"><a href="#cb81-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-574"><a href="#cb81-574" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-575"><a href="#cb81-575" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Survival Functions for Three Groups by KM and Cox Model"</span></span>
 <span id="cb81-576"><a href="#cb81-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-577"><a href="#cb81-577" aria-hidden="true" tabindex="-1"></a>cox_fit <span class="ot">=</span> <span class="fu">survfit</span>(</span>
-<span id="cb81-578"><a href="#cb81-578" aria-hidden="true" tabindex="-1"></a>  bmt.cox, </span>
-<span id="cb81-579"><a href="#cb81-579" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> </span>
-<span id="cb81-580"><a href="#cb81-580" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
-<span id="cb81-581"><a href="#cb81-581" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group), </span>
-<span id="cb81-582"><a href="#cb81-582" aria-hidden="true" tabindex="-1"></a>      <span class="at">row.names =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group)))</span>
-<span id="cb81-583"><a href="#cb81-583" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-584"><a href="#cb81-584" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span>
+<span id="cb81-577"><a href="#cb81-577" aria-hidden="true" tabindex="-1"></a>km_fit <span class="ot">=</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(t2, d3) <span class="sc">~</span> group, <span class="at">data =</span> <span class="fu">as.data.frame</span>(bmt))</span>
+<span id="cb81-578"><a href="#cb81-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-579"><a href="#cb81-579" aria-hidden="true" tabindex="-1"></a>cox_fit <span class="ot">=</span> <span class="fu">survfit</span>(</span>
+<span id="cb81-580"><a href="#cb81-580" aria-hidden="true" tabindex="-1"></a>  bmt.cox, </span>
+<span id="cb81-581"><a href="#cb81-581" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> </span>
+<span id="cb81-582"><a href="#cb81-582" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb81-583"><a href="#cb81-583" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group), </span>
+<span id="cb81-584"><a href="#cb81-584" aria-hidden="true" tabindex="-1"></a>      <span class="at">row.names =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group)))</span>
 <span id="cb81-585"><a href="#cb81-585" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-586"><a href="#cb81-586" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">KM =</span> km_fit, <span class="at">Cox =</span> cox_fit) <span class="sc">|&gt;</span> </span>
-<span id="cb81-587"><a href="#cb81-587" aria-hidden="true" tabindex="-1"></a>  survminer<span class="sc">::</span><span class="fu">ggsurvplot</span>(</span>
-<span id="cb81-588"><a href="#cb81-588" aria-hidden="true" tabindex="-1"></a>    <span class="co"># facet.by = "group",</span></span>
-<span id="cb81-589"><a href="#cb81-589" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="st">"bottom"</span>, </span>
-<span id="cb81-590"><a href="#cb81-590" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="st">""</span>,</span>
-<span id="cb81-591"><a href="#cb81-591" aria-hidden="true" tabindex="-1"></a>    <span class="at">combine =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb81-592"><a href="#cb81-592" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">'pct'</span>, </span>
-<span id="cb81-593"><a href="#cb81-593" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> .<span class="dv">5</span>,</span>
-<span id="cb81-594"><a href="#cb81-594" aria-hidden="true" tabindex="-1"></a>    <span class="at">ggtheme =</span> <span class="fu">theme_bw</span>(), </span>
-<span id="cb81-595"><a href="#cb81-595" aria-hidden="true" tabindex="-1"></a>    <span class="at">conf.int =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb81-596"><a href="#cb81-596" aria-hidden="true" tabindex="-1"></a>    <span class="at">censor =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb81-597"><a href="#cb81-597" aria-hidden="true" tabindex="-1"></a>  <span class="fu">suppressWarnings</span>() <span class="co"># ggsurvplot() throws some warnings that aren't too worrying</span></span>
-<span id="cb81-598"><a href="#cb81-598" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb81-599"><a href="#cb81-599" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-600"><a href="#cb81-600" aria-hidden="true" tabindex="-1"></a>When we use <span class="in">`survfit()`</span> with a Cox model, we have to specify the covariate levels we are interested in; the argument <span class="in">`newdata`</span> should include a <span class="in">`data.frame`</span> with the same named columns as the predictors in the Cox model and one or more levels of each.</span>
+<span id="cb81-586"><a href="#cb81-586" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span>
+<span id="cb81-587"><a href="#cb81-587" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-588"><a href="#cb81-588" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">KM =</span> km_fit, <span class="at">Cox =</span> cox_fit) <span class="sc">|&gt;</span> </span>
+<span id="cb81-589"><a href="#cb81-589" aria-hidden="true" tabindex="-1"></a>  survminer<span class="sc">::</span><span class="fu">ggsurvplot</span>(</span>
+<span id="cb81-590"><a href="#cb81-590" aria-hidden="true" tabindex="-1"></a>    <span class="co"># facet.by = "group",</span></span>
+<span id="cb81-591"><a href="#cb81-591" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="st">"bottom"</span>, </span>
+<span id="cb81-592"><a href="#cb81-592" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="st">""</span>,</span>
+<span id="cb81-593"><a href="#cb81-593" aria-hidden="true" tabindex="-1"></a>    <span class="at">combine =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb81-594"><a href="#cb81-594" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> <span class="st">'pct'</span>, </span>
+<span id="cb81-595"><a href="#cb81-595" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> .<span class="dv">5</span>,</span>
+<span id="cb81-596"><a href="#cb81-596" aria-hidden="true" tabindex="-1"></a>    <span class="at">ggtheme =</span> <span class="fu">theme_bw</span>(), </span>
+<span id="cb81-597"><a href="#cb81-597" aria-hidden="true" tabindex="-1"></a>    <span class="at">conf.int =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb81-598"><a href="#cb81-598" aria-hidden="true" tabindex="-1"></a>    <span class="at">censor =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb81-599"><a href="#cb81-599" aria-hidden="true" tabindex="-1"></a>  <span class="fu">suppressWarnings</span>() <span class="co"># ggsurvplot() throws some warnings that aren't too worrying</span></span>
+<span id="cb81-600"><a href="#cb81-600" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb81-601"><a href="#cb81-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-602"><a href="#cb81-602" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb81-602"><a href="#cb81-602" aria-hidden="true" tabindex="-1"></a>When we use <span class="in">`survfit()`</span> with a Cox model, we have to specify the covariate levels we are interested in; the argument <span class="in">`newdata`</span> should include a <span class="in">`data.frame`</span> with the same named columns as the predictors in the Cox model and one or more levels of each.</span>
 <span id="cb81-603"><a href="#cb81-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-604"><a href="#cb81-604" aria-hidden="true" tabindex="-1"></a>From <span class="in">`?survfit.coxph`</span>:</span>
+<span id="cb81-604"><a href="#cb81-604" aria-hidden="true" tabindex="-1"></a>---</span>
 <span id="cb81-605"><a href="#cb81-605" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-606"><a href="#cb81-606" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; If the </span><span class="in">`newdata`</span><span class="at"> argument is missing, a curve is produced for a </span></span>
-<span id="cb81-607"><a href="#cb81-607" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; single "pseudo" subject with covariate values equal to the means component of the fit. </span></span>
-<span id="cb81-608"><a href="#cb81-608" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The resulting curve(s) almost never make sense, </span></span>
-<span id="cb81-609"><a href="#cb81-609" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; but the default remains due to an unwarranted attachment to the option shown by some users and by other packages.</span></span>
-<span id="cb81-610"><a href="#cb81-610" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Two particularly egregious examples are factor variables and interactions. </span></span>
-<span id="cb81-611"><a href="#cb81-611" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Suppose one were studying interspecies transmission of a virus, and the data set has a factor variable with levels ("pig", "chicken") and about equal numbers of observations for each. </span></span>
-<span id="cb81-612"><a href="#cb81-612" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The "mean" covariate level will be 0.5 -- is this a flying pig?</span></span>
-<span id="cb81-613"><a href="#cb81-613" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-614"><a href="#cb81-614" aria-hidden="true" tabindex="-1"></a><span class="fu">### Examining `survfit`</span></span>
+<span id="cb81-606"><a href="#cb81-606" aria-hidden="true" tabindex="-1"></a>From <span class="in">`?survfit.coxph`</span>:</span>
+<span id="cb81-607"><a href="#cb81-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-608"><a href="#cb81-608" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; If the </span><span class="in">`newdata`</span><span class="at"> argument is missing, a curve is produced for a </span></span>
+<span id="cb81-609"><a href="#cb81-609" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; single "pseudo" subject with covariate values equal to the means component of the fit. </span></span>
+<span id="cb81-610"><a href="#cb81-610" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The resulting curve(s) almost never make sense, </span></span>
+<span id="cb81-611"><a href="#cb81-611" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; but the default remains due to an unwarranted attachment to the option shown by some users and by other packages.</span></span>
+<span id="cb81-612"><a href="#cb81-612" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Two particularly egregious examples are factor variables and interactions. </span></span>
+<span id="cb81-613"><a href="#cb81-613" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Suppose one were studying interspecies transmission of a virus, and the data set has a factor variable with levels ("pig", "chicken") and about equal numbers of observations for each. </span></span>
+<span id="cb81-614"><a href="#cb81-614" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The "mean" covariate level will be 0.5 -- is this a flying pig?</span></span>
 <span id="cb81-615"><a href="#cb81-615" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-618"><a href="#cb81-618" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb81-619"><a href="#cb81-619" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(<span class="fu">Surv</span>(t2, d3) <span class="sc">~</span> group, <span class="at">data =</span> bmt)</span>
-<span id="cb81-620"><a href="#cb81-620" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb81-621"><a href="#cb81-621" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-624"><a href="#cb81-624" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb81-625"><a href="#cb81-625" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(<span class="fu">Surv</span>(t2, d3) <span class="sc">~</span> group, <span class="at">data =</span> bmt) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb81-626"><a href="#cb81-626" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb81-627"><a href="#cb81-627" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-630"><a href="#cb81-630" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb81-631"><a href="#cb81-631" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(bmt.cox)</span>
-<span id="cb81-632"><a href="#cb81-632" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(bmt.cox, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group)))</span>
-<span id="cb81-633"><a href="#cb81-633" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb81-634"><a href="#cb81-634" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-637"><a href="#cb81-637" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb81-638"><a href="#cb81-638" aria-hidden="true" tabindex="-1"></a>bmt.cox <span class="sc">|&gt;</span> </span>
-<span id="cb81-639"><a href="#cb81-639" aria-hidden="true" tabindex="-1"></a>  <span class="fu">survfit</span>(<span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group))) <span class="sc">|&gt;</span> </span>
-<span id="cb81-640"><a href="#cb81-640" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb81-641"><a href="#cb81-641" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb81-642"><a href="#cb81-642" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-643"><a href="#cb81-643" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjustment for Ties (optional)</span></span>
+<span id="cb81-616"><a href="#cb81-616" aria-hidden="true" tabindex="-1"></a><span class="fu">### Examining `survfit`</span></span>
+<span id="cb81-617"><a href="#cb81-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-620"><a href="#cb81-620" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-621"><a href="#cb81-621" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(<span class="fu">Surv</span>(t2, d3) <span class="sc">~</span> group, <span class="at">data =</span> bmt)</span>
+<span id="cb81-622"><a href="#cb81-622" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-623"><a href="#cb81-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-626"><a href="#cb81-626" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-627"><a href="#cb81-627" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(<span class="fu">Surv</span>(t2, d3) <span class="sc">~</span> group, <span class="at">data =</span> bmt) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb81-628"><a href="#cb81-628" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-629"><a href="#cb81-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-632"><a href="#cb81-632" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-633"><a href="#cb81-633" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(bmt.cox)</span>
+<span id="cb81-634"><a href="#cb81-634" aria-hidden="true" tabindex="-1"></a><span class="fu">survfit</span>(bmt.cox, <span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group)))</span>
+<span id="cb81-635"><a href="#cb81-635" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb81-636"><a href="#cb81-636" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-639"><a href="#cb81-639" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb81-640"><a href="#cb81-640" aria-hidden="true" tabindex="-1"></a>bmt.cox <span class="sc">|&gt;</span> </span>
+<span id="cb81-641"><a href="#cb81-641" aria-hidden="true" tabindex="-1"></a>  <span class="fu">survfit</span>(<span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">unique</span>(bmt<span class="sc">$</span>group))) <span class="sc">|&gt;</span> </span>
+<span id="cb81-642"><a href="#cb81-642" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb81-643"><a href="#cb81-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb81-644"><a href="#cb81-644" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-645"><a href="#cb81-645" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb81-645"><a href="#cb81-645" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjustment for Ties (optional)</span></span>
 <span id="cb81-646"><a href="#cb81-646" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-647"><a href="#cb81-647" aria-hidden="true" tabindex="-1"></a>At each time $t_i$ at which more than one of the subjects has an event,</span>
-<span id="cb81-648"><a href="#cb81-648" aria-hidden="true" tabindex="-1"></a>let $d_i$ be the number of events at that time, $D_i$ the set of</span>
-<span id="cb81-649"><a href="#cb81-649" aria-hidden="true" tabindex="-1"></a>subjects with events at that time, and let $s_i$ be a covariate vector</span>
-<span id="cb81-650"><a href="#cb81-650" aria-hidden="true" tabindex="-1"></a>for an artificial subject obtained by adding up the covariate values for</span>
-<span id="cb81-651"><a href="#cb81-651" aria-hidden="true" tabindex="-1"></a>the subjects with an event at time $t_i$. Let</span>
-<span id="cb81-652"><a href="#cb81-652" aria-hidden="true" tabindex="-1"></a>$$\bar\eta_i = \beta_1s_{i1}+\cdots+\beta_ps_{ip}$$ and</span>
-<span id="cb81-653"><a href="#cb81-653" aria-hidden="true" tabindex="-1"></a>$\bar\theta_i = \exp{\bar\eta_i}$.</span>
-<span id="cb81-654"><a href="#cb81-654" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-655"><a href="#cb81-655" aria-hidden="true" tabindex="-1"></a>Let $s_i$ be a covariate vector for an artificial subject obtained by</span>
-<span id="cb81-656"><a href="#cb81-656" aria-hidden="true" tabindex="-1"></a>adding up the covariate values for the subjects with an event at time</span>
-<span id="cb81-657"><a href="#cb81-657" aria-hidden="true" tabindex="-1"></a>$t_i$. Note that </span>
-<span id="cb81-658"><a href="#cb81-658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-659"><a href="#cb81-659" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-660"><a href="#cb81-660" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb81-661"><a href="#cb81-661" aria-hidden="true" tabindex="-1"></a>\bar\eta_i &amp;=\sum_{j \in D_i}\beta_1x_{j1}+\cdots+\beta_px_{jp}<span class="sc">\\</span></span>
-<span id="cb81-662"><a href="#cb81-662" aria-hidden="true" tabindex="-1"></a>&amp;= \beta_1s_{i1}+\cdots+\beta_ps_{ip}<span class="sc">\\</span></span>
-<span id="cb81-663"><a href="#cb81-663" aria-hidden="true" tabindex="-1"></a>\bar\theta_i &amp;= \exp{\bar\eta_i}<span class="sc">\\</span></span>
-<span id="cb81-664"><a href="#cb81-664" aria-hidden="true" tabindex="-1"></a>&amp;= \prod_{j \in D_i}\theta_i</span>
-<span id="cb81-665"><a href="#cb81-665" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb81-666"><a href="#cb81-666" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-667"><a href="#cb81-667" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-668"><a href="#cb81-668" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Breslow's method for ties</span></span>
+<span id="cb81-647"><a href="#cb81-647" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb81-648"><a href="#cb81-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-649"><a href="#cb81-649" aria-hidden="true" tabindex="-1"></a>At each time $t_i$ at which more than one of the subjects has an event,</span>
+<span id="cb81-650"><a href="#cb81-650" aria-hidden="true" tabindex="-1"></a>let $d_i$ be the number of events at that time, $D_i$ the set of</span>
+<span id="cb81-651"><a href="#cb81-651" aria-hidden="true" tabindex="-1"></a>subjects with events at that time, and let $s_i$ be a covariate vector</span>
+<span id="cb81-652"><a href="#cb81-652" aria-hidden="true" tabindex="-1"></a>for an artificial subject obtained by adding up the covariate values for</span>
+<span id="cb81-653"><a href="#cb81-653" aria-hidden="true" tabindex="-1"></a>the subjects with an event at time $t_i$. Let</span>
+<span id="cb81-654"><a href="#cb81-654" aria-hidden="true" tabindex="-1"></a>$$\bar\eta_i = \beta_1s_{i1}+\cdots+\beta_ps_{ip}$$ and</span>
+<span id="cb81-655"><a href="#cb81-655" aria-hidden="true" tabindex="-1"></a>$\bar\theta_i = \exp{\bar\eta_i}$.</span>
+<span id="cb81-656"><a href="#cb81-656" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-657"><a href="#cb81-657" aria-hidden="true" tabindex="-1"></a>Let $s_i$ be a covariate vector for an artificial subject obtained by</span>
+<span id="cb81-658"><a href="#cb81-658" aria-hidden="true" tabindex="-1"></a>adding up the covariate values for the subjects with an event at time</span>
+<span id="cb81-659"><a href="#cb81-659" aria-hidden="true" tabindex="-1"></a>$t_i$. Note that </span>
+<span id="cb81-660"><a href="#cb81-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-661"><a href="#cb81-661" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-662"><a href="#cb81-662" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb81-663"><a href="#cb81-663" aria-hidden="true" tabindex="-1"></a>\bar\eta_i &amp;=\sum_{j \in D_i}\beta_1x_{j1}+\cdots+\beta_px_{jp}<span class="sc">\\</span></span>
+<span id="cb81-664"><a href="#cb81-664" aria-hidden="true" tabindex="-1"></a>&amp;= \beta_1s_{i1}+\cdots+\beta_ps_{ip}<span class="sc">\\</span></span>
+<span id="cb81-665"><a href="#cb81-665" aria-hidden="true" tabindex="-1"></a>\bar\theta_i &amp;= \exp{\bar\eta_i}<span class="sc">\\</span></span>
+<span id="cb81-666"><a href="#cb81-666" aria-hidden="true" tabindex="-1"></a>&amp;= \prod_{j \in D_i}\theta_i</span>
+<span id="cb81-667"><a href="#cb81-667" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb81-668"><a href="#cb81-668" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb81-669"><a href="#cb81-669" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-670"><a href="#cb81-670" aria-hidden="true" tabindex="-1"></a>Breslow's method estimates the partial likelihood as</span>
+<span id="cb81-670"><a href="#cb81-670" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Breslow's method for ties</span></span>
 <span id="cb81-671"><a href="#cb81-671" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-672"><a href="#cb81-672" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-673"><a href="#cb81-673" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb81-674"><a href="#cb81-674" aria-hidden="true" tabindex="-1"></a>L(\beta|T) &amp;=</span>
-<span id="cb81-675"><a href="#cb81-675" aria-hidden="true" tabindex="-1"></a>\prod_i \frac{\bar\theta_i}{<span class="co">[</span><span class="ot">\sum_{k \in R(t_i)} \theta_k</span><span class="co">]</span>^{d_i}}<span class="sc">\\</span></span>
-<span id="cb81-676"><a href="#cb81-676" aria-hidden="true" tabindex="-1"></a>&amp;= \prod_i \prod_{j \in D_i}\frac{\theta_j}{\sum_{k \in R(t_i)} \theta_k}</span>
-<span id="cb81-677"><a href="#cb81-677" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb81-678"><a href="#cb81-678" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-679"><a href="#cb81-679" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-680"><a href="#cb81-680" aria-hidden="true" tabindex="-1"></a>This method is equivalent to treating each event as distinct and using the non-ties formula. </span>
-<span id="cb81-681"><a href="#cb81-681" aria-hidden="true" tabindex="-1"></a>It works best when the number of ties is small. </span>
-<span id="cb81-682"><a href="#cb81-682" aria-hidden="true" tabindex="-1"></a>It is the default in many statistical packages, including PROC PHREG in SAS.</span>
-<span id="cb81-683"><a href="#cb81-683" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-684"><a href="#cb81-684" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Efron's method for ties</span></span>
+<span id="cb81-672"><a href="#cb81-672" aria-hidden="true" tabindex="-1"></a>Breslow's method estimates the partial likelihood as</span>
+<span id="cb81-673"><a href="#cb81-673" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-674"><a href="#cb81-674" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-675"><a href="#cb81-675" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb81-676"><a href="#cb81-676" aria-hidden="true" tabindex="-1"></a>L(\beta|T) &amp;=</span>
+<span id="cb81-677"><a href="#cb81-677" aria-hidden="true" tabindex="-1"></a>\prod_i \frac{\bar\theta_i}{<span class="co">[</span><span class="ot">\sum_{k \in R(t_i)} \theta_k</span><span class="co">]</span>^{d_i}}<span class="sc">\\</span></span>
+<span id="cb81-678"><a href="#cb81-678" aria-hidden="true" tabindex="-1"></a>&amp;= \prod_i \prod_{j \in D_i}\frac{\theta_j}{\sum_{k \in R(t_i)} \theta_k}</span>
+<span id="cb81-679"><a href="#cb81-679" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb81-680"><a href="#cb81-680" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-681"><a href="#cb81-681" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-682"><a href="#cb81-682" aria-hidden="true" tabindex="-1"></a>This method is equivalent to treating each event as distinct and using the non-ties formula. </span>
+<span id="cb81-683"><a href="#cb81-683" aria-hidden="true" tabindex="-1"></a>It works best when the number of ties is small. </span>
+<span id="cb81-684"><a href="#cb81-684" aria-hidden="true" tabindex="-1"></a>It is the default in many statistical packages, including PROC PHREG in SAS.</span>
 <span id="cb81-685"><a href="#cb81-685" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-686"><a href="#cb81-686" aria-hidden="true" tabindex="-1"></a>The other common method is Efron's, which is the default in R.</span>
+<span id="cb81-686"><a href="#cb81-686" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Efron's method for ties</span></span>
 <span id="cb81-687"><a href="#cb81-687" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-688"><a href="#cb81-688" aria-hidden="true" tabindex="-1"></a>$$L(\beta|T)=</span>
-<span id="cb81-689"><a href="#cb81-689" aria-hidden="true" tabindex="-1"></a>\prod_i \frac{\bar\theta_i}{\prod_{j=1}^{d_i}<span class="co">[</span><span class="ot">\sum_{k \in R(t_i)} \theta_k-\frac{j-1}{d_i}\sum_{k \in D_i} \theta_k</span><span class="co">]</span>}$$</span>
-<span id="cb81-690"><a href="#cb81-690" aria-hidden="true" tabindex="-1"></a>This is closer to the exact discrete partial likelihood when there are</span>
-<span id="cb81-691"><a href="#cb81-691" aria-hidden="true" tabindex="-1"></a>many ties.</span>
-<span id="cb81-692"><a href="#cb81-692" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-693"><a href="#cb81-693" aria-hidden="true" tabindex="-1"></a>The third option in R (and an option also in SAS as <span class="in">`discrete`</span>) is the</span>
-<span id="cb81-694"><a href="#cb81-694" aria-hidden="true" tabindex="-1"></a>"exact" method, which is the same one used for matched logistic</span>
-<span id="cb81-695"><a href="#cb81-695" aria-hidden="true" tabindex="-1"></a>regression.</span>
-<span id="cb81-696"><a href="#cb81-696" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-697"><a href="#cb81-697" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Example: Breslow's method</span></span>
+<span id="cb81-688"><a href="#cb81-688" aria-hidden="true" tabindex="-1"></a>The other common method is Efron's, which is the default in R.</span>
+<span id="cb81-689"><a href="#cb81-689" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-690"><a href="#cb81-690" aria-hidden="true" tabindex="-1"></a>$$L(\beta|T)=</span>
+<span id="cb81-691"><a href="#cb81-691" aria-hidden="true" tabindex="-1"></a>\prod_i \frac{\bar\theta_i}{\prod_{j=1}^{d_i}<span class="co">[</span><span class="ot">\sum_{k \in R(t_i)} \theta_k-\frac{j-1}{d_i}\sum_{k \in D_i} \theta_k</span><span class="co">]</span>}$$</span>
+<span id="cb81-692"><a href="#cb81-692" aria-hidden="true" tabindex="-1"></a>This is closer to the exact discrete partial likelihood when there are</span>
+<span id="cb81-693"><a href="#cb81-693" aria-hidden="true" tabindex="-1"></a>many ties.</span>
+<span id="cb81-694"><a href="#cb81-694" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-695"><a href="#cb81-695" aria-hidden="true" tabindex="-1"></a>The third option in R (and an option also in SAS as <span class="in">`discrete`</span>) is the</span>
+<span id="cb81-696"><a href="#cb81-696" aria-hidden="true" tabindex="-1"></a>"exact" method, which is the same one used for matched logistic</span>
+<span id="cb81-697"><a href="#cb81-697" aria-hidden="true" tabindex="-1"></a>regression.</span>
 <span id="cb81-698"><a href="#cb81-698" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-699"><a href="#cb81-699" aria-hidden="true" tabindex="-1"></a>Suppose as an example we have a time $t$ where there are 20 individuals</span>
-<span id="cb81-700"><a href="#cb81-700" aria-hidden="true" tabindex="-1"></a>at risk and three failures. Let the three individuals have risk</span>
-<span id="cb81-701"><a href="#cb81-701" aria-hidden="true" tabindex="-1"></a>parameters $\theta_1, \theta_2, \theta_3$ and let the sum of the risk</span>
-<span id="cb81-702"><a href="#cb81-702" aria-hidden="true" tabindex="-1"></a>parameters of the remaining 17 individuals be $\theta_R$. Then the</span>
-<span id="cb81-703"><a href="#cb81-703" aria-hidden="true" tabindex="-1"></a>factor in the partial likelihood at time $t$ using Breslow's method is</span>
-<span id="cb81-704"><a href="#cb81-704" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-705"><a href="#cb81-705" aria-hidden="true" tabindex="-1"></a>::: smaller</span>
-<span id="cb81-706"><a href="#cb81-706" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-707"><a href="#cb81-707" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_1}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
-<span id="cb81-708"><a href="#cb81-708" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_2}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
-<span id="cb81-709"><a href="#cb81-709" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_3}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
-<span id="cb81-710"><a href="#cb81-710" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-711"><a href="#cb81-711" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb81-712"><a href="#cb81-712" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-713"><a href="#cb81-713" aria-hidden="true" tabindex="-1"></a>If on the other hand, they had died in the order 1,2, 3, then the</span>
-<span id="cb81-714"><a href="#cb81-714" aria-hidden="true" tabindex="-1"></a>contribution to the partial likelihood would be:</span>
-<span id="cb81-715"><a href="#cb81-715" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-716"><a href="#cb81-716" aria-hidden="true" tabindex="-1"></a>::: smaller</span>
-<span id="cb81-717"><a href="#cb81-717" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-718"><a href="#cb81-718" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_1}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
-<span id="cb81-719"><a href="#cb81-719" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_2}{\theta_R+\theta_2+\theta_3}\right)</span>
-<span id="cb81-720"><a href="#cb81-720" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_3}{\theta_R+\theta_3}\right)</span>
-<span id="cb81-721"><a href="#cb81-721" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb81-722"><a href="#cb81-722" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb81-723"><a href="#cb81-723" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-724"><a href="#cb81-724" aria-hidden="true" tabindex="-1"></a>as the risk set got smaller with each failure. The exact method roughly</span>
-<span id="cb81-725"><a href="#cb81-725" aria-hidden="true" tabindex="-1"></a>averages the results for the six possible orderings of the failures.</span>
-<span id="cb81-726"><a href="#cb81-726" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-727"><a href="#cb81-727" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Example: Efron's method</span></span>
+<span id="cb81-699"><a href="#cb81-699" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Example: Breslow's method</span></span>
+<span id="cb81-700"><a href="#cb81-700" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-701"><a href="#cb81-701" aria-hidden="true" tabindex="-1"></a>Suppose as an example we have a time $t$ where there are 20 individuals</span>
+<span id="cb81-702"><a href="#cb81-702" aria-hidden="true" tabindex="-1"></a>at risk and three failures. Let the three individuals have risk</span>
+<span id="cb81-703"><a href="#cb81-703" aria-hidden="true" tabindex="-1"></a>parameters $\theta_1, \theta_2, \theta_3$ and let the sum of the risk</span>
+<span id="cb81-704"><a href="#cb81-704" aria-hidden="true" tabindex="-1"></a>parameters of the remaining 17 individuals be $\theta_R$. Then the</span>
+<span id="cb81-705"><a href="#cb81-705" aria-hidden="true" tabindex="-1"></a>factor in the partial likelihood at time $t$ using Breslow's method is</span>
+<span id="cb81-706"><a href="#cb81-706" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-707"><a href="#cb81-707" aria-hidden="true" tabindex="-1"></a>::: smaller</span>
+<span id="cb81-708"><a href="#cb81-708" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-709"><a href="#cb81-709" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_1}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
+<span id="cb81-710"><a href="#cb81-710" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_2}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
+<span id="cb81-711"><a href="#cb81-711" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_3}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
+<span id="cb81-712"><a href="#cb81-712" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-713"><a href="#cb81-713" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb81-714"><a href="#cb81-714" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-715"><a href="#cb81-715" aria-hidden="true" tabindex="-1"></a>If on the other hand, they had died in the order 1,2, 3, then the</span>
+<span id="cb81-716"><a href="#cb81-716" aria-hidden="true" tabindex="-1"></a>contribution to the partial likelihood would be:</span>
+<span id="cb81-717"><a href="#cb81-717" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-718"><a href="#cb81-718" aria-hidden="true" tabindex="-1"></a>::: smaller</span>
+<span id="cb81-719"><a href="#cb81-719" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-720"><a href="#cb81-720" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_1}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
+<span id="cb81-721"><a href="#cb81-721" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_2}{\theta_R+\theta_2+\theta_3}\right)</span>
+<span id="cb81-722"><a href="#cb81-722" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_3}{\theta_R+\theta_3}\right)</span>
+<span id="cb81-723"><a href="#cb81-723" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb81-724"><a href="#cb81-724" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb81-725"><a href="#cb81-725" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-726"><a href="#cb81-726" aria-hidden="true" tabindex="-1"></a>as the risk set got smaller with each failure. The exact method roughly</span>
+<span id="cb81-727"><a href="#cb81-727" aria-hidden="true" tabindex="-1"></a>averages the results for the six possible orderings of the failures.</span>
 <span id="cb81-728"><a href="#cb81-728" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-729"><a href="#cb81-729" aria-hidden="true" tabindex="-1"></a>But we don't know the order they failed in, so instead of reducing the</span>
-<span id="cb81-730"><a href="#cb81-730" aria-hidden="true" tabindex="-1"></a>denominator by one risk coefficient each time, we reduce it by the same</span>
-<span id="cb81-731"><a href="#cb81-731" aria-hidden="true" tabindex="-1"></a>fraction. This is Efron's method.</span>
-<span id="cb81-732"><a href="#cb81-732" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-733"><a href="#cb81-733" aria-hidden="true" tabindex="-1"></a>::: smaller</span>
-<span id="cb81-734"><a href="#cb81-734" aria-hidden="true" tabindex="-1"></a>$$\left(\frac{\theta_1}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
-<span id="cb81-735"><a href="#cb81-735" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_2}{\theta_R+2(\theta_1+\theta_2+\theta_3)/3}\right)</span>
-<span id="cb81-736"><a href="#cb81-736" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_3}{\theta_R+(\theta_1+\theta_2+\theta_3)/3}\right)$$</span>
-<span id="cb81-737"><a href="#cb81-737" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb81-738"><a href="#cb81-738" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-739"><a href="#cb81-739" aria-hidden="true" tabindex="-1"></a>{{&lt; include coxph-model-building.qmd &gt;}}</span>
+<span id="cb81-729"><a href="#cb81-729" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Example: Efron's method</span></span>
+<span id="cb81-730"><a href="#cb81-730" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-731"><a href="#cb81-731" aria-hidden="true" tabindex="-1"></a>But we don't know the order they failed in, so instead of reducing the</span>
+<span id="cb81-732"><a href="#cb81-732" aria-hidden="true" tabindex="-1"></a>denominator by one risk coefficient each time, we reduce it by the same</span>
+<span id="cb81-733"><a href="#cb81-733" aria-hidden="true" tabindex="-1"></a>fraction. This is Efron's method.</span>
+<span id="cb81-734"><a href="#cb81-734" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-735"><a href="#cb81-735" aria-hidden="true" tabindex="-1"></a>::: smaller</span>
+<span id="cb81-736"><a href="#cb81-736" aria-hidden="true" tabindex="-1"></a>$$\left(\frac{\theta_1}{\theta_R+\theta_1+\theta_2+\theta_3}\right)</span>
+<span id="cb81-737"><a href="#cb81-737" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_2}{\theta_R+2(\theta_1+\theta_2+\theta_3)/3}\right)</span>
+<span id="cb81-738"><a href="#cb81-738" aria-hidden="true" tabindex="-1"></a>\left(\frac{\theta_3}{\theta_R+(\theta_1+\theta_2+\theta_3)/3}\right)$$</span>
+<span id="cb81-739"><a href="#cb81-739" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb81-740"><a href="#cb81-740" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-741"><a href="#cb81-741" aria-hidden="true" tabindex="-1"></a>{{&lt; include coxph-model-building.qmd &gt;}}</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
