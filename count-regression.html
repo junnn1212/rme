@@ -413,7 +413,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-05-29: 22:54:13 (PM)</p>
+      <p class="date">Last modified: 2024-06-03: 10:53:07 (AM)</p>
     </div>
   </div>
   
@@ -507,9 +507,9 @@ text-align: center;
 \]</span></p>
 <p>Therefore, <span class="math display">\[
 \begin{aligned}
-\text{log}\left\{\{\mathbb{E}[Y | \tilde{X}= \tilde{x},T=t] \}\right\}
-&amp;= \text{log}\left\{\{\mu(\tilde{x})\}\right\}\\
-&amp;=\text{log}\left\{\{\lambda(\tilde{x}) \cdot t \}\right\}\\
+\text{log}\left\{\mathbb{E}[Y | \tilde{X}= \tilde{x},T=t]\right\}
+&amp;= \text{log}\left\{\mu(\tilde{x})\right\}\\
+&amp;=\text{log}\left\{\lambda(\tilde{x}) \cdot t\right\}\\
 &amp;=\text{log}\left\{\lambda(\tilde{x})\right\} + \text{log}\left\{t\right\}\\
 &amp;=\text{log}\left\{\text{exp}\left\{\eta(\tilde{x})\right\}\right\} + \text{log}\left\{t\right\}\\
 &amp;=\eta(\tilde{x}) + \text{log}\left\{t\right\}\\
@@ -517,7 +517,7 @@ text-align: center;
 &amp;=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \text{log}\left\{t\right\}\\
 \end{aligned}
 \]</span></p>
-<p>In contrast with the <span class="math inline">\(X\)</span>s, <span class="math inline">\(T\)</span> enters this expression with a <span class="math inline">\(\text{log}\left\{\right\}\)</span> transformation and without a corresponding <span class="math inline">\(\beta\)</span> coefficient.</p>
+<p>In contrast with the other covariates (represented by <span class="math inline">\(\tilde{X}\)</span>), <span class="math inline">\(T\)</span> enters this expression with a <span class="math inline">\(\text{log}\left\{\right\}\)</span> transformation and without a corresponding <span class="math inline">\(\beta\)</span> coefficient.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -537,7 +537,7 @@ Note
 <p>Differences on the log-rate scale become ratios on the rate scale, because</p>
 </div>
 <p><span class="math display">\[\text{exp}\left\{a-b\right\} = \frac{\text{exp}\left\{a\right\}}{\text{exp}\left\{b\right\}}\]</span></p>
-<p>[math-preqs.qmd#cor-exp-sum]</p>
+<p>(recall from <a href="./math-prereqs.html#cor-exp-sum">Algebra 2</a>)</p>
 <p>Therefore, according to this model, <strong>differences of <span class="math inline">\(\delta\)</span> in covariate <span class="math inline">\(x_j\)</span> correspond to rate ratios of <span class="math inline">\(\text{exp}\left\{\beta_j \cdot \delta\right\}\)</span></strong>.</p>
 <p>That is, letting <span class="math inline">\(\tilde{X}_{-j}\)</span> denote vector <span class="math inline">\(\tilde{X}\)</span> with element <span class="math inline">\(j\)</span> removed:</p>
 <p><span class="math display">\[
@@ -1941,18 +1941,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>Therefore,</span>
 <span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>\log{<span class="sc">\{</span>\Expp<span class="co">[</span><span class="ot">Y | \vX = \vx,T=t</span><span class="co">]</span> <span class="sc">\}</span>}</span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>&amp;= \log{<span class="sc">\{</span>\mu(\vx)<span class="sc">\}</span>}<span class="sc">\\</span></span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>&amp;=\log{<span class="sc">\{</span>\lambda(\vx) \cdot t <span class="sc">\}</span>}<span class="sc">\\</span></span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\lambda(\vx)} + \log{t}<span class="sc">\\</span></span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\exp{\eta(\vx)}} + \log{t}<span class="sc">\\</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>\logf{\Expp<span class="co">[</span><span class="ot">Y | \vX = \vx,T=t</span><span class="co">]</span>}</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>&amp;= \logf{\mu(\vx)}<span class="sc">\\</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>&amp;=\logf{\lambda(\vx) \cdot t}<span class="sc">\\</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>&amp;=\logf{\lambda(\vx)} + \log{t}<span class="sc">\\</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>&amp;=\logf{\exp{\eta(\vx)}} + \log{t}<span class="sc">\\</span></span>
 <span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>&amp;=\eta(\vx) + \log{t}<span class="sc">\\</span></span>
 <span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>&amp;=\vx'\tilde\beta + \log{t}<span class="sc">\\</span></span>
 <span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>&amp;=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \log{t}<span class="sc">\\</span></span>
 <span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
 <span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>In contrast with the $X$s, $T$ enters this expression with a $\log{}$ transformation and without a corresponding $\beta$ coefficient. </span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>In contrast with the other covariates (represented by $\vX$), $T$ enters this expression with a $\log{}$ transformation and without a corresponding $\beta$ coefficient. </span>
 <span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>:::{.callout-note}</span>
 <span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>Terms that enter the linear component of a model without a coefficient, such as $\log{t}$ here, are called **offsets**.</span>
@@ -1967,7 +1967,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$</span>
 <span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">math-preqs.qmd#cor-exp-sum</span><span class="co">]</span></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>(recall from <span class="co">[</span><span class="ot">Algebra 2</span><span class="co">](math-prereqs.qmd#cor-exp-sum)</span>)</span>
 <span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>Therefore, according to this model, </span>
 <span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>**differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.</span>
